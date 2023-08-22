@@ -1,16 +1,17 @@
-____VERSION 0.2.3____
+____VERSION 0.2.4____
 ~Known Issues~
+[Transition Patch; started implementing some of the Helmet and wave changes, but more to come.]
 * Tooltips for Fairy, Power Generator, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
 
 ~Overarching Approach~
-Aiming to make more options (weapons, items, level-ups, etc.) feel worth using more often, and give less free power from lucking into the strongest things. Equipment is *not* intended to be perfectly equal to each other in strength (e.g., Jack is buffed but still meant to be difficult; Knight is nerfed but still meant to be easy), but fewer situations should be 'free' or 'always-pick'.
+Aiming to make more options (weapons, items, level-ups, etc.) feel worth using more often, and give less free power from lucking into the strongest things. Equipment is *not* intended to be perfectly equal to each other in strength (e.g., Jack is buffed but still meant to be difficult; Knight is nerfed but still meant to be fairly easy), but fewer situations should be 'free' or 'always-pick'.
 
 Elites are intended to be closer in overall difficulty to each other, more weapons should feel worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun.
 
 
 ~Core Mechanical Changes~
 Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
-Knockback: Direction enemies are knocked back now half depends on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should more often result in the enemy being moved away from the player.
+Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
 Clarified various tooltips to be more clear.
 Note: A few descriptions may not work right for non-English languages.
 
@@ -23,6 +24,8 @@ Note: A few descriptions may not work right for non-English languages.
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
 * Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Switch from Phase 1 to 2 Timing 30s elapsed -> 25s or 60% HP -> 65% HP; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->17 & Projectile Spread 600->690; Phase 3 Movement Speed 60% -> 75%; Phase 3 Projectile Speed 200->235
 
+Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where they go from 185hp to 250hp when buffed.]
+
 Small Charger: Knockback Resistance 100% -> 80%
 Small Viking Charger: Knockback Resistance 100% -> 80%
 Tall Bruiser: Knockback Resistance 100% -> 90%
@@ -30,6 +33,11 @@ Tall Armored Bruiser: Knockback Resistance 100% -> 90%
 Hatched Slasher: Knockback Resistance 100% -> 90%
 Lamprey Fish: Knockback Resistance 100% -> 90%
 Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easier to kill with higher-knockback melee weaponry.]
+
+~Wave Spawns~
+Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more total HP); Single Magician Spawns 1-2 x6 -> 1-1 x5 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
+Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
+Wave 16: (Helmets have more HP but just as many spawn); 1 Charger added to each group of Helmets + Buffers (14 total)
 
 
 ~Level-ups~
@@ -227,10 +235,12 @@ ArosRising, Inschato, Hyphen-ated, and everyone else that's assisted with feedba
 You are free to use concepts and code contained within elsewhere, ideally with attribution. E.g. if you want to make a spin-off mod for, say, only the Elite changes, you are welcome and encouraged to do so but I'd appreciate a link back to the Balance Mod and/or to my stream.
 
 
-~Planned~
+~~ PLANNED ~~
 make knight tier-2 effect green
 "Items Price" Text -> "Shop Price"
+
 **Esty's Couch: Reworked, New Effects: Price 94; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +3 Ranged Damage; +3 Elemental Damage; +13% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
+
 Fix the "x2" material popup to say the correct x## amount?
 
 Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verify)
@@ -266,9 +276,7 @@ Burn currently doesn't apply to trees dying in 8 hits, but should -- possible so
 Fix the Revolver/Chain-gun Tooltip lies delivered via get_cooldown_text  [Can it treat it as an actual cooldown amount rather than just doing *8 on the cooldown?]
 
 
-~Ponderings~
-
-Make Chaingun cooldown ~3.5s?
+~~Misc. Ponderings~~
 
 Helemet could get the -Range while head injury gets a different downside?
 
@@ -438,6 +446,8 @@ Structures When Reloading: When you resume the game after having quit, structure
 in func set_damage, new_value definition being defined as int before being rounded causes it to always truncate, or? (Supposedly this means rounding is different for projectile damage than for melee hits)
 
 
+mention Silver Bullet is multiplicative in the description
+
 
 ~~ Graveyard ~~
 Fix AtkSpd being stored as int prematurely, store as float
@@ -476,12 +486,19 @@ Wand being slower but having 1 built in Spread could be interesting
 
 Set Bonuses could be based on different items with a tag only (combine with the idea of making shop-favoring weight tags more heavily than same-item)
 
-* Helmet Mook: Base HP 8->5; HP/wave 3->4  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16. Spawns for Wave 14/15 are toned down, since those waves don't need to be made more difficult.]
+* 
+a few Chargers for 16 makes some sense
+ Spawns for Wave 14/15 are toned down, since those waves don't need to be made more difficult.]
 	Wave 10 ??
 	Wave 14 Helmet Spawn Total: ~102->~84; Baby Spawn Total: ~108->~114  [when retooling these consider the mat gains too, not just the enemy hp/difficulty]
 	Wave 15 Helmet Spawn Total: ~108->~96; Fin Spawn Total: ~24->~27
 	Wave 17
 	Wave 18
+
+12 base: slightly more mummies
+
+tentacles - higher consumeable and/or crate chance
+
 Magician HP and move speed slightly lower which will cover some of the increased Helmet HP; value Helmet HP about half as much?
 
 Wave 14/15 Horde Waves can make the wave *easier* by replacing the scarier Magicians with mooks; just add a few Magicians to the Horde spawns, maybe even 1 or 2 early?

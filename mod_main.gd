@@ -77,8 +77,6 @@ func _ready()->void:
 	temp = load("res://entities/units/enemies/034/34_stats.tres")
 	temp.speed = 365 	# 350
 	
-	# Helmet Mook (14)
-
 	# Small Charger
 	temp = load("res://entities/units/enemies/004/4_stats.tres")
 	temp.knockback_resistance = 0.8			 # 1.0
@@ -102,12 +100,42 @@ func _ready()->void:
 	# Magician
 	temp = load("res://entities/units/enemies/017/17_stats.tres")
 	temp.knockback_resistance = 0.4			 # 0.0
+
+	# Helmet Mook
+	temp = load("res://entities/units/enemies/014/14_stats.tres")
+	temp.health = 4                      # 8
+	temp.health_increase_each_wave = 4.5 # 3.0
+	
 		
 	# Tentacle (25)
 	
 	# Lamprey Fish
 	temp = load("res://entities/units/enemies/026/26_stats.tres")
 	temp.knockback_resistance = 0.9			 # 1.0
+	
+	
+	
+	## WAVE SPAWNS ##
+	# Wave 14
+	temp = load("res://zones/zone_1/014/group_5.tres") # Magicians
+	temp.spawn_timing = 27  # 22
+	temp = load("res://zones/zone_1/014/unit_5.tres")  # Magicians
+	temp.max_number = 1     # 1-2 -> 1
+	temp = load("res://zones/zone_1/014/group_2.tres") # Helmets
+	temp.repeating_interval = 6  # 5 (Total groups 18 -> 17)
+	temp = load("res://zones/zone_1/014/unit_2.tres")  # Helmets
+	temp.min_number = 5     # 6 
+	temp.max_number = 5     # 6
+	
+	# Wave 15
+	temp = load("res://zones/zone_1/015/unit_2.tres")  # Helmets
+	temp.min_number = 5     # 6 
+	temp.max_number = 5     # 6
+	
+	# Wave 16
+	temp = load("res://zones/zone_1/016/group_1.tres") # Helmets + Buffers
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_charger.tres")
+	temp.wave_units_data.push_back(temp_2)  # Add 1 Charger alongside the Helmets + Buffers
 	
 	
 
