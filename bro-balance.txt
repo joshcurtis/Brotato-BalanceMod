@@ -22,6 +22,7 @@ Note: A few descriptions may not work right for non-English languages.
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
 * Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Switch from Phase 1 to 2 Timing 30s elapsed -> 25s or 60% HP -> 65% HP; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->17 & Projectile Spread 600->690; Phase 3 Movement Speed 60% -> 75%; Phase 3 Projectile Speed 200->235
+* Rhino Elite: Base Speed 250 -> 270
 
 Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where they go from 185hp to 250hp when buffed.]
 
@@ -36,7 +37,9 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 ~Wave Spawns~
 Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more total HP); Single Magician Spawns 1-2 x6 -> 1-1 x5 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
-Wave 16: (Helmets have more HP but just as many spawn); 1 Charger added to each group of Helmets + Buffers (14 total)
+Wave 16: (Helmets have more HP but just as many spawn); 1 Fly added to each group of Helmets + Buffers (14 total)
+Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
+Wave 14 & 15 Horde: Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with.
 
 
 ~Level-ups~
@@ -188,7 +191,7 @@ Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40%
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4
 Mage: -100% Engineering Mods -> -33%. [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something.]
 Masochist: HP Regen 20 -> 15; Armor 8 -> 6
-Mutant: No longer favored to find XP-Gain Items. [Because the effective is additive, they get _less_ benefit from these items than anyone else.]
+Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
 One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary).
 Ranger: No longer starts with a Pistol.
 Speedy: Starting Speed 30% -> 25% [More room to meaningfully increase from where you start]; Starting Armor -3 -> -2
@@ -311,8 +314,6 @@ Scope could be remade without Range as part of the concept of a Range+Dodge blue
 Rebalancing Elemental over a 2-per-levelup ratio may ultimately end up making more sense, letting burn damage keep up with the pace of the game better
 
 
-Test Rhino vs 0 or even -5 Speed; how trivial is to just avoid them Phase 1 even that low?  (seemed trivial at 10%)
-	If still not so bad, make them move faster Phase 1
 
 
 more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ??

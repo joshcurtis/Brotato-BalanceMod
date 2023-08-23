@@ -86,6 +86,10 @@ func _ready()->void:
 	temp = load("res://entities/units/enemies/034/34_stats.tres")
 	temp.speed = 365 	# 350
 	
+	# Rhino Elite
+	temp = load("res://entities/units/enemies/020/20_stats.tres")
+	temp.speed = 270 	# 250
+	
 	# Small Charger
 	temp = load("res://entities/units/enemies/004/4_stats.tres")
 	temp.knockback_resistance = 0.8			 # 1.0
@@ -143,9 +147,36 @@ func _ready()->void:
 	
 	# Wave 16
 	temp = load("res://zones/zone_1/016/group_1.tres") # Helmets + Buffers
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_charger.tres")
-	temp.wave_units_data.push_back(temp_2)  # Add 1 Charger alongside the Helmets + Buffers
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_fly.tres")
+	temp.wave_units_data.push_back(temp_2)  # Add 1 Fly alongside the Helmets + Buffers
 	
+	# Wave 20
+	temp = load("res://zones/zone_1/020/wave_20.tres")
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave20_basic.tres")
+	temp.groups_data.push_back(temp_2)
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave20_fin.tres")
+	temp.groups_data.push_back(temp_2)
+		
+	# Wave 14 & 15 Horde
+	temp = load("res://zones/zone_1/000_hordes/group_3b.tres")
+	temp.max_wave = 13      # Groups of 4 Chasers + 4 Basics in 2nd half removed for 14+15 to make more room for others
+	temp = load("res://zones/zone_1/000_hordes/group_4.tres")
+	temp.repeating_interval = 3
+	temp.spawn_edge_of_map = true
+	temp = load("res://zones/zone_1/000_hordes/unit_3.tres") # Helmet
+	temp.min_number = 4
+	temp.max_number = 4
+	temp = load("res://zones/zone_1/000_hordes/group_5.tres")
+	temp.min_wave = 14
+	temp.spawn_edge_of_map = true
+	temp_2 = load("res://zones/zone_1/000_hordes/unit_1.tres") # Basic
+	temp.wave_units_data.erase(temp_2)
+	temp_2 = load("res://zones/zone_1/000_hordes/unit_2.tres") # Chaser
+	temp.wave_units_data.erase(temp_2)
+	temp = load("res://zones/zone_1/000_hordes/unit_4.tres") # Fin
+	temp.min_number = 4
+	temp.max_number = 4
+
 	
 
 	## TIER-1 ITEMS ##
