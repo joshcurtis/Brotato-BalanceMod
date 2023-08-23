@@ -5,6 +5,6 @@ NEW_EFFECT_ONE_WEAPON_SLOT_LIMIT,You can only equip one weapon at a time\nYou ha
 INFO_POS_STAT_RANGE,The max range of your weapons is increased by {0}. Two-thirds as effective on melee weapons. Higher range also slightly increases the cooldown of melee weapons because of the travel distance.
 INFO_NEG_STAT_RANGE,The max range of your weapons is reduced by {0}. Two-thirds as effective on melee weapons. Lower range also slightly decreases the cooldown of melee weapons because of the travel distance.
 EFFECT_NO_HEAL,You can’t heal in any way during waves
-EFFECT_PACIFIST,Gain {0} material and XP for every living and despawned enemy at the end of a wave 
+NEW_EFFECT_PACIFIST,Gain {0} material and XP for every living and despawned enemy at the end of a wave 
 EFFECT_HIT_PROTECTION,Nullifies the the first 2+ damage hit taken each wave
 NEW_EFFECT_BURN_CHANCE,Attacks have a {0} chance to deal {1}x{2} ({3}) burning damage\nEffects that already burn get +1 burn damage

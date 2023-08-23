@@ -5,6 +5,9 @@ const BALMOD_DIR_E = "res://mods-unpacked/DarkTwinge-BalanceMod/extensions/"
 
 func _init(modLoader = ModLoader):
 	var temp_load
+	
+	# Adds version number to title screen
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/pages/main_menu.gd")
 
 	# Changes Melee Range scaling from 50% -> 67%
 	# Changes Eyes Surgery to give +1 Duration to burn
@@ -36,13 +39,19 @@ func _init(modLoader = ModLoader):
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
-
 	
+
 
 func _ready()->void:
 	var temp
 	var temp_2
 	var temp_find
+	
+	## TEXT KEYS ##
+	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
+	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
+	Text.keys_needing_percent.new_effect_burn_chance = [0]
+	
 	
 	## ENEMIES ##
 	# Elite scenes to change behavior:
@@ -147,7 +156,7 @@ func _ready()->void:
 
 	temp = load("res://items/all/baby_gecko/baby_gecko_data.tres")
 	temp.value = 16   # 18
-
+	
 	temp = load("res://items/all/coffee/coffee_effect_1.tres")
 	temp.value = 9   # 10 (Attack Speed)
 
@@ -173,14 +182,21 @@ func _ready()->void:
 	temp = load("res://items/all/gummy_berserker/gummy_berserker_effect_2.tres")
 	temp.value = 19  # 15 (Range)
 	
+	temp = load("res://items/all/head_injury/head_injury_data.tres")
+	temp.value = 23  # 25
+	temp = load("res://items/all/head_injury/head_injury_effect_2.tres")
+	temp.key = "stat_speed"
+	temp.value = -2  # -8 Range -> -2 Speed
+	
 	temp = load("res://items/all/hedgehog/hedgehog_data.tres")
 	temp.value = 25  # 30
 
 	temp = load("res://items/all/helmet/helmet_data.tres")
-	temp_2 = load("res://items/all/helmet/helmet_effect_2.tres")
-	temp.value = 29  # 25
-	temp.effects.erase(temp_2) # Remove Speed Penalty
-
+	temp.value = 24  # 25
+	temp = load("res://items/all/helmet/helmet_effect_2.tres")
+	temp.key = "stat_range"
+	temp.value = -7  # -2 Speed -> -7 Range
+	
 	temp = load("res://items/all/lost_duck/lost_duck_effect_1.tres")
 	temp.value = 9  # 10 (Luck)
 
@@ -259,12 +275,17 @@ func _ready()->void:
 
 	temp = load("res://items/all/medal/medal_data.tres")
 	temp.value = 58  # 55
+	temp = load("res://items/all/medal/medal_effect_5.tres")
+	temp.value = -3  # -4 (Crit%)
+	
+	temp = load("res://items/all/metal_detector/metal_detector_effect_4.tres")
+	temp.value = -4  # -5 (Damage%)
 	
 	temp = load("res://items/all/missile/missile_data.tres")
 	temp.value = 43  # 45
 	temp = load("res://items/all/missile/missile_effect_1.tres")
 	temp.value = 11  # 10 (Damage%)
-
+	
 	temp = load("res://items/all/padding/padding_data.tres")
 	temp.value = 37  # 45
 	temp = load("res://items/all/padding/padding_effect_2.tres")
@@ -274,7 +295,7 @@ func _ready()->void:
 	temp.value = 37  # 40
 
 	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
-	temp.value = 45  # 40
+	temp.value = 43  # 40
 	
 	temp = load("res://items/all/pocket_factory/pocket_factory_effect_0.tres")
 	temp.value = 3   # 2 (Engineering)
@@ -759,12 +780,13 @@ func _ready()->void:
 	temp.value = 64        # 66
 	temp = load("res://weapons/ranged/crossbow/3/crossbow_stats_3.tres")
 	temp.max_range = 325   # 350
-	temp.cooldown = 49     # 50
+	temp.cooldown = 47     # 50
 	temp = load("res://weapons/ranged/crossbow/4/crossbow_data_4.tres")
 	temp.value = 136       # 140
 	temp = load("res://weapons/ranged/crossbow/4/crossbow_stats_4.tres")
 	temp.max_range = 325   # 350
-	temp.cooldown = 46     # 50
+	temp.crit_damage = 2.3 # 2.25
+	temp.cooldown = 45     # 50
 
 	# Double-barrel Shotgun
 	temp = load("res://weapons/ranged/double_barrel_shotgun/1/double_barrel_shotgun_stats.tres")
@@ -830,9 +852,11 @@ func _ready()->void:
 	temp = load("res://weapons/ranged/nuclear_launcher/3/nuclear_launcher_3_stats.tres")
 	temp.scaling_stats = [ [ "stat_ranged_damage", 1.25 ], [ "stat_elemental_damage", 1.5 ] ] # 1.0/1.0
 	temp.cooldown = 115  # 110
+	temp.damage = 50		 # 60
 	temp = load("res://weapons/ranged/nuclear_launcher/4/nuclear_launcher_4_stats.tres")
 	temp.scaling_stats = [ [ "stat_ranged_damage", 1.25 ], [ "stat_elemental_damage", 1.5 ] ] # 1.0/1.0
 	temp.cooldown = 115  # 110
+	temp.damage = 100    # 120
 	
 	# Pistol
 	temp = load("res://weapons/ranged/pistol/1/pistol_stats.tres")
@@ -1073,7 +1097,7 @@ func _ready()->void:
 	temp.effects.erase(temp_2)
 	temp.effects.push_back(temp_2) # Re-order penalties so Engineering is shown first
 	temp = load("res://items/characters/mage/mage_effect_9.tres")
-	temp.value = -30   # -100 (Engineering Modifications)
+	temp.value = -33   # -100 (Engineering Modifications)
 	
 	# Masochist
 	temp = load("res://items/characters/masochist/masochist_effect_3.tres")
@@ -1088,6 +1112,10 @@ func _ready()->void:
 	# One-armed
 	temp = load("res://items/characters/one_arm/one_arm_effect_3.tres")
 	temp.text_key = "NEW_EFFECT_ONE_WEAPON_SLOT_LIMIT"
+	
+	# Pacifist
+	temp = load("res://items/characters/pacifist/pacifist_effect_2.tres")
+	temp.text_key = "NEW_EFFECT_PACIFIST"
 	
 	# Ranger
 	temp = load("res://items/characters/ranger/ranger_data.tres")
@@ -1156,6 +1184,8 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 
 	# Explorer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
@@ -1205,6 +1235,8 @@ func _ready()->void:
 	# Golem
 	temp = load("res://items/characters/golem/golem_data.tres")
 	temp_2 = load("res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
 	# Hunter
@@ -1290,8 +1322,8 @@ func _ready()->void:
 	#temp.starting_weapons.erase(temp_2)	
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
 	temp.starting_weapons.erase(temp_2)	
-	#temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
-	#temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
+	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
 	temp.starting_weapons.erase(temp_2)	
 	
