@@ -1,5 +1,4 @@
 ~Known Issues~
-[Transition Patch; started implementing some of the Helmet and wave changes, but more to come.]
 * Tooltips for Fairy, Power Generator, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
 
 ~Overarching Approach~
@@ -60,7 +59,7 @@ Alien Tongue: +30% Pickup Range -> +50%; Price 25->20
 Baby Gecko: Price 18->16
 Coffee: +10% Attack Speed -> 9% 
 Cute Monkey: Price 25->32; Proc Chance 8%->10%; Limit 13->10
-Duct Tape: Price 25->20
+Duct Tape: Price 25->16
 Fertilizer: Price 15->19; Harvesting 8->7
 Glasses: 20 Range -> 23
 Gummy Berserker: Price 25->24; 15 Range -> 19
@@ -76,16 +75,16 @@ Terrified Onion: Price 15->12; -6 Luck -> -5 Luck
 
 ~Items: Tier-2~
 Acid: Price 65->64; -4% Dodge -> 3%
-Blood Leech: Price 45->51; HP Regen 2 -> 3
-Campfire: Price 40->47; HP Regen 2 -> 3
-Cyclop Worm: -12 Range -> -14
+Blood Leech: Price 45->41; Harvesting -4 -> -3
+Campfire: Price 40->46; HP Regen 2 -> 3
+Cyclops Worm: -12 Range -> -14
 Dangerous Bunny: Price 35->38
 Energy Bracelet: Price: 55->52; 4% Crit Chance -> 5%
 Eyes Surgery: New Additional Effect: Also adds +1 duration to all burn effects; -10 Range -> No Downside [Description will currently not adjust the duration bonus text if you have more than 1 Eyes Surgery, but the numbers on your burn weapons should show correctly.]
 Gambling Token: Price 60->50; 8% Dodge -> 10%
 Leather Vest: Price 45->50
-Little Frog: Price 50->46; +20% Pickup Range -> +35%; -5% Dodge -> -4%
-Lure: Price 34->40
+Little Frog: Price 50->47; +20% Pickup Range -> +35%; -5% Dodge -> -3%
+Lure: Price 34->42
 Medal: Price 55->58; -4% Crit Chance -> -3%
 Metal Detector: -5% Damage -> -4%
 Missile: Price 45->43; 10% Damage -> 11%
@@ -93,8 +92,8 @@ Padding: Price: 45->37; -5% Speed -> -1%
 Piggy Bank: Price 40->43
 Pocket Factory: 2 Engineering -> 3
 Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
-Riposte: Price 40->37
-Scope: 25 Range -> 30; -7% Attack Speed -> -6%
+Riposte: Price 40->36
+Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 18
 Snail: -5% Enemy Speed -> -6%; -3% Speed -> -2% Speed
 Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 135%
@@ -105,7 +104,7 @@ White Flag: 5 Harvesting -> 6
 ~Items: Tier-3~
 Alien Magic: Price 85-> 82
 Alloy: 3 Melee Damage -> 5 ; Dodge -6% -> -5%; Added 'Elemental Damage' Tag
-Baby With a Beard: Price 100->110; Range -50 -> -60
+Baby With a Beard: Price 100->110; Range -50 -> -70
 Candle: Price 65->51; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->60; %Damage -4% -> -3%
 Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items; -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item [Currently the tooltip will only count full sets of 3, but the actual effect will count partial amounts, so sometimes the tooltip is off by 1.]
@@ -113,14 +112,14 @@ Fin: Price 65->69; 10% Speed -> 9%; Luck -8 -> -9
 Glass Canon: Price 75->70
 Poisonous Tonic: 15 Range -> 17
 Power Generator: Price 65->72; -5% Damage -> -1 Max HP Per 5% Speed [Note: Currently the tooltip is slightly wrong, and will claim you're at e.g. -1 HP when your Speed is between 1% and 4% and you're still actually at -0 HP; it only counts every full 5%.]
-Shmoop: 2 HP Regen -> 3
+Shmoop: Price 60->65; 2 HP Regen -> 3
 Statue: Price 60->55
 Stone Skin: Price 80->90; -2 Armor -> -4% Speed
 Strange Book: -1 Melee Damage -> -0
 Tardigrade: Now requires 2+ damage to proc (preventing it from being wasted for Bloody Hand & Blood Donation); Added to Dodge Item Tag Pool.
 Toolbox: 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
-Vigilante Ring: Price 92->88
+Vigilante Ring: Price 92->84
 Wisdom: Damage -20% -> -16%; Price 85->80
 Hunting Trophy: Price 55->52; Proc Chance 33% -> 25%; Limit 3->4
 
@@ -138,9 +137,11 @@ Lucky Coin: -2 Armor -> No Downside
 Mammoth: Price 130->135; -3% Speed -> -4%; HP Regen 5 -> 4
 Medikit: Starting HP Regen 10 -> 4
 Potato: Price 95->100
+Regeneration Potion: HP Regeneration 3 -> 4
 Retromation's Hoodie: Price 100->110
+Ricochet: All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower).
 Robot Arm: [Reworked] Price 88; +7 Engineering; +4 Elemental Damage; +4 Melee Damage; +4% Attack Speed; +25% Pickup Range; -7 Luck; Tagged: Engineering, Elemental Damage [Previously this item was way too similar to Exoskeleton.]
-Sifd's Relic: Price 100->75
+Sifd's Relic: Price 100->70
 Spider: Price 120->112; 6% Attack Speed Per Different Weapon -> 7%
 Wolf Helmet: Price 90->95
 
@@ -152,7 +153,7 @@ Fighting Stick renamed Bokken. [It should not have "Stick" in the name, and a tr
 Flaming Brass Knuckles: Burn 8x5/12x6/15x7 -> 8x3/12x4/15x5
 Hand: Price 10/22/45/91 -> 9/19/36/69; Harvesting 3/6/9/18 -> 2/5/10/20 [This progression makes it worth upgrading past Blue-tier.]
 Hatchet: Range 125->135
-Plank: Explosion Size 75% -> 80%/90%/100%/110%; Scaling: 50%/55%/60%/65% -> 50%/60%/70%/80%
+Plank: Explosion Size 75% (All) -> 80%/90%/100%/110%; Scaling: 50%/55%/60%/65% -> 50%/60%/70%/80%
 Plasma Sledgehammer: Renamed Plasma Sledge [Makes room to show the weapon's tags.]
 Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10
 Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5
@@ -185,7 +186,7 @@ Cyborg: No longer favored to find Engineering Items; now favored to find Structu
 Demon: Materials to 1 HP Ratio 13 -> 14
 Doctor: Harvesting 5 -> 0
 Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephant, Cute Monkey, Pickup Range, Material Attract).
-Farmer: Now starts with a Garden; Starting Harvesting 20 -> 12; Now also favored to find Gardens in the shop
+Farmer: Now starts with a Garden; Starting Harvesting 20 -> 15 [Together this breaks even with vanilla Harvesting around Wave 4 and is profitable beyond that, not counting the additional potential fruit value.]; Now also favored to find Gardens in the shop
 Glutton: Now also favored to find Gardens in the shop
 Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40%
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4
@@ -217,7 +218,7 @@ Hunter: Added Scissors
 Jack: Added Spiky Shield; Removed Pistol
 King: Added Jousting Lance, Rocket Launcher
 Knight: Added Bokken, Pruner, Plank, Rock, Fist, Knife, Scissors, Cacti Club; Removed Spiky Shield
-Loud: Removed Pruner
+Loud: Added Screwdriver; Removed Pruner
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock, Hand [Experimental]
@@ -274,8 +275,9 @@ TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need 
 	I tried to just change the translation key for these, both as a replacement and as a new one, and it didn't seem to work - was still 'Fighting Stick' and I couldn't tell why.
 
 Giant's Belt double-logs damage numbers (itself and weapon) - fix to only show on belt
+	I think this is also true for Sausage, and furthermore Sausage claims its +1 burn damage even for tick that would happen after an enemy is already dead?
 
-Burn currently doesn't apply to trees dying in 8 hits, but should -- possible solution would be having a separate check for burn to kill the tree after 5-6 ticks; alternatively could apply all duration ticks to the hit-count immediately when it gets hit (or half or whatever seems sensible)
+Burn currently doesn't apply to trees dying in 8 hits, but should -- possible solution would be having a separate check for burn to kill the tree after 5-6 ticks; alternatively could apply all duration ticks to the hit-count immediately when it gets hit (or half+1 or whatever seems sensible)
 
 Fix the Revolver/Chain-gun Tooltip lies delivered via get_cooldown_text  [Can it treat it as an actual cooldown amount rather than just doing *8 on the cooldown?]
 
@@ -283,8 +285,32 @@ Fix the Revolver/Chain-gun Tooltip lies delivered via get_cooldown_text  [Can it
 
 Bug to Fix: Glutton's Explosion can crit, but the chance can't be increased by the crit stat
 
+Fix the incompatibilty with ToolTipFix
+
 
 ~~OTHER PONDERINGS~~
+
+obliterator could try increase projectile speed with range thing for style
+
+Snail: Make it also apply to charge speed; tooltip clarity for this and Tooth that they do not work the same (list the charge speed thing as a separate effect probably; might even need to properly be one to not overlap?)
+
+Lower base Blue-tier increase per level from 6% to ~5%?  Could also instead/additionally have Luck soft-cap and still improve high-tier odds a bit more than it does before reaching a different hard-cap (and could have the soft cap a bit lower than current hard, e.g. 22%/50%)
+
+Mantis Elite move speed up a touch too?
+Rhino a bit more?
+	could compare the two and have one set for longer, slower charges?
+
+Spear prolly wants another cooldown hit, but see on Farmer first?
+
+check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible
+
+Lucky Coin still weird, not necessarily a problem but...
+
+probably add a few magicians to horde 14/15
+	try replacing the whole horde scene same way as elites
+
+
+Luck could maybe affect your same-weapon-finding shop bonus slightly too? 
 
 Test if Fisher/etc. with -mats end up GAINING more from there being piles on the ground (reverse of Jack bug)
 
@@ -292,28 +318,22 @@ Could there be a change to make it easier to find matching tier-2 weapons when y
 
 King - mayhap 20% for Tier-4s? _possibly_ 12% on tier-1 weapons (probably not)?  [Aiming to make the last ~4-8 waves feel a little less like you've already won]
 	Could even be like Gladiator where only *different* tier-4s give the benefit
+		If we do this emphasize the tier-1 weapons are still ANY in the tooltip
 
 Direct isolated test with Torch to see if the amount it clears waves actually corresponds to its reported damage
-
+	more isolated Shiv testing as well to see how often the bouce hits the same thing you are hitting, or if it gets bounus hits or anything?
 
 Heavy Bullets -> less anti-XBow; Range 20-25; not -Crit but instead more -AS or -Speed or such.
 	Could even be -~25% accuracy; do some tests with very low accuracy (e.g. this downside on Renegade, or this item stacked); consider upping Pistol's base accuracy to 100 if implemented
 
 
->add the relevant key values to the Text singleton in the mod _ready() function. I did notice your updated text for pacifist doesn't seem to work. Which I guess matches what you were saying earlier
-
 
 Stat list doesn't refresh on shop reroll (affect Saver, Padding?)
-
-Scope could be remade without Range as part of the concept of a Range+Dodge blue item; it probably doesn't quite work on that either-or style that Energy Braclet works on
-
----> Check code to verify shop rarity works as presented on wiki; is 60% actually 60%, etc.
-	get_tier_from_wave
 
 
 Rebalancing Elemental over a 2-per-levelup ratio may ultimately end up making more sense, letting burn damage keep up with the pace of the game better
 
-
+should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
 
 
 more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ??
@@ -322,8 +342,8 @@ more and more liking the bonus to shop weapons based on having a variety of weap
 
 
 should weird food be blue tier, same as cyberball
+	Also Weird Food being -Dodge specifically hurts dodge+luck's viability more than it should probably; -hp instead?
 
-Wave 20 more spawns makes reasonable sense; not drastic, but a handful of small fodder and a couple semi threatening enemies (small chargers or magicians?)
 
 
 
@@ -337,7 +357,6 @@ Taser: Try different spread value to see if it hits multiple enemies more reliab
 Should there be a Blue-tier Dodge+Range item?
 SMG tier-1 scaling worse (maybe do this moreso instead of the cooldown hit) [but learn properly how the scaling/rounding works;it's rude if 2 ranged damage doesn't increase]
 	Appears to be Ranged Damage is always truncated, and Damage% is rounded, and they are separate; could maybe combine them but then truncate, or? [Verify formula, then chart out a few sample breakpoint spots, probably just for early-game]
-shmoop maybe doesn't need the buff, but hmm
 should focus downside be 4
 regen option base +1? [what did I mean when I wrote this?]
 
@@ -352,10 +371,7 @@ current robot arm rework maybe a bit overly similar to Gnome with Melee and Elem
 can we show explosion size in the weapon info?
 
 
-maybe -5 speed for Stoneskin?
 
-
-Make Duct-Tape a 2-Engineering item?
 Fisher Scissors start?
 
 
@@ -382,8 +398,6 @@ Should one-armed have Harvesting Tag? (Tho Bee can be rough)
 
 Pruners could have a more Xbow-like Crit-scaling
 
-
-Possible Snail: Limit 1 -> 2  ?? [Might instead make it apply to charge speed]
 
 ** Egg - 5 base/3 per wave -> 2 base 3.5 per wave or something?  [Aiming for slightly less on 7, a touch more later]
 
@@ -539,7 +553,6 @@ Can Elite projectiles be made a diff color?
 
 
 ~~~ TO TEST~~~
-Efficacy of Sharp Bullet added to Shivs or Slingshots
 Test: Verify Incindiary Turret is a different kind of burn that stacks with regular burn (Edit turret page with this if so)
 Test: DPS variance for melee from more range (lots of speed to just circle a wave 9 or something)
 Test: Sweep weapons with Range, is it both sweep radius and distance or?
@@ -569,6 +582,8 @@ Glutton: Does it not benefit from Crit Chance?  (supposed to be 3%/1.5x, but hea
 Test Tyler vs Laser Turret dps
 Does temp Attack Speed from Streamer/Soldier work for Claw/Hatchet?
 Negative speed can be positive with Shackles?
+Do some raw data tests at different Luck points to see if it matches expectations (after checking the code first)
+Scythe damage effect goes up with other things like bloody hand right?
 
 
 ~~5 Blue SMGs + 1 White, 60% AtkSpd, 60% Dmg, 10 RangedDamage, 10% LS, Wave 13
