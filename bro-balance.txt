@@ -57,6 +57,7 @@ Guns: 10/20/30/40/50 Range -> 2/4/6/8/10 Attack Speed [Guns having a big pile of
 ~Items: Tier-1~
 Alien Tongue: +30% Pickup Range -> +50%; Price 25->20
 Baby Gecko: Price 18->16
+Broken Mouth: Price 25->26
 Coffee: +10% Attack Speed -> 9% 
 Cute Monkey: Price 25->32; Proc Chance 8%->10%; Limit 13->10
 Duct Tape: Price 25->16
@@ -70,7 +71,7 @@ Lens: -5 Range -> -7
 Lost Duck: Luck 10->9
 Mutation: Price 25->19; -3% Speed -> -2%
 Plant: Price 10->13
-Scared Sausage: Price 25->20  [One of many steps aiming to encourage more partial mixed builds]
+Scared Sausage: Price 25->17  [One of many steps aiming to encourage more partial mixed builds]
 Terrified Onion: Price 15->12; -6 Luck -> -5 Luck
 
 ~Items: Tier-2~
@@ -158,7 +159,7 @@ Plasma Sledgehammer: Renamed Plasma Sledge [Makes room to show the weapon's tags
 Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10
 Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
-Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net]
+Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.56/1.43/1.30/1.23 [A bit slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net]
 Torch: Range 175->200; Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 2/4/6/8; Burn 3x3/5x4/8x5/12x8 -> 4x4/6x5/9x7/15x9 [Focus on long burn duration, which can combo with high burn damage from Wands.]
 
 ~Weapons - Ranged~
@@ -213,7 +214,7 @@ Fisher: Added Plank, Pruner; Removed Screwdriver
 Generalist: Added Scissors; Removed Lighting Shiv
 Gladiator: Added Hatchet
 Glutton: Removed Hatchet
-Golem: Added Crossbow, Ghost Scepter [Experimental]
+Golem: Added Crossbow, Ghost Scepter
 Hunter: Added Scissors
 Jack: Added Spiky Shield; Removed Pistol
 King: Added Jousting Lance, Rocket Launcher
@@ -290,6 +291,24 @@ Fix the incompatibilty with ToolTipFix
 
 ~~OTHER PONDERINGS~~
 
+Potato Thrower -- higher tiers should scale up a touch more (2/3/4 base damage, +1 cooldown?)
+Chonky - add Revolver, maybe Pistol to starters
+Old - add Revolver
+Generalist - remove Pistol, add Flint
+loud - remove Revolver
+Streamer starts -- remove Knife, Shiv, Claw ??
+Ranger add Slingshot
+
+Saver descript says "items" but should cover both items/weapons, right?
+
+
+
+explosive shells less -damage% (with possibly less positive effect); it should be viable in a mixed build
+
+Leave Piggy as only a monetary downside; give Bunny a small stat downside but leave the price low?
+
+while fixing range tooltip, maybe also give a decimal to armor tooltip
+
 obliterator could try increase projectile speed with range thing for style
 
 Snail: Make it also apply to charge speed; tooltip clarity for this and Tooth that they do not work the same (list the charge speed thing as a separate effect probably; might even need to properly be one to not overlap?)
@@ -299,8 +318,6 @@ Lower base Blue-tier increase per level from 6% to ~5%?  Could also instead/addi
 Mantis Elite move speed up a touch too?
 Rhino a bit more?
 	could compare the two and have one set for longer, slower charges?
-
-Spear prolly wants another cooldown hit, but see on Farmer first?
 
 check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible
 
@@ -320,7 +337,7 @@ King - mayhap 20% for Tier-4s? _possibly_ 12% on tier-1 weapons (probably not)? 
 	Could even be like Gladiator where only *different* tier-4s give the benefit
 		If we do this emphasize the tier-1 weapons are still ANY in the tooltip
 
-Direct isolated test with Torch to see if the amount it clears waves actually corresponds to its reported damage
+
 	more isolated Shiv testing as well to see how often the bouce hits the same thing you are hitting, or if it gets bounus hits or anything?
 
 Heavy Bullets -> less anti-XBow; Range 20-25; not -Crit but instead more -AS or -Speed or such.

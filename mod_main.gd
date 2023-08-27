@@ -191,6 +191,9 @@ func _ready()->void:
 	temp = load("res://items/all/baby_gecko/baby_gecko_data.tres")
 	temp.value = 16   # 18
 	
+	temp = load("res://items/all/broken_mouth/broken_mouth_data.tres")
+	temp.value = 26   # 25
+	
 	temp = load("res://items/all/coffee/coffee_effect_1.tres")
 	temp.value = 9   # 10 (Attack Speed)
 
@@ -246,7 +249,7 @@ func _ready()->void:
 	temp.value = 13  # 10
 
 	temp = load("res://items/all/scared_sausage/scared_sausage_data.tres")
-	temp.value = 20  # 25
+	temp.value = 17  # 25
 	temp = load("res://items/all/scared_sausage/scared_sausage_effect_1.tres")
 	temp.text_key = "NEW_EFFECT_BURN_CHANCE"
 
@@ -817,16 +820,16 @@ func _ready()->void:
 	# Spear
 	temp = load("res://weapons/melee/spear/1/spear_stats.tres")
 	temp.max_range = 325 # 350
-	temp.cooldown = 47   # 45
+	temp.cooldown = 49   # 45
 	temp = load("res://weapons/melee/spear/2/spear_2_stats.tres")
 	temp.max_range = 350 # 375
-	temp.cooldown = 38   # 36
+	temp.cooldown = 39   # 36
 	temp = load("res://weapons/melee/spear/3/spear_3_stats.tres")
 	temp.max_range = 375 # 400
-	temp.cooldown = 29   # 27
+	temp.cooldown = 30   # 27
 	temp = load("res://weapons/melee/spear/4/spear_4_stats.tres")
 	temp.max_range = 450 # 500
-	temp.cooldown = 20   # 18
+	temp.cooldown = 21   # 18
 	
 	# Torch
 	temp = load("res://weapons/melee/torch/1/torch_stats.tres")
@@ -867,8 +870,7 @@ func _ready()->void:
 	temp.name = "Bokken"
 	temp = load("res://weapons/melee/fighting_stick/4/fighting_stick_4_data.tres")
 	temp.name = "Bokken"
-	
-	
+
 	
 	
 	## WEAPONS - RANGED ##
