@@ -39,7 +39,9 @@ func handle_explosion(key:String, pos:Vector2)->void :
 		
 		if randf() <= explosion_chance:
 			var dmg = 0
+			###
 			var crit_chance = 0
+			###
 			var first = effects[key][0]
 			var exploding_effect = ExplodingEffect.new()
 			
@@ -52,4 +54,5 @@ func handle_explosion(key:String, pos:Vector2)->void :
 			
 			### Use the newly calculated crit chance
 			var _inst = WeaponService.explode(first, pos, dmg, first.stats.accuracy, crit_chance, first.stats.crit_damage, first.stats.burning_data, false, [], first.tracking_text)
+			#var _inst = WeaponService.explode(first, pos, dmg, first.stats.accuracy, first.stats.crit_chance, first.stats.crit_damage, first.stats.burning_data, false, [], first.tracking_text)
 			###
