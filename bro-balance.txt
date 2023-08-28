@@ -40,7 +40,7 @@ Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more to
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
 Wave 16: (Helmets have more HP but just as many spawn); 1 Fly added to each group of Helmets + Buffers (14 total)
 Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
-Wave 14 & 15 Horde: Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with.
+Wave 14 & 15 Horde: Added 6 single Magician spawns spread out of the last 2/3rds of the wave; Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
 
 
 ~~ LEVEL-UPS ~~
@@ -100,7 +100,7 @@ Riposte: Price 40->36
 Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 18
 Snail: -5% Enemy Speed -> -6%; -3% Speed -> -2% Speed [Temporary small buff.]
-Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 135%; Can now crit for 1.5x damage  (base Crit Chance 1%)
+Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 135%; Can now crit for 1.5x damage (base Crit Chance 1%)
 Tentacle: Price 32->35
 Whetstone: Price 40->42
 White Flag: 5 Harvesting -> 6
@@ -190,7 +190,7 @@ Crazy: No longer starts with a Knife; Now applies their +Range Bonus to weapons 
 Cryptid: Bonus XP/Gold Per Living Tree 12 -> 10; Range -100 -> -75 (Same range as vanilla for melee, slightly more for ranged)
 Cyborg: No longer favored to find Engineering Items; now favored to find Structure Items specifically.
 Demon: Materials to 1 HP Ratio 13 -> 14
-Doctor: Harvesting 5 -> 0
+Doctor: Harvesting 5 -> 0; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100% [This is mostly the same (technically a slight nerf), but makes it much more clear what your HP Regen is actually at.]
 Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephant, Cute Monkey, Pickup Range, Material Attract).
 Farmer: Now starts with a Garden; Starting Harvesting 20 -> 15 [Together this breaks even with vanilla Harvesting around Wave 4 and is profitable beyond that, not counting the additional potential fruit value.]; Now also favored to find Gardens in the shop
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
@@ -294,10 +294,11 @@ Fix the incompatibilty with ToolTipFix
 	Glad's get_unique_weapon_ids may be useful?
 	also emphasize the tier-1 weapons are still ANY in the tooltip
 
+Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 
 ~~ OTHER PONDERINGS ~~
 
-while fixing range tooltip, maybe also give a decimal to armor tooltip
+Should crit chance tooltip mention explosions can crit?
 
 obliterator could try increase projectile speed with range thing for style
 
@@ -312,8 +313,6 @@ check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if 
 
 Lucky Coin still weird, not necessarily a problem but...
 
-probably add a few magicians to horde 14/15
-	try replacing the whole horde scene same way as elites
 
 
 Luck could maybe affect your same-weapon-finding shop bonus slightly too? 
@@ -330,6 +329,7 @@ Heavy Bullets -> less anti-XBow? Range 20-25 (possibly just drop the range inste
 	Could even be -~25% accuracy; do some tests with very low accuracy (e.g. this downside on Renegade, or this item stacked); up Pistol's base accuracy to 100 if implemented
 
 
+Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4)
 
 Stat list doesn't refresh on shop reroll (affects Saver, Padding?)
 
@@ -395,7 +395,7 @@ Should one-armed have Harvesting Tag? (Tho Bee can be rough)
 
 
 
-[?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100%.
+[?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%
 
 Pruners could have a more Xbow-like Crit-scaling
 
@@ -415,8 +415,6 @@ One-armed could Maybe also double Engineering
 
 
 Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that's be only a half fix...]
-
-Should Chunky gain %damage from temp max HP like Padding?
 
 
 Medigun, Pistol, Revolver, Potato-Thrower could be 1.0 instead of 0.9 accuracy if it actually matters

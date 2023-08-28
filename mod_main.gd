@@ -11,7 +11,11 @@ func _init(modLoader = ModLoader):
 
 	# Adds Fairy icon to common and legendary shop items
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop_item.gd")
-
+	
+	# Fix Range tooltip for new melee changes (and clarify cooldown)
+	# Adds a decimal to armor tooltip for more accuracy
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/stat_popup.gd")
+	
 	# Changes Melee Range scaling from 50% -> 67%
 	# Changes Eyes Surgery to give +1 Duration to burn
 	# Artificer now gets +100% Tool Damage
@@ -31,6 +35,9 @@ func _init(modLoader = ModLoader):
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
+	
+	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
 	### Old method - now in _ready
 	# Elites: Mother nerf
@@ -58,7 +65,7 @@ func _ready()->void:
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
 	
-	
+
 	## ENEMIES ##
 	# Elite scenes to change behavior:
 	# Mother nerf
@@ -182,9 +189,8 @@ func _ready()->void:
 	temp = load("res://zones/zone_1/000_hordes/unit_4.tres") # Fin
 	temp.min_number = 4
 	temp.max_number = 4
-
 	
-
+	
 	## TIER-1 ITEMS ##
 	temp = load("res://items/all/alien_tongue/alien_tongue_data.tres")
 	temp.value = 20  # 25
@@ -1203,6 +1209,11 @@ func _ready()->void:
 	temp = load("res://items/characters/doctor/doctor_data.tres")
 	temp_2 = load("res://items/characters/doctor/doctor_effect_4.tres")
 	temp.effects.erase(temp_2) # Remove starting 5 Harvesting
+	temp_2 = load("res://items/characters/doctor/doctor_effect_3.tres")
+	temp_find = temp.effects.find(temp_2)
+	temp.effects.erase(temp_2) # Remove double HP Regen 'effect'...
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/doctor_hp_regen.tres")
+	temp.effects.insert(temp_find, temp_2) # ...and replace with Double HP Regen Stat
 
 	# Explorer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
