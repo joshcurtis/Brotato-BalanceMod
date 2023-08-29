@@ -11,8 +11,8 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
 * Clarified various tooltips to be more clear.
-* For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected)
-Note: A few descriptions may not work right for non-English languages.
+* For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
+Note: A few descriptions will not work right for non-English languages.
 
 
 ~~ ENEMIES ~~
@@ -190,7 +190,7 @@ Crazy: No longer starts with a Knife; Now applies their +Range Bonus to weapons 
 Cryptid: Bonus XP/Gold Per Living Tree 12 -> 10; Range -100 -> -75 (Same range as vanilla for melee, slightly more for ranged)
 Cyborg: No longer favored to find Engineering Items; now favored to find Structure Items specifically.
 Demon: Materials to 1 HP Ratio 13 -> 14
-Doctor: Harvesting 5 -> 0; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100% [This is mostly the same (technically a slight nerf), but makes it much more clear what your HP Regen is actually at.]
+Doctor: Harvesting 5 -> 0; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100% [This is mostly the same (technically a very minor nerf), but makes it much more clear what your HP Regen is actually at.]
 Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephant, Cute Monkey, Pickup Range, Material Attract).
 Farmer: Now starts with a Garden; Starting Harvesting 20 -> 15 [Together this breaks even with vanilla Harvesting around Wave 4 and is profitable beyond that, not counting the additional potential fruit value.]; Now also favored to find Gardens in the shop
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
@@ -285,8 +285,6 @@ Fix the Revolver/Chain-gun Tooltip lies delivered via get_cooldown_text  [Can it
 
 Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephant instead of itself)
 
-Fix the incompatibilty with ToolTipFix
-
 *** Snail: Make it also apply to charge speed (so probably -5% move speed, and -5% charge speed); tooltip clarity for this and Tooth that they do not work the same (list the charge speed thing as a separate effect probably; might even need to be its own effect to not overlap?)
  -> should be fairly easy in charging_attack_beahvior?
 
@@ -298,10 +296,24 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
+Tooltip for tier2+ torches broken, new effect overwriting burn amount
+mutation even cheaper
+eyes surgery - do more tests, might be worth lowering cost too.
+	Might also drop torch's very high duration slightly? hmmm
+
+farmer to 18 harvest
+	
+remove wand from one-armed, + chopper
+
+possible small shiv nerf?
+
+flamethrower maybe one more small damage or range hit?
+
 Should crit chance tooltip mention explosions can crit?
 
 obliterator could try increase projectile speed with range thing for style
 
+shuriken Jack start seems sus; apprentice maybe only screwdriver and not wrench?
 
 Lower base Blue-tier increase per level from 6% to ~5%?  Could also instead/additionally have Luck soft-cap and still improve high-tier odds a bit more than it does before reaching a different hard-cap (and could have the soft cap a bit lower than current hard, e.g. 22%/50%)
 
@@ -545,6 +557,7 @@ Fairy Icon + Expand Renegade Icon to the item crates [shop_item.gd, func set_sho
 Extra digit for cooldowns
 Cyborg: Unique SFX when switching modes (rather than an already used sound); Golem indicator for mode switch too
 Can Elite projectiles be made a diff color?
+Loot Alien more stand out
 
 
 ~~~ TO TEST~~~
