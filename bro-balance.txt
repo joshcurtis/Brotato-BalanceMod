@@ -71,7 +71,7 @@ Hedgehog: Price 30->25
 Helmet: Price 25->24; -2% Speed -> -7 Range [Swapped with Head Injury so that it doesn't mirror Cyclops worm so directly and so Helmet doesn't mirror Warrior's Helm as directly either.]
 Lens: -5 Range -> -7
 Lost Duck: Luck 10->9
-Mutation: Price 25->19; -3% Speed -> -2%
+Mutation: Price 25->17; -3% Speed -> -2% [You almost never want both Elemental and Ranged together currently, and this is nicely cheap when you do; otherwise still kind of expensive-but-occasionally-worth when you just want one.]
 Plant: Price 10->13
 Scared Sausage: Price 25->17  [One of many steps aiming to encourage more partial mixed builds]
 Terrified Onion: Price 15->12; -6 Luck -> -5 Luck
@@ -95,6 +95,7 @@ Missile: Price 45->43; 10% Damage -> 11%
 Padding: Price: 45->37; -5% Speed -> -1%
 Piggy Bank: Price 40->43
 Pocket Factory: 2 Engineering -> 3
+Pumpkin: No Limit -> Limit 8 [Mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
 Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
 Riposte: Price 40->36
 Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
@@ -111,7 +112,7 @@ Alloy: 3 Melee Damage -> 5 ; Dodge -6% -> -5%; Added 'Elemental Damage' Tag
 Baby With a Beard: Price 100->110; Range -50 -> -70
 Candle: Price 65->51; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->60; %Damage -4% -> -3%
-Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items; -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in the shop like Renegade to indicate items affecting Fairy you don't have yet.
+Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items; -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in both the shop and item boxes to indicate items affecting Fairy you don't have yet (like Renegade).
 Fin: Price 65->69; 10% Speed -> 9%; Luck -8 -> -9 
 Glass Canon: Price 75->70
 Poisonous Tonic: 15 Range -> 17
@@ -192,17 +193,18 @@ Cyborg: No longer favored to find Engineering Items; now favored to find Structu
 Demon: Materials to 1 HP Ratio 13 -> 14
 Doctor: Harvesting 5 -> 0; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100% [This is mostly the same (technically a very minor nerf), but makes it much more clear what your HP Regen is actually at.]
 Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephant, Cute Monkey, Pickup Range, Material Attract).
-Farmer: Now starts with a Garden; Starting Harvesting 20 -> 15 [Together this breaks even with vanilla Harvesting around Wave 4 and is profitable beyond that, not counting the additional potential fruit value.]; Now also favored to find Gardens in the shop
+Farmer: Now starts with a Garden; Starting Harvesting 20 -> 18; Now also favored to find Gardens in the shop [An overall buff to a weak character (that is also more impacted by nerfs to tier-1 Harvesting and Fertilizer), and one that is most impactful for their weaker, non-Pruner-based builds.]
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
-Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40%
-Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4
+Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40% [Small buffs to make a difficult character a little less punishing.]
+Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [Makes a strong character a bit less 'free', and means that an Armor level-up is no longer *strictly* better than Melee Damage.]
 Mage: -100% Engineering Mods -> -33%. [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something.]
-Masochist: HP Regen 20 -> 15; Armor 8 -> 6
+Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
 Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
-One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary).
+One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary). [A specialized buff to a difficult character that really helps some of their less-viable builds like Shuriken.]
 Ranger: No longer starts with a Pistol.
+Renegade: Now shows reminder icons for item boxes as well.
 Speedy: Starting Speed 30% -> 25% [More room to meaningfully increase from where you start]; Starting Armor -3 -> -2
-Streamer: Now gets +2 Armor from Pocket Factory [Tooltip doesn't correctly show the Armor from this currently]; Now favored to find Stand-still Items and Structure Items (All Structures including Garden, and also including Pocket Factory and Improved Tools).
+Streamer: Now gets +2 Armor from Pocket Factory [*Tooltip doesn't correctly show the Armor from this currently]; Now favored to find Stand-still Items and Structure Items (All Structures including Garden, and also including Pocket Factory and Improved Tools).
 Wildling: No longer starts with a Stick.
 
 
@@ -213,10 +215,10 @@ Crazy: Added Crossbow
 Cyborg: Removed Crossbow
 Demon: Added Wrench, Potato Thrower [Experimental]
 Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow
-Explorer: Added Hand, Ghost Axe
+Explorer: Added Hand, Ghost Axe, Jousting Lance
 Farmer: Added Slingshot, Thief Dagger, Bokken
 Fisher: Added Plank, Pruner; Removed Screwdriver
-Generalist: Added Scissors, Ghost Flint; Removed Lighting Shiv, Pistol
+Generalist: Added Scissors, Ghost Flint, Shredder; Removed Lighting Shiv, Pistol
 Gladiator: Added Hatchet
 Glutton: Removed Hatchet
 Golem: Added Crossbow, Ghost Scepter
@@ -229,7 +231,7 @@ Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock, Hand [Experimental]
 Old: Added Revolver
-One-armed: Removed Screwdriver, Ghost Flint, Pistol, Fist, Crossbow [Currently leaving in Chopper with the set-bonus changes, but may remove later]; Added Sword, Hammer, Flaming Brass Knuckles [These lean into the benefits of having two weapon set bonuses, with not too much direct advantage to having a tier-2 off the bat; needs testing.]
+One-armed: Removed Screwdriver, Ghost Flint, Pistol, Fist, Crossbow, Wand, Chopper; Added Sword, Hammer, Flaming Brass Knuckles [These lean into the benefits of having two weapon set bonuses, with not too much direct advantage to having a tier-2 off the bat; needs testing.]
 Pacifist: Added Scissors, Rock
 Ranger: Added Slingshot
 Renegade: Added Shuriken, Slingshot
@@ -237,7 +239,7 @@ Saver: Added Fist, Stick, Chopper
 Sick: Added Cacti Club, Hatchet, Pruner; Removed Hand
 Speedy: Added Ghost Flint, Pruner; Removed Wrench
 Streamer: Added Ghost Scepter; Removed Bokken, Rock, Jousting Lance, Knife, Lightning Shiv, Claw
-Well-rounded: Added Fist, Wrench
+Well-rounded: Added Fist, Wrench, Slingshot
 
 
 ~~ THANKS TO ~~
@@ -296,14 +298,10 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
-Tooltip for tier2+ torches broken, new effect overwriting burn amount
-mutation even cheaper
+Landmines 15->13, since they're worse than turret? (or 14/16)
+
 eyes surgery - do more tests, might be worth lowering cost too.
 	Might also drop torch's very high duration slightly? hmmm
-
-farmer to 18 harvest
-	
-remove wand from one-armed, + chopper
 
 possible small shiv nerf?
 
@@ -551,9 +549,6 @@ Show actual stat gains in parentheses for items/levels (E.g. Hunter nothing from
 	There is a mod that does this, but as a replace rather than a parenthetical: https://steamcommunity.com/sharedfiles/filedetails/?id=3019195689
 -> Show effective actual scaling based on current? natural? cooldown (So instead of "100% Melee Damage Scaling" it'd show 125% for a weapon with a 0.8 cooldown) 
 Louder 'take damage' sfx ; quieter weapons (esp SMG)
-Egg reminder for Wave 7, icon next to the go next wave button
-	Maybe combine with a bought-Bait reminder icon
-Fairy Icon + Expand Renegade Icon to the item crates [shop_item.gd, func set_shop_item] -- [tier-4 could show a frown-face version]
 Extra digit for cooldowns
 Cyborg: Unique SFX when switching modes (rather than an already used sound); Golem indicator for mode switch too
 Can Elite projectiles be made a diff color?

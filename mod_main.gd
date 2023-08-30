@@ -16,6 +16,9 @@ func _init(modLoader = ModLoader):
 	# Adds a decimal to armor tooltip for more accuracy
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/stat_popup.gd")
 	
+	# Add Fairy and Renegade icons to item boxes too instead of only shop items
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/upgrades/item_box_ui.gd")
+	
 	# Changes Melee Range scaling from 50% -> 67%
 	# Changes Eyes Surgery to give +1 Duration to burn
 	# Artificer now gets +100% Tool Damage
@@ -250,7 +253,7 @@ func _ready()->void:
 	temp.value = -7  # -5 (Range)
 
 	temp = load("res://items/all/mutation/mutation_data.tres")
-	temp.value = 19  # 25
+	temp.value = 17  # 25
 	temp = load("res://items/all/mutation/mutation_effect_3.tres")
 	temp.value = -2  # -3 (Speed)
 
@@ -349,16 +352,19 @@ func _ready()->void:
 	temp.value = 37  # 45
 	temp = load("res://items/all/padding/padding_effect_2.tres")
 	temp.value = -1  # -5 (Speed)
-
+	
 	temp = load("res://items/all/riposte/riposte_data.tres")
 	temp.value = 36  # 40
-
+	
 	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
 	temp.value = 43  # 40
 	
 	temp = load("res://items/all/pocket_factory/pocket_factory_effect_0.tres")
 	temp.value = 3   # 2 (Engineering)
-
+	
+	temp = load("res://items/all/pumpkin/pumpkin_data.tres")
+	temp.max_nb = 8  # -1
+	
 	temp = load("res://items/all/recycling_machine/recycling_machine_data.tres")
 	temp.value = 37  # 35
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/recycling_machine_attack_speed_malus.tres")
@@ -1230,7 +1236,7 @@ func _ready()->void:
 	temp.effects.erase(temp_2) # Re-order to put downside at the end
 	temp.effects.push_back(temp_2)
 	temp = load("res://items/characters/farmer/farmer_effect_1.tres")
-	temp.value = 15 # 20 (Harvesting)
+	temp.value = 18 # 20 (Harvesting)
 	
 	# Glutton
 	temp = load("res://items/characters/glutton/glutton_data.tres")
@@ -1360,6 +1366,8 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/ghost_axe/1/ghost_axe_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 	
 	# Farmer
 	temp = load("res://items/characters/farmer/farmer_data.tres")
@@ -1385,6 +1393,8 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/ranged/shredder/1/shredder_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
@@ -1505,7 +1515,11 @@ func _ready()->void:
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
-	temp.starting_weapons.erase(temp_2)	
+	temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/melee/fist/1/chopper_data.tres")
+	temp.starting_weapons.erase(temp_2)
 	
 	# Pacifist
 	temp = load("res://items/characters/pacifist/pacifist_data.tres")
@@ -1587,4 +1601,5 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	
+	temp_2 = load("res://weapons/ranged/slingshot/1/slingshot_data.tres")
+	temp.starting_weapons.push_back(temp_2)	
