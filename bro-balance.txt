@@ -1,5 +1,5 @@
 ~Known Issues~
-* Tooltips for Power Generator, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
+* Tooltips for Power Generator, King, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
 
 ~~ OVERVIEW ~~
 Aiming to make more options (weapons, items, level-ups, etc.) feel worth using more often, and give less free power from lucking into the strongest things. Equipment is *not* intended to be perfectly equal to each other in strength (e.g., Jack is buffed but still meant to be difficult; Knight is nerfed but still meant to be fairly easy), but fewer situations should be 'free' or 'always-pick'.
@@ -196,6 +196,7 @@ Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephan
 Farmer: Now starts with a Garden; Starting Harvesting 20 -> 18; Now also favored to find Gardens in the shop [An overall buff to a weak character (that is also more impacted by nerfs to tier-1 Harvesting and Fertilizer), and one that is most impactful for their weaker, non-Pruner-based builds.]
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
 Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40% [Small buffs to make a difficult character a little less punishing.]
+King: Now only gives Attack Speed and Damage for every *different* tier-4 weapon. [Note the tooltip is currently bugged and will still show every tier-4 weapon, but only different ones will affect your actual stats.]
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [Makes a strong character a bit less 'free', and means that an Armor level-up is no longer *strictly* better than Melee Damage.]
 Mage: -100% Engineering Mods -> -33% [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something]; Now starts with a 2nd Sausage when starting with SMG or Shotgun.
 Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
@@ -287,10 +288,6 @@ Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephan
 
 *** Snail: Make it also apply to charge speed (so probably -5% move speed, and -5% charge speed); tooltip clarity for this and Tooth that they do not work the same (list the charge speed thing as a separate effect probably; might even need to be its own effect to not overlap?)
  -> should be fairly easy in charging_attack_beahvior?
-
-*** King - be like Gladiator where only *different* tier-4 weapons give the benefit (maybe changed in update_tier_iv_weapon_bonuses to skip over weapon types already added?)
-	Glad's get_unique_weapon_ids may be useful?
-	also emphasize the tier-1 weapons are still ANY in the tooltip
 
 Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 

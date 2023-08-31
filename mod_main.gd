@@ -68,6 +68,7 @@ func _ready()->void:
 	## TEXT KEYS ##
 	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
 	Text.keys_needing_operator.new_effect_damage_against_bosses = [0]
+	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 2]
 	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
@@ -1258,7 +1259,13 @@ func _ready()->void:
 	temp.value = 80 # 75 (+Damage to Bosses)
 	temp = load("res://items/characters/jack/jack_effect_4.tres")
 	temp.value = 40 # 50 (+Damage from enemies)
-
+	
+	# King
+	temp = load("res://items/characters/king/king_effect_1.tres")
+	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
+	temp = load("res://items/characters/king/king_effect_1b.tres")
+	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
+	
 	# Knight
 	temp = load("res://items/characters/knight/knight_effect_1.tres")
 	temp.value = 3  # 2

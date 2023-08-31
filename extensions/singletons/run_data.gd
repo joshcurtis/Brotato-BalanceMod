@@ -1,5 +1,32 @@
 extends "res://singletons/run_data.gd"
 
+# New function for counting unique tier-4s, King's changed ability
+func get_unique_tier4_weapon_ids()->Array:
+	var unique_tier4_weapon_ids = []
+	
+	for weapon in weapons:
+		if weapon.tier >= Tier.LEGENDARY: 
+			if not unique_tier4_weapon_ids.has(weapon.weapon_id):
+				unique_tier4_weapon_ids.push_back(weapon.weapon_id)
+	
+	return unique_tier4_weapon_ids
+
+# Replaced fuction for applying unique tier-4s, King's changed ability
+func update_tier_iv_weapon_bonuses()->void :
+	
+	for effect in tier_iv_weapon_effects:
+		effects[effect[0]] -= effect[1]
+	
+	tier_iv_weapon_effects = []
+	var unique_tier4_weapon_ids = get_unique_tier4_weapon_ids()
+	
+	for i in unique_tier4_weapon_ids.size():
+		for effect in effects["tier_iv_weapon_effects"]:
+			effects[effect[0]] += effect[1]
+			tier_iv_weapon_effects.push_back(effect)
+
+
+
 # Added set bonus for One-armed
 func update_sets()->void :
 	
