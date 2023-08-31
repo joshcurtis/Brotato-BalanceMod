@@ -29,7 +29,7 @@ func update_sets()->void :
 				effect.apply()
 				active_set_effects.push_back([key, effect])
 
-# Makes glutton, spicy sauce, and rip and tear all use the crit stat
+# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 func handle_explosion(key:String, pos:Vector2)->void :
 	if effects[key].size() > 0:
 		var explosion_chance = 0.0
@@ -56,3 +56,22 @@ func handle_explosion(key:String, pos:Vector2)->void :
 			var _inst = WeaponService.explode(first, pos, dmg, first.stats.accuracy, crit_chance, first.stats.crit_damage, first.stats.burning_data, false, [], first.tracking_text)
 			#var _inst = WeaponService.explode(first, pos, dmg, first.stats.accuracy, first.stats.crit_chance, first.stats.crit_damage, first.stats.burning_data, false, [], first.tracking_text)
 			###
+
+# Gives an extra starting Sausage for Gun Mage
+func add_starting_items_and_weapons()->void :
+	if effects["starting_item"].size() > 0:
+		for item_id in effects["starting_item"]:
+			for i in item_id[1]:
+				var item = ItemService.get_element(ItemService.items, item_id[0])
+				add_item(item)
+				### If adding a starting Sausage, add a 2nd if the starting weapon is an SMG or Shotgun
+				if item_id[0] == "item_scared_sausage":
+					if RunData.weapons[0].my_id == "weapon_double_barrel_shotgun_1" or RunData.weapons[0].my_id == "weapon_smg_1":
+						add_item(item)
+				###
+	
+	if effects["starting_weapon"].size() > 0:
+		for weapon_id in effects["starting_weapon"]:
+			for i in weapon_id[1]:
+				var weapon = ItemService.get_element(ItemService.weapons, weapon_id[0])
+				var _weapon = add_weapon(weapon)

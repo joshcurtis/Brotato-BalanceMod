@@ -27,6 +27,8 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/weapon_service.gd")
 	
 	# Gives One-armed a 4-set Bonus for their weapon
+	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
+	# Gives Gun Mage an extra Sausage
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
 	
 	# Gives Streamer +2 Armor for Pocket Factory
@@ -65,6 +67,8 @@ func _ready()->void:
 	
 	## TEXT KEYS ##
 	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
+	Text.keys_needing_operator.new_effect_damage_against_bosses = [0]
+	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
 	
@@ -468,7 +472,11 @@ func _ready()->void:
 	temp.value = 65  # 60
 	temp = load("res://items/all/shmoop/shmoop_effect_2.tres")
 	temp.value = 3   # 2 (HP Regen)
-
+	
+	temp = load("res://items/all/silver_bullet/silver_bullet_effect_1.tres")
+	temp.text_key = "new_effect_damage_against_bosses"
+	
+	
 	temp = load("res://items/all/statue/statue_data.tres")
 	temp.value = 55  # 60
 
@@ -1116,7 +1124,6 @@ func _ready()->void:
 
 
 
-
 	## SET BONUSES ##
 	temp = load("res://items/sets/primitive/2/set_2_effect_1.tres")
 	temp.value = 2  # 3 (Max HP)
@@ -1269,6 +1276,8 @@ func _ready()->void:
 	temp.effects.push_back(temp_2) # Re-order penalties so Engineering is shown first
 	temp = load("res://items/characters/mage/mage_effect_9.tres")
 	temp.value = -33   # -100 (Engineering Modifications)
+	temp = load("res://items/characters/mage/mage_effect_3b.tres")
+	temp.text_key = "new_sausage_effect_starting_item"
 	
 	# Masochist
 	temp = load("res://items/characters/masochist/masochist_effect_3.tres")

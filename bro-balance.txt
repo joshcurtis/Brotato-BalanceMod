@@ -197,7 +197,7 @@ Farmer: Now starts with a Garden; Starting Harvesting 20 -> 18; Now also favored
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
 Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40% [Small buffs to make a difficult character a little less punishing.]
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [Makes a strong character a bit less 'free', and means that an Armor level-up is no longer *strictly* better than Melee Damage.]
-Mage: -100% Engineering Mods -> -33%. [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something.]
+Mage: -100% Engineering Mods -> -33% [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something]; Now starts with a 2nd Sausage when starting with SMG or Shotgun.
 Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
 Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
 One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary). [A specialized buff to a difficult character that really helps some of their less-viable builds like Shuriken.]
@@ -260,8 +260,6 @@ Fix the "x2" material popup to say the correct x## amount?
 
 Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verify)
 
-*** Mage with a non-Elemental weapon start now has a Sausage in their opening shop, so they have 2 to build from instead of 1.  [maybe can just RunData.current_character?]
-
 Fix Weapon Attack Speed Randomization to cap at +/- probably 60% (instead of 120% for most/240% for Multi) -- hits fewer weird atkspd cases where it floors cooldown such that it gets less beenfit from atkspd than it should
 
 *** FIX: Eyes Surgery's 2nd effect should be added as an Actual Effect rather than hacked into the existing one (which should also let the tooltip update properly to show how much duration has been increased based on how many Eyes Surgeries you have)
@@ -296,6 +294,8 @@ Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephan
 
 Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 
+shorten stat mod text so it always fits 2 lines, so char descriptions are more readable
+
 ~~ OTHER PONDERINGS ~~
 
 Landmines 15->13, since they're worse than turret? (or 14/16)
@@ -308,8 +308,6 @@ possible small shiv nerf?
 flamethrower maybe one more small damage or range hit?
 
 Should crit chance tooltip mention explosions can crit?
-
-obliterator could try increase projectile speed with range thing for style
 
 shuriken Jack start seems sus; apprentice maybe only screwdriver and not wrench?
 
@@ -337,14 +335,13 @@ Could there be a change to make it easier to find matching tier-2 weapons when y
 
 Heavy Bullets -> less anti-XBow? Range 20-25 (possibly just drop the range instead); not -Crit but instead more -AS or -Speed or such.
 	Could even be -~25% accuracy; do some tests with very low accuracy (e.g. this downside on Renegade, or this item stacked); up Pistol's base accuracy to 100 if implemented
+	Medigun, Pistol, Revolver, Potato-Thrower could be 1.0 instead of 0.9 accuracy if it actually matters
 
 
 Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4)
 
 Stat list doesn't refresh on shop reroll (affects Saver, Padding?)
 
-
-Rebalancing Elemental over a 2-per-levelup ratio may ultimately end up making more sense, letting burn damage keep up with the pace of the game better
 
 should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
 
@@ -356,20 +353,14 @@ more and more liking the bonus to shop weapons based on having a variety of weap
 
 
 
-
-
-
-
 Sausage appears to be having some of its damage counted on weapons *instead*.  Also had Alien Eyes, Burn Turrents, Tyler, Eyes Surgery x3, regular turret if any of that matters
 
 
-Taser: Try different spread value to see if it hits multiple enemies more reliably?
-	--> Seems to make it worse not better
+
 Should there be a Blue-tier Dodge+Range item?
 SMG tier-1 scaling worse (maybe do this moreso instead of the cooldown hit) [but learn properly how the scaling/rounding works;it's rude if 2 ranged damage doesn't increase]
 	Appears to be Ranged Damage is always truncated, and Damage% is rounded, and they are separate; could maybe combine them but then truncate, or? [Verify formula, then chart out a few sample breakpoint spots, probably just for early-game]
 should focus downside be 4
-regen option base +1? [what did I mean when I wrote this?]
 
 
 
@@ -389,7 +380,6 @@ Fisher Scissors start?
 maybe brawler should only be 40% atkspd
 
 pumpkin could also apply to bounce
-base bounce percent could be ~ -30% instead of -50% -- test riccochet first
 
 
 
@@ -410,25 +400,15 @@ Should one-armed have Harvesting Tag? (Tho Bee can be rough)
 Pruners could have a more Xbow-like Crit-scaling
 
 
-** Egg - 5 base/3 per wave -> 2 base 3.5 per wave or something?  [Aiming for slightly less on 7, a touch more later]
 
 Could make Luck's impact on Blue-tiers slightly higher, like thru Wave 13-14 instead (and 20 for Purple?) 
 	maybe diminishing returns where Luck continues to impact but at a lesser rate
 
 Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
 
-
-
-
-One-armed could Maybe also double Engineering
 	
 
-
 Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that's be only a half fix...]
-
-
-Medigun, Pistol, Revolver, Potato-Thrower could be 1.0 instead of 0.9 accuracy if it actually matters
-
 
 
 
@@ -455,7 +435,6 @@ Mines: Mildly bigger detection/activation radius? (~+25%?)
 
 Weapons that start with Lifesteal should show Lifesteal in red even if they're at 0%
 
-possibly make Spear's base damage or cooldown slightly worse? [It's weird that a blue/purple Spear can kinda just dominate on damage when jsut tossed in, even into a ranged build]
 
 
 
@@ -470,10 +449,14 @@ Structures When Reloading: When you resume the game after having quit, structure
 in func set_damage, new_value definition being defined as int before being rounded causes it to always truncate, or? (Supposedly this means rounding is different for projectile damage than for melee hits)
 
 
-mention Silver Bullet is multiplicative in the description
-
 
 ~~ Graveyard ~~
+Rebalancing Elemental over a 2-per-levelup ratio may ultimately end up making more sense, letting burn damage keep up with the pace of the game better
+
+Egg - 5 base/3 per wave -> 2 base 3.5 per wave or something?  [Aiming for slightly less on 7, a touch more later]
+
+One-armed could Maybe also double Engineering (or 50%)
+
 Fix AtkSpd being stored as int prematurely, store as float
 
 Maybe replace all instances of "materials" to actually mean gold, and add "XP" to the ones that don't?
