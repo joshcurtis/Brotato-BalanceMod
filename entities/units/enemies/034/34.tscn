@@ -104,17 +104,19 @@ hp_start = 0.3
 
 [node name="MovementBehavior" parent="States/State2" index="0"]
 script = ExtResource( 11 )
-target_range = 225
+;; Was 225
+target_range = 270
 target_range_randomization = 0
 
 [node name="AttackBehavior" parent="States/State2" index="1"]
 ;; Was 200
-projectile_speed = 235
+projectile_speed = 230
 cooldown = 1.0
 damage_increase_each_wave = 1.15
 max_range = 2000
 random_direction = true
-number_projectiles = 3
+;; Was 3
+number_projectiles = 4
 projectile_spread = 0.8
 
 [node name="LifeBar" parent="." index="12"]

@@ -80,11 +80,13 @@ func _ready()->void:
 	# Smiley nerf
 	# Gargoyle buff
 	# Hivemind nerf
+	# Rhino buff
 	var elite_scenes = {
 		"elite_mom":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/033/33.tscn",
 		"elite_croco":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/027/27.tscn",
 		"elite_demon":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/034/34.tscn",
-		"elite_colossus":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/028/28.tscn"
+		"elite_colossus":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/028/28.tscn",
+		"elite_rhino":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/020/20.tscn"
 	}
 	for elite in ItemService.elites:
 		if elite.my_id in elite_scenes.keys():
@@ -109,7 +111,7 @@ func _ready()->void:
 	
 	# Rhino Elite
 	temp = load("res://entities/units/enemies/020/20_stats.tres")
-	temp.speed = 270 	# 250
+	temp.speed = 275 	# 250
 	
 	# Small Charger
 	temp = load("res://entities/units/enemies/004/4_stats.tres")
@@ -167,9 +169,16 @@ func _ready()->void:
 	temp.max_number = 5     # 6
 	
 	# Wave 16
+	# Add 2 Fly alongside the Helmets + Buffers
 	temp = load("res://zones/zone_1/016/group_1.tres") # Helmets + Buffers
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_fly.tres")
-	temp.wave_units_data.push_back(temp_2)  # Add 1 Fly alongside the Helmets + Buffers
+	temp.wave_units_data.push_back(temp_2)
+	# Adds 2 more groups of Bruisers starting earlier in the wave
+	temp = load("res://zones/zone_1/016/group_1.tres") # 1 Bruiser + 1 Armored Bruiser
+	temp.reduce_repeating_interval = 1
+	temp.repeating_interval = 5     # 3
+	temp.min_repeating_interval = 3 # (1)
+	temp.spawn_timing = 22				  # 32
 	
 	# Wave 20
 	temp = load("res://zones/zone_1/020/wave_20.tres")
@@ -561,7 +570,18 @@ func _ready()->void:
 	temp = load("res://items/all/gnome/gnome_effect_1.tres")
 	temp.value = 12  # 10 (Melee Damage)	
 	temp = load("res://items/all/gnome/gnome_effect_2.tres")
-	temp.value = 8  # 10 (Elemental Damage)
+	temp.value = 8   # 10 (Elemental Damage)
+	
+	# Heavy Bullets
+	temp = load("res://items/all/heavy_bullets/heavy_bullets_data.tres")
+	temp.value = 95  # 100
+	temp_2 = load("res://items/all/heavy_bullets/heavy_bullets_effect_5.tres")
+	temp.effects.erase(temp_2)		 # -5% Crit -v
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/heavy_bullets_accuracy_malus.tres")
+	temp.effects.push_back(temp_2) # -35% Accuracy
+	temp = load("res://items/all/heavy_bullets/heavy_bullets_effect_3.tres")
+	temp.key = "stat_crit_chance"
+	temp.value = 5   # 10 Range -> 5% Crit Chance
 	
 	# Jetpack
 	temp = load("res://items/all/jetpack/jetpack_data.tres")
@@ -964,10 +984,13 @@ func _ready()->void:
 	temp.knockback = 5   	 # 8
 	temp = load("res://weapons/ranged/double_barrel_shotgun/2/double_barrel_shotgun_2_stats.tres")
 	temp.knockback = 5   	 # 8
+	temp.accuracy = 0.9    # 0.95
 	temp = load("res://weapons/ranged/double_barrel_shotgun/3/double_barrel_shotgun_3_stats.tres")
 	temp.knockback = 5   	 # 8
+	temp.accuracy = 0.9    # 1.0
 	temp = load("res://weapons/ranged/double_barrel_shotgun/4/double_barrel_shotgun_4_stats.tres")
 	temp.knockback = 5   	 # 8
+	temp.accuracy = 0.9    # 1.0
 	
 	# Flamethrower
 	###temp = load("res://weapons/ranged/flamethrower/2/flamethrower_2_data.tres")
@@ -1004,18 +1027,23 @@ func _ready()->void:
 	temp = load("res://weapons/ranged/medical_gun/1/medical_gun_stats.tres")
 	temp.cooldown = 43 	 # 45
 	temp.max_range = 375 # 400
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/medical_gun/2/medical_gun_2_stats.tres")
 	temp.cooldown = 39 	 # 40
 	temp.max_range = 375 # 400
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/medical_gun/3/medical_gun_3_stats.tres")
 	temp.cooldown = 33 	 # 35
 	temp.max_range = 375 # 400
 	temp.damage = 22		 # 20
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/medical_gun/4/medical_gun_4_stats.tres")
 	temp.cooldown = 24 	 # 25
 	temp.max_range = 375 # 400
 	
 	# Minigun
+	temp = load("res://weapons/ranged/minigun/3/minigun_3_stats.tres")
+	temp.accuracy = 0.8  # 0.85
 	temp = load("res://weapons/ranged/minigun/4/minigun_4_stats.tres")
 	temp.cooldown = 2    # 1 (Visual Only)
 	
@@ -1032,51 +1060,69 @@ func _ready()->void:
 	# Pistol
 	temp = load("res://weapons/ranged/pistol/1/pistol_stats.tres")
 	temp.knockback = 10  # 15
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/pistol/2/pistol_2_data.tres")
 	temp.value = 20      # 22
 	temp = load("res://weapons/ranged/pistol/2/pistol_2_stats.tres")
 	temp.knockback = 10  # 15
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/pistol/3/pistol_3_data.tres")
 	temp.value = 41      # 45
 	temp = load("res://weapons/ranged/pistol/3/pistol_3_stats.tres")
 	temp.knockback = 10  # 15
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/pistol/4/pistol_4_data.tres")
 	temp.value = 83      # 91
 	temp = load("res://weapons/ranged/pistol/4/pistol_4_stats.tres")
-	temp.knockback = 10  # 15	
+	temp.knockback = 10  # 15
 
 	# Potato Thrower
 	temp = load("res://weapons/ranged/potato_thrower/2/potato_thrower_2_data.tres")
 	temp.value = 33      # 36
 	temp = load("res://weapons/ranged/potato_thrower/2/potato_thrower_2_stats.tres")
 	temp.damage = 2      # 1
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/potato_thrower/3/potato_thrower_3_data.tres")
 	temp.value = 65      # 69
 	temp = load("res://weapons/ranged/potato_thrower/3/potato_thrower_3_stats.tres")
 	temp.damage = 3      # 1
+	temp.accuracy = 1.0  # 0.9
 	temp = load("res://weapons/ranged/potato_thrower/4/potato_thrower_4_data.tres")
 	temp.value = 118     # 139
 	temp = load("res://weapons/ranged/potato_thrower/4/potato_thrower_4_stats.tres")
 	temp.damage = 4      # 1
+	temp.accuracy = 1.0  # 0.9
 	
 	# Revolver
 	temp = load("res://weapons/ranged/revolver/1/revolver_data.tres")
 	temp.value = 18      # 20
 	temp = load("res://weapons/ranged/revolver/1/revolver_stats.tres")
 	
+	# Rocket Launcher
+	temp = load("res://weapons/ranged/rocket_launcher/2/rocket_launcher_2_stats.tres")
+	temp.accuracy = 0.9  # 0.8
+	temp = load("res://weapons/ranged/rocket_launcher/3/rocket_launcher_3_stats.tres")
+	temp.max_range = 500 # 550
+	temp = load("res://weapons/ranged/rocket_launcher/4/rocket_launcher_4_stats.tres")
+	temp.max_range = 500 # 600
+	temp.accuracy = 0.9  # 1.0
+	
 	# SMG
 	temp = load("res://weapons/ranged/smg/1/smg_stats.tres")
-	temp.cooldown = 5 # 4
+	temp.cooldown = 5    # 4
 	temp.max_range = 325 # 400
 	temp = load("res://weapons/ranged/smg/2/smg_2_stats.tres")
-	temp.cooldown = 5 # 4
+	temp.cooldown = 5    # 4
 	temp.max_range = 325 # 400
+	temp.accuracy = 0.74 # 0.75
 	temp = load("res://weapons/ranged/smg/3/smg_3_stats.tres")
-	temp.cooldown = 5 # 4
+	temp.cooldown = 5    # 4
 	temp.max_range = 325 # 400
+	temp.accuracy = 0.77 # 0.80
 	temp = load("res://weapons/ranged/smg/4/smg_4_stats.tres")
-	temp.cooldown = 4 # 3
+	temp.cooldown = 4    # 3
 	temp.max_range = 325 # 400
+	temp.accuracy = 0.80 # 0.85
 	
 	# Sniper Rifle (Sniper Gun)
 	temp = load("res://weapons/ranged/sniper_gun/3/sniper_gun_3_data.tres")
@@ -1263,8 +1309,10 @@ func _ready()->void:
 	# King
 	temp = load("res://items/characters/king/king_effect_1.tres")
 	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
+	temp.value = 20 # 25
 	temp = load("res://items/characters/king/king_effect_1b.tres")
 	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
+	temp.value = 20 # 25
 	
 	# Knight
 	temp = load("res://items/characters/knight/knight_effect_1.tres")
@@ -1336,7 +1384,9 @@ func _ready()->void:
 	# Remove
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
 	temp.starting_weapons.erase(temp_2)		
-
+	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	
 	# Chonky
 	temp = load("res://items/characters/chunky/chunky_data.tres")
 	temp_2 = load("res://weapons/ranged/taser/1/taser_data.tres")
@@ -1399,6 +1449,8 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/plank/1/plank_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/screwdriver/1/screwdriver_data.tres")

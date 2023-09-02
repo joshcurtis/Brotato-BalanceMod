@@ -12,7 +12,7 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
 * Clarified various tooltips to be more clear.
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
-Note: A few descriptions will not work right for non-English languages.
+Note: Altered and new descriptions will currently not display for non-English languages.
 
 
 ~~ ENEMIES ~~
@@ -32,13 +32,13 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 * Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->500; Phase 2 Cooldown 0.75s -> 0.92s
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
-* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Switch from Phase 1 to 2 Timing 30s elapsed -> 25s or 60% HP -> 65% HP; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->17 & Projectile Spread 600->690; Phase 3 Movement Speed 60% -> 75%; Phase 3 Projectile Speed 200->235
-* Rhino Elite: Base Speed 250 -> 270
+* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Switch from Phase 1 to 2 Timing 30s elapsed -> 25s or 60% HP -> 65% HP; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->17 & Projectile Spread 600->690; Phase 3 Movement Speed 60% -> 75%; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->230; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]
+* Rhino Elite: Base Speed 250 -> 275; Phase 1 Charge Speed 900->1150 (& Charge Duration 1.0->0.95); Phase 2 Charge Speed 1000->1050
 
 ~~ WAVE SPAWNS ~~
 Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more total HP); Single Magician Spawns 1-2 x6 -> 1-1 x5 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
-Wave 16: (Helmets have more HP but just as many spawn); 1 Fly added to each group of Helmets + Buffers (14 total)
+Wave 16: Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
 Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
 Wave 14 & 15 Horde: Added 6 single Magician spawns spread out of the last 2/3rds of the wave; Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
 
@@ -139,6 +139,7 @@ Exoskeleton: Price 90->105; Armor 5 -> 4
 Explosive Shells: Explosion Damage +60% -> +50%; Explosion Size +15% -> +20%; -15% Damage -> -7% Damage [So it fits in more reasonably with mixed builds, and with a little more emphasis on the more-unique size rather than just damage.]
 Extra Stomach: Price 100->110
 Gnome: 10 Melee Damage -> 12; 10 Elemental Damage -> 8
+Heavy Bullets: Price 100->95; +10 Range -> +5% Crit Chance; -5% Crit Chance -> -35% Accuracy [See Ranged Weapons below for a few Accuracy tweaks mostly relevant if you have Heavy Bullets.]
 Jet Pack: Price 100->95
 Lucky Coin: -2 Armor -> No Downside
 Mammoth: Price 130->135; -3% Speed -> -4%; HP Regen 5 -> 4
@@ -178,10 +179,13 @@ Nuclear Launcher: Cooldown 2.12 -> 2.20; Base Damage 60/120 -> 50/100; Ranged Sc
 Pistol: Price 10/22/45/91 -> 10/20/41/83; Knockback 15 -> 10
 Potato Thrower: Price 36/69/139 -> 33/65/118; Base Damage 1 (All) -> 2/3/4
 Revolver: Tier-1 Price 20 -> 18
+Rocket Launcher: Range 500/550/600 -> 500(All)
 SMG: Range 400 -> 325; Cooldown ~10% worse (All Tiers)
 Sniper Gun: Renamed Sniper Rifle; Range 800/1000 -> 600/700; Ranged Damage Scaling 100%(All) -> 200%/250%; Projectile Base Damage 5->4; Projectile Crit Chance 3%/3% -> 20%/20%; Projectile Crit Damage 2.0/2.0 -> 3.0/4.0 [Given that it's in the Gun Set, it should at least passably scale from Ranged Damage and fit into a Gun build - even with these scaling amounts it still scales worse than a Pistol. Additionally, the weapon often under-performs for its cost and rarity, and one would expect the projectiles to crit the same as the main shot.]
 Wand: Knockback 10 -> 7; Scaling 50%/65%/80%/100% -> 60%/75%/85%/100%; Base Damage 1(All) -> 1/2/3/4; Burn 3x3/5x4/8x5/12x6 -> 3x3/8x3/12x4/16x5 [Relevantly more front-loaded damage.]
+
 Chain-gun, Gatling Laser, Tier-4 Minigun: Fixed cooldown to no longer incorrectly display in red (visual change only).
+Other Minor Accuracy Tweaks (mostly only relevant if Accuracy is lowered by Heavy Bullets): Pistol 0.9(Tier1-3)->1.0(All); Medical Gun 0.9(Tier1-3)->1.0(All); SMG 0.7/0.75/0.8/0.85->0.7/0.74/0.77/0.8; Mini-gun 0.85/1.0 -> 0.8/1.0; Shotgun 0.9/0.95/1.0/1.0->0.9(All); Potato Thrower 0.9(All)->1.0(All); Rocket Launcher 0.8/0.9/1.0-> ; 0.9(All) [For reference, Revolver is 0.9(All), and most other unlisted weapons are 1.0(All).]
 
 
 ~~ CHARACTERS ~~
@@ -196,7 +200,7 @@ Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephan
 Farmer: Now starts with a Garden; Starting Harvesting 20 -> 18; Now also favored to find Gardens in the shop [An overall buff to a weak character (that is also more impacted by nerfs to tier-1 Harvesting and Fertilizer), and one that is most impactful for their weaker, non-Pruner-based builds.]
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
 Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40% [Small buffs to make a difficult character a little less punishing.]
-King: Now only gives Attack Speed and Damage for every *different* tier-4 weapon. [Note the tooltip is currently bugged and will still show every tier-4 weapon, but only different ones will affect your actual stats.]
+King: Now only gives Attack Speed and Damage for every *different* tier-4 weapon; bonus Attack Speed & Damage 25% -> 20%; now shows an icon for tier-1 and tier-4 items you haven't purchases yet. [Note the tooltip is currently bugged and will still show every tier-4 weapon, but only different ones will affect your actual stats.]
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [Makes a strong character a bit less 'free', and means that an Armor level-up is no longer *strictly* better than Melee Damage.]
 Mage: -100% Engineering Mods -> -33% [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something]; Now starts with a 2nd Sausage when starting with SMG or Shotgun.
 Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
@@ -210,7 +214,7 @@ Wildling: No longer starts with a Stick.
 
 
 ~~ STARTING WEAPONS ~~
-Apprentice: Added Medical Gun; Removed Pistol
+Apprentice: Added Medical Gun; Removed Pistol, Wrench
 Chonky: Added Taser, Revolver; Removed Hand
 Crazy: Added Crossbow
 Cyborg: Removed Crossbow
@@ -218,7 +222,7 @@ Demon: Added Wrench, Potato Thrower [Experimental]
 Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow
 Explorer: Added Hand, Ghost Axe, Jousting Lance
 Farmer: Added Slingshot, Thief Dagger, Bokken
-Fisher: Added Plank, Pruner; Removed Screwdriver
+Fisher: Added Plank, Pruner, Scissors; Removed Screwdriver
 Generalist: Added Scissors, Ghost Flint, Shredder; Removed Lighting Shiv, Pistol
 Gladiator: Added Hatchet
 Glutton: Removed Hatchet
@@ -232,7 +236,7 @@ Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock, Hand [Experimental]
 Old: Added Revolver
-One-armed: Removed Screwdriver, Ghost Flint, Pistol, Fist, Crossbow, Wand, Chopper; Added Sword, Hammer, Flaming Brass Knuckles [These lean into the benefits of having two weapon set bonuses, with not too much direct advantage to having a tier-2 off the bat; needs testing.]
+One-armed: Removed Screwdriver, Ghost Flint, Pistol, Fist, Crossbow, Wand, Chopper; Added Sword, Hammer, Flaming Brass Knuckles
 Pacifist: Added Scissors, Rock
 Ranger: Added Slingshot
 Renegade: Added Shuriken, Slingshot
@@ -295,29 +299,35 @@ shorten stat mod text so it always fits 2 lines, so char descriptions are more r
 
 ~~ OTHER PONDERINGS ~~
 
-Landmines 15->13, since they're worse than turret? (or 14/16)
+Stat list doesn't refresh on shop reroll (affects Saver, Padding?)
+	fairy doesn't update shop immediately for icons
+
+blue turret -> maybe drop damage slightly and up scaling to 35% so rounding is less awful?
+
+could give plasma sledge & power fist tier-3s a touch more explosion chance?
+
+
+Landmines 15->13, since they're worse than turret? (or 14/16) [maybe just leave it]
 
 eyes surgery - do more tests, might be worth lowering cost too.
 	Might also drop torch's very high duration slightly? hmmm
 
 possible small shiv nerf?
+	more isolated Shiv testing as well to see how often the bouce hits the same thing you are hitting, or if it gets bounus hits or anything?
 
 flamethrower maybe one more small damage or range hit?
 
 Should crit chance tooltip mention explosions can crit?
 
-shuriken Jack start seems sus; apprentice maybe only screwdriver and not wrench?
+shuriken Jack start seems sus
 
 Lower base Blue-tier increase per level from 6% to ~5%?  Could also instead/additionally have Luck soft-cap and still improve high-tier odds a bit more than it does before reaching a different hard-cap (and could have the soft cap a bit lower than current hard, e.g. 22%/50%)
 
-Mantis Elite move speed up a touch too?
-Rhino a bit more?
-	could compare the two and have one set for longer, slower charges?
+Mantis Elite slight buff too?
 
 check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible
 
 Lucky Coin still weird, not necessarily a problem but...
-
 
 
 Luck could maybe affect your same-weapon-finding shop bonus slightly too? 
@@ -327,23 +337,18 @@ Test if Fisher/etc. with -mats end up GAINING more from there being piles on the
 Could there be a change to make it easier to find matching tier-2 weapons when you start with one like Potato? [Would this be ignored for King?]
 
 
+	
 
-	more isolated Shiv testing as well to see how often the bouce hits the same thing you are hitting, or if it gets bounus hits or anything?
 
-Heavy Bullets -> less anti-XBow? Range 20-25 (possibly just drop the range instead); not -Crit but instead more -AS or -Speed or such.
-	Could even be -~25% accuracy; do some tests with very low accuracy (e.g. this downside on Renegade, or this item stacked); up Pistol's base accuracy to 100 if implemented
-	Medigun, Pistol, Revolver, Potato-Thrower could be 1.0 instead of 0.9 accuracy if it actually matters
 
 
 Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4)
-
-Stat list doesn't refresh on shop reroll (affects Saver, Padding?)
 
 
 should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
 
 
-more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ??
+more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%
 	maybe set bonus could also give one entry *per* weapon that has that set, so e.g. mixed Precise is more likely to favor Precise than Elemental or whatever
 
 
@@ -363,15 +368,10 @@ should focus downside be 4
 
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 
-Change Shop-weapon favoring to depend on how many exact-weapons you have when favoring?  So rather than always 20%, could be 20% for one-type, 26% for two-type, 30% for three-type+ or something like that.  20/24/27/29/30?
 
 current robot arm rework maybe a bit overly similar to Gnome with Melee and Elemental both?  But maybe that's fine?
 
 can we show explosion size in the weapon info?
-
-
-
-Fisher Scissors start?
 
 
 maybe brawler should only be 40% atkspd
@@ -383,7 +383,7 @@ pumpkin could also apply to bounce
 
 Starters
 Speedy: Screwdriver [Left for now]
-One-armed: (Probably also remove: Laser Gun, Wand; Pruner -- but Pruner is maybe okay if they get the Set Bonus effect.) 
+One-armed: (Probably also remove: Laser Gun, Pruner -- but Pruner is maybe okay if they get the Set Bonus effect.) 
 Apprentice could add Revolver to starter weapons; might also removed Pruner (Unless Pruner gets better scaling)
 
 
@@ -555,7 +555,6 @@ Sausage wtf didn't register any damage why
 code look does blue turret actually stack with fire
 Cute MOnkey/Lucky proc one or multi times from a x2+ material?  [Edit Monkey to be 100% test at non-full HP]
 Does WanderBot delay enemy scripts?
-Do some Ricochet tests - might be bad considering the -damage%
 Peacock + Negative Armor stacking?
 Ugly Tooth doesn't get applied from Burn/Lucky?  (verify)
 Burn turrents round damage unlike almost everything else which trunactes?? [Is the tooltip a lie?? in-game damage diff??
