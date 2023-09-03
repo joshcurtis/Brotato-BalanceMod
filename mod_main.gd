@@ -174,7 +174,7 @@ func _ready()->void:
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_fly.tres")
 	temp.wave_units_data.push_back(temp_2)
 	# Adds 2 more groups of Bruisers starting earlier in the wave
-	temp = load("res://zones/zone_1/016/group_1.tres") # 1 Bruiser + 1 Armored Bruiser
+	temp = load("res://zones/zone_1/016/group_4.tres") # 1 Bruiser + 1 Armored Bruiser
 	temp.reduce_repeating_interval = 1
 	temp.repeating_interval = 5     # 3
 	temp.min_repeating_interval = 3 # (1)
@@ -820,22 +820,32 @@ func _ready()->void:
 	temp.max_range = 135 # 125
 	temp = load("res://weapons/melee/hatchet/4/hatchet_4_stats.tres")
 	temp.max_range = 135 # 125	
-
+	
+	# Lightning Shiv
+	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_projectile.tres")
+	temp.damage = 4		   # 5
+	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_projectile_2.tres")
+	temp.damage = 6		   # 8
+	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_projectile_3.tres")
+	temp.damage = 9		   # 12
+	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_projectile_4.tres")
+	temp.damage = 13	   # 15
+	
 	# Plank
 	temp = load("res://weapons/melee/plank/1/plank_exploding_effect.tres")
-	temp.scale = 0.8 # 0.75
+	temp.scale = 0.8 		 # 0.75
 	temp = load("res://weapons/melee/plank/2/plank_2_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.6 ], [ "stat_elemental_damage", 0.6 ], [ "stat_engineering", 0.6 ] ]		
 	temp = load("res://weapons/melee/plank/2/plank_2_exploding_effect.tres")
-	temp.scale = 0.9 # 0.75
+	temp.scale = 0.9  	 # 0.75
 	temp = load("res://weapons/melee/plank/3/plank_3_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.7 ], [ "stat_elemental_damage", 0.7 ], [ "stat_engineering", 0.7 ] ]	
 	temp = load("res://weapons/melee/plank/3/plank_3_exploding_effect.tres")
-	temp.scale = 1.0 # 0.75
+	temp.scale = 1.0 		 # 0.75
 	temp = load("res://weapons/melee/plank/4/plank_4_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ], [ "stat_elemental_damage", 0.8 ], [ "stat_engineering", 0.8 ] ]	
 	temp = load("res://weapons/melee/plank/4/plank_4_exploding_effect.tres")
-	temp.scale = 1.1 # 0.75
+	temp.scale = 1.1		 # 0.75
 	
 	# Plasma Sledge (Plasma Sledgehammer)
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_data.tres")
@@ -993,26 +1003,24 @@ func _ready()->void:
 	temp.accuracy = 0.9    # 1.0
 	
 	# Flamethrower
-	###temp = load("res://weapons/ranged/flamethrower/2/flamethrower_2_data.tres")
-	###temp.tier = -1    # Removes Tier-2 From the game
 	temp = load("res://weapons/ranged/flamethrower/2/flamethrower_2_data.tres")
-	temp.value = 54			 # 56
+	temp.value = 57			 # 56
 	temp = load("res://weapons/ranged/flamethrower/2/flamethrower_2_stats.tres")
 	temp.max_range = 250 # 300
-	temp.cooldown = 9    # 5
+	temp.cooldown = 11   # 5
 	temp = load("res://weapons/ranged/flamethrower/2/flamethrower_2_burning_data.tres")
 	temp.damage = 2      # 3
 	temp.duration = 4    # 5
-	temp = load("res://weapons/ranged/flamethrower/3/flamethrower_3_data.tres")
-	temp.value = 87			 # 103
+	##temp = load("res://weapons/ranged/flamethrower/3/flamethrower_3_data.tres")
+	##temp.value = 103	 # 103
 	temp = load("res://weapons/ranged/flamethrower/3/flamethrower_3_stats.tres")
 	temp.max_range = 275 # 350
-	temp.cooldown = 6    # 5
+	temp.cooldown = 7    # 5
 	temp = load("res://weapons/ranged/flamethrower/3/flamethrower_3_burning_data.tres")
 	temp.damage = 3      # 4
 	temp.duration = 5    # 6
 	temp = load("res://weapons/ranged/flamethrower/4/flamethrower_4_data.tres")
-	temp.value = 182		 # 207
+	temp.value = 187		 # 207
 	temp = load("res://weapons/ranged/flamethrower/4/flamethrower_4_stats.tres")
 	temp.max_range = 300 # 400
 	temp = load("res://weapons/ranged/flamethrower/4/flamethrower_4_burning_data.tres")
@@ -1320,7 +1328,11 @@ func _ready()->void:
 	temp.nb_stat_scaled = 2 # 1 (2 melee per 1 armor -> 3 melee per 2 armor)
 	temp = load("res://items/characters/knight/knight_effect_2.tres")
 	temp.value = 4  # 5 (Armor)
-
+	
+	# Loud
+	temp = load("res://items/characters/loud/loud_effect_3.tres")
+	temp.value = -4	# -3 (Harvesting per Wave)
+	
 	# Mage
 	temp = load("res://items/characters/mage/mage_data.tres")
 	temp_2 = load("res://items/characters/mage/mage_effect_7.tres")
@@ -1474,6 +1486,8 @@ func _ready()->void:
 	temp = load("res://items/characters/gladiator/gladiator_data.tres")
 	temp_2 = load("res://weapons/melee/hatchet/1/hatchet_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 
 	# Glutton
 	temp = load("res://items/characters/glutton/glutton_data.tres")
@@ -1499,8 +1513,12 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	# Remove
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/ranged/shuriken/1/shuriken_data.tres")
 	temp.starting_weapons.erase(temp_2)	
-
+	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
+	temp.starting_weapons.erase(temp_2)	
+	
 	# King
 	temp = load("res://items/characters/king/king_data.tres")
 	temp_2 = load("res://weapons/melee/jousting_lance/2/jousting_lance_2_data.tres")
@@ -1530,6 +1548,11 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/spiky_shield/2/spiky_shield_2_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	
+	# Lich
+	temp = load("res://items/characters/lich/lich_data.tres")
+	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	
 	# Loud
 	temp = load("res://items/characters/loud/loud_data.tres")
 	temp_2 = load("res://weapons/melee/screwdriver/1/screwdriver_data.tres")
@@ -1537,9 +1560,11 @@ func _ready()->void:
 	# Remove
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
 	temp.starting_weapons.erase(temp_2)
-	temp_2 = load("res://weapons/ranged/revolver/1/revolver_1_data.tres")
+	temp_2 = load("res://weapons/ranged/revolver/1/revolver_data.tres")
 	temp.starting_weapons.erase(temp_2)
-
+	temp_2 = load("res://weapons/ranged/taser/1/taser_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	
 	# Mage
 	temp = load("res://items/characters/mage/mage_data.tres")
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
@@ -1558,9 +1583,14 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
+	# Mutant
+	temp = load("res://items/characters/mutant/mutant_data.tres")
+	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	
 	# Old
 	temp = load("res://items/characters/old/old_data.tres")
-	temp_2 = load("res://weapons/ranged/revolver/1/revolver_1_data.tres")
+	temp_2 = load("res://weapons/ranged/revolver/1/revolver_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
 	# One-armed
@@ -1630,10 +1660,12 @@ func _ready()->void:
 	temp.starting_weapons.erase(temp_2)
 
 	# Soldier
-	#temp = load("res://items/characters/soldier/soldier_data.tres")
+	temp = load("res://items/characters/soldier/soldier_data.tres")
+	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 	# Remove
-	#temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
-	#temp.starting_weapons.erase(temp_2)	
+	##temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
+	##temp.starting_weapons.erase(temp_2)	
 	
 	# Speedy
 	temp = load("res://items/characters/speedy/speedy_data.tres")

@@ -93,9 +93,9 @@ cooldown = 25.0
 damage_increase_each_wave = 1.15
 max_range = 2000
 ;; Was 12
-number_projectiles = 17
+number_projectiles = 22
 ;; Was 600
-projectile_spawn_spread = 690
+projectile_spawn_spread = 710
 constant_spread = true
 rotate_projectile = false
 
@@ -110,7 +110,7 @@ target_range_randomization = 0
 
 [node name="AttackBehavior" parent="States/State2" index="1"]
 ;; Was 200
-projectile_speed = 230
+projectile_speed = 235
 cooldown = 1.0
 damage_increase_each_wave = 1.15
 max_range = 2000
