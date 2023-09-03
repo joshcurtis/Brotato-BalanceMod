@@ -908,14 +908,14 @@ func _ready()->void:
 	# Torch
 	var spread_text_effect = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/torch_spread_text.tres")
 	temp = load("res://weapons/melee/torch/1/torch_stats.tres")
-	temp.damage = 2    		# 1
+	##temp.damage = 1    		# 1
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/1/torch_burning_data.tres")
 	temp.damage = 4    		# 3
 	temp.duration = 4  		# 3
 	temp = load("res://weapons/melee/torch/2/torch_2_stats.tres")
-	temp.damage = 4    		# 1
+	temp.damage = 2    		# 1
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/2/torch_2_burning_data.tres")
@@ -925,7 +925,7 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/2/torch_2_data.tres")
 	temp.effects.append(spread_text_effect)
 	temp = load("res://weapons/melee/torch/3/torch_3_stats.tres")
-	temp.damage = 6    		# 1
+	temp.damage = 2    		# 1
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/3/torch_3_burning_data.tres")
@@ -935,7 +935,7 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/3/torch_3_data.tres")
 	temp.effects.append(spread_text_effect)
 	temp = load("res://weapons/melee/torch/4/torch_4_stats.tres")
-	temp.damage = 8   	  # 1
+	temp.damage = 4   	  # 1
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/4/torch_4_burning_data.tres")
