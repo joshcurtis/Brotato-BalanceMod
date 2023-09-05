@@ -46,9 +46,15 @@ func _init(modLoader = ModLoader):
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
 	
+	
+	######### HERE
+	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
 	# Shows an extra digit for weapon cooldown when lower than 0.2
 	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/ranged_weapon_stats.gd")
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/menu_data.gd")
+	
 	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
@@ -1712,7 +1718,7 @@ func _ready()->void:
 	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
 	temp.starting_weapons.erase(temp_2)
-	temp_2 = load("res://weapons/melee/fist/1/chopper_data.tres")
+	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	
 	# Pacifist
