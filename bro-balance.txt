@@ -12,7 +12,8 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
 * Extraneous Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
-* Clarified various tooltips to be more clear. Shortened some character effect descriptions to fit in the box better. Tooltips for Armor, weapon cooldowns, and Improved Tools (Gardens) are more precise. Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
+* Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools (Gardens) are more precise. Knight's tooltip color-coded properly.
+* Stats now update properly on shop reroll (for Padding & Saver).
 Note: Altered and new descriptions will currently not display for non-English languages.
 
 
@@ -67,7 +68,7 @@ Duct Tape: Price 25->16
 Fertilizer: Price 15->19; Harvesting 8->7
 Glasses: Price 25->22
 Gummy Berserker: Price 25->24; 15 Range -> 19
-Head Injury: Price: 25->23; -8 Range -> -2% Speed [Swapped with Helmet so that this doesn't mirror Cyclops worm so directly.]
+Head Injury: Price: 25->24; 6% Damage -> 7%; -8 Range -> -2% Speed [Swapped with Helmet so that this doesn't mirror Cyclops worm so directly.]
 Hedgehog: Price 30->25
 Helmet: Price 25->24; -2% Speed -> -7 Range [Swapped with Head Injury so that it doesn't mirror Cyclops worm so directly and so Helmet doesn't mirror Warrior's Helm as directly either.]
 Lens: -5 Range -> -7
@@ -139,6 +140,7 @@ Diploma: 20% XP Gain -> 25%
 Exoskeleton: Price 90->105; Armor 5 -> 4
 Explosive Shells: Explosion Damage +60% -> +50%; Explosion Size +15% -> +20%; -15% Damage -> -7% Damage [So it fits in more reasonably with mixed builds, and with a little more emphasis on the more-unique size rather than just damage.]
 Extra Stomach: Price 100->110
+Focus: Price 110->100; Attack Speed penalty per weapon -3% -> -4%
 Gnome: 10 Melee Damage -> 12; 10 Elemental Damage -> 8
 Heavy Bullets: Price 100->95; +10 Range -> +5% Crit Chance; -5% Crit Chance -> -35% Accuracy [See Ranged Weapons below for a few Accuracy tweaks mostly relevant if you have Heavy Bullets.]
 Jet Pack: Price 100->95
@@ -169,6 +171,7 @@ Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10 [A weaker 
 Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5 [Now fits in more sensibly with a Precise build.]
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
 Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net.]
+Stick: Damage Scaling 100%(All) -> 80%/88%/95%/100%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
 Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/6x5/9x7/15x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
@@ -264,10 +267,6 @@ You are free to use concepts and code contained within elsewhere, ideally with a
 
 
 ~~ PLANNED ~~
-make knight tier-2 effect green
-
-"Items Price" Text -> "Shop Price" (Needs to work with Saver's effect as well, but probably should naturally?)
-
 **Esty's Couch: Reworked, New Effects: Price 94; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +3 Ranged Damage; +3 Elemental Damage; +13% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
 
 Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verify)
@@ -276,10 +275,6 @@ Fix Weapon Attack Speed Randomization to cap at +/- probably 60% (instead of 120
 
 *** FIX: Eyes Surgery's 2nd effect should be added as an Actual Effect rather than hacked into the existing one (which should also let the tooltip update properly to show how much duration has been increased based on how many Eyes Surgeries you have)
 	-> Eyes Surgery to up the duration for Blue Turrets (Currently doesn't show in tooltip at least)
-
-Stone Skin should account for armor from Streamer's bonus since it *is* permanent armor
-
-Extra Stomach should work on Golem when not at max HP. (Currently they can only ever get 1 max hp at most per wave.)
 
 Farmer and Explorer -mats should work identical (is this just text diff, or does Farmer get fewer from something else?)
 
@@ -290,6 +285,10 @@ TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need 
 
 Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 
+~{Coded but not implemented due to Utils timing sadness :(}~
+- Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
+- Contextual extra decimal place for low cooldowns.
+
 ~~ OTHER PONDERINGS ~~
 
 loud could also guarantee horde waves?
@@ -297,8 +296,7 @@ loud could also guarantee horde waves?
 
 scissors ~maybe~ a touch cheaper at high end; generally strong enough but still not that worth upgrading
 
-Stat list doesn't refresh on shop reroll (affects Saver, Padding?)
-	fairy doesn't update shop immediately for icons
+fairy doesn't update shop immediately for icons
 
 blue turret -> maybe drop damage slightly and up scaling to 35% so rounding is less awful?
 
@@ -356,8 +354,6 @@ Sausage appears to be having some of its damage counted on weapons *instead*.  A
 SMG tier-1 scaling worse (maybe do this moreso instead of the cooldown hit) [but learn properly how the scaling/rounding works;it's rude if 2 ranged damage doesn't increase]
 	Appears to be Ranged Damage is always truncated, and Damage% is rounded, and they are separate; could maybe combine them but then truncate, or? [Verify formula, then chart out a few sample breakpoint spots, probably just for early-game]
 
-should focus downside be 4
-
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 
 
@@ -367,6 +363,8 @@ can we show explosion size in the weapon info?
 
 maybe brawler should only be 40% atkspd
 
+Extra Stomach should work on Golem when not at max HP. (Currently they can only ever get 1 max hp at most per wave.)
+	This seemed like it'd be difficult to implement; would probably have like, a RunData variable to track if you've taken damage in a wave, and if not let golem eat?  Alternatively would have to make max_hp gains still heal you, but the healing seems to not know the source easily unless it can be gotten via the tracking stuff?
 
 
 Starters
@@ -408,16 +406,16 @@ Tyler could have some Ele scaling, more lean into that Ele-Engi archetype the ga
 Lucky Coin: Should this scale Luck off two axies instead of only Crit?  Seems SO situational; possibly retooled as a purple-tier
 
 
-
+"Items Price" Text -> "Shop Price" (Needs to work with Saver's effect as well, but probably should naturally?)
 
 Mines: Mildly bigger detection/activation radius? (~+25%?)
 
 Weapons that start with Lifesteal should show Lifesteal in red even if they're at 0%
 
-* You should be able to see upcoming Hordes/Elites when choosing from item crates - probably on the pause screen.
-
 
 Could also have part it based on damage types; e.g. 5-10% of the roll checks based on two flat damage types you have the most of (counting melee as x2), starting at maybe Wave 7?
+
+Stone Skin could account for armor from Streamer's bonus since it *is* basically permanent armor (it can change via weapon changes, but not once the wave starts?)
 
 
 Elemental Damage: Double negative from -%Dmg and Negative Elemental Damage results in a positive damage scaling.
@@ -425,9 +423,10 @@ Soldier: Melee Weapons sometimes don’t benefit from the +50% damage, which sho
 Structures When Reloading: When you resume the game after having quit, structures lose their ties to items or weapons. So if you have 2 Wrench, you can reload the game, and the structure is disconnected from the structure. So now you can combine those 2 wrenches, and 2 tier one turrets and one blue turret will spawn. Same goes with all other items and weapons that spawn structures.
 in func set_damage, new_value definition being defined as int before being rounded causes it to always truncate, or? (Supposedly this means rounding is different for projectile damage than for melee hits)
 
+Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
 
 
-~~ Graveyard (Probably not going to use these ideas, but left for posterity) ~~
+~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
 [?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%
 
 Luck could maybe affect your same-weapon-finding shop bonus slightly too? 
@@ -503,6 +502,7 @@ Shiv bounce count text fix
 
 
 ~~~ MOD IDEAS ~~~
+* You should be able to see upcoming Hordes/Elites when choosing from item crates - probably on the pause screen.
 -> Lifesteal tracker mod
 -> Mod to make the HP above head bigger and always on? (maybe combine this with the louder pain sfx, all part of knowing when you're hit more clearly)
 Emphasize player hitbox more clearly so that weapons don't obscure it?  (is the circle even the true hitbox?)

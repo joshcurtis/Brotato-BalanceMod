@@ -136,7 +136,6 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 	
 	### Replace original pool with new weighted pool
 	if all_sets_from_weapons != []:
-		print("~~~notnull~~~")
 		var newpool = []
 		for set in all_sets_from_weapons:
 			for weapon in pool:

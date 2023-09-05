@@ -14,6 +14,10 @@ func _init(modLoader = ModLoader):
 	# Adds a decimal to armor tooltip for more accuracy
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/stat_popup.gd")
 	
+	# Bugfix: Update stats on reroll for Saver/Padding
+	#! This does cause an exception with the Utils _init Thing, but still runs fine
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop.gd")
+	
 	# Add Fairy and Renegade icons to item boxes too instead of only shop items
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/upgrades/item_box_ui.gd")
 	
@@ -45,23 +49,24 @@ func _init(modLoader = ModLoader):
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
-	
-	
-	######### HERE
-	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
-	# Shows an extra digit for weapon cooldown when lower than 0.2
-	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/ranged_weapon_stats.gd")
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/menu_data.gd")
-	
-	
+			
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
+	
+	
+	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
+	# Shows an extra digit for weapon cooldown when lower than 0.2
+	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
+	#- Direct changes in the normal place; probably will never work
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
+	#- Routing thru this child may work somehow, but didn't seem to for me - perhaps some other conflict
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/ranged_weapon_stats.gd")
+	#- Hijacking this as a middleground to activate scripts at the right time is a neat idea; may be necessary even when using range_weapon_stats
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/menu_data.gd")
 	
 
 
@@ -259,7 +264,9 @@ func _ready()->void:
 	temp.value = 19  # 15 (Range)
 	
 	temp = load("res://items/all/head_injury/head_injury_data.tres")
-	temp.value = 23  # 25
+	temp.value = 24  # 25
+	temp = load("res://items/all/head_injury/head_injury_effect_1.tres")
+	temp.value = 7   # 6 (Damage%)
 	temp = load("res://items/all/head_injury/head_injury_effect_2.tres")
 	temp.key = "stat_speed"
 	temp.value = -2  # -8 Range -> -2 Speed
@@ -581,6 +588,12 @@ func _ready()->void:
 	# Extra Stomach
 	temp = load("res://items/all/extra_stomach/extra_stomach_data.tres")
 	temp.value = 110  # 100	
+	
+	# Focus
+	temp = load("res://items/all/focus/focus_data.tres")
+	temp.value = 100  # 110
+	temp = load("res://items/all/focus/focus_effect_2.tres")
+	temp.value = -4   # -3 (AtkSpd per weapon)
 	
 	# Gnome
 	temp = load("res://items/all/gnome/gnome_effect_1.tres")
@@ -918,6 +931,22 @@ func _ready()->void:
 	temp = load("res://weapons/melee/spear/4/spear_4_stats.tres")
 	temp.max_range = 450 # 500
 	temp.cooldown = 21   # 18
+	
+	# Stick
+	temp = load("res://weapons/melee/stick/1/stick_stats.tres")
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ] ]   # 1.0
+	temp = load("res://weapons/melee/stick/1/stick_effect_1.tres")
+	temp.value = 3       # 4 (Damage Per Stick)
+	temp = load("res://weapons/melee/stick/2/stick_2_stats.tres")
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.88 ] ]  # 1.0
+	temp = load("res://weapons/melee/stick/2/stick_2_effect_1.tres")
+	temp.value = 5       # 6 (Damage Per Stick)
+	temp = load("res://weapons/melee/stick/3/stick_3_stats.tres")
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.95 ] ]  # 1.0
+	temp = load("res://weapons/melee/stick/3/stick_3_effect_1.tres")
+	temp.value = 7       # 8 (Damage Per Stick)
+	temp = load("res://weapons/melee/stick/4/stick_4_effect_1.tres")
+	temp.value = 9       # 10 (Damage Per Stick)
 	
 	# Torch
 	var spread_text_effect = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/torch_spread_text.tres")
@@ -1342,6 +1371,8 @@ func _ready()->void:
 	temp.nb_stat_scaled = 2 # 1 (2 melee per 1 armor -> 3 melee per 2 armor)
 	temp = load("res://items/characters/knight/knight_effect_2.tres")
 	temp.value = 4  # 5 (Armor)
+	temp = load("res://items/characters/knight/knight_effect_4.tres")
+	temp.text_key = "new_effect_min_weapon_tier" # Hard-coded to fix the color being red when it should be green
 	
 	# Loud
 	temp = load("res://items/characters/loud/loud_effect_3.tres")
