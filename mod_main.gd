@@ -4,8 +4,6 @@ const BALMOD_DIR = "res://mods-unpacked/DarkTwinge-BalanceMod/"
 const BALMOD_DIR_E = "res://mods-unpacked/DarkTwinge-BalanceMod/extensions/"
 
 func _init(modLoader = ModLoader):
-	var temp_load
-	
 	# Adds version number to title screen
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/pages/main_menu.gd")
 
@@ -29,31 +27,32 @@ func _init(modLoader = ModLoader):
 	# Gives One-armed a 4-set Bonus for their weapon
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
+	# (Adds new effects to RunData)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
 	
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
 	
+	# Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/item_service.gd")
+	
 	# Changes knockback calculation to be more directly away from the player
 	# Ignores Tardigrade for 1-damage hits
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/unit/unit.gd")
+	
+	# New Snail effect: now slows enemy charges as well
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/enemies/attack_behaviors/charging_attack_behavior.gd")
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
 	
+	# Shows an extra digit for weapon cooldown when lower than 0.2
+	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
+	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
-	### Old method - now in _ready
-	# Elites: Mother nerf
-	#temp_load = load("res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/033/33.tscn").instance()
-	#ModLoaderMod.save_scene(temp_load, "res://entities/units/enemies/033/33.tscn") # Also loads 33.gd
-	# Elites: Smiley nerf
-	#temp_load = load("res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/027/27.tscn").instance()
-	#ModLoaderMod.save_scene(temp_load, "res://entities/units/enemies/027/27.tscn") # Also loads 27.gd
-	# Elites: Gargoyle buff
-	#temp_load = load("res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/034/34.tscn").instance()
-	#ModLoaderMod.save_scene(temp_load, "res://entities/units/enemies/034/34.tscn") # Also loads 34.gd
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -66,14 +65,23 @@ func _ready()->void:
 	var temp_find
 	
 	## TEXT KEYS ##
+	# Changed effects/text
 	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
 	Text.keys_needing_operator.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 2]
 	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
+	# New effects
+	Text.keys_needing_percent.bm_enemy_charge_speed = [0]
+	# This group for making descriptions shorter
+	Text.keys_needing_percent.new_effect_increase_stat_gains = [1]
+	Text.keys_needing_percent.new_effect_reduce_stat_gains = [1]
+	Text.keys_needing_operator.new_effect_gain_stat_for_every_tree = [0, 4]
+	Text.keys_needing_percent.new_effect_convert_stat_temp_half_wave = [0]
 	
-
+	
+	
 	## ENEMIES ##
 	# Elite scenes to change behavior:
 	# Mother nerf
@@ -142,8 +150,7 @@ func _ready()->void:
 	temp.health = 4                      # 8
 	temp.health_increase_each_wave = 4.5 # 3.0
 	
-		
-	# Tentacle (25)
+	## Tentacle (25)
 	
 	# Lamprey Fish
 	temp = load("res://entities/units/enemies/026/26_stats.tres")
@@ -210,7 +217,7 @@ func _ready()->void:
 	
 	## TIER-1 ITEMS ##
 	temp = load("res://items/all/alien_tongue/alien_tongue_data.tres")
-	temp.value = 20  # 25
+	temp.value = 18  # 25
 	temp = load("res://items/all/alien_tongue/alien_tongue_effect_1.tres")
 	temp.value = 50  # 30 (Pickup Range)
 
@@ -237,8 +244,8 @@ func _ready()->void:
 	temp = load("res://items/all/fertilizer/fertilizer_effect_1.tres")
 	temp.value = 7   # 8 (Harvesting)
 
-	temp = load("res://items/all/glasses/glasses_effect_1.tres")
-	temp.value = 23  # 20 (Range)
+	temp = load("res://items/all/glasses/glasses_data.tres")
+	temp.value = 22  # 25
 
 	temp = load("res://items/all/gummy_berserker/gummy_berserker_data.tres")
 	temp.value = 24  # 25
@@ -340,7 +347,7 @@ func _ready()->void:
 	temp.value = 50  # 45
 
 	temp = load("res://items/all/little_frog/little_frog_data.tres")
-	temp.value = 47  # 50
+	temp.value = 45  # 50
 	temp = load("res://items/all/little_frog/little_frog_effect_1.tres")
 	temp.value = 35  # 20 (Pickup Range)
 	temp = load("res://items/all/little_frog/little_frog_effect_3.tres")
@@ -363,12 +370,12 @@ func _ready()->void:
 	temp.value = 11  # 10 (Damage%)
 	
 	temp = load("res://items/all/padding/padding_data.tres")
-	temp.value = 37  # 45
+	temp.value = 35  # 45
 	temp = load("res://items/all/padding/padding_effect_2.tres")
 	temp.value = -1  # -5 (Speed)
 	
 	temp = load("res://items/all/riposte/riposte_data.tres")
-	temp.value = 36  # 40
+	temp.value = 35  # 40
 	
 	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
 	temp.value = 43  # 40
@@ -394,16 +401,20 @@ func _ready()->void:
 	temp = load("res://items/all/shady_potion/shady_potion_effect_1.tres")
 	temp.value = 18  # 20 (Luck)
 
-	temp = load("res://items/all/snail/snail_effect_1.tres")
-	temp.value = -6  # -5 (Enemy Speed)
-	temp = load("res://items/all/snail/snail_effect_2.tres")
-	temp.value = -2  # -3 (Speed)
+	temp = load("res://items/all/snail/snail_data.tres")
+	temp.value = 35  # 40
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/snail_enemy_charge_speed.tres")
+	temp.effects.push_back(temp_2) # Added -5% Charging Speed Effect
+	temp_2 = load("res://items/all/snail/snail_effect_2.tres")
+	temp.effects.erase(temp_2)
+	temp_2.value = -2  # -3 (Speed)
+	temp.effects.push_back(temp_2) # Move to the end of the effect list
 
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_data.tres")
 	temp.value = 45  # 40
 	temp.max_nb = 3  # 4 (Limit)
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_effect_1.tres")
-	temp.scale = 1.35   # 1.25 (Explosion Size)
+	temp.scale = 1.40   # 1.25 (Explosion Size)
 	temp.chance = 0.35  # 0.25 (Proc Chance)
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
@@ -463,7 +474,7 @@ func _ready()->void:
 	temp.value = -9  # -8 (Luck)
 
 	temp = load("res://items/all/glass_cannon/glass_cannon_data.tres")
-	temp.value = 70  # 75
+	temp.value = 68  # 75
 
 	temp = load("res://items/all/poisonous_tonic/poisonous_tonic_effect_3.tres")
 	temp.value = 17  # 15 (Range)
@@ -485,7 +496,6 @@ func _ready()->void:
 	
 	temp = load("res://items/all/silver_bullet/silver_bullet_effect_1.tres")
 	temp.text_key = "new_effect_damage_against_bosses"
-	
 	
 	temp = load("res://items/all/statue/statue_data.tres")
 	temp.value = 55  # 60
@@ -678,7 +688,6 @@ func _ready()->void:
 	temp = load("res://weapons/ranged/shredder/4/shredder_4_stats.tres")
 	temp.bounce_dmg_reduction = 0.3 # 0.5	
 	
-	
 	# Robot Arm - Reworked
 	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
 	temp.value = 88
@@ -700,7 +709,6 @@ func _ready()->void:
 	temp.effects.push_back(temp_2) # 25% Pickup
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_5_luck_malus.tres")
 	temp.effects.push_back(temp_2) # -7 Luck
-	
 	
 	# Sifd's Relic
 	temp = load("res://items/all/sifds_relic/sifds_relic_data.tres")
@@ -961,8 +969,8 @@ func _ready()->void:
 	# Chain-gun
 	temp = load("res://weapons/ranged/chain_gun/4/chain_gun_4_stats.tres")
 	temp.cooldown = 2      # 1 (Visual Only)
-	temp.accuracy = 0.5		 # 0.8
-	temp.additional_cooldown_multiplier = 213.0 # 60.0
+	temp.accuracy = 0.55	 # 0.8
+	temp.additional_cooldown_multiplier = 110.0 # 60.0
 	
 	# Crossbow
 	temp = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
@@ -978,12 +986,12 @@ func _ready()->void:
 	temp.crit_damage = 1.8 # 1.75
 	temp.cooldown = 49     # 50
 	temp = load("res://weapons/ranged/crossbow/3/crossbow_data_3.tres")
-	temp.value = 64        # 66
+	temp.value = 62        # 66
 	temp = load("res://weapons/ranged/crossbow/3/crossbow_stats_3.tres")
 	temp.max_range = 325   # 350
 	temp.cooldown = 47     # 50
 	temp = load("res://weapons/ranged/crossbow/4/crossbow_data_4.tres")
-	temp.value = 136       # 140
+	temp.value = 128       # 140
 	temp = load("res://weapons/ranged/crossbow/4/crossbow_stats_4.tres")
 	temp.max_range = 325   # 350
 	temp.crit_damage = 2.3 # 2.25
@@ -1383,11 +1391,99 @@ func _ready()->void:
 	temp = load("res://items/characters/wildling/wildling_data.tres")
 	temp_2 = load("res://items/characters/wildling/wildling_effect_2.tres")
 	temp.effects.erase(temp_2) # Remove starting Stick
-
-
-
 	
-
+	
+	## OTHER CHARACTER TEXT TWEAKS ##
+	temp = load("res://items/characters/artificer/artificer_effect_3.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/arms_dealer/arms_dealer_effect_1b.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	
+	temp = load("res://items/characters/bull/bull_effect_3b.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	
+	temp = load("res://items/characters/chunky/chunky_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/chunky/chunky_effect_3b.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/chunky/chunky_effect_3c.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/chunky/chunky_effect_4.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/cryptid/cryptid_effect_2.tres")
+	temp.text_key = "NEW_EFFECT_GAIN_STAT_FOR_EVERY_TREE"
+	
+	temp = load("res://items/characters/cyborg/cyborg_effect_1a.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/cyborg/cyborg_effect_1b.tres")
+	temp.text_key = "NEW_EFFECT_CONVERT_STAT_TEMP_HALF_WAVE"
+	temp = load("res://items/characters/cyborg/cyborg_effect_2.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/cyborg/cyborg_effect_3.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/cyborg/cyborg_effect_4.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/doctor/doctor_effect_6.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/engineer/engineer_effect_1b.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/engineer/engineer_effect_4.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/entrepreneur/entrepreneur_effect_1.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/entrepreneur/entrepreneur_effect_4.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"	
+	
+	temp = load("res://items/characters/golem/golem_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/golem/golem_effect_3.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	
+	temp = load("res://items/characters/hunter/hunter_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/hunter/hunter_effect_4.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/hunter/hunter_effect_5.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/knight/knight_effect_5.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/knight/knight_effect_7.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/lich/lich_effect_3.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/lucky/lucky_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	
+	temp = load("res://items/characters/mage/mage_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/mage/mage_effect_7.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/mage/mage_effect_8.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	temp = load("res://items/characters/mage/mage_effect_9.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/one_arm/one_arm_effect_2.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	
+	temp = load("res://items/characters/ranger/ranger_effect_4.tres")
+	temp.key = "NEW_EFFECT_INCREASE_STAT_GAINS"
+	temp = load("res://items/characters/ranger/ranger_effect_6.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	temp = load("res://items/characters/renegade/renegade_effect_5.tres")
+	temp.key = "NEW_EFFECT_REDUCE_STAT_GAINS"
+	
+	
+	
 	## STARTING WEAPONS ##
 	# Apprentice
 	temp = load("res://items/characters/apprentice/apprentice_data.tres")

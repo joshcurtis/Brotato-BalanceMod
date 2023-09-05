@@ -102,3 +102,14 @@ func add_starting_items_and_weapons()->void :
 			for i in weapon_id[1]:
 				var weapon = ItemService.get_element(ItemService.weapons, weapon_id[0])
 				var _weapon = add_weapon(weapon)
+
+
+# Add new effects to RunData dictionary
+func init_effects()->Dictionary:
+	var new_effects = {
+		"bm_enemy_charge_speed":0
+	}
+	var all_effects = .init_effects()
+	
+	all_effects.merge(new_effects)
+	return all_effects

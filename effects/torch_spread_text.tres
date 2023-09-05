@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-custom_key = "EFFECT_TORCH_SRPEAD_TEXT"
+custom_key = "EFFECT_TORCH_SPREAD_TEXT"
 text_key = "effect_burning_spread"

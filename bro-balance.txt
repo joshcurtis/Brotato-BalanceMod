@@ -10,8 +10,9 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 ~~ GENERAL CHANGES ~~
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
-* Clarified various tooltips to be more clear.
+* Extraneous Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
+* Clarified various tooltips to be more clear. Shortened some character effect descriptions to fit in the box better. Tooltips for Armor, weapon cooldowns, and Improved Tools (Gardens) are more precise. Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
 Note: Altered and new descriptions will currently not display for non-English languages.
 
 
@@ -57,14 +58,14 @@ Guns: 10/20/30/40/50 Range -> 2/4/6/8/10 Attack Speed [Guns having a big pile of
 
 
 ~~ ITEMS: TIER-1 ~~
-Alien Tongue: +30% Pickup Range -> +50%; Price 25->20
+Alien Tongue: +30% Pickup Range -> +50%; Price 25->18
 Baby Gecko: Price 18->16
 Broken Mouth: Price 25->26
 Coffee: +10% Attack Speed -> 9% 
 Cute Monkey: Price 25->32; Proc Chance 8%->10%; Limit 13->10
 Duct Tape: Price 25->16
 Fertilizer: Price 15->19; Harvesting 8->7
-Glasses: 20 Range -> 23
+Glasses: Price 25->22
 Gummy Berserker: Price 25->24; 15 Range -> 19
 Head Injury: Price: 25->23; -8 Range -> -2% Speed [Swapped with Helmet so that this doesn't mirror Cyclops worm so directly.]
 Hedgehog: Price 30->25
@@ -87,21 +88,21 @@ Energy Bracelet: Price: 55->52; 4% Crit Chance -> 5%
 Eyes Surgery: New Additional Effect: Also adds +1 duration to all burn effects; -10 Range -> No Downside [Description will currently not adjust the duration bonus text if you have more than 1 Eyes Surgery, but the numbers on your burn weapons should show correctly.]
 Gambling Token: Price 60->50; 8% Dodge -> 10%
 Leather Vest: Price 45->50
-Little Frog: Price 50->47; +20% Pickup Range -> +35%; -5% Dodge -> -3%
+Little Frog: Price 50->45; +20% Pickup Range -> +35%; -5% Dodge -> -3%
 Lure: Price 34->42
 Medal: Price 55->58; -4% Crit Chance -> -3%
 Metal Detector: -5% Damage -> -4%
 Missile: Price 45->43; 10% Damage -> 11%
-Padding: Price: 45->37; -5% Speed -> -1%
+Padding: Price: 45->35; -5% Speed -> -1%
 Piggy Bank: Price 40->43
 Pocket Factory: 2 Engineering -> 3
 Pumpkin: No Limit -> Limit 8 [Mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
 Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
-Riposte: Price 40->36
+Riposte: Price 40->35
 Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 18
-Snail: -5% Enemy Speed -> -6%; -3% Speed -> -2% Speed [Temporary small buff.]
-Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 135%; Can now crit for 1.5x damage (base Crit Chance 1%)
+Snail: Price 40->35; Now also gives -5% Enemy Charge Speed; -3% Speed -> -2%
+Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 140%; Can now crit for 1.5x damage (base Crit Chance 1%)
 Tentacle: Price 32->35
 Whetstone: Price 40->42
 White Flag: 5 Harvesting -> 6
@@ -114,7 +115,7 @@ Candle: Price 65->51; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->60; %Damage -4% -> -3%
 Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items; -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in both the shop and item boxes to indicate items affecting Fairy you don't have yet (like Renegade).
 Fin: Price 65->69; 10% Speed -> 9%; Luck -8 -> -9 
-Glass Canon: Price 75->70
+Glass Canon: Price 75->68
 Poisonous Tonic: 15 Range -> 17
 Power Generator: Price 65->72; -5% Damage -> -1 Max HP Per 5% Speed [Note: Currently the tooltip is slightly wrong, and will claim you're at e.g. -1 HP when your Speed is between 1% and 4% and you're still actually at -0 HP; it only counts every full 5%.]
 Rip and Tear: Can now crit for 1.5x damage (base Crit Chance 1%)
@@ -122,7 +123,7 @@ Shmoop: Price 60->65; 2 HP Regen -> 3
 Statue: Price 60->55
 Stone Skin: Price 80->90; -2 Armor -> -4% Speed
 Strange Book: -1 Melee Damage -> -0
-Tardigrade: Now requires 2+ damage to proc (preventing it from being wasted for Bloody Hand & Blood Donation); Added to Dodge Item Tag Pool.
+Tardigrade: Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand or Blood Donation); Added to Dodge Item Tag Pool.
 Toolbox: 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
 Vigilante Ring: Price 92->84
@@ -158,21 +159,21 @@ Wolf Helmet: Price 90->95
 Cacti Club: Melee Base Damage 10/20/30/50 -> 10/20/30/45; Melee Scaling 80%(All) -> 80%/88%/95%/100%; Projectile Base Damage 1(All) -> 1/1/2/2; Projectile Damage Scaling: 50%(All) -> 50%/55%/58%/60%; Projectile Count 3/4/5/6 -> 3/4/5/7
 Chopper: Range 125/135/150/180 -> 135/150/165/180; HP Scaling 20%(All) -> 20%/20%/25%/25%; Base Damage 6/12/18/30 -> 6/12/16/28 [Similar damage at medium HP, more damage at high HP.]
 Fighting Stick renamed Bokken. [It should not have "Stick" in the name, and a training sword fits thematically with the weapon's sword-like attack pattern as well as the experience-based scaling.]
-Flaming Brass Knuckles: Burn 8x5/12x6/15x7 -> 8x3/12x4/15x5
+Flaming Brass Knuckles: Burn 8x5/12x6/15x7 -> 8x3/12x4/15x5 [More in-line with other Elemental weapons, so it doesn't overshadow them as much while still having its high direct damage and good Melee scaling.]
 Hand: Price 10/22/45/91 -> 9/19/36/69; Harvesting 3/6/9/18 -> 2/5/10/20 [This progression makes it worth upgrading past Blue-tier.]
 Hatchet: Range 125->135
-Lightning Shiv: Projectile Base Damage 5/8/12/15 -> 4/6/9/13
+Lightning Shiv: Projectile Base Damage 5/8/12/15 -> 4/6/9/13 [Requires a bit more investment to get to the bananas damage this weapon often achieves.]
 Plank: Explosion Size 75% (All) -> 80%/90%/100%/110%; Scaling: 50%/55%/60%/65% -> 50%/60%/70%/80%
 Plasma Sledgehammer: Renamed Plasma Sledge [Makes room to show the weapon's tags.]
-Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10
-Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5
+Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10 [A weaker weapon, but purchaseable at a low price and provides a good amount of defensive stats via the direct bonuses and set bonuses.]
+Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5 [Now fits in more sensibly with a Precise build.]
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
-Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net]
+Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net.]
 Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/6x5/9x7/15x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
-Chain-gun: Long Reload Cooldown 2.04s -> 3.59s; Accuracy 80% -> 50% [For reference, White SMG is 70%.]
-Crossbow: Price 18/36/66/140 -> 13/29/64/136; Range 350 -> 325; Crit Damage x1.5/x1.75/x2.0/x2.25 -> x1.6/x1.8/x2.0/x2.3; Cooldown 1.13(All) -> 1.12/1.12/1.08/1.05
+Chain-gun: Long Reload Cooldown 2.04s -> 3.71s; Accuracy 80% -> 55% [For reference, White SMG is 70%.]
+Crossbow: Price 18/36/66/140 -> 13/29/62/128; Range 350 -> 325; Crit Damage x1.5/x1.75/x2.0/x2.25 -> x1.6/x1.8/x2.0/x2.3; Cooldown 1.13(All) -> 1.12/1.12/1.08/1.05 [Lower price helps its early game weakness significantly; Better cooldown helps the higher-tiers actually feel like a useful improvement over tier-2.]
 Double-barrel Shotgun: Knockback 8 -> 5
 Flamethrower: Price: 56/103/207 -> 58/103/187; Range 300/350/400 -> 250/275/300 ; Burn 3x5/4x6/5x8 -> 2x4/3x5/5x6 ; Cooldown 0.12/0.12/0.09 -> 0.22/0.16/0.09 [This allows the weapon to still be powerful in most Elemental builds, but no longer overshadows other Elemental weapons so drastically.]
 Medical Gun: Cooldown 0.95/0.87/0.78/0.62 -> 0.92/0.85/0.75/0.60; Range 400 -> 375; Tier-3 Damage 20 -> 22
@@ -269,8 +270,6 @@ make knight tier-2 effect green
 
 **Esty's Couch: Reworked, New Effects: Price 94; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +3 Ranged Damage; +3 Elemental Damage; +13% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
 
-Fix the "x2" material popup to say the correct x## amount?
-
 Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verify)
 
 Fix Weapon Attack Speed Randomization to cap at +/- probably 60% (instead of 120% for most/240% for Multi) -- hits fewer weird atkspd cases where it floors cooldown such that it gets less beenfit from atkspd than it should
@@ -289,20 +288,9 @@ Power Gen new malus displays wrong (and also show "+-0 HP" at 0% Speed)
 TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need renaming in other langs, so should only replace English rather than directly replace the raw name)
 	I tried to just change the translation key for these, both as a replacement and as a new one, and it didn't seem to work - was still 'Fighting Stick' and I couldn't tell why.
 
-Fix the Revolver/Chain-gun Tooltip lies delivered via get_cooldown_text  [Can it treat it as an actual cooldown amount rather than just doing *8 on the cooldown?]
-
-Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephant instead of itself)
-
-*** Snail: Make it also apply to charge speed (so probably -5% move speed, and -5% charge speed); tooltip clarity for this and Tooth that they do not work the same (list the charge speed thing as a separate effect probably; might even need to be its own effect to not overlap?)
- -> should be fairly easy in charging_attack_beahvior? [Test if duration also needs adjusting; probably not at this scale, even if Snail is made Limit 2]
-
 Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 
-shorten stat mod text so it always fits 2 lines, so char descriptions are more readable
-
 ~~ OTHER PONDERINGS ~~
-
-re-upping the idea of set bonus shop favoring weighing based on how many items that set appears in
 
 loud could also guarantee horde waves?
 
@@ -347,7 +335,9 @@ Could there be a change to make it easier to find matching tier-2 weapons when y
 Burn currently doesn't apply to trees dying in 8 hits, but should -- possible solution would be having a separate check for burn to kill the tree after 5-6 ticks; alternatively could apply all duration ticks to the hit-count immediately when it gets hit (or half+1 or whatever seems sensible)
 
 
+Fix the "x2" material popup to say the correct x## amount?
 
+Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephant instead of itself)
 
 Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4)
 
@@ -356,8 +346,6 @@ should padding be reworked to be interesting on more characters while not being 
 
 
 more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%
-	maybe set bonus could also give one entry *per* weapon that has that set, so e.g. mixed Precise is more likely to favor Precise than Elemental or whatever
-
 
 
 
@@ -370,7 +358,6 @@ SMG tier-1 scaling worse (maybe do this moreso instead of the cooldown hit) [but
 
 should focus downside be 4
 
-
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 
 
@@ -378,26 +365,18 @@ current robot arm rework maybe a bit overly similar to Gnome with Melee and Elem
 
 can we show explosion size in the weapon info?
 
-
 maybe brawler should only be 40% atkspd
-
-pumpkin could also apply to bounce
-
 
 
 
 Starters
-Speedy: Screwdriver [Left for now]
+Speedy: -Screwdriver [Left for now]
 One-armed: (Probably also remove: Laser Gun, Pruner -- but Pruner is maybe okay if they get the Set Bonus effect.) 
 Apprentice could add Revolver to starter weapons; might also removed Pruner (Unless Pruner gets better scaling)
 
 
 Arms Dealer could have %Damage Tag and/or Economy Tag (Is Coupon extra good or bad on them?)
 Should one-armed have Harvesting Tag? (Tho Bee can be rough)
-
-
-
-[?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%
 
 
 
@@ -408,7 +387,7 @@ Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
 
 	
 
-Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that's be only a half fix...]
+Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that'd be only a half fix...]
 
 
 Could flatten Pruner's dmg level-ups, e.g. 50/70/85 for scaling or 60/70/85, and 1.4/1.6/1.8 for crit dmg
@@ -417,7 +396,6 @@ Pruners could have a more Xbow-like Crit-scaling
 
 Could make mat drop %s per-mat instead of all-or-nothing
 
-Crazy: maybe remove the melee-damage tag now that XBow is A Thing
 Glutton melee damage tag is a bit weird but maybe fine.  (Kinda dumb for both Jousting and Shrdder)
 Should Renegade be tagged for Ranged Damage? [Already kinda strong enough without it, tho could potentially also get some minor nerf at the same time; would also make it slightly harder to find varied tier-1s]
 Should Sharp Bullet be part of the Ranged Damage tag set like Bandana is? (Or, piercing Tag could be given to Ranged & Engineering build types?)
@@ -436,11 +414,9 @@ Mines: Mildly bigger detection/activation radius? (~+25%?)
 
 Weapons that start with Lifesteal should show Lifesteal in red even if they're at 0%
 
+* You should be able to see upcoming Hordes/Elites when choosing from item crates - probably on the pause screen.
 
 
-
-
-Maybe swap the 15% and 20% weapon chances to encourage more mixed builds?
 Could also have part it based on damage types; e.g. 5-10% of the roll checks based on two flat damage types you have the most of (counting melee as x2), starting at maybe Wave 7?
 
 
@@ -451,11 +427,13 @@ in func set_damage, new_value definition being defined as int before being round
 
 
 
-~~ Graveyard ~~
+~~ Graveyard (Probably not going to use these ideas, but left for posterity) ~~
+[?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%
+
 Luck could maybe affect your same-weapon-finding shop bonus slightly too? 
 
 Could slightly lower Laser Gun's cooldown (and probably also base damage?) to let it get 1 extra shot off Wave 1 and 2, so it doesn't get quite as bad of a starting economy hit
-	--> would have to be 105->93 cooldown, below current purple-tier, so probably a no-go; just means you're out ~8maths wave 1
+	--> would have to be 105->93 cooldown, below current purple-tier, so probably a no-go; just means you're out ~8mats wave 1
 
 Rebalancing Elemental over a 2-per-levelup ratio may ultimately end up making more sense, letting burn damage keep up with the pace of the game better
 
@@ -463,7 +441,7 @@ Egg - 5 base/3 per wave -> 2 base 3.5 per wave or something?  [Aiming for slight
 
 One-armed could Maybe also double Engineering (or 50%)
 
-Fix AtkSpd being stored as int prematurely, store as float
+Fix AtkSpd being stored as int prematurely, store as float [doesn't actually change anything on its own, needs more]
 
 Maybe replace all instances of "materials" to actually mean gold, and add "XP" to the ones that don't?
 
@@ -495,8 +473,6 @@ Applying additional burn could cause damage tick to happen immediately (not my f
 
 * If you have acquired a combined 6+ items tagged Engineering or +Engineering Levelups, or if you are weilding 5+ Tool Weapons: the character is now treated as if they have the 'Engineering' Tag for the rest of the run.
 
-Wand being slower but having 1 built in Spread could be interesting
-
 Set Bonuses could be based on different items with a tag only (combine with the idea of making shop-favoring weight tags more heavily than same-item)
 
 * 
@@ -514,11 +490,10 @@ tentacles - higher consumeable and/or crate chance
 
 Magician HP and move speed slightly lower which will cover some of the increased Helmet HP; value Helmet HP about half as much?
 
-Wave 14/15 Horde Waves can make the wave *easier* by replacing the scarier Magicians with mooks; just add a few Magicians to the Horde spawns, maybe even 1 or 2 early?
 
 
 ~QoL / UI~
-* You should be able to see upcoming Hordes/Elites when choosing from item crates - probably on the pause screen.
+
 * Turrets (and Wrenches spawning turrets) should track damage dealt.
 * Items should show both total damage and damage during the previous wave.
 * Piggy Bank should show materials saved for Entreprenuer (probably just a special case that makes it show difference from 0% instead of difference to 100%).
