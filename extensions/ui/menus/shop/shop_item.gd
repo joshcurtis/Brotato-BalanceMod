@@ -6,7 +6,7 @@ func get_fairy_icon():
 		if item.my_id == "item_fairy":
 			return item.icon.get_data()
 
-# Add fairy icon to applicable shop items
+# Add Fairy icon to applicable shop items
 func set_shop_item(p_item_data:ItemParentData, p_wave_value:int = RunData.current_wave)->void :
 	activate()
 	item_data = p_item_data
@@ -39,7 +39,7 @@ func set_shop_item(p_item_data:ItemParentData, p_wave_value:int = RunData.curren
 			texture = ImageTexture.new()
 			texture.create_from_image(icon)
 			color = Color.white
-	### Replace material icon with king for shop items that king is affected by
+	### Replace material icon with King for shop items that King is affected by
 	elif RunData.current_character != null and RunData.current_character.my_id == "character_king" and item_data is ItemData and (item_data.tier == Tier.COMMON or item_data.tier == Tier.LEGENDARY):
 		
 		var already_has_item = false
@@ -55,7 +55,7 @@ func set_shop_item(p_item_data:ItemParentData, p_wave_value:int = RunData.curren
 			texture = ImageTexture.new()
 			texture.create_from_image(icon)
 			color = Color.white	
-	# Replace material icon with fairy for shop items that fairy is affected by
+	# Replace material icon with Fairy for shop items that Fairy is affected by
 	elif RunData.get_nb_item("item_fairy") > 0 and item_data is ItemData and (item_data.tier == Tier.COMMON or item_data.tier == Tier.LEGENDARY):
 		
 		var already_has_item = false

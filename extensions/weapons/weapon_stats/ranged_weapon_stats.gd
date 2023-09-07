@@ -1,3 +1,5 @@
+#!# CURRENTLY UNUSED CHANGES
+
 extends "res://weapons/weapon_stats/ranged_weapon_stats.gd"
 
 # Replace to add a context-appropriate extra decimal to cooldown and to bugfix the Big Reload cooldown tooltip

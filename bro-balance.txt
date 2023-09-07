@@ -6,6 +6,39 @@ Aiming to make more options (weapons, items, level-ups, etc.) feel worth using m
 
 Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun.
 
+~Mechanics~
+Knockback should now never push enemies towards you.
+Melee weapons change Range a bit more easily.
+Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), so it's less bad to have a more mixed build.
+All explosions can now crit.
+Weaker tier-4 Level-ups a bit stronger; Tier-1 Harvesting weaker.
+
+~Weapons~
+More weapons are worth using: Torch, Wand, Cacti Club, Plank, Screwdriver, Crossbow, Sniper Rifle all recieve relevant buffs; Spear, SMG, Lightning Shiv, Flamethrower, and Stick recieve modest nerfs.
+Rock, Pistol, Chopper, Hatchet, Scissors, Medical Gun, Potato Thrower recieve minor buffs; Flaming Brass Knuckles, Chain-gun, and Nuclear Launcher recieve minor nerfs.
+Hand moderately reworked to make tier-3 and 4 worth buying.
+
+~Items~
+Tons of items recieve small buffs or nerfs; overall more items should be worth buying and fewer should be free/always-correct. Note that the goal is not to make them all equally strong - there is still plenty of variance and build-specific decision-making.
+Some notable highlights: Snail now also slows enemy charges. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Candle is adjusted to have a lower price to be potentially viable for non-Elemental builds that want fewer enemies. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Esty's Couch and Robot Arm have been fully reworked.
+
+~Characters~
+As with items, the goal is not for characters to be equal strength, as it is more interesting and fun for them to be varied. The idea is to simply compress the range a little bit so the easiest options are a little less 'free' and the hardest are less frustrating/punishing. (For example, Jack is buffed and Masochist is nerfed, but Masochist is still a much easier character.)
+Artificer can now do base damage with Tools.
+Jack, Farmer, and One-armed recieve modest buffs.
+Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), Loud recieve modest nerfs.
+Mage can now utilize and Engineering build (turrets causing burn via Sausage).
+Several characters have more sensible tagging (items they are favored to find), e.g. Streamer is now more likely to find structures. Streamer also now gets +2 Armor from Pocket Factory (instead of nothing).
+Starting weapons overhauled to make more sense and be more fun for random-weapon runs, with several nonsense selections removed and many new appropriate options added.
+
+
+~Enemies & Waves~
+Smiley, Hivemind, and Mother Elites nerfed; Gargoyle, Monk, and Rhino Elites buffed.
+Loot Goblins are easier to kill early.
+Helmet enemies have more HP.
+Wave 14 slightly easier; Wave 16 harder. Wave 14/15 Horde waves harder.
+Wave 20 has additional small enemies to allow for more synergy for things that rely on killing enemies or picking up materials.
+
 
 ~~ GENERAL CHANGES ~~
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
@@ -124,7 +157,7 @@ Shmoop: Price 60->65; 2 HP Regen -> 3
 Statue: Price 60->55
 Stone Skin: Price 80->90; -2 Armor -> -4% Speed
 Strange Book: -1 Melee Damage -> -0
-Tardigrade: Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand or Blood Donation); Added to Dodge Item Tag Pool.
+Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand or Blood Donation); Added to Dodge Item Tag Pool.
 Toolbox: 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
 Vigilante Ring: Price 92->84
@@ -172,7 +205,7 @@ Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5 [Now fits in more sensib
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
 Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net.]
 Stick: Damage Scaling 100%(All) -> 80%/88%/95%/100%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
-Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/6x5/9x7/15x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
+Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/9x7/15x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
 Chain-gun: Long Reload Cooldown 2.04s -> 3.71s; Accuracy 80% -> 55% [For reference, White SMG is 70%.]
@@ -187,7 +220,7 @@ Revolver: Tier-1 Price 20 -> 18
 Rocket Launcher: Range 500/550/600 -> 500(All)
 SMG: Range 400 -> 325; Cooldown ~10% worse (All Tiers)
 Sniper Gun: Renamed Sniper Rifle; Range 800/1000 -> 600/700; Ranged Damage Scaling 100%(All) -> 200%/250%; Projectile Base Damage 5->4; Projectile Crit Chance 3%/3% -> 20%/20%; Projectile Crit Damage 2.0/2.0 -> 3.0/4.0 [Given that it's in the Gun Set, it should at least passably scale from Ranged Damage and fit into a Gun build - even with these scaling amounts it still scales worse than a Pistol. Additionally, the weapon often under-performs for its cost and rarity, and one would expect the projectiles to crit the same as the main shot.]
-Wand: Knockback 10 -> 7; Scaling 50%/65%/80%/100% -> 60%/75%/85%/100%; Base Damage 1(All) -> 1/2/3/4; Burn 3x3/5x4/8x5/12x6 -> 3x3/8x3/12x4/16x5 [Relevantly more front-loaded damage.]
+Wand: Scaling 50%/65%/80%/100% -> 60%/75%/85%/100%; Burn 3x3/5x4/8x5/12x6 -> 3x3/8x3/12x4/16x5; Cooldown 0.87/0.78/0.70/0.53 -> 0.83/0.77/0.68; Base Damage 1(All) -> 1/2/3/4; Knockback 10 -> 7 [Relevantly more front-loaded damage. The slight cooldown buff lets you get 1 extra kill on wave 1.]
 
 Chain-gun, Gatling Laser, Tier-4 Minigun: Fixed cooldown to no longer incorrectly display in red (visual change only).
 Other Minor Accuracy Tweaks (mostly only relevant if Accuracy is lowered by Heavy Bullets): Pistol 0.9(Tier1-3)->1.0(All); Medical Gun 0.9(Tier1-3)->1.0(All); SMG 0.7/0.75/0.8/0.85->0.7/0.74/0.77/0.8; Mini-gun 0.85/1.0 -> 0.8/1.0; Shotgun 0.9/0.95/1.0/1.0->0.9(All); Potato Thrower 0.9(All)->1.0(All); Rocket Launcher 0.8/0.9/1.0-> ; 0.9(All) [For reference, Revolver is 0.9(All), and most other unlisted weapons are 1.0(All).]
@@ -240,7 +273,7 @@ Jack: Added Spiky Shield; Removed Pistol, Wrench, Shuriken
 King: Added Jousting Lance, Rocket Launcher
 Knight: Added Bokken, Pruner, Plank, Rock, Fist, Knife, Scissors, Cacti Club; Removed Spiky Shield
 Lich: Added Lightning Shiv
-Loud: Added Screwdriver; Removed Pruner, Revolver, Taser
+Loud: Added Screwdriver; Removed Pruner, Revolver, Taser, Wand
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock, Hand [Experimental]
@@ -252,7 +285,7 @@ Ranger: Added Slingshot
 Renegade: Added Shuriken, Slingshot
 Saver: Added Fist, Stick, Chopper
 Sick: Added Cacti Club, Hatchet, Pruner; Removed Hand
-Soldier: Added Lightning Shiv
+Soldier: Added Lightning Shiv [Experimental]
 Speedy: Added Ghost Flint, Pruner; Removed Wrench
 Streamer: Added Ghost Scepter; Removed Bokken, Rock, Jousting Lance, Knife, Lightning Shiv, Claw
 Well-rounded: Added Fist, Wrench, Slingshot
@@ -424,7 +457,7 @@ Structures When Reloading: When you resume the game after having quit, structure
 in func set_damage, new_value definition being defined as int before being rounded causes it to always truncate, or? (Supposedly this means rounding is different for projectile damage than for melee hits)
 
 Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
-
+ "the bug is whenever you switch between moving and not-moving and have any effect that changes any stat in those cases. Does not even have to be attack speed. So it should also happen with Barricade, Chameleon, Statue, Speedy, Jousting Lance"
 
 ~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
 [?]Doctor: -100% Attack Speed -> -50%; +200% Attack Speed with Medical Weapons -> +150%
@@ -449,15 +482,11 @@ Could add a pickup-range-only tag to Explorer and Streamer
 Is it reasonable to make lifesteal/burn/crit/special effects (e.g. tooth) feel more consistent as to what counts for them?
 
 Elemental set bonus could give a Snake effect for 4or5 in a set?
-Wand could have built in Spread starting at purple tier
 
 Red weapons could perhaps not contribute to 'increased weapon find chance'
 
 One-armed, Arms Dealer, Engineer, Entrepreneur, Lich: Description should say "All Damage" to be more clear it applies to every Damage type.
 
-Mom Concept: Phase 2 now alternates between two patterns.  Phase 2a: Summons 6 Fins every 0.66 seconds (~current behavior), Double-slices once every 1.5 seconds. After 6 seconds, switch to Phase 2b: Summon 3 Chasers every 1.0 seconds, Double-slices once every 0.66 seconds (~current behavior). After 6 seconds, switch back to Phase 2a. [Full duration summons ~306 -> ~204]
-
-* Bugfix: You currently cannot navigate to the 'Secondary Stats' tab on the run end screen while using a controller.
 * Bounces (e.g. from Lightning Shiv) should be able to target Bosses like they do other enemies.
 * The game should fully stop recognizing the mouse while using controller. (Currently, it will highlight whatever the mouse would be hovering over, so it can look like an option is selected when it isn't.)
 * Tooltips for capped stats incorrectly report on your stats, e.g. it can imply your movement speed is faster than it actually is when you have Shackles. [Ideally the tooltip should change to clarify "you would be moving X% faster/slower, but your speed is capped at Y%"]
@@ -472,20 +501,12 @@ Applying additional burn could cause damage tick to happen immediately (not my f
 
 * If you have acquired a combined 6+ items tagged Engineering or +Engineering Levelups, or if you are weilding 5+ Tool Weapons: the character is now treated as if they have the 'Engineering' Tag for the rest of the run.
 
-Set Bonuses could be based on different items with a tag only (combine with the idea of making shop-favoring weight tags more heavily than same-item)
 
 * 
-a few Chargers for 16 makes some sense
- Spawns for Wave 14/15 are toned down, since those waves don't need to be made more difficult.]
-	Wave 10 ??
-	Wave 14 Helmet Spawn Total: ~102->~84; Baby Spawn Total: ~108->~114  [when retooling these consider the mat gains too, not just the enemy hp/difficulty]
-	Wave 15 Helmet Spawn Total: ~108->~96; Fin Spawn Total: ~24->~27
-	Wave 17
-	Wave 18
 
 12 base: slightly more mummies
 
-tentacles - higher consumeable and/or crate chance
+tentacles - higher consumeable and/or crate chance [tho Monk summons are a thing]
 
 Magician HP and move speed slightly lower which will cover some of the increased Helmet HP; value Helmet HP about half as much?
 

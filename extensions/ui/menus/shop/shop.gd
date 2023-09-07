@@ -21,3 +21,12 @@ func _on_RerollButton_pressed()->void :
 		###
 		
 		_shop_items_container.update_buttons_color()
+
+
+# change shop item icons when Fairy purchased
+func on_shop_item_bought(shop_item:ShopItem)->void :
+	for item in _shop_items:
+		if item[0].my_id == shop_item.item_data.my_id and item[0].my_id == "item_fairy":
+			print("okay do it")
+	.on_shop_item_bought(shop_item)
+	

@@ -53,6 +53,9 @@ func _init(modLoader = ModLoader):
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
+	#
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "global/entity_spawner.gd")
+	
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -522,9 +525,12 @@ func _ready()->void:
 	temp = load("res://items/all/strange_book/strange_book_data.tres")
 	temp_2 = load("res://items/all/strange_book/strange_book_effect_2.tres")
 	temp.effects.erase(temp_2)   # -1->0 (Melee Damage)
-
+	
+	temp = load("res://items/all/tardigrade/tardigrade_data.tres")
+	temp.value = 45  # 50
 	temp = load("res://items/all/tardigrade/tardigrade_effect_1.tres")
 	temp.text_key = "new_effect_hit_protection"
+	
 
 	temp = load("res://items/all/toolbox/toolbox_effect_1.tres")
 	temp.value = 7   # 6 (Engineering)
@@ -962,7 +968,7 @@ func _ready()->void:
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/2/torch_2_burning_data.tres")
-	temp.damage = 6    		# 5
+	##temp.damage = 5  		# 5
 	temp.duration = 5  		# 4
 	temp.spread = 1				# 0
 	temp = load("res://weapons/melee/torch/2/torch_2_data.tres")
@@ -1197,10 +1203,12 @@ func _ready()->void:
 	
 	# Wand
 	temp = load("res://weapons/ranged/wand/1/wand_stats.tres")
+	temp.cooldown = 38 # 40
 	temp.knockback = 7 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.6 ] ] # 0.5
 	temp = load("res://weapons/ranged/wand/2/wand_2_stats.tres")
 	temp.damage = 2    # 1
+	temp.cooldown = 34 # 35
 	temp.knockback = 7 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.75 ] ]	# 0.65
 	temp = load("res://weapons/ranged/wand/2/wand_2_burning_data.tres")
@@ -1208,6 +1216,7 @@ func _ready()->void:
 	temp.duration = 3  # 4
 	temp = load("res://weapons/ranged/wand/3/wand_3_stats.tres")
 	temp.damage = 3    # 1
+	temp.cooldown = 29 # 30
 	temp.knockback = 7 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.85 ] ]	# 0.8
 	temp = load("res://weapons/ranged/wand/3/wand_3_burning_data.tres")
@@ -1696,6 +1705,8 @@ func _ready()->void:
 	temp_2 = load("res://weapons/ranged/revolver/1/revolver_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/ranged/taser/1/taser_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	
 	# Mage
