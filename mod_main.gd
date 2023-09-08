@@ -53,9 +53,6 @@ func _init(modLoader = ModLoader):
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
-	#
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "global/entity_spawner.gd")
-	
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -77,6 +74,11 @@ func _ready()->void:
 	var temp
 	var temp_2
 	var temp_find
+	
+	# Planning to normalize enemy spawns; currently crashes for unknown reasons.
+	#!# Rememeber to sample averages for Jack to see if they get fewer average mats
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "global/entity_spawner.gd")
+	
 	
 	## TEXT KEYS ##
 	# Changed effects/text
@@ -164,7 +166,10 @@ func _ready()->void:
 	temp.health = 4                      # 8
 	temp.health_increase_each_wave = 4.5 # 3.0
 	
-	## Tentacle (25)
+	## Tentacle
+	temp = load("res://entities/units/enemies/025/25_stats.tres")
+	temp.base_drop_chance = 0.02         # 0.01
+	temp.item_drop_chance = 0.04         # 0.01
 	
 	# Lamprey Fish
 	temp = load("res://entities/units/enemies/026/26_stats.tres")

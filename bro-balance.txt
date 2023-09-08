@@ -2,48 +2,51 @@
 * Tooltips for Power Generator, King, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
 
 ~~ OVERVIEW ~~
-Aiming to make more options (weapons, items, level-ups, etc.) feel worth using more often, and give less free power from lucking into the strongest things. Equipment is *not* intended to be perfectly equal to each other in strength (e.g., Jack is buffed but still meant to be difficult; Knight is nerfed but still meant to be fairly easy), but fewer situations should be 'free' or 'always-pick'.
+Aiming to allow more options (weapons, items, level-ups, etc.) to feel worth using more often, and give less free power from lucking into the strongest things. Equipment & Characters are *not* intended to be perfectly equal to each other in strength, but fewer situations should be 'free' or 'always-pick'.
 
-Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun.
+Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun. Modest mechanical changes to make the Range stat more meaingful, knockback less frustrating, and mixed-builds easier to manage.
+
+Short Change Summary:
 
 ~Mechanics~
 Knockback should now never push enemies towards you.
-Melee weapons change Range a bit more easily.
-Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), so it's less bad to have a more mixed build.
+Melee weapons change Range more easily.
+Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), so it's easier to have a more mixed build.
 All explosions can now crit.
-Weaker tier-4 Level-ups a bit stronger; Tier-1 Harvesting weaker.
+Weaker Tier-4 Level-ups a bit stronger; Tier-1 Harvesting weaker.
+Several tooltips cleaned up to be more clear & character descriptions take up less room.
 
 ~Weapons~
-More weapons are worth using: Torch, Wand, Cacti Club, Plank, Screwdriver, Crossbow, Sniper Rifle all recieve relevant buffs; Spear, SMG, Lightning Shiv, Flamethrower, and Stick recieve modest nerfs.
+More weapons are worth using: Torch, Wand, Cacti Club, Plank, Screwdriver, Crossbow, Sniper Rifle all recieve relevant buffs; Spear, SMG, Lightning Shiv, Flamethrower, and Stick recieve nerfs.
 Rock, Pistol, Chopper, Hatchet, Scissors, Medical Gun, Potato Thrower recieve minor buffs; Flaming Brass Knuckles, Chain-gun, and Nuclear Launcher recieve minor nerfs.
-Hand moderately reworked to make tier-3 and 4 worth buying.
+Hand partially reworked to make tier-3 and 4 worth buying.
 
 ~Items~
-Tons of items recieve small buffs or nerfs; overall more items should be worth buying and fewer should be free/always-correct. Note that the goal is not to make them all equally strong - there is still plenty of variance and build-specific decision-making.
-Some notable highlights: Snail now also slows enemy charges. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Candle is adjusted to have a lower price to be potentially viable for non-Elemental builds that want fewer enemies. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Esty's Couch and Robot Arm have been fully reworked.
+Tons of items recieve small buffs or nerfs: overall more items are worth buying and some of the strongest give less power for their cost. Note that the goal is not to make them all equally strong - there is still plenty of variance and build-specific decision-making. 
+Some notable highlights: Snail now also slows enemy charges. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Candle is adjusted to have a lower price to potentially also be viable for non-Elemental builds that want fewer enemies. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Esty's Couch and Robot Arm have been fully reworked.
 
 ~Characters~
 As with items, the goal is not for characters to be equal strength, as it is more interesting and fun for them to be varied. The idea is to simply compress the range a little bit so the easiest options are a little less 'free' and the hardest are less frustrating/punishing. (For example, Jack is buffed and Masochist is nerfed, but Masochist is still a much easier character.)
-Artificer can now do base damage with Tools.
-Jack, Farmer, and One-armed recieve modest buffs.
-Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), Loud recieve modest nerfs.
-Mage can now utilize and Engineering build (turrets causing burn via Sausage).
-Several characters have more sensible tagging (items they are favored to find), e.g. Streamer is now more likely to find structures. Streamer also now gets +2 Armor from Pocket Factory (instead of nothing).
-Starting weapons overhauled to make more sense and be more fun for random-weapon runs, with several nonsense selections removed and many new appropriate options added.
-
+* Jack, Farmer, and One-armed recieve modest buffs.
+* Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), and Loud recieve modest nerfs.
+* Artificer can now do base damage with Tools.
+* Mage can now utilize and Engineering build (turrets causing burn via Sausage).
+* Several characters have more sensible tagging (items they are favored to find), e.g. Streamer is now more likely to find structures. Streamer also now gets +2 Armor from Pocket Factory (instead of nothing).
+* Starting weapons overhauled to make more sense and to be more fun for random-weapon runs, with several nonsense picks removed and many new appropriate options added.
 
 ~Enemies & Waves~
-Smiley, Hivemind, and Mother Elites nerfed; Gargoyle, Monk, and Rhino Elites buffed.
+Smiley, Hivemind/Colossus, and Mother Elites nerfed; Gargoyle, Monk, and Rhino Elites buffed.
 Loot Goblins are easier to kill early.
 Helmet enemies have more HP.
 Wave 14 slightly easier; Wave 16 harder. Wave 14/15 Horde waves harder.
-Wave 20 has additional small enemies to allow for more synergy for things that rely on killing enemies or picking up materials.
+Wave 20 has additional small enemies to allow for more synergy for effects that rely on killing enemies or picking up materials.
 
 
+!~--~FULL CHANGELOG~--~!
 ~~ GENERAL CHANGES ~~
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
-* Extraneous Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
+* Mixed Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
 * Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools (Gardens) are more precise. Knight's tooltip color-coded properly.
 * Stats now update properly on shop reroll (for Padding & Saver).
@@ -53,6 +56,7 @@ Note: Altered and new descriptions will currently not display for non-English la
 ~~ ENEMIES ~~
 * Loot Goblin: Base HP  50->2; HP/wave 25->30 [Makes the early Loot Goblins far more reasonable to kill and late-game ones slightly harder to kill.]
 * Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where, when buffed, they go from 185hp in vanilla to 250hp in Balance Mod.]
+* Tentacles: Fruit Drop Chance 1% -> 2%; Convert-to-Item-Crate Chance 1% -> 4%
 
 Small Charger: Knockback Resistance 100% -> 80%
 Small Viking Charger: Knockback Resistance 100% -> 80%
@@ -505,8 +509,6 @@ Applying additional burn could cause damage tick to happen immediately (not my f
 * 
 
 12 base: slightly more mummies
-
-tentacles - higher consumeable and/or crate chance [tho Monk summons are a thing]
 
 Magician HP and move speed slightly lower which will cover some of the increased Helmet HP; value Helmet HP about half as much?
 

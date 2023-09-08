@@ -1,8 +1,9 @@
+#!# CURRENTLY UNUSED CHANGES
+
 extends "res://global/entity_spawner.gd"
 
-var total_spawn_count = 0
+#var count_of_total_spawns = 0
 
-# Overwrite - Normalize enemy spawns so there isn't the extreme variance for e.g. Jack
 func on_group_spawn_timing_reached(group_data:WaveGroupData, _is_elite_wave:bool)->void :
 	
 	if enemies.size() > _current_wave_data.max_enemies:
@@ -23,6 +24,8 @@ func on_group_spawn_timing_reached(group_data:WaveGroupData, _is_elite_wave:bool
 	
 	var global_mod = 1.0
 	
+
+
 	
 	for unit_wave_data in units_data:
 		var mod = 0
@@ -79,7 +82,7 @@ func on_group_spawn_timing_reached(group_data:WaveGroupData, _is_elite_wave:bool
 			for i in number:
 				if randf() <= unit_wave_data.spawn_chance:
 					###
-					total_spawn_count += 1
+					#count_of_total_spawns += 1
 					var spawn_pos = get_spawn_pos_in_area(group_pos, group_data.area, group_data.spawn_dist_away_from_edges, group_data.spawn_edge_of_map)
 					
 					while spawn_pos.distance_to(_player.global_position) < MIN_DIST_FROM_PLAYER:
@@ -89,5 +92,5 @@ func on_group_spawn_timing_reached(group_data:WaveGroupData, _is_elite_wave:bool
 						queue_to_spawn_bosses.push_back([unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos])
 					else :
 						queue_to_spawn.push_back([unit_wave_data.type, unit_wave_data.unit_scene, spawn_pos])
-		
-		print(total_spawn_count)
+	###
+	#print(count_of_total_spawns)
