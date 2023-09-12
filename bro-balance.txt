@@ -1,5 +1,5 @@
 ~Known Issues~
-* Tooltips for Power Generator, King, and Streamer+Pocket Factory aren't entirely accurate; see each entry below for details.
+* Tooltips for Power Generator & King aren't entirely accurate; see each entry below for details.
 
 ~~ OVERVIEW ~~
 Aiming to allow more options (weapons, items, level-ups, etc.) to feel worth using more often, and give less free power from lucking into the strongest things. Equipment & Characters are *not* intended to be perfectly equal to each other in strength, but fewer situations should be 'free' or 'always-pick'.
@@ -252,7 +252,7 @@ Jack: Bonus to Bosses 75% -> 80%; Damage from enemies +50% -> +40% [Small buffs 
 King: Now only gives Attack Speed and Damage for every *different* tier-4 weapon; Bonus Attack Speed & Damage 25% -> 20%; now shows an icon for tier-1 and tier-4 items you haven't purchases yet. [Note the tooltip is currently bugged and will still show every tier-4 weapon, but only different ones will affect your actual stats.]
 Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [Makes a strong character a bit less 'free', and means that an Armor level-up is no longer *strictly* better than Melee Damage.]
 Loud: -3 Harvesting per Wave -> -4
-Lucky: {Tweaks Coming Soon}
+Lucky: 100 Starting Luck -> 70; Luck Modifications +25% -> +50%; Attack Speed -60% -> -50%; Now tracks and deals damage independantly of Baby Elephant; (Luck stat slightly better and slightly easier to come by)  [This makes you care more about actually raising Lucky's Luck stat and allows their passive and Baby Elephant to hit different targets. Takes a good while to break even with vanilla Lucky (+80 Luck), so gets slightly better Attack Speed to compensate.]
 Mage: -100% Engineering Mods -> -33% [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something]; Now starts with a 2nd Sausage when starting with SMG or Shotgun.
 Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
 Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
@@ -260,7 +260,7 @@ One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (excep
 Ranger: No longer starts with a Pistol.
 Renegade: Now shows reminder icons for item boxes as well.
 Speedy: Starting Speed 30% -> 25% [More room to meaningfully increase from where you start]; Starting Armor -3 -> -2
-Streamer: Now gets +2 Armor from Pocket Factory [*Tooltip doesn't correctly show the Armor from this currently]; Now favored to find Stand-still Items and Structure Items (All Structures including Garden, and also including Pocket Factory and Improved Tools).
+Streamer: Now gets +2 Armor from Pocket Factory; Now favored to find Stand-still Items and Structure Items (All Structures including Garden, and also including Pocket Factory and Improved Tools).
 Wildling: No longer starts with a Stick.
 
 [Initial weapon removals (Crazy, Ranger, Wildling) make those characters more varied by making the starting weapon choice actually matter more, preventing the default fall-back option.]
@@ -286,6 +286,7 @@ King: Added Jousting Lance, Rocket Launcher
 Knight: Added Bokken, Pruner, Plank, Rock, Fist, Knife, Scissors, Cacti Club; Removed Spiky Shield
 Lich: Added Lightning Shiv
 Loud: Added Screwdriver; Removed Pruner, Revolver, Taser, Wand
+Lucky: Added Jousting Lance
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock
@@ -348,6 +349,7 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
+Possible Lucky weapons: Pruner, Torch?
 
 what does making Armor only 6% ehp instead of 6.66% look like?
 

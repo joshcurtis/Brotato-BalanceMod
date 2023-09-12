@@ -32,10 +32,16 @@ func _init(modLoader = ModLoader):
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
 	# (Adds new effects to RunData)
+	# (Adds new init effects)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
+	
+	# Splits Lucky's passive from Baby Elephant
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "/main.gd")
 	
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
+	# Updates Streamer's tooltip for Pocket Factory
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/gain_stat_for_every_stat_effect.gd")
 	
 	# Increases Luck's effect on higher-tier equipment/level-ups
 	# Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
@@ -50,7 +56,8 @@ func _init(modLoader = ModLoader):
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
-			
+	
+	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
@@ -1409,6 +1416,19 @@ func _ready()->void:
 	temp = load("res://items/characters/loud/loud_effect_3.tres")
 	temp.value = -4	# -3 (Harvesting per Wave)
 	
+	# Lucky
+	temp = load("res://items/characters/lucky/lucky_effect_1.tres")
+	temp.value = 70 # 100 (Starting Luck)
+	temp = load("res://items/characters/lucky/lucky_effect_2.tres")
+	temp.value = 50 # 25 (+% Luck Modificaitons)
+	temp = load("res://items/characters/lucky/lucky_effect_4.tres")
+	temp.value = -50 # -60 (Attack Speed)
+	# Tracks Lucky's damage directly, split from Baby Elephant
+	temp = load("res://items/characters/lucky/lucky_data.tres")
+	temp.tracking_text = "DAMAGE_DEALT"
+	temp = load("res://items/characters/lucky/lucky_effect_3.tres")
+	temp.custom_key = "bm_lucky_dmg_when_pickup_gold"
+	
 	# Mage
 	temp = load("res://items/characters/mage/mage_data.tres")
 	temp_2 = load("res://items/characters/mage/mage_effect_7.tres")
@@ -1728,6 +1748,11 @@ func _ready()->void:
 	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
 	temp.starting_weapons.erase(temp_2)
+	
+	# Lucky
+	temp = load("res://items/characters/lucky/lucky_data.tres")
+	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
+	temp.starting_weapons.push_back(temp_2)	
 	
 	# Mage
 	temp = load("res://items/characters/mage/mage_data.tres")

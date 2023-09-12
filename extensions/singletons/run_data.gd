@@ -107,9 +107,20 @@ func add_starting_items_and_weapons()->void :
 # Add new effects to RunData dictionary
 func init_effects()->Dictionary:
 	var new_effects = {
-		"bm_enemy_charge_speed":0
+		"bm_enemy_charge_speed":0,
+		"bm_lucky_dmg_when_pickup_gold":[]
 	}
 	var all_effects = .init_effects()
 	
 	all_effects.merge(new_effects)
 	return all_effects
+
+# Add new damage-tracked effects
+func init_tracked_effects()->Dictionary:
+	var new_effects = {
+		"character_lucky":0
+	}
+	var all_effects = .init_tracked_effects()
+	
+	all_effects.merge(new_effects)
+	return all_effects	

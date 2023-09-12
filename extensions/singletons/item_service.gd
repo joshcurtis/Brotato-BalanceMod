@@ -171,7 +171,7 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 	return elt
 
 
-# Replace to add new Luck-based soft-cap
+# Replace to add new Luck-based soft-cap and make tier-4 scale more strongly with Luck
 func get_tier_from_wave(wave:int)->int:
 	var rand = rand_range(0.0, 1.0)
 	var tier = Tier.COMMON
