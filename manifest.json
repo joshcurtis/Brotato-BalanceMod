@@ -1,7 +1,7 @@
 {
 	"name": "BalanceMod",
 	"namespace": "DarkTwinge",
-	"version_number": "0.5.1",
+	"version_number": "0.6.0",
 	"description": "Tweaks items, weapons, and more to make the game a more varied and balanced experience.",
 	"website_url": "",
 	"dependencies": [
@@ -9,6 +9,7 @@
 	"extra": {
 		"godot": {
 			"incompatibilities": [
+				"LexLooter-SelfDamageHitProtection"
 			],
 			"authors": ["DarkTwinge"],
 			"compatible_mod_loader_version": ["6.0.0"],

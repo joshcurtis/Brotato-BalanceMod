@@ -37,6 +37,7 @@ func _init(modLoader = ModLoader):
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
 	
+	# Increases Luck's effect on higher-tier equipment/level-ups
 	# Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/item_service.gd")
 	
@@ -58,6 +59,10 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
 	
 	
+	# Blank - required to make entity_spawner changes in _ready work
+	#!# Not used; left to remind how to get it working if needed later
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/neutral/neutral.gd")
+	
 	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
 	# Shows an extra digit for weapon cooldown when lower than 0.2
 	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
@@ -74,10 +79,6 @@ func _ready()->void:
 	var temp
 	var temp_2
 	var temp_find
-	
-	# Planning to normalize enemy spawns; currently crashes for unknown reasons.
-	#!# Rememeber to sample averages for Jack to see if they get fewer average mats
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "global/entity_spawner.gd")
 	
 	
 	## TEXT KEYS ##
@@ -302,6 +303,9 @@ func _ready()->void:
 	temp = load("res://items/all/plant/plant_data.tres")
 	temp.value = 13  # 10
 
+	temp = load("res://items/all/propeller_hat/propeller_hat_data.tres")
+	temp.value = 26  # 28
+
 	temp = load("res://items/all/scared_sausage/scared_sausage_data.tres")
 	temp.value = 17  # 25
 	temp = load("res://items/all/scared_sausage/scared_sausage_effect_1.tres")
@@ -420,7 +424,7 @@ func _ready()->void:
 	temp.value = -6  # -7 (Attack Speed)
 
 	temp = load("res://items/all/shady_potion/shady_potion_effect_1.tres")
-	temp.value = 18  # 20 (Luck)
+	temp.value = 19  # 20 (Luck)
 
 	temp = load("res://items/all/snail/snail_data.tres")
 	temp.value = 35  # 40
@@ -464,6 +468,9 @@ func _ready()->void:
 	temp = load("res://items/all/baby_with_a_beard/baby_with_a_beard_effect_2.tres")
 	temp.value = -70 # -50 (Range)
 
+	temp = load("res://items/all/bowler_hat/bowler_hat_effect_1.tres")
+	temp.value = 16  # 15 (Luck)
+
 	temp = load("res://items/all/candle/candle_data.tres")
 	temp.value = 51  # 65
 	temp = load("res://items/all/candle/candle_effect_1.tres")
@@ -488,7 +495,7 @@ func _ready()->void:
 	temp.value = -3   # (-2 HP Regen -> -3 Speed)
 
 	temp = load("res://items/all/fin/fin_data.tres")
-	temp.value = 69  # 65
+	temp.value = 67  # 65
 	temp = load("res://items/all/fin/fin_effect_1.tres")
 	temp.value = 9   # 10 (Speed)
 	temp = load("res://items/all/fin/fin_effect_3.tres")
@@ -496,6 +503,9 @@ func _ready()->void:
 
 	temp = load("res://items/all/glass_cannon/glass_cannon_data.tres")
 	temp.value = 68  # 75
+
+	temp = load("res://items/all/lucky_charm/lucky_charm_data.tres")
+	temp.value = 72  # 75
 
 	temp = load("res://items/all/poisonous_tonic/poisonous_tonic_effect_3.tres")
 	temp.value = 17  # 15 (Range)
@@ -1288,7 +1298,7 @@ func _ready()->void:
 	
 	# Crit Chance
 	temp = load("res://items/upgrades/crit_chance/4/crit_chance_4_effect.tres")
-	temp.value = 10  # 9
+	temp.value = 10 # 9
 
 	# Harvesting
 	temp = load("res://items/upgrades/harvesting/1/harvesting_effect.tres")
@@ -1296,6 +1306,13 @@ func _ready()->void:
 	temp = load("res://items/upgrades/harvesting/4/harvesting_4_effect.tres")
 	temp.value = 14 # 12
 	
+	# Luck
+	temp = load("res://items/upgrades/luck/2/luck_2_effect.tres")
+	temp.value = 11 # 10	
+	temp = load("res://items/upgrades/luck/3/luck_3_effect.tres")
+	temp.value = 18 # 15	
+	temp = load("res://items/upgrades/luck/4/luck_4_effect.tres")
+	temp.value = 26 # 20	
 	
 
 	## CHARACTERS ##
@@ -1354,8 +1371,8 @@ func _ready()->void:
 	temp_2 = load("res://items/characters/farmer/farmer_effect_3.tres")
 	temp.effects.erase(temp_2) # Re-order to put downside at the end
 	temp.effects.push_back(temp_2)
-	temp = load("res://items/characters/farmer/farmer_effect_1.tres")
-	temp.value = 18 # 20 (Harvesting)
+	##temp = load("res://items/characters/farmer/farmer_effect_1.tres")
+	##temp.value = 20 # 20 (Harvesting)
 	
 	# Glutton
 	temp = load("res://items/characters/glutton/glutton_data.tres")
@@ -1571,8 +1588,6 @@ func _ready()->void:
 	temp = load("res://items/characters/demon/demon_data.tres")
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/ranged/potato_thrower/2/potato_thrower_2_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	
 	# Entrepreneur
 	temp = load("res://items/characters/entrepreneur/entrepreneur_data.tres")
@@ -1728,8 +1743,6 @@ func _ready()->void:
 	# Multi-tasker
 	temp = load("res://items/characters/multitasker/multitasker_data.tres")
 	temp_2 = load("res://weapons/melee/rock/1/rock_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
 	# Mutant

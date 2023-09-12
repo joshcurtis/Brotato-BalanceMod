@@ -1,5 +1,15 @@
 extends "res://singletons/item_service.gd"
 
+# Replace Shop-Luck Table
+func reset_tiers_data()->void :
+		_tiers_data = [
+		[[], [], [], [], [], 0, 1.0, 0.0, 1.0], 			# 0, 1.0, 0.0, 1.0
+		[[], [], [], [], [], 0, 0.0, 0.05, 0.565], 		# 0, 0.0, 0.06, 0.6
+		[[], [], [], [], [], 2, 0.0, 0.0185, 0.24], 	# 2, 0.0, 0.02, 0.25
+		[[], [], [], [], [], 6, 0.0, 0.0023, 0.085]		# 6, 0.0, 0.0023, 0.08
+	]
+
+
 # Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
 func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_shop_items:Array = [], fixed_tier:int = - 1)->ItemParentData:
 	var excluded_items = []
@@ -159,3 +169,53 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 		elt = Utils.get_rand_element(pool)
 	
 	return elt
+
+
+# Replace to add new Luck-based soft-cap
+func get_tier_from_wave(wave:int)->int:
+	var rand = rand_range(0.0, 1.0)
+	var tier = Tier.COMMON
+	var luck = Utils.get_stat("stat_luck") / 100.0
+	
+	for i in range(_tiers_data.size() - 1, - 1, - 1):
+		var wave_base_chance = max(0.0, ((wave - 1) - _tiers_data[i][TierData.MIN_WAVE]) * _tiers_data[i][TierData.WAVE_BONUS_CHANCE])
+		var wave_chance = 0.0
+		
+		if luck >= 0:
+			### Luck impacts Tier-4s more than vanilla
+			if i == Tier.LEGENDARY:
+				wave_chance = wave_base_chance * (1 + (luck * 1.20))
+			else:
+			###
+				wave_chance = wave_base_chance * (1 + luck)
+		else :
+			### Luck impacts Tier-4s more than vanilla
+			if i == Tier.LEGENDARY:
+				wave_chance = wave_base_chance / (1 + abs(luck * 1.20))
+			else:
+			###
+				wave_chance = wave_base_chance / (1 + abs(luck))
+		
+		var chance = _tiers_data[i][TierData.BASE_CHANCE] + wave_chance
+		var max_chance = _tiers_data[i][TierData.MAX_CHANCE]
+		
+		### If at cap, apply Luck to go further, up to new soft caps; Negative luck doesn't hurt caps
+		print("wave base  ", str(wave_base_chance))
+		print("luck  ", str(luck))
+		print("chance  ", str(chance))
+		print("old max  ", str(max_chance))
+		if luck > 0 and chance >= max_chance:
+			if i == Tier.UNCOMMON:
+				max_chance += (1 + luck) * (_tiers_data[i][TierData.WAVE_BONUS_CHANCE] / 1.6)
+				max_chance = min(max_chance, 0.65)
+			elif i == Tier.RARE:
+				max_chance += (1 + luck) * (_tiers_data[i][TierData.WAVE_BONUS_CHANCE] / 2.0)
+				max_chance = min(max_chance, 0.27)
+		print("new max  ", str(max_chance))
+		###
+		
+		if rand <= min(chance, max_chance):
+			tier = i
+			break
+	
+	return tier
