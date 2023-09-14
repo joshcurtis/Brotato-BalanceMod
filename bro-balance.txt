@@ -105,7 +105,7 @@ Alien Tongue: +30% Pickup Range -> +50%; Price 25->18
 Baby Gecko: Price 18->16
 Broken Mouth: Price 25->26
 Coffee: +10% Attack Speed -> 9% 
-Cute Monkey: Price 25->32; Proc Chance 8%->10%; Limit 13->10
+Cute Monkey: Price 25->34; Proc Chance 8%->10%; Limit 13->10
 Duct Tape: Price 25->15
 Fertilizer: Price 15->19; Harvesting 8->7
 Glasses: Price 25->22
@@ -144,6 +144,7 @@ Pocket Factory: 2 Engineering -> 3
 Pumpkin: No Limit -> Limit 8 [Mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
 Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
 Riposte: Price 40->35
+Ritual: Price 60->56
 Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 19
 Snail: Price 40->35; Now also gives -5% Enemy Charge Speed; -3% Speed -> -2%
@@ -258,7 +259,7 @@ Knight: 2 Melee Damage per 1 Armor -> 3 Melee Damage per 2 Armor; Armor 5 -> 4 [
 Loud: -3 Harvesting per Wave -> -4
 Lucky: 100 Starting Luck -> 70; Luck Modifications +25% -> +50%; Attack Speed -60% -> -50%; Now tracks and deals damage independantly of Baby Elephant; (Luck stat slightly better and slightly easier to come by)  [This makes you care more about actually raising Lucky's Luck stat and allows their passive and Baby Elephant to hit different targets. Takes a good while to break even with vanilla Lucky (+80 Luck), so gets slightly better Attack Speed to compensate.]
 Mage: -100% Engineering Mods -> -33% [Gives the ability to lean into Sausage+Turret combo more, and means Strange Book actually does something]; Now starts with a 2nd Sausage when starting with SMG or Shotgun.
-Masochist: HP Regen 20 -> 15; Armor 8 -> 6 [Modest nerfs to a very strong character.]
+Masochist: HP Regen 20 -> 15; Armor 8 -> 5 [Modest nerfs to a very strong character.]
 Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
 One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary). [A specialized buff to a difficult character that really helps some of their less-viable builds like Shuriken.]
 Ranger: No longer starts with a Pistol.
@@ -319,7 +320,7 @@ Elites in Pause Menu: https://steamcommunity.com/sharedfiles/filedetails/?id=303
 
 
 ~~ THANKS TO ~~
-Inschato, ArosRising, Hyphen-ated, and everyone else that's assisted with feedback, suggestions, or coding help!
+Inschato, ArosRising, Hyphen-ated, Pasha, and everyone else that's assisted with feedback, suggestions, or coding help!
 
 
 ~~ MOD INCOMPATABILITIES ~~
@@ -352,6 +353,13 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 - Contextual extra decimal place for low cooldowns.
 
 ~~ OTHER PONDERINGS ~~
+
+torch hitbox/swing arc is necessary
+
+possibly hit shiv a bit more in cooldown and/or range? (or t3/t4 base damage)
+
+Engineer -- try plank start w/o Wrench to test viability; if good, remove hammer and remove starting wrench
+
 
 Farmer tooltip should count how much harvesting gained
 

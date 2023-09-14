@@ -37,7 +37,7 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
 	
 	# Splits Lucky's passive from Baby Elephant
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "/main.gd")
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "main.gd")
 	
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
@@ -259,7 +259,7 @@ func _ready()->void:
 	temp.value = 9   # 10 (Attack Speed)
 
 	temp = load("res://items/all/cute_monkey/cute_monkey_data.tres")
-	temp.value = 32  # 25
+	temp.value = 34  # 25
 	temp.max_nb = 10 # 13 (Limit)
 	temp = load("res://items/all/cute_monkey/cute_monkey_effect_1.tres")
 	temp.value = 10  # 8 (Healing Proc Chance)
@@ -413,8 +413,11 @@ func _ready()->void:
 	temp = load("res://items/all/riposte/riposte_data.tres")
 	temp.value = 35  # 40
 	
-	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
-	temp.value = 43  # 40
+	temp = load("res://items/all/riposte/riposte_data.tres")
+	temp.value = 35  # 40
+
+	temp = load("res://items/all/ritual/ritual_data.tres")
+	temp.value = 56  # 60
 	
 	temp = load("res://items/all/pocket_factory/pocket_factory_effect_0.tres")
 	temp.value = 3   # 2 (Engineering)
@@ -1453,7 +1456,7 @@ func _ready()->void:
 	temp = load("res://items/characters/masochist/masochist_effect_3.tres")
 	temp.value = 15 # 20 (HP Regen)
 	temp = load("res://items/characters/masochist/masochist_effect_4.tres")
-	temp.value = 6 # 8 (Armor)
+	temp.value = 5 # 8 (Armor)
 	
 	# Mutant
 	temp = load("res://items/characters/mutant/mutant_data.tres")
