@@ -56,6 +56,17 @@ func update_sets()->void :
 				effect.apply()
 				active_set_effects.push_back([key, effect])
 
+
+# Slightly reduce the effect of armor
+func get_armor_coef(armor:int)->float:
+	var percent_dmg_taken = 10.0 / (10.0 + (abs(armor) / 1.6)) # Was 1.5
+
+	if armor < 0:
+		percent_dmg_taken = (1.0 - percent_dmg_taken) + 1.0
+	
+	return percent_dmg_taken
+
+
 # Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 func handle_explosion(key:String, pos:Vector2)->void :
 	if effects[key].size() > 0:

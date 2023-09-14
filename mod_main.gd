@@ -29,6 +29,7 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/weapon_service.gd")
 	
 	# Gives One-armed a 4-set Bonus for their weapon
+	# Slightly reduce the strength of armor
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
 	# (Adds new effects to RunData)
@@ -264,7 +265,7 @@ func _ready()->void:
 	temp.value = 10  # 8 (Healing Proc Chance)
 	
 	temp = load("res://items/all/duct_tape/duct_tape_data.tres")
-	temp.value = 16  # 25 
+	temp.value = 15  # 25 
 
 	temp = load("res://items/all/fertilizer/fertilizer_data.tres")
 	temp.value = 19  # 15
@@ -350,7 +351,7 @@ func _ready()->void:
 	temp.value = -14   # -12 (Range)
 	
 	temp = load("res://items/all/dangerous_bunny/dangerous_bunny_data.tres")
-	temp.value = 37  # 35	
+	##temp.value = 35  # 35	
 	temp.max_nb = 4  # 3
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/dangerous_bunny_dodge_malus.tres")
 	temp.effects.push_back(temp_2) # -2 Dodge
@@ -367,7 +368,7 @@ func _ready()->void:
 	temp.text_key = "NEW_EFFECT_BURNING_COOLDOWN_REDUCTION"
 
 	temp = load("res://items/all/gambling_token/gambling_token_data.tres")
-	temp.value = 50  # 60
+	temp.value = 52  # 60
 	temp = load("res://items/all/gambling_token/gambling_token_effect_1.tres")
 	temp.value = 10  # 8 (Dodge)
 	
@@ -389,12 +390,15 @@ func _ready()->void:
 	temp.value = 42  # 34
 
 	temp = load("res://items/all/medal/medal_data.tres")
-	temp.value = 58  # 55
+	temp.value = 60  # 55
 	temp = load("res://items/all/medal/medal_effect_5.tres")
 	temp.value = -3  # -4 (Crit%)
 	
 	temp = load("res://items/all/metal_detector/metal_detector_effect_4.tres")
 	temp.value = -4  # -5 (Damage%)
+	
+	temp = load("res://items/all/metal_plate/metal_plate_data.tres")
+	temp.value = 42  # 40
 	
 	temp = load("res://items/all/missile/missile_data.tres")
 	temp.value = 43  # 45
@@ -564,6 +568,9 @@ func _ready()->void:
 
 	temp = load("res://items/all/vigilante_ring/vigilante_ring_data.tres")
 	temp.value = 84  # 92
+	
+	temp = load("res://items/all/wheat/wheat_effect_3.tres")
+	temp.value = 13  # 10 (Harvesting)
 
 	temp = load("res://items/all/wisdom/wisdom_data.tres")
 	temp.value = 80  # 85
@@ -1000,7 +1007,7 @@ func _ready()->void:
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/3/torch_3_burning_data.tres")
-	temp.damage = 9    	 	# 8
+	temp.damage = 10   	 	# 8
 	temp.duration = 7  	  # 5
 	temp.spread = 1				# 0
 	temp = load("res://weapons/melee/torch/3/torch_3_data.tres")
@@ -1010,7 +1017,7 @@ func _ready()->void:
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/4/torch_4_burning_data.tres")
-	temp.damage = 15   		# 12
+	temp.damage = 17   		# 12
 	temp.duration = 9  		# 8
 	temp.spread = 1       # 0
 	temp = load("res://weapons/melee/torch/4/torch_4_data.tres")
@@ -1311,7 +1318,7 @@ func _ready()->void:
 	temp = load("res://items/upgrades/harvesting/1/harvesting_effect.tres")
 	temp.value = 4  # 5
 	temp = load("res://items/upgrades/harvesting/4/harvesting_4_effect.tres")
-	temp.value = 14 # 12
+	temp.value = 15 # 12
 	
 	# Luck
 	temp = load("res://items/upgrades/luck/2/luck_2_effect.tres")
@@ -1619,6 +1626,8 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/ranged/medical_gun/1/medical_gun_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 
 	# Explorer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
@@ -1752,6 +1761,8 @@ func _ready()->void:
 	# Lucky
 	temp = load("res://items/characters/lucky/lucky_data.tres")
 	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
+	temp.starting_weapons.push_back(temp_2)	
+	temp_2 = load("res://weapons/melee/torch/1/torch_data.tres")
 	temp.starting_weapons.push_back(temp_2)	
 	
 	# Mage

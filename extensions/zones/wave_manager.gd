@@ -5,7 +5,7 @@ func init(p_wave_timer:Timer, wave_data:Resource)->void :
 	wave_timer = p_wave_timer
 	current_wave_data = wave_data
 	###
-	var new_group_to_add = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/horde_group_magician.tres")
+	var new_group_to_add = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/horde_group_magician-spawner.tres")
 	horde_groups.push_back(new_group_to_add)
 	###
 	

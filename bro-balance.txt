@@ -11,6 +11,7 @@ Short Change Summary:
 ~Mechanics~
 Knockback should now never push enemies towards you.
 Melee weapons change Range more easily.
+Armor is slightly worse.
 Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), so it's easier to have a more mixed build.
 Base shop-rarity chances slightly lower; Luck impacts shop odds more; Luck Tier-2, 3, and 4 Level-ups better.
 Weaker Tier-4 Level-ups a bit stronger; Tier-1 Harvesting weaker.
@@ -47,6 +48,7 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 ~~ GENERAL CHANGES ~~
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
+* Armor is about 7% less effective (you now hit 50% reduction at 16 instead of 15). [This probably still leaves it as the strongest general stat, but now closer to its peers.]
 * Mixed Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
 * Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment 6%/2%/0.23% -> 5%/1.85%/0.23%; Base Max Chance for higher-tier equipment 60%/25%/8% -> 56.5%/24%/8.5%. Luck's impact on Tier-4 equipment is now 25% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). Base Max Chance is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck. (Negative Luck does not reduce the cap.) [Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
@@ -81,12 +83,12 @@ Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more to
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
 Wave 16: Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
 Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
-Wave 14 & 15 Horde: Added 6 single Magician spawns spread out of the last 2/3rds of the wave; Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
+Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
 
 
 ~~ LEVEL-UPS ~~
 * Luck: 5/10/15/20 -> 5/11/18/26
-* Harvesting Tier-1: 5->4; Tier-4: 12->14
+* Harvesting Tier-1: 5->4; Tier-4: 12->15
 * HP Regen Tier-4: 5->6
 * Engineering Tier-4: 5->6
 * Crit Chance Tier-4: 9->10
@@ -104,7 +106,7 @@ Baby Gecko: Price 18->16
 Broken Mouth: Price 25->26
 Coffee: +10% Attack Speed -> 9% 
 Cute Monkey: Price 25->32; Proc Chance 8%->10%; Limit 13->10
-Duct Tape: Price 25->16
+Duct Tape: Price 25->15
 Fertilizer: Price 15->19; Harvesting 8->7
 Glasses: Price 25->22
 Gummy Berserker: Price 25->24; 15 Range -> 19
@@ -125,15 +127,16 @@ Acid: Price 65->64; -4% Dodge -> 3%
 Blood Leech: Price 45->41; Harvesting -4 -> -3
 Campfire: Price 40->46; HP Regen 2 -> 3
 Cyclops Worm: -12 Range -> -14
-Dangerous Bunny: Price 35->37; No Downside -> -2% Dodge; Limit 3 -> 4
+Dangerous Bunny: No Downside -> -2% Dodge; Limit 3 -> 4
 Energy Bracelet: Price: 55->52; 4% Crit Chance -> 5%
 Eyes Surgery: New Additional Effect: Also adds +1 duration to all burn effects; -10 Range -> No Downside [Description will currently not adjust the duration bonus text if you have more than 1 Eyes Surgery, but the numbers on your burn weapons should show correctly.]
-Gambling Token: Price 60->50; 8% Dodge -> 10%
+Gambling Token: Price 60->52; 8% Dodge -> 10%
 Leather Vest: Price 45->50
 Little Frog: Price 50->45; +20% Pickup Range -> +35%; -5% Dodge -> -3%
 Lure: Price 34->42
-Medal: Price 55->58; -4% Crit Chance -> -3%
+Medal: Price 55->60; -4% Crit Chance -> -3%
 Metal Detector: -5% Damage -> -4%
+Metal Plate: Price 40->42
 Missile: Price 45->43; 10% Damage -> 11%
 Padding: Price: 45->35; -5% Speed -> -1%
 Piggy Bank: Price 40->43
@@ -171,6 +174,7 @@ Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from bei
 Toolbox: 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
 Vigilante Ring: Price 92->84
+Wheat: Harvesting 10->13
 Wisdom: Damage -20% -> -16%; Price 85->80
 Hunting Trophy: Price 55->52; Proc Chance 33% -> 25%; Limit 3->4
 
@@ -186,7 +190,7 @@ Explosive Shells: Explosion Damage +60% -> +50%; Explosion Size +15% -> +20%; -1
 Extra Stomach: Price 100->110
 Focus: Price 110->100; Attack Speed penalty per weapon -3% -> -4%
 Gnome: 10 Melee Damage -> 12; 10 Elemental Damage -> 8
-Heavy Bullets: Price 100->95; +10 Range -> +5% Crit Chance; -5% Crit Chance -> -35% Accuracy [See Ranged Weapons below for a few Accuracy tweaks mostly relevant if you have Heavy Bullets.]
+Heavy Bullets: Price 100->95; +10 Range -> +5% Crit Chance; -5% Crit Chance -> -35% Accuracy [See Ranged Weapons below for a few weapon Accuracy tweaks mostly relevant if you have Heavy Bullets.]
 Jet Pack: Price 100->95
 Lucky Coin: -2 Armor -> No Downside
 Mammoth: Price 130->135; -3% Speed -> -4%; HP Regen 5 -> 4
@@ -216,7 +220,7 @@ Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5 [Now fits in more sensib
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
 Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net.]
 Stick: Damage Scaling 100%(All) -> 80%/88%/95%/100%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
-Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/9x7/15x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
+Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/10x7/17x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
 Chain-gun: Long Reload Cooldown 2.04s -> 3.71s; Accuracy 80% -> 55% [For reference, White SMG is 70%.]
@@ -272,7 +276,7 @@ Chonky: Added Taser, Revolver; Removed Hand
 Crazy: Added Crossbow
 Cyborg: Removed Crossbow
 Demon: Added Wrench
-Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow
+Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow, Medical Gun
 Explorer: Added Hand, Ghost Axe, Jousting Lance
 Farmer: Added Slingshot, Thief Dagger, Bokken
 Fisher: Added Plank, Pruner, Scissors; Removed Screwdriver
@@ -286,7 +290,7 @@ King: Added Jousting Lance, Rocket Launcher
 Knight: Added Bokken, Pruner, Plank, Rock, Fist, Knife, Scissors, Cacti Club; Removed Spiky Shield
 Lich: Added Lightning Shiv
 Loud: Added Screwdriver; Removed Pruner, Revolver, Taser, Wand
-Lucky: Added Jousting Lance
+Lucky: Added Jousting Lance, Torch
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock
@@ -349,9 +353,11 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
-Possible Lucky weapons: Pruner, Torch?
+Farmer tooltip should count how much harvesting gained
 
-what does making Armor only 6% ehp instead of 6.66% look like?
+Renegade nerf of some sort - maybe +10% shop prices?
+
+Possible Lucky weapon: Pruner?
 
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 current robot arm rework maybe a bit overly similar to Gnome with Melee and Elemental both?  But maybe that's fine?
@@ -481,7 +487,9 @@ in func set_damage, new_value definition being defined as int before being round
 
 Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
  "the bug is whenever you switch between moving and not-moving and have any effect that changes any stat in those cases. Does not even have to be attack speed. So it should also happen with Barricade, Chameleon, Statue, Speedy, Jousting Lance"
- 
+
+Cyborg: Unique SFX when switching modes (rather than an already used sound)
+
 
 ~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
 Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4) [This is messy and changes the current spawn amounts significantly; it'd require kind of a weird rework to be implemented]
@@ -543,12 +551,11 @@ Magician HP and move speed slightly lower which will cover some of the increased
 * Turrets (and Wrenches spawning turrets) should track damage dealt.
 * Items should show both total damage and damage during the previous wave.
 * Piggy Bank should show materials saved for Entreprenuer (probably just a special case that makes it show difference from 0% instead of difference to 100%).
-Multitasker Weapons slot UI 2x3 -> 3x4??
-Cyborg: Unique SFX when switching modes (rather than an already used sound)
 Shiv bounce count text fix
 
 
 ~~~ MOD IDEAS ~~~
+Multitasker Weapons slot UI 2x3 -> 3x4??
 -> Lifesteal tracker mod
 -> Mod to make the HP above head bigger and always on? (maybe combine this with the louder pain sfx, all part of knowing when you're hit more clearly)
 Emphasize player hitbox more clearly so that weapons don't obscure it?  (is the circle even the true hitbox?)
