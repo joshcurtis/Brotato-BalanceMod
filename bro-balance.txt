@@ -54,7 +54,7 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
 * Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools (Gardens) are more precise. Knight's tooltip color-coded properly.
 * Stats now update properly on shop reroll (for Padding & Saver).
-* The reroll button in the level up menu will now be colored in on level ups that have a guaranteed rarity. Level 5, 10, 15, etc.
+* The reroll button for level-ups is now colored for levels that have a guaranteed rarity. (Level 5, 10, 15, etc.)
 Note: Altered and new descriptions will currently not display for non-English languages.
 
 
@@ -357,12 +357,14 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 possibly hit shiv a bit more in cooldown and/or range? (or t3/t4 base damage)
 
-Engineer -- try plank start w/o Wrench to test viability; if good, remove hammer and remove starting wrench
+Engineer -- try plank start w/o Wrench to test viability; if good, remove hammer option and remove starting wrench
+Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
+Engineer 10 Base/25% bonus -> 5 base/50% bonus?  (or similar, 8/30% or 6/40% or whatever, since 50% sounds too high)
 
 
 Farmer tooltip should count how much harvesting gained
 
-Renegade nerf of some sort - maybe +10% shop prices?
+Renegade nerf of some sort - maybe +10% shop prices? [Could be weird and like, Shop prices go up 2% each Wave or something?  To try and focus it more towards late game]
 
 Possible Lucky weapon: Pruner?
 
@@ -411,13 +413,11 @@ Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should p
 
 Fix the "x2" material popup to say the correct x## amount?
 
-Lucky's ability should show damage dealt. (Currently it tracks with Baby Elephant instead of itself)
-
 
 should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
 
 
-more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%
+more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%  ...or slightly more modest, 19%/20%/22%/24%/26%
 
 
 
@@ -449,11 +449,6 @@ Arms Dealer could have %Damage Tag and/or Economy Tag (Is Coupon extra good or b
 Should one-armed have Harvesting Tag? (Tho Bee can be rough)
 
 
-
-Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
-
-	
-
 Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that'd be only a half fix...]
 
 
@@ -467,8 +462,6 @@ Glutton melee damage tag is a bit weird but maybe fine.  (Kinda dumb for both Jo
 Should Renegade be tagged for Ranged Damage? [Already kinda strong enough without it, tho could potentially also get some minor nerf at the same time; would also make it slightly harder to find varied tier-1s]
 Should Sharp Bullet be part of the Ranged Damage tag set like Bandana is? (Or, piercing Tag could be given to Ranged & Engineering build types?)
 
-
-Engineer 10 Base/25% bonus -> 5 base/50% bonus?  (or similar, 8/30% or 6/40% or whatever, since 50% sounds too high)
 
 Tyler could have some Ele scaling, more lean into that Ele-Engi archetype the game wants to exist [Adjust based on dps tests]
 
