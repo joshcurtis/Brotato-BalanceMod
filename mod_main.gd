@@ -36,9 +36,6 @@ func _init(modLoader = ModLoader):
 	# (Adds new init effects)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
 	
-	# Splits Lucky's passive from Baby Elephant
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "main.gd")
-	
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
 	# Updates Streamer's tooltip for Pocket Factory
@@ -88,6 +85,9 @@ func _ready()->void:
 	var temp_2
 	var temp_find
 	
+	# Splits Lucky's passive from Baby Elephant
+	# in _ready so that it runs after changes from the TooltipTrackingFix Mod, overwriting them
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "main.gd")
 	
 	## TEXT KEYS ##
 	# Changed effects/text
@@ -814,6 +814,19 @@ func _ready()->void:
 	temp = load("res://items/all/alloy/alloy_data.tres")
 	temp.tags.push_back("stat_elemental_damage") # Added Elemental
 	
+	
+	## WEAPONS ##
+	# Replace weapon scenes
+	var weapon_scenes = {
+		"weapon_torch_1":"res://mods-unpacked/DarkTwinge-BalanceMod/weapons/torch.tscn",
+		"weapon_torch_2":"res://mods-unpacked/DarkTwinge-BalanceMod/weapons/torch.tscn",
+		"weapon_torch_3":"res://mods-unpacked/DarkTwinge-BalanceMod/weapons/torch.tscn",
+		"weapon_torch_4":"res://mods-unpacked/DarkTwinge-BalanceMod/weapons/torch.tscn"
+	}
+	for weapon in ItemService.weapons:
+	#	print(weapon.my_id)
+		if weapon.my_id in weapon_scenes.keys():
+			weapon.scene = load(weapon_scenes[weapon.my_id])	
 	
 	
 	## WEAPONS - MELEE ##

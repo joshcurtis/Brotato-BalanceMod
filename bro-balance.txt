@@ -221,7 +221,7 @@ Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5 [Now fits in more sensib
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
 Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.29/1.22 [Slightly slower attacks at all tiers, but the Range reduction makes tier-4 still slightly faster net.]
 Stick: Damage Scaling 100%(All) -> 80%/88%/95%/100%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
-Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/10x7/17x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
+Torch: Now has 1 Spread at tier 2/3/4 (like Snake); Larger hitbox [Now will actually hit enemies right on top of you like most weapons can]; Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/10x7/17x9 [Long burn duration alongside built-in spread to add additional utility and hopefully combo well with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
 Chain-gun: Long Reload Cooldown 2.04s -> 3.71s; Accuracy 80% -> 55% [For reference, White SMG is 70%.]
@@ -353,8 +353,6 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 - Contextual extra decimal place for low cooldowns.
 
 ~~ OTHER PONDERINGS ~~
-
-torch hitbox/swing arc is necessary
 
 possibly hit shiv a bit more in cooldown and/or range? (or t3/t4 base damage)
 
