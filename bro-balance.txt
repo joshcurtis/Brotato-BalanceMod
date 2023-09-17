@@ -134,7 +134,7 @@ Eyes Surgery: New Additional Effect: Also adds +1 duration to all burn effects; 
 Gambling Token: Price 60->52; 8% Dodge -> 10%
 Leather Vest: Price 45->50
 Little Frog: Price 50->45; +20% Pickup Range -> +35%; -5% Dodge -> -3%
-Lure: Price 34->42
+Lure: Price 34->39; HP Regeneration 3 -> 2
 Medal: Price 55->60; -4% Crit Chance -> -3%
 Metal Detector: -5% Damage -> -4%
 Metal Plate: Price 40->42
@@ -333,11 +333,9 @@ You are free to use concepts and code contained within elsewhere, ideally with a
 
 
 ~~ PLANNED ~~
-**Esty's Couch: Reworked, New Effects: Price 94; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +3 Ranged Damage; +3 Elemental Damage; +13% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
+**Esty's Couch: Reworked, New Effects: Price __; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +4 Ranged Damage; +4 Elemental Damage; +8% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
 
 Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verify)
-
-Fix Weapon Attack Speed Randomization to cap at +/- probably 60% (instead of 120% for most/240% for Multi) -- hits fewer weird atkspd cases where it floors cooldown such that it gets less beenfit from atkspd than it should
 
 *** FIX: Eyes Surgery's 2nd effect should be added as an Actual Effect rather than hacked into the existing one (which should also let the tooltip update properly to show how much duration has been increased based on how many Eyes Surgeries you have)
 	-> Eyes Surgery to up the duration for Blue Turrets (Currently doesn't show in tooltip at least)
@@ -349,11 +347,14 @@ TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need 
 
 Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only perm HP.
 
-~{Coded but not implemented due to Utils timing sadness :(}~
+~{Coded but not implemented due to Utils timing sadness :( }~
 - Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
 - Contextual extra decimal place for low cooldowns.
+- Bugfixed cooldown randomization so it isn't so extreme (especially on Multi-tasker).
 
 ~~ OTHER PONDERINGS ~~
+
+Shiv projectiles have lower base crit than the main weapons which is kinda weird. (Chart up some damage comparisons and maybe make them the same at at lowish amount?)
 
 possibly hit shiv a bit more in cooldown and/or range? (or t3/t4 base damage)
 
@@ -390,9 +391,6 @@ more isolated Shiv testing to see how often the bouce hits the same thing you ar
 
 Should crit chance tooltip mention explosions can crit?
 
-Giant's Belt double-logs damage numbers (itself and weapon) - fix to only show on belt
-	I think this is also true for Sausage, and furthermore Sausage claims its +1 burn damage even for ticks that would happen after an enemy is already dead?
-
 
 Mantis Elite slight buff too?
 
@@ -400,43 +398,29 @@ check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if 
 
 Lucky Coin still weird, not necessarily a problem but...
 
-
-Test if Fisher/etc. with -mats end up GAINING more from there being piles on the ground (reverse of Jack bug)
-
 Could there be a change to make it easier to find matching tier-2 weapons when you start with one like Potato? [Would this be ignored for King?]
-	Would prob. only be for Waves 3-5, but something like an extra luck roll for non-tier-1 if you have... a blue weapon?  or specifically pot thrower/sword/hammer/etc.?
+	Would prob. only be for Waves 2-5, but something like an extra luck roll for non-tier-1 if you have... a blue weapon?  or specifically pot thrower/sword/hammer/etc.?
 
 Burn currently doesn't apply to trees dying in 8 hits, but should -- possible solution would be having a separate check for burn to kill the tree after 5-6 ticks; alternatively could apply all duration ticks to the hit-count immediately when it gets hit (or half+1 or whatever seems sensible)
 
 
-Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should probably be consistent (tho there's the awkwardness of the long version being more accurate and the short version being better for the tiny text box)
-
-Fix the "x2" material popup to say the correct x## amount?
-
-
 should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
-
+	prob. bad but kinda interesting padding idea: gain (temporary) health based on how many materials you left on the ground the previous wave [This still does some infinite scaling, but not so much Saver.  (Doesn't strictly need to fit Saver tho)]
 
 more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%  ...or slightly more modest, 19%/20%/22%/24%/26%
 
 
-
-Sausage appears to be having some of its damage counted on weapons *instead*.  Also had Alien Eyes, Burn Turrents, Tyler, Eyes Surgery x3, regular turret if any of that matters
-
+Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
+ "the bug is whenever you switch between moving and not-moving and have any effect that changes any stat in those cases. Does not even have to be attack speed. So it should also happen with Barricade, Chameleon, Statue, Speedy, Jousting Lance"
 
 
 SMG tier-1 scaling worse (maybe do this moreso instead of the cooldown hit) [but learn properly how the scaling/rounding works;it's rude if 2 ranged damage doesn't increase]
 	Appears to be Ranged Damage is always truncated, and Damage% is rounded, and they are separate; could maybe combine them but then truncate, or? [Verify formula, then chart out a few sample breakpoint spots, probably just for early-game]
 
 
-
-
 can we show explosion size in the weapon info?
 
 maybe brawler should only be 40% atkspd
-
-Extra Stomach should work on Golem when not at max HP. (Currently they can only ever get 1 max hp at most per wave.)
-	This seemed like it'd be difficult to implement; would probably have like, a RunData variable to track if you've taken damage in a wave, and if not let golem eat?  Alternatively would have to make max_hp gains still heal you, but the healing seems to not know the source easily unless it can be gotten via the tracking stuff?
 
 
 Starters
@@ -470,8 +454,6 @@ Lucky Coin: Should this scale Luck off two axies instead of only Crit?  Seems SO
 
 "Items Price" Text -> "Shop Price" (Needs to work with Saver's effect as well, but probably should naturally?)
 
-Mines: Mildly bigger detection/activation radius? (~+25%?)
-
 Weapons that start with Lifesteal should show Lifesteal in red even if they're at 0%
 
 
@@ -485,10 +467,22 @@ Soldier: Melee Weapons sometimes don’t benefit from the +50% damage, which sho
 Structures When Reloading: When you resume the game after having quit, structures lose their ties to items or weapons. So if you have 2 Wrench, you can reload the game, and the structure is disconnected from the structure. So now you can combine those 2 wrenches, and 2 tier one turrets and one blue turret will spawn. Same goes with all other items and weapons that spawn structures.
 in func set_damage, new_value definition being defined as int before being rounded causes it to always truncate, or? (Supposedly this means rounding is different for projectile damage than for melee hits)
 
-Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
- "the bug is whenever you switch between moving and not-moving and have any effect that changes any stat in those cases. Does not even have to be attack speed. So it should also happen with Barricade, Chameleon, Statue, Speedy, Jousting Lance"
 
 Cyborg: Unique SFX when switching modes (rather than an already used sound)
+
+
+Fix the "x2" material popup to say the correct x## amount?
+
+Sausage appears to be having some of its damage counted on weapons *instead*.  Also had Alien Eyes, Burn Turrents, Tyler, Eyes Surgery x3, regular turret if any of that matters
+
+Extra Stomach should work on Golem when not at max HP. (Currently they can only ever get 1 max hp at most per wave.)
+	This seemed like it'd be difficult to implement; would probably have like, a RunData variable to track if you've taken damage in a wave, and if not let golem eat?  Alternatively would have to make max_hp gains still heal you, but the healing seems to not know the source easily unless it can be gotten via the tracking stuff?
+
+Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should probably be consistent (tho there's the awkwardness of the long version being more accurate and the short version being better for the tiny text box)
+
+Giant's Belt double-logs damage numbers (itself and weapon) - fix to only show on belt
+	I think this is also true for Sausage, and furthermore Sausage claims its +1 burn damage even for ticks that would happen after an enemy is already dead?
+
 
 
 ~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
@@ -537,9 +531,6 @@ Applying additional burn could cause damage tick to happen immediately (not my f
 
 * If you have acquired a combined 6+ items tagged Engineering or +Engineering Levelups, or if you are weilding 5+ Tool Weapons: the character is now treated as if they have the 'Engineering' Tag for the rest of the run.
 
-
-* 
-
 12 base: slightly more mummies
 
 Magician HP and move speed slightly lower which will cover some of the increased Helmet HP; value Helmet HP about half as much?
@@ -555,19 +546,19 @@ Shiv bounce count text fix
 
 
 ~~~ MOD IDEAS ~~~
+-> Clarity UI / Misc QoL:
+	HP above head bigger and always on
+	Louder 'take damage' sfx ; quieter weapons (esp SMG)
+	Cyborg: Unique SFX when switching modes (rather than an already used sound); Golem indicator for mode switch too
 Multitasker Weapons slot UI 2x3 -> 3x4??
 -> Lifesteal tracker mod
--> Mod to make the HP above head bigger and always on? (maybe combine this with the louder pain sfx, all part of knowing when you're hit more clearly)
-Emphasize player hitbox more clearly so that weapons don't obscure it?  (is the circle even the true hitbox?)
--> Mod to track deaths per character and per wave (where you died)
+Show the actual player hitbox instead of a circle at the bottom?
+Mod to track deaths per character and per wave (where you died)
 +XP Gain Value chart->mod [Chart needs to be finished first]
-Item Sort that puts active effects (e.g. Anvil) at the top?  Or maybe a border to highlight those items would be easier?
+Border highlight for items you care about paying attention to.  [Would this all be manual per-item, probably?  Apply to recurring effects like Anvil, separate color for damage items like Alien Eyes or Cyberball...]
 Show actual stat gains in parentheses for items/levels (E.g. Hunter nothing from Harvest, or extra HP on Chunky, etc.)
 	There is a mod that does this, but as a replace rather than a parenthetical: https://steamcommunity.com/sharedfiles/filedetails/?id=3019195689
--> Show effective actual scaling based on current? natural? cooldown (So instead of "100% Melee Damage Scaling" it'd show 125% for a weapon with a 0.8 cooldown) 
-Louder 'take damage' sfx ; quieter weapons (esp SMG)
-Extra digit for cooldowns
-Cyborg: Unique SFX when switching modes (rather than an already used sound); Golem indicator for mode switch too
+Show effective actual scaling based on current? natural? cooldown (So instead of "100% Melee Damage Scaling" it'd show 125% for a weapon with a 0.8 cooldown) 
 Can Elite projectiles be made a diff color?
 Loot Alien more stand out
 
@@ -575,33 +566,29 @@ Loot Alien more stand out
 ~~~ TO TEST~~~
 Test: Verify Incindiary Turret is a different kind of burn that stacks with regular burn (Edit turret page with this if so)
 Test: DPS variance for melee from more range (lots of speed to just circle a wave 9 or something)
-Test: Sweep weapons with Range, is it both sweep radius and distance or?
 Test: Snake meaingful effect (maybe Wand and Flamethrower?)
 Test: Landmines random clear (compare mat counts?)
 Does Metal Detector give you extra consumeables for Extra Stomach??
-Test Pruner/Garden exact timing; does 15s mean you only get 3 fruit?
-Do Landmines/Gardens have fractional second timers from Improved Tools?  [Seems to, but verify in-game, then add to wiki]
-More precise elite pattern breakpoints
+More precise elite pattern speed breakpoints
 Test money gained from gentle alien [Also on Pacifist, Jack specifically]
 Check if Jack gets extra consumeable drops to make up for their low enemy count (code implies there's no such effect)
-Test Tyler vs Laser Turrent at a few Engineering amounts
 Piercing med turret do anything?
-Sick is tagged for Lifesteal, but starts with so much they barely benefit I think?  (Test) -- could tag Attack Speed instead
 Sausage wtf didn't register any damage why 
 code look does blue turret actually stack with fire
 Cute MOnkey/Lucky proc one or multi times from a x2+ material?  [Edit Monkey to be 100% test at non-full HP]
-Does WanderBot delay enemy scripts?
 Peacock + Negative Armor stacking?
 Ugly Tooth doesn't get applied from Burn/Lucky?  (verify)
-Burn turrents round damage unlike almost everything else which trunactes?? [Is the tooltip a lie?? in-game damage diff??
 Check Riposte-killed enemies drop mats as normal
-Glutton: Does it not benefit from Crit Chance?  (supposed to be 3%/1.5x, but heard claims of max crit and still not critting most of the time) [Is this caused by Spicy Sauce?]
-""Why melee weapons try to explode twice? One in collision handling in _on_Hurtbox_area_entered of unit.gd and second in _on_Hitbox_hit_something of weapon.gd afterhitbox.hit_something(self, dmg_taken[1]) called and then hitbox emits "hit_something" signal (This obviously doesn't happen for ranged weapons because hitbox belongs to a projectile and not a weapon). And if this is intended why _on_Hitbox_hit_something do not connect explosion to on_weapon_hit_something and lose tracking of damage?""
-Test Tyler vs Laser Turret dps
 Does temp Attack Speed from Streamer/Soldier work for Claw/Hatchet?
 Negative speed can be positive with Shackles?
-Scythe damage effect goes up with other things like bloody hand right?
-Plastic Explosive effectiveness
+** Sick is tagged for Lifesteal, but starts with so much they barely benefit I think?  (Test) -- could tag Attack Speed instead [Could also lower their starting LS to 20%?]
+** Does WanderBot delay enemy scripts? (Maybe count how many script attacks an Elite does with several Bots and without)
+** Burn turrents round damage unlike almost everything else which trunactes?? [Is the tooltip a lie?? in-game damage diff??
+** ""Why melee weapons try to explode twice? One in collision handling in _on_Hurtbox_area_entered of unit.gd and second in _on_Hitbox_hit_something of weapon.gd afterhitbox.hit_something(self, dmg_taken[1]) called and then hitbox emits "hit_something" signal (This obviously doesn't happen for ranged weapons because hitbox belongs to a projectile and not a weapon). And if this is intended why _on_Hitbox_hit_something do not connect explosion to on_weapon_hit_something and lose tracking of damage?""
+** Test Tyler vs Laser Turret dps, maybe at 0 engineering and 30 (by themselves, and also in normalish clearing ~80% scenario)
+** Plastic Explosive effectiveness (how much better are we killing in both an extreme case e.g. only one explosive against too many enemies, and also how much better in a killing ~80% scenario)
+Test if Fisher/etc. with -mats end up GAINING more from there being piles on the ground (reverse of Jack bug)
+
 
 
 ~~5 Blue SMGs + 1 White, 60% AtkSpd, 60% Dmg, 10 RangedDamage, 10% LS, Wave 13

@@ -58,11 +58,9 @@ func _init(modLoader = ModLoader):
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
-	
-	
+		
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
-	
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -81,7 +79,11 @@ func _init(modLoader = ModLoader):
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/ranged_weapon_stats.gd")
 	#- Hijacking this as a middleground to activate scripts at the right time is a neat idea; may be necessary even when using range_weapon_stats
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/menu_data.gd")
-	
+
+	#!# Doesn't work on live
+	# Fixes weapon randomization so the cooldown effect isn't so extreme, especially on Multi-tasker
+	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon.gd")
+		
 
 
 func _ready()->void:
@@ -391,7 +393,9 @@ func _ready()->void:
 	temp.value = -3  # -5 (Dodge)
 
 	temp = load("res://items/all/lure/lure_data.tres")
-	temp.value = 42  # 34
+	temp.value = 39  # 34
+	temp = load("res://items/all/lure/lure_effect_1.tres")
+	temp.value = 2   # 3 (HP Regen)
 
 	temp = load("res://items/all/medal/medal_data.tres")
 	temp.value = 60  # 55
