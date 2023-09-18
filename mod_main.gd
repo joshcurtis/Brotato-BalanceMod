@@ -257,6 +257,7 @@ func _ready()->void:
 
 	temp = load("res://items/all/baby_gecko/baby_gecko_data.tres")
 	temp.value = 16   # 18
+	temp.tags.push_back("stat_range")
 	
 	temp = load("res://items/all/broken_mouth/broken_mouth_data.tres")
 	temp.value = 26   # 25
@@ -372,13 +373,15 @@ func _ready()->void:
 	temp.effects.erase(temp_2) # Remove Range Penalty
 	temp = load("res://items/all/eyes_surgery/eye_surgery_effect_1.tres")
 	temp.text_key = "NEW_EFFECT_BURNING_COOLDOWN_REDUCTION"
-
+	
 	temp = load("res://items/all/gambling_token/gambling_token_data.tres")
 	temp.value = 52  # 60
 	temp = load("res://items/all/gambling_token/gambling_token_effect_1.tres")
 	temp.value = 10  # 8 (Dodge)
 	
 	# Garden
+	temp = load("res://items/all/garden/garden_data.tres")
+	temp.value = 47  # 50
 	temp = load("res://items/all/garden/garden_effect_1.tres")
 	temp.text_key = "new_effect_garden"
 	
@@ -505,6 +508,9 @@ func _ready()->void:
 	temp.value = 60 # 70
 	temp = load("res://items/all/chameleon/chameleon_effect_2.tres")
 	temp.value = -3   # -4 (%Damage)
+	
+	temp = load("res://items/all/community_support/community_support_data.tres")
+	temp.tags.push_back("stat_attack_speed")
 
 	temp = load("res://items/all/fairy/fairy_data.tres")
 	temp.value = 90 # 85
@@ -525,15 +531,25 @@ func _ready()->void:
 
 	temp = load("res://items/all/glass_cannon/glass_cannon_data.tres")
 	temp.value = 68  # 75
-
+	
+	temp = load("res://items/all/hunting_trophy/hunting_trophy_data.tres")
+	temp.value = 52  # 55
+	temp.max_nb = 4  # 3 (Limit)
+	temp = load("res://items/all/hunting_trophy/hunting_trophy_effect_1.tres")
+	temp.value = 25  # 33 (Proc Chance)
+	
+	temp = load("res://items/all/improved_tools/improved_tools_data.tres")
+	temp.tags.push_back("stat_attack_speed")
+	
 	temp = load("res://items/all/lucky_charm/lucky_charm_data.tres")
 	temp.value = 72  # 75
 
 	temp = load("res://items/all/poisonous_tonic/poisonous_tonic_effect_3.tres")
-	temp.value = 17  # 15 (Range)
+	temp.value = 18  # 15 (Range)
 
 	temp = load("res://items/all/power_generator/power_generator_data.tres")
 	temp.value = 72  # 65
+	temp.tags.push_back("stat_percent_damage")
 	temp_2 = load("res://items/all/power_generator/power_generator_effect_2.tres")
 	temp.effects.erase(temp_2) # Remove -Damage%
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/power_generator_2_max_hp_malus.tres")
@@ -547,6 +563,8 @@ func _ready()->void:
 	temp = load("res://items/all/shmoop/shmoop_effect_2.tres")
 	temp.value = 3   # 2 (HP Regen)
 	
+	temp = load("res://items/all/silver_bullet/silver_bullet_data.tres")
+	temp.tags.push_back("stat_percent_damage")
 	temp = load("res://items/all/silver_bullet/silver_bullet_effect_1.tres")
 	temp.text_key = "new_effect_damage_against_bosses"
 	
@@ -568,7 +586,6 @@ func _ready()->void:
 	temp = load("res://items/all/tardigrade/tardigrade_effect_1.tres")
 	temp.text_key = "new_effect_hit_protection"
 	
-
 	temp = load("res://items/all/toolbox/toolbox_effect_1.tres")
 	temp.value = 7   # 6 (Engineering)
 	temp = load("res://items/all/toolbox/toolbox_effect_2.tres")
@@ -576,7 +593,10 @@ func _ready()->void:
 	
 	temp = load("res://items/all/tractor/tractor_effect_1.tres")
 	temp.value = 38  # 40 (Harvesting)
-
+	
+	temp = load("res://items/all/triangle_of_power/triangle_of_power_data.tres")
+	temp.tags = [ "stat_percent_damage" ]
+	
 	temp = load("res://items/all/vigilante_ring/vigilante_ring_data.tres")
 	temp.value = 84  # 92
 	
@@ -587,12 +607,6 @@ func _ready()->void:
 	temp.value = 80  # 85
 	temp = load("res://items/all/wisdom/wisdom_effect_2.tres")
 	temp.value = -16 # -20 (Damage)
-
-	temp = load("res://items/all/hunting_trophy/hunting_trophy_data.tres")
-	temp.value = 52  # 55
-	temp.max_nb = 4  # 3 (Limit)
-	temp = load("res://items/all/hunting_trophy/hunting_trophy_effect_1.tres")
-	temp.value = 25  # 33 (Proc Chance)
 
 	
 	## TIER-4 ITEMS ##
@@ -650,6 +664,7 @@ func _ready()->void:
 	# Heavy Bullets
 	temp = load("res://items/all/heavy_bullets/heavy_bullets_data.tres")
 	temp.value = 95  # 100
+	temp.tags = [ "stat_ranged_damage", "stat_percent_damage", "stat_crit_chance" ]
 	temp_2 = load("res://items/all/heavy_bullets/heavy_bullets_effect_5.tres")
 	temp.effects.erase(temp_2)		 # -5% Crit -v
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/heavy_bullets_accuracy_malus.tres")
@@ -678,7 +693,11 @@ func _ready()->void:
 	# Medikit
 	temp = load("res://items/all/medikit/medikit_effect_1.tres")
 	temp.value = 4  # 10 (HP Regen)
-
+	
+	# Octopus
+	temp = load("res://items/all/octopus/octopus_data.tres")
+	temp.tags.push_back("stat_hp_regeneration")
+	
 	# Potato
 	temp = load("res://items/all/potato/potato_data.tres")
 	temp.value = 100 # 95
@@ -908,14 +927,38 @@ func _ready()->void:
 	temp.max_range = 135 # 125	
 	
 	# Lightning Shiv
+	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_stats.tres")
+	##temp.damage = 3      # 3
+	temp.crit_chance = 4 # 5
+	temp.max_range = 135 # 150
+	temp.cooldown = 28   # 27
 	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_projectile.tres")
 	temp.damage = 4		   # 5
+	temp.crit_chance = 4 # 3
+	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_2_stats.tres")
+	temp.damage = 5      # 6
+	temp.crit_chance = 6 # 10
+	temp.max_range = 135 # 150
+	temp.cooldown = 23   # 22
 	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_projectile_2.tres")
 	temp.damage = 6		   # 8
+	temp.crit_chance = 6 # 3
+	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_3_stats.tres")
+	temp.damage = 7      # 9
+	temp.crit_chance = 7 # 15
+	temp.max_range = 135 # 150
+	temp.cooldown = 19   # 18
 	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_projectile_3.tres")
 	temp.damage = 9		   # 12
+	temp.crit_chance = 7 # 3
+	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_4_stats.tres")
+	temp.damage = 10     # 15
+	temp.crit_chance = 8 # 15
+	temp.max_range = 135 # 150
+	temp.cooldown = 14   # 13
 	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_projectile_4.tres")
 	temp.damage = 13	   # 15
+	temp.crit_chance = 8 # 3
 	
 	# Plank
 	temp = load("res://weapons/melee/plank/1/plank_exploding_effect.tres")
@@ -936,8 +979,13 @@ func _ready()->void:
 	# Plasma Sledge (Plasma Sledgehammer)
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_data.tres")
 	temp.name = "Plasma Sledge"
+	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_effect.tres")
+	temp.scale = 1.1     # 1.0
+	temp.chance = 0.33   # 0.25
 	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_data.tres")
 	temp.name = "Plasma Sledge"
+	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_effect.tres")
+	temp.scale = 1.3     # 1.25
 	
 	# Rock
 	temp = load("res://weapons/melee/rock/1/rock_stats.tres")
@@ -1496,11 +1544,15 @@ func _ready()->void:
 	temp_2 = load("res://items/characters/ranger/ranger_effect_3.tres")
 	temp.effects.erase(temp_2) # Remove starting Pistol
 	
+	# Soldier
+	temp = load("res://items/characters/soldier/soldier_effect_3.tres")
+	temp.value = 150 # 200 (Pickup Range)
+	
 	# Speedy
 	temp = load("res://items/characters/speedy/speedy_effect_1.tres")
-	temp.value = 25 # 30 (Speed)
+	temp.value = 25  # 30 (Speed)
 	temp = load("res://items/characters/speedy/speedy_effect_4.tres")
-	temp.value = -2 # -3 (Armor)
+	temp.value = -2  # -3 (Armor)
 	
 	# Streamer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
