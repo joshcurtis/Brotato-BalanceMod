@@ -208,7 +208,7 @@ Potato: Price 95->100
 Regeneration Potion: HP Regeneration 3 -> 4
 Retromation's Hoodie: Price 100->110
 Ricochet: All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower).
-Robot Arm: [Reworked] Price 88; +7 Engineering; +4 Elemental Damage; +4 Melee Damage; +4% Attack Speed; +25% Pickup Range; -7 Luck; Tagged: Engineering, Elemental Damage [Previously this item was way too similar to Exoskeleton.]
+Robot Arm: [Reworked] Price 90; Adds an additional weapon slot; -3 HP Renegeration  [Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]
 Sifd's Relic: Price 100->70
 Spider: 6% Attack Speed Per Different Weapon -> 8% [Thematic!]
 Wolf Helmet: Price 90->95
@@ -376,9 +376,6 @@ stat screen now delayed a buy on level-ups?  probably a recent change?
 
 Wave 14 first ~12s should be slightly more dense
 
-Robot Arm could give you an extra weapon slot  [Does it need to be unique?  or just like Limit 6?]
-	see if can make multi-tasker UI better first, and then switch to that ui any time weapon slots is >6?
-
 Engineer -- try plank start w/o Wrench to test viability; if good, remove hammer option and remove starting wrench
 Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
 Engineer 10 Base/25% bonus -> 8/30% or 6/40% or whatever, maybe? (Ehhh)
@@ -393,7 +390,6 @@ Renegade nerf of some sort - maybe +10% shop prices? [Could be weird and like, S
 Possible Lucky weapon: Pruner?
 
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
-current robot arm rework maybe a bit overly similar to Gnome with Melee and Elemental both?  But maybe that's fine?
 
 
 loud could also guarantee horde waves?
@@ -501,6 +497,8 @@ Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should p
 Giant's Belt double-logs damage numbers (itself and weapon) - fix to only show on belt
 	I think this is also true for Sausage, and furthermore Sausage claims its +1 burn damage even for ticks that would happen after an enemy is already dead?
 
+Multitasker Weapons slot UI 2x3 -> 3x4??
+	Make it switch whenever you have more than 6 weapons to also work for Robot Arm
 
 
 ~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
@@ -568,7 +566,6 @@ Shiv bounce count text fix
 	HP above head bigger and always on
 	Louder 'take damage' sfx ; quieter weapons (esp SMG)
 	Cyborg: Unique SFX when switching modes (rather than an already used sound); Golem indicator for mode switch too
-Multitasker Weapons slot UI 2x3 -> 3x4??
 -> Lifesteal tracker mod
 Show the actual player hitbox instead of a circle at the bottom?
 Mod to track deaths per character and per wave (where you died)

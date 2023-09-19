@@ -774,25 +774,21 @@ func _ready()->void:
 	
 	# Robot Arm - Reworked
 	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
-	temp.value = 88
-	temp.tags = [ "stat_engineering", "stat_elemental_damage" ]
-	temp = load("res://items/all/robot_arm/robot_arm_effect_0.tres")
-	temp.key = "stat_engineering"
-	temp.value = 7
-	temp = load("res://items/all/robot_arm/robot_arm_effect_1.tres")
-	temp.key = "stat_elemental_damage"
-	temp.value = 4
-	temp = load("res://items/all/robot_arm/robot_arm_effect_2.tres")
-	temp.key = "stat_melee_damage"
-	temp.value = 4
-	temp = load("res://items/all/robot_arm/robot_arm_effect_3.tres")
-	temp.key = "stat_attack_speed"
-	temp.value = 4
-	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_4_pickup.tres")
-	temp.effects.push_back(temp_2) # 25% Pickup
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_5_luck_malus.tres")
-	temp.effects.push_back(temp_2) # -7 Luck
+	temp.value = 90
+	temp.tags = [ ]
+	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_0.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_1.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_2.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_3.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_extra_slot.tres")
+	temp.effects.push_back(temp_2)  # Extra Weapon Slot
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_regen_malus.tres")
+	temp.effects.push_back(temp_2)  # -3 HP Regen
+
 	
 	# Sifd's Relic
 	temp = load("res://items/all/sifds_relic/sifds_relic_data.tres")
