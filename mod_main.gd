@@ -58,9 +58,13 @@ func _init(modLoader = ModLoader):
 
 	# Adds a decimal for Garden cooldown with Improved Tools
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
-		
+	
+	# Fix Lightning Shiv bounce count
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/weapons/projectiles_on_hit_effect.gd")
+	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
+
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -261,6 +265,9 @@ func _ready()->void:
 	
 	temp = load("res://items/all/broken_mouth/broken_mouth_data.tres")
 	temp.value = 26   # 25
+
+	temp = load("res://items/all/cake/cake_data.tres")
+	temp.value = 16   # 15
 	
 	temp = load("res://items/all/coffee/coffee_effect_1.tres")
 	temp.value = 9   # 10 (Attack Speed)
@@ -311,12 +318,12 @@ func _ready()->void:
 	temp.value = -7  # -5 (Range)
 
 	temp = load("res://items/all/mutation/mutation_data.tres")
-	temp.value = 17  # 25
+	temp.value = 16  # 25
 	temp = load("res://items/all/mutation/mutation_effect_3.tres")
 	temp.value = -2  # -3 (Speed)
 
-	temp = load("res://items/all/plant/plant_data.tres")
-	temp.value = 13  # 10
+	temp = load("res://items/all/plant/plant_effect_1.tres")
+	temp.value = 2   # 3 (HP Regen)
 
 	temp = load("res://items/all/propeller_hat/propeller_hat_data.tres")
 	temp.value = 26  # 28
@@ -924,37 +931,45 @@ func _ready()->void:
 	
 	# Lightning Shiv
 	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_stats.tres")
-	##temp.damage = 3      # 3
-	temp.crit_chance = 4 # 5
-	temp.max_range = 135 # 150
-	temp.cooldown = 28   # 27
+	##temp.damage = 3       # 3
+	temp.crit_chance = 0.04 # 0.05
+	temp.max_range = 135    # 150
+	temp.cooldown = 28      # 27
 	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_projectile.tres")
-	temp.damage = 4		   # 5
-	temp.crit_chance = 4 # 3
+	temp.damage = 4		      # 5
+	temp.crit_chance = 0.04 # 0.03
 	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_2_stats.tres")
-	temp.damage = 5      # 6
-	temp.crit_chance = 6 # 10
-	temp.max_range = 135 # 150
-	temp.cooldown = 23   # 22
+	temp.damage = 5         # 6
+	temp.crit_chance = 0.06 # 0.1
+	temp.max_range = 135    # 150
+	temp.cooldown = 23      # 22
 	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_projectile_2.tres")
-	temp.damage = 6		   # 8
-	temp.crit_chance = 6 # 3
+	temp.damage = 6		      # 8
+	temp.crit_chance = 0.06 # 0.03
 	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_3_stats.tres")
-	temp.damage = 7      # 9
-	temp.crit_chance = 7 # 15
-	temp.max_range = 135 # 150
-	temp.cooldown = 19   # 18
+	temp.damage = 7         # 9
+	temp.crit_chance = 0.07 # 0.15
+	temp.max_range = 135    # 150
+	temp.cooldown = 19      # 18
 	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_projectile_3.tres")
-	temp.damage = 9		   # 12
-	temp.crit_chance = 7 # 3
+	temp.damage = 9		      # 12
+	temp.crit_chance = 0.07 # 0.03
 	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_4_stats.tres")
-	temp.damage = 10     # 15
-	temp.crit_chance = 8 # 15
-	temp.max_range = 135 # 150
-	temp.cooldown = 14   # 13
+	temp.damage = 10        # 15
+	temp.crit_chance = 0.08 # 0.15
+	temp.max_range = 135    # 150
+	temp.cooldown = 14      # 13
 	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_projectile_4.tres")
-	temp.damage = 13	   # 15
-	temp.crit_chance = 8 # 3
+	temp.damage = 13	      # 15
+	temp.crit_chance = 0.08 # 0.03
+	temp = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_effect_1.tres")
+	temp.key = "NEW_EFFECT_LIGHTNING_ON_HIT"
+	temp = load("res://weapons/melee/lightning_shiv/2/lightning_shiv_2_effect_1.tres")
+	temp.key = "NEW_EFFECT_LIGHTNING_ON_HIT"
+	temp = load("res://weapons/melee/lightning_shiv/3/lightning_shiv_3_effect_1.tres")
+	temp.key = "NEW_EFFECT_LIGHTNING_ON_HIT"
+	temp = load("res://weapons/melee/lightning_shiv/4/lightning_shiv_4_effect_1.tres")
+	temp.key = "NEW_EFFECT_LIGHTNING_ON_HIT"
 	
 	# Plank
 	temp = load("res://weapons/melee/plank/1/plank_exploding_effect.tres")
@@ -1056,12 +1071,14 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/1/torch_stats.tres")
 	##temp.damage = 1    		# 1
 	##temp.max_range = 200  # 175
+	temp.knockback = 25   # 20
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/1/torch_burning_data.tres")
 	temp.damage = 4    		# 3
 	temp.duration = 4  		# 3
 	temp = load("res://weapons/melee/torch/2/torch_2_stats.tres")
 	temp.damage = 2    		# 1
+	temp.knockback = 25   # 20
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/2/torch_2_burning_data.tres")
@@ -1072,6 +1089,7 @@ func _ready()->void:
 	temp.effects.append(spread_text_effect)
 	temp = load("res://weapons/melee/torch/3/torch_3_stats.tres")
 	temp.damage = 2    		# 1
+	temp.knockback = 25   # 20
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/3/torch_3_burning_data.tres")
@@ -1082,6 +1100,7 @@ func _ready()->void:
 	temp.effects.append(spread_text_effect)
 	temp = load("res://weapons/melee/torch/4/torch_4_stats.tres")
 	temp.damage = 4   	  # 1
+	temp.knockback = 25   # 20
 	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/4/torch_4_burning_data.tres")
@@ -1301,12 +1320,12 @@ func _ready()->void:
 	# Wand
 	temp = load("res://weapons/ranged/wand/1/wand_stats.tres")
 	temp.cooldown = 38 # 40
-	temp.knockback = 7 # 10
+	temp.knockback = 4 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.6 ] ] # 0.5
 	temp = load("res://weapons/ranged/wand/2/wand_2_stats.tres")
 	temp.damage = 2    # 1
 	temp.cooldown = 34 # 35
-	temp.knockback = 7 # 10
+	temp.knockback = 4 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.75 ] ]	# 0.65
 	temp = load("res://weapons/ranged/wand/2/wand_2_burning_data.tres")
 	temp.damage = 8    # 5
@@ -1314,14 +1333,14 @@ func _ready()->void:
 	temp = load("res://weapons/ranged/wand/3/wand_3_stats.tres")
 	temp.damage = 3    # 1
 	temp.cooldown = 29 # 30
-	temp.knockback = 7 # 10
+	temp.knockback = 4 # 10
 	temp.scaling_stats = [ [ "stat_elemental_damage", 0.85 ] ]	# 0.8
 	temp = load("res://weapons/ranged/wand/3/wand_3_burning_data.tres")
 	temp.damage = 12   # 8
 	temp.duration = 4  # 5	
 	temp = load("res://weapons/ranged/wand/4/wand_4_stats.tres")
 	temp.damage = 4    # 1
-	temp.knockback = 7 # 10
+	temp.knockback = 4 # 10
 	temp = load("res://weapons/ranged/wand/4/wand_4_burning_data.tres")
 	temp.damage = 16   # 12
 	temp.duration = 5  # 6	
@@ -1493,9 +1512,9 @@ func _ready()->void:
 	
 	# Lucky
 	temp = load("res://items/characters/lucky/lucky_effect_1.tres")
-	temp.value = 70 # 100 (Starting Luck)
+	temp.value = 75 # 100 (Starting Luck)
 	temp = load("res://items/characters/lucky/lucky_effect_2.tres")
-	temp.value = 50 # 25 (+% Luck Modificaitons)
+	temp.value = 40 # 25 (+% Luck Modificaitons)
 	temp = load("res://items/characters/lucky/lucky_effect_4.tres")
 	temp.value = -50 # -60 (Attack Speed)
 	# Tracks Lucky's damage directly, split from Baby Elephant

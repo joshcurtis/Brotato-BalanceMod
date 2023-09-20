@@ -20,3 +20,4 @@ NEW_EFFECT_CONVERT_STAT_TEMP_HALF_WAVE,{0} of {1} temporarily converts to {2} ha
 BM_ENEMY_CHARGE_SPEED,{0} Enemy Charge Speed
 NEW_EFFECT_MIN_WEAPON_TIER,You are only offered [color=#00ff00]Tier II[/color] weapons and above
 BM_EFFECT_EXTRA_WEAPON_SLOT_LIMIT,You can equip an additional weapon
+NEW_EFFECT_LIGHTNING_ON_HIT,Hitting an enemy spawns a lightning projectile that deals {1} ({3}) damage and bounces an additional {2} time(s)
