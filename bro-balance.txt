@@ -1,44 +1,44 @@
 ~Known Issues~
-* Tooltips for Power Generator & King aren't entirely accurate; see each entry below for details.
+* Tooltip for King isn't entirely accurate; see entry below for details.
 
 ~~ OVERVIEW ~~
 Aiming to allow more options (weapons, items, level-ups, etc.) to feel worth using more often, and give less free power from lucking into the strongest things. Equipment & Characters are *not* intended to be perfectly equal to each other in strength, but fewer situations should be 'free' or 'always-pick'.
 
-Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun. Modest mechanical changes to make the Range stat more meaningful, knockback less frustrating, luck more valuable, and mixed-builds easier to manage.
+Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters (and specific character+weapon starts) should feel frustrating or unfun. Modest mechanical changes to make the Range stat more meaningful, knockback less frustrating, Luck more valuable, and mixed-builds easier to manage.
 
 Short Change Summary:
 
 ~Mechanics~
-Knockback should now never push enemies towards you.
+Knockback now never pushes enemies towards you.
 Melee weapons change Range more easily.
 Armor is slightly worse.
 Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), so it's easier to have a more mixed build.
-Base shop-rarity chances slightly lower; Luck impacts shop odds more; Luck Tier-2, 3, and 4 Level-ups better.
+Base shop-rarity chances slightly lower; Luck impacts shop odds more; Tier 2-4 Luck Level-ups better.
 Weaker Tier-4 Level-ups a bit stronger; Tier-1 Harvesting weaker.
 All explosions can now crit.
-Several tooltips cleaned up to be more clear & character descriptions take up less room. Additional Quality of Life features such as icons for relevant Fairy items.
+Several tooltips cleaned up to be more clear & character descriptions take up less room. Additional Quality of Life features such as icons for relevant Fairy & King items.
 
 ~Weapons~
-More weapons are worth using: Torch, Wand, Cacti Club, Plank, Screwdriver, Crossbow, Sniper Rifle all receive relevant buffs; Spear, SMG, Lightning Shiv, Flamethrower, and Stick receive nerfs.
-Rock, Pistol, Chopper, Hatchet, Scissors, Medical Gun, Potato Thrower, Plasma Sledge receive minor buffs; Flaming Brass Knuckles, Chain-gun, and Nuclear Launcher receive minor nerfs.
-Lightning Shiv & Sniper Rifle projectiles now have identical Crit Chance & Crit Damage as the main hit has. Fixed several item tags (which make certain characters more likely to find specific items).
+More weapons are worth using: Torch, Wand, Plank, Crossbow, Cacti Club, Screwdriver, and Sniper Rifle all receive relevant buffs; Spear, SMG, Lightning Shiv, Flamethrower, and Stick receive nerfs.
+Rock, Pistol, Chopper, Hatchet, Scissors, Medical Gun, Potato Thrower, and Plasma Sledge receive minor buffs; Flaming Brass Knuckles, Nuclear Launcher, and Chain-gun receive minor nerfs.
+Lightning Shiv & Sniper Rifle projectiles now have the same Crit Chance & Crit Damage as the main hit. Fixed several item tags (which make certain characters more likely to find appropriate items).
 Hand partially reworked to make tier-3 and 4 worth buying.
 
 ~Items~
 Tons of items receive small buffs or nerfs: overall more items are worth buying and some of the strongest give less power for their cost. Note that the goal is not to make them all equally strong - there is still plenty of variance and build-specific decision-making. 
-Some notable highlights: Snail now also slows enemy charges. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Candle is adjusted to have a lower price to be more viable for non-Elemental builds that want fewer enemies. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Esty's Couch and Robot Arm have been fully reworked.
+Some notable highlights: Snail now also slows enemy charges. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Candle is cheaper, and thus more viable for non-Elemental builds that want fewer enemies. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Esty's Couch and Robot Arm have been fully reworked.
 
 ~Characters~
-As with items, the goal is not for characters to be equal strength, as it is more interesting and fun for them to be varied. The idea is to simply compress the range a little bit so the easiest options are a little less 'free' and the hardest are less frustrating/punishing. (For example, Jack is buffed and Masochist is nerfed, but Masochist is still a much easier character.)
+As with items, the goal is not for characters to be equal strength, as it is more interesting and fun for them to be varied. Instead, we compress the difference from top to bottom a little bit so the easiest options are less 'free' and the hardest are less frustrating/punishing. (For example, Jack is buffed and Masochist is nerfed, but Masochist is still a much easier character.)
 * Jack, Farmer, and One-armed receive modest buffs.
 * Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), and Loud receive modest nerfs.
 * Artificer can now do base damage with Tools.
-* Mage can now utilize and Engineering build (turrets causing burn via Sausage).
+* Mage can now run an Engineering build (turrets causing burn via Sausage).
 * Several characters have more sensible tagging (items they are favored to find), e.g. Streamer is now more likely to find structures. Streamer also now gets +2 Armor from Pocket Factory (instead of nothing).
 * Starting weapons overhauled to make more sense and to be more fun for random-weapon runs, with several nonsense picks removed and many new appropriate options added.
 
 ~Enemies & Waves~
-Smiley, Hivemind/Colossus, and Mother Elites nerfed; Gargoyle, Monk, and Rhino Elites buffed.
+Smiley/Croc, Hivemind/Colossus, and Mother Elites nerfed; Gargoyle, Monk, and Rhino Elites buffed.
 Loot Goblins are easier to kill early.
 Helmet enemies have more HP.
 Wave 14 slightly easier; Wave 16 harder. Wave 14/15 Horde waves harder.
@@ -48,12 +48,12 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 !~--~FULL CHANGELOG~--~!
 ~~ GENERAL CHANGES ~~
 * Range: Melee weapons now scale at 2/3 of your Range stat instead of 1/2.
-* Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player.
+* Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player. (Most enemies that were immune to knockback are now slightly vulnerable to it, see below.)
 * Armor is about 7% less effective (you now hit 50% reduction at 16 instead of 15). [This probably still leaves it as the strongest general stat, but now closer to its peers.]
 * Mixed Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with. Also note the calculation for exact-weapon-match is currently unchanged.]
-* Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment 6%/2%/0.23% -> 5%/1.85%/0.23%; Base Max Chance for higher-tier equipment 60%/25%/8% -> 56.5%/24%/8.5%. Luck's impact on Tier-4 equipment is now 25% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). Base Max Chance is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck. (Negative Luck does not reduce the cap.) [Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]
+* Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment reduced: 6%/2%/0.23% -> 5%/1.85%/0.23%. Base Max Chance for higher-tier equipment -/60%/25%/8% -> -/56.5%/24%/8.5%; this max is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck (Negative Luck does not reduce the cap). Luck's impact on Tier-4 equipment is now 25% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). [Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]
 * For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
-* Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools (Gardens) are more precise. Knight's tooltip color-coded properly. Fixed Lightning Shiv's bounce count.
+* Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools + Gardens are more precise. Knight's tooltip color-coded properly. Fixed Lightning Shiv's bounce count.
 * Stats now update properly on shop reroll (for Padding & Saver).
 * The reroll button for level-ups is now colored for levels that have a guaranteed rarity. (Level 5, 10, 15, etc.)
 Note: Altered and new descriptions will currently not display for non-English languages.
@@ -61,7 +61,7 @@ Note: Altered and new descriptions will currently not display for non-English la
 
 ~~ ENEMIES ~~
 * Loot Goblin: Base HP  50->2; HP/wave 25->30 [Makes the early Loot Goblins far more reasonable to kill and late-game ones slightly harder to kill.]
-* Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where, when buffed, they go from 185hp in vanilla to 250hp in Balance Mod.]
+* Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where, when buffed (red outline), they go from 185hp in vanilla to 250hp in Balance Mod.]
 * Tentacles: Fruit Drop Chance 1% -> 2%; Convert-to-Item-Crate Chance 1% -> 4%
 
 Small Charger: Knockback Resistance 100% -> 80%
@@ -77,7 +77,7 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 * Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.92s
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
-* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Switch from Phase 1 to 2 Timing 30s elapsed -> 25s or 60% HP -> 65% HP; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->22 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]
+* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->22 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]
 * Rhino Elite: Base Speed 250 -> 275; Phase 1 Charge Speed 900->1150 (& Charge Duration 1.0->0.95); Phase 2 Charge Speed 1000->1050
 
 ~~ WAVE SPAWNS ~~
@@ -171,7 +171,7 @@ Glass Canon: Price 75->68
 Improved Tools: Added the 'Attack Speed' Tag
 Lucky Charm: Price 75->72
 Poisonous Tonic: 15 Range -> 18
-Power Generator: Price 65->72; -5% Damage -> -1 Max HP Per 5% Speed; Added '%Damage' Tag [Note: Currently the tooltip is slightly wrong, and will claim you're at e.g. -1 HP when your Speed is between 1% and 4% and you're still actually at -0 HP; it only counts every full 5%.]
+Power Generator: Price 65->72; -5% Damage -> -1 Max HP Per 5% Speed; Added '%Damage' Tag
 Rip and Tear: Can now crit for 1.5x damage (base Crit Chance 1%)
 Shmoop: Price 60->65; 2 HP Regen -> 3
 Silver Bullet: Added '%Damage' Tag
@@ -301,7 +301,7 @@ King: Added Jousting Lance, Rocket Launcher
 Knight: Added Bokken, Pruner, Plank, Rock, Fist, Knife, Scissors, Cacti Club; Removed Spiky Shield
 Lich: Added Lightning Shiv
 Loud: Added Screwdriver; Removed Pruner, Revolver, Taser, Wand
-Lucky: Added Jousting Lance, Torch
+Lucky: Added Jousting Lance, Torch, Pruner
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
 Multi-tasker: Added Rock
@@ -362,6 +362,10 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
+lower garg phase 3 speed slightly
+
+wheelbarrow tiny price drop?
+
 Check mother Phase 1 startup; seems like it still takes several seconds?
 
 14/15 Horde - re-add a few basics probably
@@ -379,8 +383,6 @@ Should Jack be tagged for Speed?
 Night Goggle tweaked a little to make taking it for only Range or only Crit feel better?
 [When rework padding, remember tags]
 
-stat screen now delayed a buy on level-ups?  probably a recent change?
-
 Wave 14 first ~12s should be slightly more dense
 
 Engineer -- try plank start w/o Wrench to test viability; if good, remove hammer option and remove starting wrench
@@ -388,13 +390,7 @@ Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
 Engineer 10 Base/25% bonus -> 8/30% or 6/40% or whatever, maybe? (Ehhh)
 
 
-chameleon arguably better to _not_ be tagged for dodge [probably leaving tho]
-
-Farmer tooltip should count how much harvesting gained
-
 Renegade nerf of some sort - maybe +10% shop prices? [Could be weird and like, Shop prices go up 2% each Wave or something?  To try and focus it more towards late game]
-
-Possible Lucky weapon: Pruner?
 
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 
@@ -451,7 +447,6 @@ Apprentice could add Revolver to starter weapons; might also removed Pruner (Unl
 
 
 Arms Dealer could have %Damage Tag and/or Economy Tag (Is Coupon extra good or bad on them?)
-Should one-armed have Harvesting Tag? (Tho Bee can be rough)
 
 
 Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that'd be only a half fix...]
@@ -463,7 +458,6 @@ Pruners could have a more Xbow-like Crit-scaling
 
 Could make mat drop %s per-mat instead of all-or-nothing
 
-Glutton melee damage tag is a bit weird but maybe fine.  (Kinda dumb for both Jousting and Shrdder)
 Should Renegade be tagged for Ranged Damage? [Already kinda strong enough without it, tho could potentially also get some minor nerf at the same time; would also make it slightly harder to find varied tier-1s]
 Should Sharp Bullet be part of the Ranged Damage tag set like Bandana is? (Or, piercing Tag could be given to Ranged & Engineering build types?)
 
@@ -478,8 +472,6 @@ Lucky Coin: Should this scale Luck off two axies instead of only Crit?  Seems SO
 Weapons that start with Lifesteal should show Lifesteal in red even if they're at 0%
 
 
-Could also have part it based on damage types; e.g. 5-10% of the roll checks based on two flat damage types you have the most of (counting melee as x2), starting at maybe Wave 7?
-
 Stone Skin could account for armor from Streamer's bonus since it *is* basically permanent armor (it can change via weapon changes, but not once the wave starts?)
 
 
@@ -491,6 +483,7 @@ in func set_damage, new_value definition being defined as int before being round
 
 Cyborg: Unique SFX when switching modes (rather than an already used sound)
 
+Farmer tooltip should count how much harvesting gained
 
 Fix the "x2" material popup to say the correct x## amount?
 
@@ -509,6 +502,14 @@ Multitasker Weapons slot UI 2x3 -> 3x4??
 
 
 ~~~ GRAVEYARD (Probably not going to use these ideas, but left for posterity) ~~~
+Should one-armed have Harvesting Tag? (Tho Bee can be rough)
+
+Glutton melee damage tag is a bit weird but maybe fine.  (Kinda dumb for both Jousting and Shredder)
+
+weapon preference could also have part it based on damage types; e.g. 5-10% of the roll checks based on two flat damage types you have the most of (counting melee as x2), starting at maybe Wave 7?
+
+chameleon arguably better to _not_ be tagged for dodge [probably leaving tho]
+
 Smoothed enemy spawns from -Enemies (like Trees) would probably be good, rather than random (so e.g. Jack would get 1 or 2 fish from a Bait, never randomly 4) [This is messy and changes the current spawn amounts significantly; it'd require kind of a weird rework to be implemented]
 
 scissors ~maybe~ a touch cheaper at high end; generally strong enough but still not that worth upgrading [would probably need to nerf lower instead]
@@ -565,7 +566,6 @@ Magician HP and move speed slightly lower which will cover some of the increased
 * Turrets (and Wrenches spawning turrets) should track damage dealt.
 * Items should show both total damage and damage during the previous wave.
 * Piggy Bank should show materials saved for Entreprenuer (probably just a special case that makes it show difference from 0% instead of difference to 100%).
-Shiv bounce count text fix
 
 
 ~~~ MOD IDEAS ~~~
@@ -603,7 +603,7 @@ Ugly Tooth doesn't get applied from Burn/Lucky?  (verify)
 Check Riposte-killed enemies drop mats as normal
 Does temp Attack Speed from Streamer/Soldier work for Claw/Hatchet?
 Negative speed can be positive with Shackles?
-** Sick is tagged for Lifesteal, but starts with so much they barely benefit I think?  (Test) -- could tag Attack Speed instead [Could also lower their starting LS to 20%?]
+** Sick is tagged for Lifesteal, but starts with so much they barely benefit I think?  (Test) -- could tag Attack Speed instead or in addition to [Could also lower their starting LS to 20%?]
 ** Does WanderBot delay enemy scripts? (Maybe count how many script attacks an Elite does with several Bots and without)
 ** Burn turrents round damage unlike almost everything else which trunactes?? [Is the tooltip a lie?? in-game damage diff??
 ** ""Why melee weapons try to explode twice? One in collision handling in _on_Hurtbox_area_entered of unit.gd and second in _on_Hitbox_hit_something of weapon.gd afterhitbox.hit_something(self, dmg_taken[1]) called and then hitbox emits "hit_something" signal (This obviously doesn't happen for ranged weapons because hitbox belongs to a projectile and not a weapon). And if this is intended why _on_Hitbox_hit_something do not connect explosion to on_weapon_hit_something and lose tracking of damage?""

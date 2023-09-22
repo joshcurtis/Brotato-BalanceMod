@@ -1,5 +1,6 @@
 extends "res://effects/items/gain_stat_for_every_stat_effect.gd"
 
+# Replace, Tooltip cleanup
 func get_args()->Array:
 	var actual_nb_scaled = 0
 	var key_arg = key
@@ -28,7 +29,18 @@ func get_args()->Array:
 	else :
 		actual_nb_scaled = RunData.get_stat(stat_scaled) + TempStats.get_stat(stat_scaled)
 	
-	var bonus = floor(value * (actual_nb_scaled / nb_stat_scaled))
+	### Flip to ceiling rounding for negative values
+	#var bonus = floor(value * (actual_nb_scaled / nb_stat_scaled))
+	var bonus = value * (actual_nb_scaled / nb_stat_scaled)
+	if bonus >= 0:
+		bonus = floor(bonus)
+	else: 
+		bonus = ceil(bonus)
+	
+	# Text cleanup
+	if bonus == -0:
+		bonus = 0
+	###
 	
 	if key_arg == "number_of_enemies":
 		key_arg = "pct_number_of_enemies"

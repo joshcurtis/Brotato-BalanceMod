@@ -42,7 +42,9 @@ func _init(modLoader = ModLoader):
 	
 	# Gives Streamer +2 Armor for Pocket Factory
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
+	
 	# Updates Streamer's tooltip for Pocket Factory
+	# Make tooltip for Speed Generator work properly
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/gain_stat_for_every_stat_effect.gd")
 	
 	# Increases Luck's effect on higher-tier equipment/level-ups
@@ -1854,6 +1856,8 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
 	temp.starting_weapons.push_back(temp_2)	
 	temp_2 = load("res://weapons/melee/torch/1/torch_data.tres")
+	temp.starting_weapons.push_back(temp_2)	
+	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
 	temp.starting_weapons.push_back(temp_2)	
 	
 	# Mage
