@@ -200,8 +200,6 @@ func _ready()->void:
 	
 	## WAVE SPAWNS ##
 	# Wave 14
-	temp = load("res://zones/zone_1/014/group_5.tres") # Magicians
-	temp.spawn_timing = 27  # 22
 	temp = load("res://zones/zone_1/014/unit_5.tres")  # Magicians
 	temp.max_number = 1     # 1-2 -> 1
 	temp = load("res://zones/zone_1/014/group_2.tres") # Helmets
@@ -236,23 +234,23 @@ func _ready()->void:
 		
 	# Wave 14 & 15 Horde
 	temp = load("res://zones/zone_1/000_hordes/group_3b.tres")
-	temp.max_wave = 13      # Groups of 4 Chasers + 4 Basics in 2nd half removed for 14+15 to make more room for others
+	temp.max_wave = 13    # Groups of 4 Chasers + 4 Basics in 2nd half removed for 14+15 to make more room for others
 	temp = load("res://zones/zone_1/000_hordes/group_4.tres")
 	temp.repeating_interval = 3
 	temp.spawn_edge_of_map = true
 	temp = load("res://zones/zone_1/000_hordes/unit_3.tres") # Helmet
-	temp.min_number = 4
-	temp.max_number = 4
+	temp.min_number = 5   # 8
+	temp.max_number = 5   # 9
 	temp = load("res://zones/zone_1/000_hordes/group_5.tres")
-	temp.min_wave = 14
+	temp.min_wave = 13
 	temp.spawn_edge_of_map = true
 	temp_2 = load("res://zones/zone_1/000_hordes/unit_1.tres") # Basic
-	temp.wave_units_data.erase(temp_2)
+	temp.wave_units_data.erase(temp_2) 
 	temp_2 = load("res://zones/zone_1/000_hordes/unit_2.tres") # Chaser
 	temp.wave_units_data.erase(temp_2)
 	temp = load("res://zones/zone_1/000_hordes/unit_4.tres") # Fin
-	temp.min_number = 4
-	temp.max_number = 4
+	temp.min_number = 5   # 6
+	temp.max_number = 5   # 7
 	
 	
 	## TIER-1 ITEMS ##
@@ -313,6 +311,9 @@ func _ready()->void:
 	temp.key = "stat_range"
 	temp.value = -7  # -2 Speed -> -7 Range
 	
+	temp = load("res://items/all/landmines/landmines_data.tres")
+	temp.value = 14  # 15	
+	
 	temp = load("res://items/all/lost_duck/lost_duck_effect_1.tres")
 	temp.value = 9  # 10 (Luck)
 
@@ -339,6 +340,9 @@ func _ready()->void:
 	temp.value = 12  # 15
 	temp = load("res://items/all/terrified_onion/terrified_onion_effect_2.tres")
 	temp.value = -5  # -6 (Luck)
+	
+	temp = load("res://items/all/turret/turret_data.tres")
+	temp.value = 16  # 15	
 	
 	temp = load("res://items/all/weird_food/weird_food_data.tres")
 	temp.value = 25  # 20
@@ -461,7 +465,7 @@ func _ready()->void:
 	temp.value = 19  # 20 (Luck)
 
 	temp = load("res://items/all/snail/snail_data.tres")
-	temp.value = 35  # 40
+	temp.value = 34  # 40
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/snail_enemy_charge_speed.tres")
 	temp.effects.push_back(temp_2) # Added -5% Charging Speed Effect
 	temp_2 = load("res://items/all/snail/snail_effect_2.tres")
@@ -477,7 +481,10 @@ func _ready()->void:
 	temp.chance = 0.35  # 0.25 (Proc Chance)
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
-
+	
+	temp = load("res://items/all/wheelbarrow/wheelbarrow_data.tres")
+	temp.value = 38  # 40	
+	
 	temp = load("res://items/all/white_flag/white_flag_effect_1.tres")
 	temp.value = 6   # 5 (Harvesting)
 

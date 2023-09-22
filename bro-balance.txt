@@ -77,15 +77,15 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 * Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.92s
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
-* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->22 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]
+* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->22 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]; Phase 3 Movement Speed 60% -> 58% (About the same as vanilla given the higher base speed)
 * Rhino Elite: Base Speed 250 -> 275; Phase 1 Charge Speed 900->1150 (& Charge Duration 1.0->0.95); Phase 2 Charge Speed 1000->1050
 
 ~~ WAVE SPAWNS ~~
-Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more total HP); Single Magician Spawns 1-2 x6 -> 1-1 x5 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
+Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP; this is slightly more total HP); Single Magician Spawns 1-2 x6 -> 1-1 x6 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
 Wave 16: Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
 Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
-Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Removed several groups of easier enemies so they no longer simply despawn the more-threatening ones that naturally come with Wave 14/15; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
+Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the Horde additions identical for 14/15; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with. [Aiming to make these Horde waves still feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
 
 
 ~~ LEVEL-UPS ~~
@@ -116,6 +116,7 @@ Gummy Berserker: Price 25->24; 15 Range -> 19
 Head Injury: Price: 25->24; 6% Damage -> 7%; -8 Range -> -2% Speed [Swapped with Helmet so that this doesn't mirror Cyclops worm so directly.]
 Hedgehog: Price 30->25
 Helmet: Price 25->24; -2% Speed -> -7 Range [Swapped with Head Injury so that it doesn't mirror Cyclops worm so directly and so Helmet doesn't mirror Warrior's Helm as directly either.]
+Landmines: Price 15->14
 Lens: -5 Range -> -7
 Lost Duck: Luck 10->9
 Mutation: Price 25->16; -3% Speed -> -2% [You almost never want both Elemental and Ranged together currently, and this is nicely cheap when you do; otherwise still kind of expensive-but-occasionally-worth when you just want one.]
@@ -123,6 +124,7 @@ Plant: HP Regeneration 3 -> 2
 Propeller Hat: Price 28->26
 Scared Sausage: Price 25->17  [One of many steps aiming to encourage more partial mixed builds]
 Terrified Onion: Price 15->12; -6 Luck -> -5 Luck
+Turret: Price 15->16 [Almost always better than Landmines, so they get a mild cost difference.]
 Weird Food: Now Tier-2; Price 20->25; -2% Dodge -> -2 HP [Makes it easier to find in Luck-heavy builds, and now has a more general stat tax rather than only punishing Dodge for an item dodge-builds often really want.]
 
 ~~ ITEMS: TIER-2 ~~
@@ -151,9 +153,10 @@ Riposte: Price 40->35
 Ritual: Price 60->56
 Scope: Price 55->52; 25 Range -> 35; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 19
-Snail: Price 40->35; Now also gives -5% Enemy Charge Speed; -3% Speed -> -2%
+Snail: Price 40->34; Now also gives -5% Enemy Charge Speed; -3% Speed -> -2%
 Spicy Sauce: Price 40->45; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 140%; Can now crit for 1.5x damage (base Crit Chance 1%)
 Tentacle: Price 32->35
+Wheelbarrow: Price 40->38
 Whetstone: Price 40->42
 White Flag: 5 Harvesting -> 6
 
@@ -348,8 +351,6 @@ Entreprenuer Harvesting tooltip incorrectly still says 5% when it is 7.5% (verif
 *** FIX: Eyes Surgery's 2nd effect should be added as an Actual Effect rather than hacked into the existing one (which should also let the tooltip update properly to show how much duration has been increased based on how many Eyes Surgeries you have)
 	-> Eyes Surgery to up the duration for Blue Turrets (Currently doesn't show in tooltip at least)
 
-Power Gen new malus displays wrong (and also show "+-0 HP" at 0% Speed)
-
 TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need renaming in other langs, so should only replace English rather than directly replace the raw name)
 	I tried to just change the translation key for these, both as a replacement and as a new one, and it didn't seem to work - was still 'Fighting Stick' and I couldn't tell why.
 
@@ -362,13 +363,11 @@ Give Chunky %damage from temp max HP like Padding or Stone Skin rather than only
 
 ~~ OTHER PONDERINGS ~~
 
-lower garg phase 3 speed slightly
+bonus to shop weapons based on having a variety of weapons: 19%/20%/22%/24%/25%/26%
 
-wheelbarrow tiny price drop?
+hammer small buff?  price?
 
-Check mother Phase 1 startup; seems like it still takes several seconds?
-
-14/15 Horde - re-add a few basics probably
+Check mother Phase 1 startup; seems like it still takes several seconds? {I didn't accidentally make the Phase 1 attack cooldown faster instead did I?}
 
 Jack maybe 100% on Elites; thematically they want to actually be good at it
 
@@ -381,6 +380,7 @@ should potato be tagged for all its stuff rather than an arbitrary subset? (Was 
 Should Jack be tagged for Speed?
 
 Night Goggle tweaked a little to make taking it for only Range or only Crit feel better?
+**Night Goggles: Price 90->75; Crit Chance 15%->12%; Range 50->60; -3 HP -> -2% Speed  ??
 [When rework padding, remember tags]
 
 Wave 14 first ~12s should be slightly more dense
@@ -390,18 +390,16 @@ Should Engineer get only say 20% worse Elemenetal, for new Tyler, Sausage, Book?
 Engineer 10 Base/25% bonus -> 8/30% or 6/40% or whatever, maybe? (Ehhh)
 
 
-Renegade nerf of some sort - maybe +10% shop prices? [Could be weird and like, Shop prices go up 2% each Wave or something?  To try and focus it more towards late game]
+Renegade nerf of some sort - maybe Shop prices go up 2% each Wave or something?  To try and focus it more towards late game {Could prob base it on Leaf effect, or Anvil?}
 
 Pumpkin should probably affect bounce (test Ricochet first, and retest Pump)
 
 
 loud could also guarantee horde waves?
 
-blue turret -> maybe drop damage slightly and up scaling to 35% so rounding is less awful?
+blue turret -> maybe drop damage slightly and up scaling to 35% so rounding is less awful? {Keep in mind it affects blue wrenches too}
 
 try potato thrower again on Demon sometime
-
-Landmines 15->13, since they're worse than turret? (or 14/16) [maybe just leave it]
 
 eyes surgery - do more tests, might be worth lowering cost too.
 	Might also drop torch's very high duration slightly? hmmm
@@ -423,8 +421,6 @@ Burn currently doesn't apply to trees dying in 8 hits, but should -- possible so
 
 should padding be reworked to be interesting on more characters while not being TOO OP on Saver?  (Maybe fine to just be meidocre and a niche thing for Saver/Endless)
 	prob. bad but kinda interesting padding idea: gain (temporary) health based on how many materials you left on the ground the previous wave [This still does some infinite scaling, but not so much Saver.  (Doesn't strictly need to fit Saver tho)]
-
-more and more liking the bonus to shop weapons based on having a variety of weapons; 20%/22%/25%/27%/28% ??  maybe more like 18%/21%/24%/26%/28% ?? ... 19%/21%/23%/25%/27%  ...or slightly more modest, 19%/20%/22%/24%/26%
 
 
 Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
