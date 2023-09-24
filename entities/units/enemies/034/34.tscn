@@ -93,7 +93,7 @@ cooldown = 25.0
 damage_increase_each_wave = 1.15
 max_range = 2000
 ;; Was 12
-number_projectiles = 22
+number_projectiles = 24
 ;; Was 600
 projectile_spawn_spread = 710
 constant_spread = true

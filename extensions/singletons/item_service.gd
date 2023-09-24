@@ -10,7 +10,65 @@ func reset_tiers_data()->void :
 	]
 
 
+# Replace to fix Wave 3 shop weapons
+func get_shop_items(wave:int, number:int = NB_SHOP_ITEMS, shop_items:Array = [], locked_items:Array = [])->Array:
+	
+	var new_items = []
+	var nb_weapons_guaranteed = 0
+	var nb_weapons_added = 0
+	var guaranteed_items:Array = RunData.effects["guaranteed_shop_items"].duplicate()
+	
+	var nb_locked_weapons = 0
+	var _nb_locked_items = 0
+	
+	for locked_item in locked_items:
+		if locked_item[0] is ItemData:
+			_nb_locked_items += 1
+		elif locked_item[0] is WeaponData:
+			nb_locked_weapons += 1
+	
+	if RunData.current_wave < MAX_WAVE_TWO_WEAPONS_GUARANTEED:
+		nb_weapons_guaranteed = 2
+	elif RunData.current_wave < MAX_WAVE_ONE_WEAPON_GUARANTEED:
+		nb_weapons_guaranteed = 1
+	
+	if RunData.effects["minimum_weapons_in_shop"] > nb_weapons_guaranteed:
+		nb_weapons_guaranteed = RunData.effects["minimum_weapons_in_shop"]
+	
+	for i in number:
+		
+		var type
+		
+		### "<" instead of "<=" to bugfix Wave 3's shop weapons
+		if RunData.current_wave < MAX_WAVE_TWO_WEAPONS_GUARANTEED:
+		###
+			type = TierData.WEAPONS if (nb_weapons_added + nb_locked_weapons < nb_weapons_guaranteed) else TierData.ITEMS
+		elif guaranteed_items.size() > 0:
+			type = TierData.ITEMS
+		else :
+			type = TierData.WEAPONS if (randf() < CHANCE_WEAPON or nb_weapons_added + nb_locked_weapons < nb_weapons_guaranteed) else TierData.ITEMS
+		
+		if type == TierData.WEAPONS:
+			nb_weapons_added += 1
+		
+		if RunData.effects["weapon_slot"] <= 0:
+			type = TierData.ITEMS
+		
+		var new_item
+		
+		if type == TierData.ITEMS and guaranteed_items.size() > 0:
+			new_item = get_element(items, guaranteed_items[0][0])
+			guaranteed_items.pop_front()
+		else :
+			new_item = get_rand_item_from_wave(wave, type, new_items, shop_items)
+		
+		new_items.push_back([new_item, wave])
+	
+	return new_items
+
+
 # Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
+# Adjusts shop weapon pick odds based on number of weapon types held
 func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_shop_items:Array = [], fixed_tier:int = - 1)->ItemParentData:
 	var excluded_items = []
 	excluded_items.append_array(shop_items)
@@ -58,7 +116,38 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 
 		
 		if RunData.weapons.size() > 0:
-			if rand_wanted < CHANCE_SAME_WEAPON:
+			### Adjusts shop weapon pick odds based on number of weapon types held
+			#Counts number of different weapons you have
+			var diff_weapon_ids = []
+			var nb_diff_weapons = 0
+			
+			for weapon in RunData.weapons:
+				if not diff_weapon_ids.has(weapon.weapon_id):
+					nb_diff_weapons += 1
+					diff_weapon_ids.push_back(weapon.weapon_id)
+			
+			var new_chance_same_weapon = CHANCE_SAME_WEAPON
+			# Change the same-weapon chance based on number of weapon types; increase set bonus equally because they are a stacked check
+			if nb_diff_weapons <= 1:         # 19%
+				new_chance_same_weapon -= 0.01
+				chance_same_weapon_set -= 0.01
+			# 2 is vanilla behavior
+			#elif nb_diff_weapons == 2:      # 20%
+			elif nb_diff_weapons == 3:       # 22%
+				new_chance_same_weapon += 0.02
+				chance_same_weapon_set += 0.02
+			elif nb_diff_weapons == 4:       # 24%
+				new_chance_same_weapon += 0.04
+				chance_same_weapon_set += 0.04
+			elif nb_diff_weapons == 5:       # 25%
+				new_chance_same_weapon += 0.05
+				chance_same_weapon_set += 0.05
+			elif nb_diff_weapons >= 6:			 # 26%
+				new_chance_same_weapon += 0.06
+				chance_same_weapon_set += 0.06
+				
+			if rand_wanted < new_chance_same_weapon:
+			###
 
 				var player_weapon_ids = []
 				var nb_potential_same_weapons = 0
@@ -200,10 +289,6 @@ func get_tier_from_wave(wave:int)->int:
 		var max_chance = _tiers_data[i][TierData.MAX_CHANCE]
 		
 		### If at cap, apply Luck to go further, up to new soft caps; Negative luck doesn't hurt caps
-		print("wave base  ", str(wave_base_chance))
-		print("luck  ", str(luck))
-		print("chance  ", str(chance))
-		print("old max  ", str(max_chance))
 		if luck > 0 and chance >= max_chance:
 			if i == Tier.UNCOMMON:
 				max_chance += (1 + luck) * (_tiers_data[i][TierData.WAVE_BONUS_CHANCE] / 1.6)
@@ -211,7 +296,6 @@ func get_tier_from_wave(wave:int)->int:
 			elif i == Tier.RARE:
 				max_chance += (1 + luck) * (_tiers_data[i][TierData.WAVE_BONUS_CHANCE] / 2.0)
 				max_chance = min(max_chance, 0.27)
-		print("new max  ", str(max_chance))
 		###
 		
 		if rand <= min(chance, max_chance):
