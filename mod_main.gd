@@ -61,6 +61,7 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/enemies/attack_behaviors/charging_attack_behavior.gd")
 
 	# Adds a decimal for Garden cooldown with Improved Tools
+	# Bugfixes rounding for burn turrets
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/turret_effect.gd")
 	
 	# Fix Lightning Shiv bounce count
@@ -388,7 +389,6 @@ func _ready()->void:
 	temp.value = -14   # -12 (Range)
 	
 	temp = load("res://items/all/dangerous_bunny/dangerous_bunny_data.tres")
-	##temp.value = 35  # 35	
 	temp.max_nb = 4  # 3
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/dangerous_bunny_dodge_malus.tres")
 	temp.effects.push_back(temp_2) # -2 Dodge
@@ -420,7 +420,7 @@ func _ready()->void:
 	temp.value = 51  # 45
 
 	temp = load("res://items/all/little_frog/little_frog_data.tres")
-	temp.value = 44  # 50
+	temp.value = 43  # 50
 	temp = load("res://items/all/little_frog/little_frog_effect_1.tres")
 	temp.value = 35  # 20 (Pickup Range)
 	temp = load("res://items/all/little_frog/little_frog_effect_3.tres")
@@ -455,9 +455,6 @@ func _ready()->void:
 	temp = load("res://items/all/riposte/riposte_data.tres")
 	temp.value = 35  # 40
 	
-	temp = load("res://items/all/riposte/riposte_data.tres")
-	temp.value = 35  # 40
-
 	temp = load("res://items/all/ritual/ritual_data.tres")
 	temp.value = 57  # 60
 	
@@ -502,6 +499,12 @@ func _ready()->void:
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
 	
+	# Incendiary Turret
+	temp = load("res://items/all/turret_flame/turret_flame_data.tres")
+	temp.value = 47  # 40
+	temp = load("res://entities/structures/turret/flame/flame_turret_stats.tres")
+	temp.scaling_stats = [ [ "stat_engineering", 0.35 ] ]  # 0.33
+
 	temp = load("res://items/all/wheelbarrow/wheelbarrow_data.tres")
 	temp.value = 38  # 40	
 	
@@ -582,6 +585,9 @@ func _ready()->void:
 	temp = load("res://items/all/lucky_charm/lucky_charm_data.tres")
 	temp.value = 70  # 75
 	
+	temp = load("res://items/all/plastic_explosive/plastic_explosive_data.tres")
+	temp.value = 53  # 60
+	
 	temp = load("res://items/all/poisonous_tonic/poisonous_tonic_data.tres")
 	temp.value = 78  # 80
 	temp = load("res://items/all/poisonous_tonic/poisonous_tonic_effect_3.tres")
@@ -594,6 +600,8 @@ func _ready()->void:
 	temp.effects.erase(temp_2) # Remove -Damage%
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/power_generator_2_max_hp_malus.tres")
 	temp.effects.push_back(temp_2) # -1 HP per 5% Speed
+	temp = load("res://items/all/power_generator/power_generator_effect_1.tres")
+##temp.text_key = "EFFECT_GAIN_STAT_FOR_EVERY_STAT" # Change to all Speed instead of Perm only
 
 	temp = load("items/all/rip_and_tear/rip_and_tear_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
@@ -942,6 +950,14 @@ func _ready()->void:
 	temp.damage = 28     # 30
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.5 ], [ "stat_max_hp", 0.25 ] ]
 	
+	# Hammer
+	temp = load("res://weapons/melee/hammer/2/hammer_2_data.tres")
+	temp.value = 42      # 51
+	temp = load("res://weapons/melee/hammer/3/hammer_3_data.tres")
+	temp.value = 80      # 95
+	temp = load("res://weapons/melee/hammer/4/hammer_4_data.tres")
+	temp.value = 156     # 190
+	
 	# Hand
 	temp = load("res://weapons/melee/hand/1/hand_data.tres")
 	temp.value = 9       # 10
@@ -959,7 +975,6 @@ func _ready()->void:
 	temp.value = 69      # 91
 	temp = load("res://weapons/melee/hand/4/hand_4_effect_1.tres")
 	temp.value = 20			 # 18
-	
 	
 	# Flaming Brass Knuckles
 	temp = load("res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_burning_data.tres")
@@ -1124,8 +1139,7 @@ func _ready()->void:
 	# Torch
 	var spread_text_effect = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/torch_spread_text.tres")
 	temp = load("res://weapons/melee/torch/1/torch_stats.tres")
-	##temp.damage = 1    		# 1
-	##temp.max_range = 200  # 175
+	##temp.damage = 1    	# 1
 	temp.knockback = 25   # 20
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/1/torch_burning_data.tres")
@@ -1134,7 +1148,6 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/2/torch_2_stats.tres")
 	temp.damage = 2    		# 1
 	temp.knockback = 25   # 20
-	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/2/torch_2_burning_data.tres")
 	##temp.damage = 5  		# 5
@@ -1145,7 +1158,6 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/3/torch_3_stats.tres")
 	temp.damage = 2    		# 1
 	temp.knockback = 25   # 20
-	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/3/torch_3_burning_data.tres")
 	temp.damage = 10   	 	# 8
@@ -1156,7 +1168,6 @@ func _ready()->void:
 	temp = load("res://weapons/melee/torch/4/torch_4_stats.tres")
 	temp.damage = 4   	  # 1
 	temp.knockback = 25   # 20
-	##temp.max_range = 200  # 175
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ], [ "stat_elemental_damage", 0.5 ] ]  # 0.5 melee
 	temp = load("res://weapons/melee/torch/4/torch_4_burning_data.tres")
 	temp.damage = 17   		# 12
@@ -1459,6 +1470,8 @@ func _ready()->void:
 	# Harvesting
 	temp = load("res://items/upgrades/harvesting/1/harvesting_effect.tres")
 	temp.value = 4  # 5
+	temp = load("res://items/upgrades/harvesting/3/harvesting_3_effect.tres")
+	temp.value = 11 # 10
 	temp = load("res://items/upgrades/harvesting/4/harvesting_4_effect.tres")
 	temp.value = 15 # 12
 	
@@ -1478,7 +1491,11 @@ func _ready()->void:
 	temp_find = temp.effects.find(temp_2)
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/artificer_tools_damage.tres")
 	temp.effects.insert(temp_find, temp_2) # Tools Get +100% Damage
-
+	
+	# Brawler
+	temp = load("res://items/characters/brawler/brawler_effect_1.tres")
+	temp.value = 40  # 50 (Unarmed AtkSpd Bonus)
+	
 	# Crazy
 	temp = load("res://items/characters/crazy/crazy_data.tres")
 	temp_2 = load("res://items/characters/crazy/crazy_effect_3.tres")
@@ -1492,7 +1509,7 @@ func _ready()->void:
 
 	# Cryptid
 	temp = load("res://items/characters/cryptid/cryptid_effect_1.tres")
-	temp.value = 10 # 12 (Harvesting per Tree)
+	temp.value = 11 # 12 (Harvesting per Tree)
 	temp = load("res://items/characters/cryptid/cryptid_effect_5.tres")
 	temp.value = -75 # -100 (Range)
 
@@ -1513,7 +1530,15 @@ func _ready()->void:
 	temp.effects.erase(temp_2) # Remove double HP Regen 'effect'...
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/doctor_hp_regen.tres")
 	temp.effects.insert(temp_find, temp_2) # ...and replace with Double HP Regen Stat
-
+	temp = load("res://items/characters/doctor/doctor_effect_2.tres")
+	temp.value = 2  # 5 (HP Regen)
+	
+	# Engineer
+	temp = load("res://items/characters/engineer/engineer_data.tres")
+	temp_2 = load("res://items/characters/engineer/engineer_effect_2.tres")
+	temp.effects.erase(temp_2) # Remove starting Wrench
+	
+	
 	# Explorer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
 	temp.wanted_tags = [ "stat_speed", "exploration" ] # Remove Pickup Tag
@@ -1762,6 +1787,12 @@ func _ready()->void:
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
+	# Engineer
+	temp = load("res://items/characters/engineer/engineer_data.tres")
+	# Remove
+	temp_2 = load("res://weapons/melee/hammer/2/hammer_2_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	
 	# Entrepreneur
 	temp = load("res://items/characters/entrepreneur/entrepreneur_data.tres")
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
@@ -1960,6 +1991,8 @@ func _ready()->void:
 	temp.starting_weapons.erase(temp_2)	
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
 	temp.starting_weapons.erase(temp_2)
+	temp_2 = load("res://weapons/ranged/laser_gun/1/laser_gun_data.tres")
+	temp.starting_weapons.erase(temp_2)		
 	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
@@ -1994,6 +2027,8 @@ func _ready()->void:
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/chopper/1/chopper_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 
 	# Sick
 	temp = load("res://items/characters/sick/sick_data.tres")
@@ -2011,9 +2046,6 @@ func _ready()->void:
 	temp = load("res://items/characters/soldier/soldier_data.tres")
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	# Remove
-	##temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
-	##temp.starting_weapons.erase(temp_2)	
 	
 	# Speedy
 	temp = load("res://items/characters/speedy/speedy_data.tres")

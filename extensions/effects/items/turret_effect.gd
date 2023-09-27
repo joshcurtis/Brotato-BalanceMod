@@ -1,6 +1,7 @@
 extends "res://effects/items/turret_effect.gd"
 
 # Replace function to show a decimal for Garden cooldown with Improved Tools
+# Also fixes rounding on burn turrets
 func get_args()->Array:
 	if is_burning:
 		
@@ -9,7 +10,10 @@ func get_args()->Array:
 		var scaling_stats_value = WeaponService.get_scaling_stats_value(stats.scaling_stats)
 		var scaling_stats_names = WeaponService.get_scaling_stats_icons(stats.scaling_stats)
 		
-		var burning_dmg = max(1.0, round(effects[0].burning_data.damage + scaling_stats_value))
+		###
+		#var burning_dmg = max(1.0, round(effects[0].burning_data.damage + scaling_stats_value))
+		var burning_dmg = max(1.0, floor(effects[0].burning_data.damage + scaling_stats_value))
+		###
 		
 		return [str(burning_dmg), str(burning_ticks), scaling_stats_names]
 	elif is_spawning:

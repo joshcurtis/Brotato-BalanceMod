@@ -1,6 +1,8 @@
 extends "res://effects/items/gain_stat_for_every_stat_effect.gd"
 
 # Replace, Tooltip cleanup
+# Add Pocket Factory to Streamer's structure bonus
+# 
 func get_args()->Array:
 	var actual_nb_scaled = 0
 	var key_arg = key
@@ -10,7 +12,7 @@ func get_args()->Array:
 		actual_nb_scaled = RunData.gold
 	elif stat_scaled == "structure":
 		actual_nb_scaled = RunData.effects["structures"].size()
-		###
+		### Count Pocket Factory once for Streamer Armor bonus
 		if RunData.effects["tree_turrets"] > 0:
 			actual_nb_scaled += 1
 		###
@@ -27,7 +29,10 @@ func get_args()->Array:
 	elif perm_only:
 		actual_nb_scaled = RunData.get_stat(stat_scaled)
 	else :
+		### [Currently off because the actual stat change wasn't working] Adding LinkedStats as well, e.g. Fairy, Chunky Passive, etc.
 		actual_nb_scaled = RunData.get_stat(stat_scaled) + TempStats.get_stat(stat_scaled)
+		##actual_nb_scaled = RunData.get_stat(stat_scaled) + TempStats.get_stat(stat_scaled) + LinkedStats.get_stat(stat_scaled)
+		###
 	
 	### Flip to ceiling rounding for negative values
 	#var bonus = floor(value * (actual_nb_scaled / nb_stat_scaled))
