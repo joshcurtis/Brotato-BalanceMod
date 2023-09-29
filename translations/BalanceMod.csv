@@ -2,8 +2,8 @@ key,en
 NEW_EFFECT_GAIN_STAT_FOR_EVERY_DIFFERENT_STAT,{0} {1} for every {2} different {3}[color=#00ff00]s[/color] you have [{4}]
 NEW_EFFECT_BURNING_COOLDOWN_REDUCTION,Burning activates {0} faster\nBurning Duration lasts 1 tick longer
 NEW_EFFECT_ONE_WEAPON_SLOT_LIMIT,You can only equip one weapon at a time\nYou have a [color=#00ff00]4-Set Bonus[/color] for the weapon you have equipped (excluding Legendary’s penalty)
-NEW_INFO_POS_STAT_RANGE,The max range of your weapons is increased by {0}. Two-thirds as effective on melee weapons. (Higher range also slightly increases the cooldown of melee weapons because of the travel distance.)
-NEW_INFO_NEG_STAT_RANGE,The max range of your weapons is reduced by {0}. Two-thirds as effective on melee weapons. (Lower range also slightly decreases the cooldown of melee weapons because of the travel distance.)
+NEW_INFO_POS_STAT_RANGE,The max range of your weapons is increased by {0}. Half as effective on melee weapons. (Higher range also slightly increases the cooldown of melee weapons because of the travel distance.)
+NEW_INFO_NEG_STAT_RANGE,The max range of your weapons is reduced by {0}. Half as effective on melee weapons. (Lower range also slightly decreases the cooldown of melee weapons because of the travel distance.)
 NEW_EFFECT_NO_HEAL,You can’t heal in any way during waves
 NEW_EFFECT_PACIFIST,Gain {0} material and XP for every living and despawned enemy at the end of a wave 
 NEW_EFFECT_HIT_PROTECTION,Nullifies the the first 2+ damage hit taken each wave
@@ -21,3 +21,5 @@ BM_ENEMY_CHARGE_SPEED,{0} Enemy Charge Speed
 NEW_EFFECT_MIN_WEAPON_TIER,You are only offered [color=#00ff00]Tier II[/color] weapons and above
 BM_EFFECT_EXTRA_WEAPON_SLOT_LIMIT,You can equip an additional weapon
 NEW_EFFECT_LIGHTNING_ON_HIT,Hitting an enemy spawns a lightning projectile that deals {1} ({3}) damage and bounces an additional {2} time(s)
+BM_NON_ELEMENTAL_REDUCE_STAT_GAINS,[color=#ff0000]Non-elemental Damage[/color] reduced by {1}
+BM_LEFTOVER_MATERIALS,materials left uncollected from the previous wave

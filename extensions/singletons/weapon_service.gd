@@ -1,19 +1,5 @@
 extends "res://singletons/weapon_service.gd"
 
-# Replaces existing function; melee Range now divided by 1.5 instead of 2.0
-func init_melee_stats(from_stats:MeleeWeaponStats = MeleeWeaponStats.new(), weapon_id:String = "", sets:Array = [], effects:Array = [], is_structure:bool = false)->MeleeWeaponStats:
-	var new_stats = init_base_stats(from_stats, weapon_id, sets, effects, is_structure) as MeleeWeaponStats
-	
-	new_stats.alternate_attack_type = from_stats.alternate_attack_type
-	
-	if not is_structure:
-	###
-		new_stats.max_range = max(MIN_RANGE, new_stats.max_range + (Utils.get_stat("stat_range") / 1.5)) as int
-	###
-	
-	return new_stats
-
-
 # Adds functionality for characters to get a Set Percent Damage bonus
 func init_base_stats(from_stats:WeaponStats, weapon_id:String = "", sets:Array = [], effects:Array = [], is_structure:bool = false)->WeaponStats:
 	

@@ -92,7 +92,6 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 
 	
 	for shop_item in excluded_items:
-
 		pool.erase(shop_item[0])
 		backup_pool.erase(shop_item[0])
 	
@@ -145,7 +144,7 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 			elif nb_diff_weapons >= 6:			 # 26%
 				new_chance_same_weapon += 0.06
 				chance_same_weapon_set += 0.06
-				
+			
 			if rand_wanted < new_chance_same_weapon:
 			###
 
@@ -164,9 +163,13 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 						if not player_weapon_ids.has(item.weapon_id):
 
 							items_to_remove.push_back(item)
-				
-			elif rand_wanted < chance_same_weapon_set:
-
+			### Turn an exact-weapon match into a set-bonus match if it can't be exact (usually from tier limitations)
+				else:
+					rand_wanted == 0.3
+			
+			#elif rand_wanted < chance_same_weapon_set:
+			if rand_wanted >= new_chance_same_weapon and rand_wanted < chance_same_weapon_set:
+			###
 				var player_sets = []
 				var nb_potential_same_classes = 0
 				

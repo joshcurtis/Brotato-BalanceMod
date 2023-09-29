@@ -26,6 +26,10 @@ func get_args()->Array:
 		actual_nb_scaled = RunData.get_nb_item(stat_scaled, false)
 	elif stat_scaled == "living_tree":
 		actual_nb_scaled = RunData.current_living_trees
+	### Stat for materials leftover at end of wave
+	elif stat_scaled == "bm_leftover_materials":
+		actual_nb_scaled = RunData.effects["bm_leftover_materials"]
+	###
 	elif perm_only:
 		actual_nb_scaled = RunData.get_stat(stat_scaled)
 	else :

@@ -34,3 +34,9 @@ func on_gold_picked_up(gold:Node)->void :
 	else :
 		RunData.add_bonus_gold(value)
 
+# Apprend to save next-wave mats for new Padding
+func clean_up_room(is_last_wave:bool = false, is_run_lost:bool = false, is_run_won:bool = false)->void :
+	.clean_up_room()
+	
+	RunData.effects["bm_leftover_materials"] = RunData.bonus_gold
+

@@ -1,6 +1,6 @@
 extends "res://ui/menus/shop/stat_popup.gd"
 
-# Fix Range tooltip
+# Tweak Range tooltip
 # Add a decimal to armor tooltip for more accuracy
 func display_stat(button:Node, title:String, value:int)->void :
 	_icon.texture = ItemService.get_stat_icon(title.to_lower())
@@ -26,7 +26,7 @@ func display_stat(button:Node, title:String, value:int)->void :
 		_description.text = Text.text(key, [str(amount), str(stepify(val, 0.01)), str(stepify(amount_per_sec, 0.01))])
 	elif title == "STAT_DODGE":
 		_description.text = Text.text(key, [str(abs(value)), str(RunData.effects["dodge_cap"]) + "%"])
-	### Use different text key for Range to cover the changes for melee (and clarify cooldown)
+	### Use different text key for Range to clarify cooldown
 	elif title == "STAT_RANGE":
 		key = "NEW_" + key
 		_description.text = Text.text(key, [str(abs(value))])

@@ -119,7 +119,8 @@ func add_starting_items_and_weapons()->void :
 func init_effects()->Dictionary:
 	var new_effects = {
 		"bm_enemy_charge_speed":0,
-		"bm_lucky_dmg_when_pickup_gold":[]
+		"bm_lucky_dmg_when_pickup_gold":[],
+		"bm_leftover_materials":0
 	}
 	var all_effects = .init_effects()
 	
