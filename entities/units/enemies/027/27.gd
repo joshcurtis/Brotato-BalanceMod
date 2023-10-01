@@ -28,5 +28,5 @@ func on_state_changed(new_state:int)->void :
 	.on_state_changed(new_state)
 	
 	if new_state == 0:
-		CHARGING_PROJECTILES_COOLDOWN = 55.0  ## 45.0
+		CHARGING_PROJECTILES_COOLDOWN = 51.0  ## 45.0
 		current_charging_projectile_behavior = _charging_shoot_projectiles_behavior_2

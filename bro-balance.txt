@@ -23,6 +23,7 @@ Torch, Wand, Plank, Crossbow, Cacti Club, Screwdriver, and Sniper Rifle all rece
 Rock, Pistol, Chopper, Hatchet, Scissors, Medical Gun, Potato Thrower, and Plasma Sledge receive minor buffs; Flaming Brass Knuckles, Nuclear Launcher, and Chain-gun receive minor nerfs.
 Lightning Shiv & Sniper Rifle projectiles now have the same Crit Chance & Crit Damage as the main hit.
 Hand partially reworked to make tier-3 and 4 worth buying.
+Bugfix: Revolvers no longer instantly reload when used by effects that check if you're moving (e.g. Solider).
 
 ~Items~
 Tons of items receive small buffs or nerfs: overall more items are worth buying more often and some of the strongest give less power for their cost. Note that the goal is not to make them all equally strong; there is still plenty of variance and build-specific decision-making. 
@@ -32,9 +33,9 @@ Fixed several missing item tags (which make certain characters more likely to fi
 ~Characters~
 As with items, the goal is not for characters to be equal strength, as it is more interesting and fun for them to be varied. Instead, we compress the difference from top to bottom a little bit so the easiest options are less 'free' and the hardest are less frustrating/punishing. (For example, Jack is buffed and Masochist is nerfed, but Masochist is still a much easier character.)
 * Jack, Farmer, and One-armed receive modest buffs.
-* Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), and Loud receive modest nerfs.
-* Artificer can now do base damage with Tools.
-* Mage can now run an Engineering build (turrets causing burn via Sausage).
+* Doctor, Masochist, Knight, Cryptid, Demon, King (non-early-game), Renegade, Bull, and Loud receive modest nerfs.
+* Artificer now deals base damage with Tools (instead of only 1).
+* Mage can now run an Engineering build (turrets causing burn via Sausage) and also handles Gun builds better (extra Sausage).
 * Several characters have more sensible tagging (items they are favored to find), e.g. Streamer is now more likely to find structures. Streamer also now gets +2 Armor from Pocket Factory (instead of nothing).
 * Starting weapons overhauled to make more sense and to be more fun for random-weapon runs, with several nonsense picks removed and many new appropriate options added.
 
@@ -77,7 +78,7 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 
 ~~ ELITES ~~
 * Mother Elite: Phase 1 Initial Cooldown 2s->1.25s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, current behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (current behavior)
-* Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.92s
+* Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.85s
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
 * Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->24 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]; Phase 3 Movement Speed 60% -> 58% (About the same as vanilla given the higher base speed)
@@ -156,7 +157,7 @@ Medal: Price 55->60; -4% Crit Chance -> -3%
 Metal Detector: -5% Damage -> -4%
 Metal Plate: Price 40->42
 Missile: Price 45->41; 10% Damage -> 11%
-Padding: [Partially Reworked] Price: 45->42; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag
+Padding: [Partially Reworked] Price: 45->43; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag
 Pocket Factory: 2 Engineering -> 3 [Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-possible scenarios.]
 Pumpkin: -2% Damage -> No Penalty; No Limit -> Limit 8 [Mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
 Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
@@ -176,7 +177,8 @@ Alien Magic: Price 85-> 82
 Alloy: 3 Melee Damage -> 5 ; Dodge -6% -> -5%; Added 'Elemental Damage' Tag
 Baby With a Beard: Price 100->110; Range -50 -> -90
 Barricade: Price 75->72
-Bowler Hat: 15 Luck -> 16
+Blood Donation: Price 50->45 [The main aspect of the price is the damage, so the monetary price should be a bit lower.]
+Bowler Hat: Price 75->72; 15 Luck -> 16
 Candle: Price 65->50; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->58; %Damage -4% -> -3%
 Community Support: Price 75->72; Added 'Attack Speed' Tag
@@ -210,7 +212,6 @@ Hunting Trophy: Price 55->52; Proc Chance 33% -> 25%; Limit 3->4
 Anvil: Price 120->125
 Big Arms: Price 105->100; 12 Melee Damage -> 13
 Bloody Hand: Price 100->110; 12% Lifesteal -> 9%
-Cape: Price 110->115
 Diploma: Price 80->85; Engineering 10 -> 12; 20% XP Gain -> 25%
 Esty's Couch: {Coming Soon}
 Exoskeleton: Price 90->105; Armor 5 -> 4
@@ -240,6 +241,7 @@ Cacti Club: Melee Base Damage 10/20/30/50 -> 10/20/30/45; Melee Scaling 80%(All)
 Chopper: Range 125/135/150/180 -> 135/150/165/180; HP Scaling 20%(All) -> 20%/20%/25%/25%; Base Damage 6/12/18/30 -> 6/12/16/28 [Similar damage at medium HP, more damage at high HP.]
 Fighting Stick renamed Bokken. [It should not have "Stick" in the name, and a training sword fits thematically with the weapon's sword-like attack pattern as well as the experience-based scaling.]
 Flaming Brass Knuckles: Burn 8x5/12x6/15x7 -> 8x3/12x4/15x5 [More in-line with other Elemental weapons, so it doesn't overshadow them as much while still having its high direct damage and good Melee scaling.]
+Ghost Flint: Tier-1 Damage 6->7; Tier-1 Cooldown 1.23 -> 1.24 [Helps tier-1 not be so hopelessly behind it can never kill enough enemies to proc on characters that doesn't have extra damage to start.]
 Hammer: Price 51/95/190 -> 42/80/156
 Hand: Price 10/22/45/91 -> 9/19/36/69; Harvesting 3/6/9/18 -> 2/5/10/20 [This progression makes it worth upgrading past Blue-tier.]
 Hatchet: Range 125->135
@@ -269,12 +271,14 @@ Sniper Gun: Renamed Sniper Rifle; Range 800/1000 -> 550/550; Ranged Damage Scali
 Wand: Scaling 50%/65%/80%/100% -> 60%/75%/85%/100%; Burn 3x3/5x4/8x5/12x6 -> 3x3/8x3/12x4/16x5; Cooldown 0.87/0.78/0.70/0.53 -> 0.83/0.77/0.68; Base Damage 1(All) -> 1/2/3/4; Knockback 10 -> 4 [Relevantly more front-loaded damage. The slight cooldown buff lets you get 1 extra kill on wave 1.]
 
 Chain-gun, Gatling Laser, Tier-4 Minigun: Fixed cooldown to no longer incorrectly display in red (visual change only).
+Revolver & Chain-gun: Fixed the bug that caused them to instantly reload (skipping their Long Reload's extended cooldown) when used alongside any effect that checks if you're moving (e.g. Solider).
 Other Minor Accuracy Tweaks (mostly only relevant if Accuracy is lowered by Heavy Bullets): Pistol 0.9(Tier1-3)->1.0(All); Medical Gun 0.9(Tier1-3)->1.0(All); SMG 0.7/0.75/0.8/0.85->0.7/0.74/0.77/0.8; Mini-gun 0.85/1.0 -> 0.8/1.0; Shotgun 0.9/0.95/1.0/1.0->0.9(All); Potato Thrower 0.9(All)->1.0(All); Rocket Launcher 0.8/0.9/1.0-> ; 0.9(All) [For reference, Revolver is 0.9(All), and most other unlisted weapons are 1.0(All).]
 
 
 ~~ CHARACTERS ~~
 Artificer: Tools Have +100% Damage. [This lets them use Screwdriver/Wrench without their melee hit being stuck at 1 damage hits.]
 Brawler: Unarmed Attack Speed Bonus 50% -> 40%; Now applies their +AttackSpeed Bonus to weapons that scale with Attack Speed (Claw)
+Bull: Starting HP Regen 15 -> 12
 Crazy: No longer starts with a Knife; Now applies their +Range Bonus to weapons that scale with Range (Crossbow & Sniper Rifle); Starting Dodge -30% -> -15% [Silly, but if this isn't going to be -100%, it might as well be an amount you can theoretically pull out of the deficit if you really want to, especially with Crossbow Set giving some Dodge]; Starting Ranged Damage -10 -> -15 [To prevent Crossbows from being overly strong]; Starting Engineering -10 -> -15 [To complete the pattern]
 Cryptid: Bonus XP/Gold Per Living Tree 12 -> 11
 Cyborg: No longer favored to find Engineering Items; now favored to find Structure Items specifically.
@@ -294,7 +298,7 @@ Masochist: HP Regen 20 -> 15; Armor 8 -> 5 [Modest nerfs to a very strong charac
 Mutant: No longer favored to find XP-Gain Items. [Because the effect is additive, they get _less_ benefit from these items than anyone else.]
 One-armed: Now gains a 4-Set bonus of whichever weapon they have equipped (except for Legendary). [A specialized buff to a difficult character that really helps some of their less-viable builds like Shuriken.]
 Ranger: No longer starts with a Pistol.
-Renegade: Now shows reminder icons for item boxes as well.
+Renegade: Additional Malus: +2% Items Price at the end of each wave; Now shows reminder icons for item boxes as well.
 Solider: 200% Pickup Range -> 150%
 Speedy: Starting Speed 30% -> 25% [More room to meaningfully increase from where you start]; Starting Armor -3 -> -2
 Streamer: Now gets +2 Armor from Pocket Factory; Now favored to find Stand-still Items and Structure Items (All Structures including Garden, and also including Pocket Factory and Improved Tools).
@@ -310,7 +314,7 @@ Crazy: Added Crossbow
 Cyborg: Removed Crossbow
 Demon: Added Wrench, Potato Thrower [Experimental]
 Engineer: Removed Hammer
-Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow, Medical Gun, Claw
+Entrepreneur: Added Ghost Flint, Hatchet, Bokken, Crossbow, Claw, Plank; Removed Wand
 Explorer: Added Hand, Ghost Axe, Jousting Lance
 Farmer: Added Slingshot, Thief Dagger, Bokken
 Fisher: Added Plank, Pruner, Scissors; Removed Screwdriver
@@ -327,7 +331,7 @@ Loud: Added Screwdriver; Removed Pruner, Revolver, Taser, Wand
 Lucky: Added Jousting Lance, Torch, Pruner
 Mage: Added Wrench
 Masochist: Removed Ghost Scepter
-Multi-tasker: Added Rock
+Multi-tasker: Added Rock, Ghost Flint
 Mutant: Added Lightning Shiv
 Old: Added Revolver
 One-armed: Removed Screwdriver, Ghost Flint, Pistol, Fist, Crossbow, Wand, Chopper, Laser Gun; Added Sword, Hammer, Flaming Brass Knuckles
@@ -335,7 +339,7 @@ Pacifist: Added Scissors, Rock
 Ranger: Added Slingshot
 Renegade: Added Shuriken, Slingshot
 Saver: Added Fist, Stick, Chopper, Pruner
-Sick: Added Cacti Club, Hatchet, Pruner; Removed Hand
+Sick: Added Cacti Club, Hatchet, Pruner, Ghost Flint; Removed Hand
 Soldier: Added Lightning Shiv
 Speedy: Added Ghost Flint, Pruner; Removed Wrench
 Streamer: Added Ghost Scepter; Removed Bokken, Rock, Jousting Lance, Knife, Lightning Shiv, Claw
@@ -364,7 +368,8 @@ Inschato, ArosRising, Hyphen-ated, Pasha, and everyone else that's assisted with
 You are free to use concepts and code contained within elsewhere, ideally with attribution. E.g. if you want to make a spin-off mod for, say, only the Elite changes, you are welcome and encouraged to do so but I'd appreciate a link back to the Balance Mod and/or to my stream.
 
 ~~ PLANNED ~~
-**Esty's Couch: Reworked, New Effects: Price __; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +4 Ranged Damage; +4 Elemental Damage; +8% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage [Use new effects rather than replacing for the main effect since it has all the extra baggage]
+**Esty's Couch: Reworked, New Effects: Price __; -6% Speed; If your Speed is negative, then: +80 Range; +4 Armor. Otherwise: +4 Ranged Damage; +4 Elemental Damage; +8% Damage; Tagged: Range, Armor, Ranged Damage, Elemental Damage 
+	Possibly just add more stats while negative speed?
 
 *** FIX: Eyes Surgery's 2nd effect should be added as an Actual Effect rather than hacked into the existing one (which should also let the tooltip update properly to show how much duration has been increased based on how many Eyes Surgeries you have)
 	-> Eyes Surgery to up the duration for Blue Turrets (Currently doesn't show in tooltip at least)
@@ -379,16 +384,13 @@ TODO: Figure out translation setup for Bokken/Plasma Sledge (Which may not need 
 
 
 ~~ OTHER PONDERINGS ~~
+farmer xbow?
 
-Renegade nerf of some sort - maybe Shop prices go up 2% each Wave or something?  To try and focus it more towards late game {Could prob base it on Leaf effect, or Anvil?}
+coupon can show negative saved?? (was entrepreneur) [is it from the lowered value of recycled thing?]
 
-Stutterstepping with revolver on streamer or soldier instantly reloads Revolvers
- "the bug is whenever you switch between moving and not-moving and have any effect that changes any stat in those cases. Does not even have to be attack speed. So it should also happen with Barricade, Chameleon, Statue, Speedy, Jousting Lance"
- 
+jousting lance progression looks sus, esp. purple; try it with some more chars
 
 fairy should show total tier-1 items if possible
-
-robot arm doesn't refresh the 6/6 display (tho still works if you buy weapon)
 
 do an analysis of coupon vs bag at 0 or at ~40 Luck and maybe adjust their prices a bit
 
@@ -396,7 +398,7 @@ mantis initial cooldown lower?
 
 PowerGen & Speedy don't know how to read Fairy's LinkedStats -Speed
 Likewise Chonky doesn't see Stone Skin HP
-		
+		For now prob change text back to 'permanent'
 
 Check mother Phase 1 startup; seems like it still takes several seconds? {I didn't accidentally make the Phase 1 attack cooldown faster instead did I?} {Test this stuff on Old so can move to the Elite ASAP}
 

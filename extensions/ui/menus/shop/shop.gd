@@ -21,3 +21,11 @@ func _on_RerollButton_pressed()->void :
 		###
 		
 		_shop_items_container.update_buttons_color()
+
+
+# Append to refresh weapon label when buying Robot Arm
+func on_shop_item_bought(shop_item)->void :
+	.on_shop_item_bought(shop_item)
+	print("id  ", shop_item.item_data.my_id)
+	if shop_item.item_data.my_id == "item_robot_arm":
+		_weapons_container.set_label(get_weapons_label_text())
