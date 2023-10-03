@@ -23,3 +23,6 @@ BM_EFFECT_EXTRA_WEAPON_SLOT_LIMIT,You can equip an additional weapon
 NEW_EFFECT_LIGHTNING_ON_HIT,Hitting an enemy spawns a lightning projectile that deals {1} ({3}) damage and bounces an additional {2} time(s)
 BM_NON_ELEMENTAL_REDUCE_STAT_GAINS,[color=#ff0000]Non-elemental Damage[/color] reduced by {1}
 BM_LEFTOVER_MATERIALS,materials left uncollected from the previous wave
+NEW_WEAPON_PLASMA_SLEDGEHAMMER,Plasma Sledge
+NEW_WEAPON_FIGHTING_STICK,Bokken
+BM_EFFECT_FOR_NEGATIVE_SPEED,"If your Speed is negative, gain {0} {1}"

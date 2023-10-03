@@ -120,6 +120,7 @@ func _ready()->void:
 	# New effects
 	Text.keys_needing_percent.bm_enemy_charge_speed = [0]
 	Text.keys_needing_percent.bm_non_elemental_reduce_stat_gains = [1]
+	Text.keys_needing_operator.bm_effect_for_negative_speed = [0]
 	# This group for making descriptions shorter
 	Text.keys_needing_percent.new_effect_increase_stat_gains = [1]
 	Text.keys_needing_percent.new_effect_reduce_stat_gains = [1]
@@ -728,6 +729,28 @@ func _ready()->void:
 	temp = load("res://items/all/diploma/diploma_effect_2.tres")
 	temp.value = 25   # 20 (XP Gain)
 	
+	# Esty's Couch [Reworked]
+	temp = load("res://items/all/estys_couch/estys_couch_data.tres")
+	temp.value = 95
+	temp.max_nb = -1
+	temp.tags = [ "stat_range", "stat_attack_speed", "stat_percent_damage" ]
+	# Remove original effects
+	temp_2 = load("res://items/all/estys_couch/estys_couch_effect_1.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/all/estys_couch/estys_couch_effect_2.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/all/estys_couch/estys_couch_effect_3.tres")
+	temp.effects.erase(temp_2)
+	# Add new effects
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/estys_couch_1_percent_damage.tres")
+	temp.effects.push_back(temp_2) # 20% Damage
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/estys_couch_2_attack_speed.tres")
+	temp.effects.push_back(temp_2) # 20% Attack Speed
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/estys_couch_3_range_for_neg_speed.tres")
+	temp.effects.push_back(temp_2) # 70 Range if Negative Speed
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/estys_couch_4_speed_malus.tres")
+	temp.effects.push_back(temp_2) # -8% Speed
+	
 	# Exoskeleton
 	temp = load("res://items/all/exoskeleton/exoskeleton_data.tres")
 	temp.value = 105  # 90
@@ -1115,12 +1138,12 @@ func _ready()->void:
 	
 	# Plasma Sledge (Plasma Sledgehammer)
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_data.tres")
-	temp.name = "Plasma Sledge"
+	temp.name = "NEW_WEAPON_PLASMA_SLEDGEHAMMER"
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_effect.tres")
 	temp.scale = 1.1     # 1.0
 	temp.chance = 0.33   # 0.25
 	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_data.tres")
-	temp.name = "Plasma Sledge"
+	temp.name = "NEW_WEAPON_PLASMA_SLEDGEHAMMER"
 	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_effect.tres")
 	temp.scale = 1.3     # 1.25
 	
@@ -1239,13 +1262,13 @@ func _ready()->void:
 	
 	# Bokken (Fighting Stick)
 	temp = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
-	temp.name = "Bokken"
+	temp.name = "NEW_WEAPON_FIGHTING_STICK"
 	temp = load("res://weapons/melee/fighting_stick/2/fighting_stick_2_data.tres")
-	temp.name = "Bokken"
+	temp.name = "NEW_WEAPON_FIGHTING_STICK"
 	temp = load("res://weapons/melee/fighting_stick/3/fighting_stick_3_data.tres")
-	temp.name = "Bokken"
+	temp.name = "NEW_WEAPON_FIGHTING_STICK"
 	temp = load("res://weapons/melee/fighting_stick/4/fighting_stick_4_data.tres")
-	temp.name = "Bokken"
+	temp.name = "NEW_WEAPON_FIGHTING_STICK"
 
 	
 	

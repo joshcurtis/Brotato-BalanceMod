@@ -120,7 +120,8 @@ func init_effects()->Dictionary:
 	var new_effects = {
 		"bm_enemy_charge_speed":0,
 		"bm_lucky_dmg_when_pickup_gold":[],
-		"bm_leftover_materials":0
+		"bm_leftover_materials":0,
+		"bm_stats_for_negative_speed":[]
 	}
 	var all_effects = .init_effects()
 	

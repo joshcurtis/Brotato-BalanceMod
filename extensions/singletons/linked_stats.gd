@@ -47,3 +47,12 @@ func reset()->void :
 		var amount_to_add = linked_stat[1] * (stat_scaled / linked_stat[3])
 		
 		add_stat(stat_to_tweak, amount_to_add)
+	
+	###
+	for conditional_stat in RunData.effects["bm_stats_for_negative_speed"]:
+		if RunData.effects.has(conditional_stat[0]):
+			if (RunData.get_stat("stat_speed") + TempStats.get_stat("stat_speed") + LinkedStats.get_stat("stat_speed")) < 0:
+				var stat_to_tweak = conditional_stat[0]
+				
+				add_stat(stat_to_tweak, conditional_stat[1])
+	###
