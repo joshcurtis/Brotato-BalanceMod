@@ -26,7 +26,6 @@ func update_tier_iv_weapon_bonuses()->void :
 			tier_iv_weapon_effects.push_back(effect)
 
 
-
 # Added set bonus for One-armed
 func update_sets()->void :
 	
@@ -121,7 +120,8 @@ func init_effects()->Dictionary:
 		"bm_enemy_charge_speed":0,
 		"bm_lucky_dmg_when_pickup_gold":[],
 		"bm_leftover_materials":0,
-		"bm_stats_for_negative_speed":[]
+		"bm_stats_for_negative_speed":[],
+		"bm_increased_burn_duration":0
 	}
 	var all_effects = .init_effects()
 	

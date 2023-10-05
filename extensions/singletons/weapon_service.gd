@@ -135,7 +135,7 @@ func init_burning_data(base_burning_data:BurningData = BurningData.new(), is_glo
 		new_burning_data.damage = max(1, round(new_burning_data.damage * percent_dmg_bonus)) as int
 	
 	### +1 Duration per Eyes Surgery
-	new_burning_data.duration += (RunData.effects["burning_cooldown_reduction"] / 10)
+	new_burning_data.duration += RunData.effects["bm_increased_burn_duration"]
 	###
 	return new_burning_data
 

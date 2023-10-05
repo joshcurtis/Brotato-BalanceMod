@@ -36,6 +36,7 @@ func _init(modLoader = ModLoader):
 	# Slightly reduce the strength of armor
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
+	# Changes King's ability to work on unique tier-4 weapons
 	# (Adds new effects to RunData)
 	# (Adds new init effects)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
@@ -74,7 +75,9 @@ func _init(modLoader = ModLoader):
 	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
-
+	
+	# Adjusts King's tooltip to show unique tier-4s rather than total
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -209,6 +212,11 @@ func _ready()->void:
 	
 	
 	## WAVE SPAWNS ##
+	# Wave 12
+	temp = load("res://zones/zone_1/012/d1_group_1.tres") # Healers
+	temp_2 = load("res://zones/zone_1/012/unit_2.tres")
+	temp.wave_units_data.push_back(temp_2)  # Add a Mummy to the Healer group (+6 total)
+	
 	# Wave 14
 	temp = load("res://zones/zone_1/014/unit_5.tres")  # Magicians
 	temp.max_number = 1     # 1-2 -> 1
@@ -422,10 +430,10 @@ func _ready()->void:
 	temp = load("res://items/all/eyes_surgery/eye_surgery_data.tres")
 	temp.value = 50  # 60
 	temp_2 = load("res://items/all/eyes_surgery/eye_surgery_effect_2.tres")
-	temp.effects.erase(temp_2) # Remove Range Penalty
-	temp = load("res://items/all/eyes_surgery/eye_surgery_effect_1.tres")
-	temp.text_key = "NEW_EFFECT_BURNING_COOLDOWN_REDUCTION"
-	
+	temp.effects.erase(temp_2)     # Remove Range Penalty
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/eyes_surgery_increased_burn.tres")
+	temp.effects.push_back(temp_2) # Add increased burn duration effect
+		
 	temp = load("res://items/all/gambling_token/gambling_token_data.tres")
 	temp.value = 52  # 60
 	temp = load("res://items/all/gambling_token/gambling_token_effect_1.tres")
@@ -548,6 +556,9 @@ func _ready()->void:
 	
 	
 	## TIER-3 ITEMS ##
+	temp = load("res://items/all/adrenaline/adrenaline_data.tres")
+	temp.value = 57  # 60
+
 	temp = load("res://items/all/alien_magic/alien_magic_data.tres")
 	temp.value = 82  # 85
 	
@@ -917,7 +928,7 @@ func _ready()->void:
 	
 	# Robot Arm - Reworked
 	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
-	temp.value = 90
+	temp.value = 85
 	temp.tags = [ ]
 	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_0.tres")
 	temp.effects.erase(temp_2)
@@ -1467,7 +1478,7 @@ func _ready()->void:
 	
 	# Sniper Rifle (Sniper Gun)
 	temp = load("res://weapons/ranged/sniper_gun/3/sniper_gun_3_data.tres")
-	temp.name = "Sniper Rifle"
+	temp.name = "NEW_WEAPON_SNIPER_GUN"
 	temp = load("res://weapons/ranged/sniper_gun/3/sniper_gun_3_stats.tres")
 	temp.max_range = 550 # 800
 	temp.scaling_stats = [ [ "stat_ranged_damage", 2.0 ], [ "stat_range", 0.2 ] ]  # 1.0 / 0.2
@@ -1476,7 +1487,7 @@ func _ready()->void:
 	temp.crit_chance = 0.2  # 0.03
 	temp.crit_damage = 3    # 2
 	temp = load("res://weapons/ranged/sniper_gun/4/sniper_gun_4_data.tres")
-	temp.name = "Sniper Rifle"
+	temp.name = "NEW_WEAPON_SNIPER_GUN"
 	temp = load("res://weapons/ranged/sniper_gun/4/sniper_gun_4_stats.tres")
 	temp.max_range = 550 # 1000
 	temp.scaling_stats = [ [ "stat_ranged_damage", 2.5 ], [ "stat_range", 0.3 ] ]  # 1.0 / 0.3

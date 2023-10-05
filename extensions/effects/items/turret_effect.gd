@@ -6,6 +6,9 @@ func get_args()->Array:
 	if is_burning:
 		
 		var burning_ticks = effects[0].burning_data.duration
+		### Adds Eyes Surgery Bonus to the tooltip
+		burning_ticks += RunData.effects["bm_increased_burn_duration"]
+		###
 		
 		var scaling_stats_value = WeaponService.get_scaling_stats_value(stats.scaling_stats)
 		var scaling_stats_names = WeaponService.get_scaling_stats_icons(stats.scaling_stats)

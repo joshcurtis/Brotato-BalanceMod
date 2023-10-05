@@ -1,5 +1,6 @@
 extends "res://main.gd"
 
+# Replace, Splits Lucky & Baby Elephant
 func on_gold_picked_up(gold:Node)->void :
 	_golds.erase(gold)
 	if ProgressData.settings.alt_gold_sounds:
