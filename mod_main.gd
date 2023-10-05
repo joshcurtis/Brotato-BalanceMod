@@ -77,7 +77,8 @@ func _init(modLoader = ModLoader):
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
 	
 	# Adjusts King's tooltip to show unique tier-4s rather than total
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
+	#!# Currently causes crash on live??
+##	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -144,7 +145,9 @@ func _ready()->void:
 		"elite_croco":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/027/27.tscn",
 		"elite_demon":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/034/34.tscn",
 		"elite_colossus":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/028/28.tscn",
-		"elite_rhino":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/020/20.tscn"
+		"elite_rhino":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/020/20.tscn",
+		"elite_butcher":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/021/21.tscn",
+		"elite_insect":"res://mods-unpacked/DarkTwinge-BalanceMod/entities/units/enemies/032/32.tscn"
 	}
 	for elite in ItemService.elites:
 		if elite.my_id in elite_scenes.keys():
@@ -299,6 +302,9 @@ func _ready()->void:
 	temp = load("res://items/all/coffee/coffee_effect_1.tres")
 	temp.value = 9   # 10 (Attack Speed)
 
+	temp = load("res://items/all/coupon/coupon_data.tres")
+	temp.value = 18   # 15
+	
 	temp = load("res://items/all/cute_monkey/cute_monkey_data.tres")
 	temp.value = 35  # 25
 	temp.max_nb = 10 # 13 (Limit)
@@ -396,6 +402,9 @@ func _ready()->void:
 	temp.value = 64  # 65
 	temp = load("res://items/all/acid/acid_effect_2.tres")
 	temp.value = -3  # -4
+	
+	temp = load("res://items/all/alien_eyes/alien_eyes_data.tres")
+	temp.value = 55  # 50
 	
 	# Banner
 	temp = load("res://items/all/banner/banner_effect_1.tres")
@@ -504,7 +513,6 @@ func _ready()->void:
 	temp.effects.erase(temp_2)     # Remove -2% Damage penalty
 	
 	temp = load("res://items/all/recycling_machine/recycling_machine_data.tres")
-	temp.value = 37  # 35
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/recycling_machine_attack_speed_malus.tres")
 	temp.effects.push_back(temp_2) # -2 Attack Speed
 	

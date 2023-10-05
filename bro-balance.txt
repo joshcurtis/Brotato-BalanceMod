@@ -36,7 +36,7 @@ As with items, the goal is not for characters to be equal strength, as it is mor
 * Starting weapons overhauled to make more sense and to be more fun for random-weapon runs, with several nonsense picks removed and many new appropriate options added.
 
 ~Enemies & Waves~
-Smiley/Croc, Hivemind/Colossus, and Mother Elites nerfed; Gargoyle/Bat, Monk, and Rhino Elites buffed.
+Smiley/Croc, Hivemind/Colossus, and Mother Elites nerfed; Gargoyle/Bat, Monk, Chef/Butcher, Mantis, and Rhino Elites buffed.
 Loot Goblins are easier to kill early.
 Helmet enemies have more HP.
 Wave 16 harder. Wave 14/15 Horde waves harder. Wave 12 slightly harder.
@@ -73,12 +73,14 @@ Lamprey Fish: Knockback Resistance 100% -> 90%
 Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easier to kill with higher-knockback melee weaponry.]
 
 ~~ ELITES ~~
-* Mother Elite: Phase 1 Initial Cooldown 2s->1.25s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, current behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (current behavior)
+* Mother Elite: Phase 1 Initial Cooldown 2s->1.67s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, current behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (current behavior)
 * Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.85s
 * Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
 * Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->24 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]; Phase 3 Movement Speed 60% -> 58% (About the same as vanilla given the higher base speed)
 * Rhino Elite: Base Speed 250 -> 275; Phase 1 Charge Speed 900->1150 (& Charge Duration 1.0->0.95); Phase 2 Charge Speed 1000->1050
+* Chef/Butcher Elite: Phase 2 Max Range 1200 -> 3500; Phase 3 Max Range 2000 -> 3500 [These changes make it so you can't get out of range of the slashes, most relevant for Explorer]; Phase 3 Slice Attack Damage Per Wave 0.75 -> 0.85 [~1-3 more damage]
+* Mantis Elite: Initial Cooldown 0.75s -> 0.25s; Phase 2 Cooldown 1.33s -> 1.25s; Phase 2 Charge Duration 0.7s -> 0.85s; Phase 2 Charge Speed 800 -> 740 (Total Distance 560 -> 629)
 
 ~~ WAVE SPAWNS ~~
 Wave 12: Mummy Spawns 10 -> 16 [For comparison, Wave 11 averages 32.5 Mummies.] 
@@ -111,6 +113,7 @@ Beanie: -6 Range -> -8
 Broken Mouth: Price 25->26
 Cake: Price 15->16
 Coffee: +10% Attack Speed -> 9% 
+Coupon: Price 15->18
 Cute Monkey: Price 25->35; Proc Chance 8%->10%; Limit 13->10
 Duct Tape: Price 25->15
 Fertilizer: Price 15->19; Harvesting 8->7
@@ -135,6 +138,7 @@ Weird Food: Now Tier-2; Price 20->25; -2% Dodge -> -2 HP [Makes it easier to fin
 
 ~~ ITEMS: TIER-2 ~~
 Acid: Price 65->64; -4% Dodge -> 3%
+Alien Eyes: Price 50->55
 Banner: Range 20 -> 26
 Blindfold: -15 Range -> -20
 Blood Leech: Price 45->41; Harvesting -4 -> -3
@@ -157,7 +161,7 @@ Missile: Price 45->41; 10% Damage -> 11%
 Padding: [Partially Reworked] Price: 45->43; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag [Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]
 Pocket Factory: 2 Engineering -> 3 [Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-possible scenarios.]
 Pumpkin: -2% Damage -> No Penalty; No Limit -> Limit 8 [Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
-Recycling Machine: Price 35->37; No downside -> -2% Attack Speed
+Recycling Machine: No downside -> -2% Attack Speed
 Riposte: Price 40->35
 Ritual: Price 60->57
 Scope: Price 55->52; 25 Range -> 45; -7% Attack Speed -> -6%
@@ -374,21 +378,15 @@ These changes are coded but not active because they can't work via mods :(
 
 
 ~~ OTHER PONDERINGS ~~
+
 loud also guarantee horde waves
 
 coupon can show negative saved?? (was entrepreneur) [is it from the lowered value of recycled thing?]
 
 fairy should show total tier-1 items if possible
 
-do an analysis of coupon vs bag at 0 or at ~40 Luck and maybe adjust their prices a bit
-
-mantis initial cooldown lower?
-
-Check mother Phase 1 startup; seems like it still takes several seconds? {I didn't accidentally make the Phase 1 attack cooldown faster instead did I?} {Test this stuff on Old so can move to the Elite ASAP}
-
 check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible (even if that's just an extended description - might be good anyway, should clarify it stacks both ways)
 
-possibly reduce smiley's phase 2 movement speed so they don't stutter away from you so fast (see how they behave with the new cooldown first)
 
 
 PowerGen & Speedy don't know how to read Fairy's LinkedStats -Speed
@@ -397,9 +395,6 @@ Likewise Chonky doesn't see Stone Skin HP
 -Stone Skin could account for armor from Streamer's bonus since it *is* basically permanent armor (it can change via weapon changes, but not once the wave starts?)
 
 Jack maybe 100% on Elites; thematically they want to actually be good at it
-
-
-should potato be tagged for all its stuff rather than an arbitrary subset? (Was there a reason like, as far as having at least 1 red item for each of those tags or?)
 
 
 Pumpkin should probably affect bounce (retest Pump)
@@ -424,6 +419,10 @@ Multitasker Weapons slot UI 2x3 -> 3x4??
 
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
+should potato be tagged for all its stuff rather than an arbitrary subset? (Was there a reason like, as far as having at least 1 red item for each of those tags or?)
+
+Explorer _could_ be tagged for Speed (but would make Bags a touch harder to find.)
+
 Rework Riposte
 
 jousting lance progression looks sus, esp. purple; try it with some more chars
