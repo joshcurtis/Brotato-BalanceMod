@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource( 1 )
-key = "bm_enemy_charge_speed"
-text_key = ""
-value = -6
+key = "consumable_heal"
+text_key = "effect_consumable_heal"
+value = -1
 custom_key = ""
 storage_method = 0
-effect_sign = 0
+effect_sign = 3
 custom_args = [  ]

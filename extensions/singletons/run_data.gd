@@ -11,6 +11,56 @@ func get_unique_tier4_weapon_ids()->Array:
 	
 	return unique_tier4_weapon_ids
 
+# Replaced to guarantee Horde Waves for Loud
+func init_elites_spawn(base_wave:int = 10, horde_chance:float = 0.4)->void :
+	elites_spawn = []
+	var diff = get_current_difficulty()
+	var nb_elites = 0
+	var possible_elites = ItemService.elites.duplicate()
+	
+	if current_character != null and current_character.my_id == "character_jack":
+		horde_chance = 0.0
+	### Loud is guaranteed Horde Waves on 11/12 and 14/15
+	elif current_character != null and current_character.my_id == "character_loud":
+		horde_chance = 1.0
+	###
+	
+	if diff < 2:
+		return 
+	elif diff < 4:
+		nb_elites = 1
+	else :
+		nb_elites = 3
+	
+	var wave = Utils.get_random_int(base_wave + 1, base_wave + 2)
+	
+	for i in nb_elites:
+		
+		var type = EliteType.HORDE if randf() < horde_chance else EliteType.ELITE
+		
+		if DebugService.spawn_specific_elite != "":
+			type = EliteType.ELITE
+			wave = DebugService.starting_wave
+		
+		if i == 1:
+			wave = Utils.get_random_int(base_wave + 4, base_wave + 5)
+		elif i == 2:
+			wave = Utils.get_random_int(base_wave + 7, base_wave + 8)
+			type = EliteType.ELITE
+		
+		var elite_id = Utils.get_rand_element(possible_elites).my_id if type == EliteType.ELITE else ""
+		
+		for elite in possible_elites:
+			if elite.my_id == elite_id:
+				possible_elites.erase(elite)
+				break
+		
+		if DebugService.spawn_specific_elite != "":
+			elite_id = DebugService.spawn_specific_elite
+		
+		elites_spawn.push_back([wave, type, elite_id])
+		
+
 # Replaced fuction for applying unique tier-4s, King's changed ability
 func update_tier_iv_weapon_bonuses()->void :
 	

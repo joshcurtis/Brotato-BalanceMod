@@ -27,3 +27,4 @@ NEW_WEAPON_PLASMA_SLEDGEHAMMER,Plasma Sledge
 NEW_WEAPON_FIGHTING_STICK,Bokken
 BM_EFFECT_FOR_NEGATIVE_SPEED,"If your Speed is negative, gain {0} {1}"
 NEW_WEAPON_SNIPER_GUN,Sniper Rifle
+NEW_SHORT_EFFECT_PIERCING,Projectiles pierce\n{0} additional target

@@ -37,6 +37,7 @@ func _init(modLoader = ModLoader):
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
 	# Changes King's ability to work on unique tier-4 weapons
+	# Guarantees Horde Waves for Loud
 	# (Adds new effects to RunData)
 	# (Adds new init effects)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
@@ -527,13 +528,15 @@ func _ready()->void:
 	temp.value = 19  # 20 (Luck)
 
 	temp = load("res://items/all/snail/snail_data.tres")
-	temp.value = 33  # 40
+	temp.value = 36  # 40
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/snail_enemy_charge_speed.tres")
 	temp.effects.push_back(temp_2) # Added -5% Charging Speed Effect
 	temp_2 = load("res://items/all/snail/snail_effect_2.tres")
 	temp.effects.erase(temp_2)
 	temp_2.value = -2  # -3 (Speed)
 	temp.effects.push_back(temp_2) # Move to the end of the effect list
+	temp = load("res://items/all/snail/snail_effect_1.tres")
+	temp.value = -6    # -5 (Enemy Speed)
 
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_data.tres")
 	temp.value = 43  # 40
@@ -677,15 +680,11 @@ func _ready()->void:
 	temp = load("res://items/all/statue/statue_data.tres")
 	temp.value = 55  # 60
 
-	#temp = load("res://items/all/stone_skin/stone_skin_data.tres")
+	temp = load("res://items/all/stone_skin/stone_skin_data.tres")
 	temp.value = 88  # 80
 	temp = load("res://items/all/stone_skin/stone_skin_effect_2.tres")
 	temp.key = "stat_speed"
 	temp.value = -4  # -2 (Was Armor)
-
-	temp = load("res://items/all/strange_book/strange_book_data.tres")
-	temp_2 = load("res://items/all/strange_book/strange_book_effect_2.tres")
-	temp.effects.erase(temp_2)   # -1->0 (Melee Damage)
 	
 	temp = load("res://items/all/tardigrade/tardigrade_data.tres")
 	temp.value = 45  # 50
@@ -712,7 +711,7 @@ func _ready()->void:
 	temp.tags.push_back("stat_elemental_damage") # Added Elemental
 	
 	temp = load("res://items/all/vigilante_ring/vigilante_ring_data.tres")
-	temp.value = 84  # 92
+	temp.value = 83  # 92
 	
 	temp = load("res://items/all/wheat/wheat_effect_3.tres")
 	temp.value = 13  # 10 (Harvesting)
@@ -786,7 +785,9 @@ func _ready()->void:
 	
 	# Extra Stomach
 	temp = load("res://items/all/extra_stomach/extra_stomach_data.tres")
-	temp.value = 110  # 100	
+	temp.value = 105  # 100
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/extra_somtach_malus.tres")
+	temp.effects.push_back(temp_2) # Added -1 consumeable healing
 	
 	# Focus
 	temp = load("res://items/all/focus/focus_data.tres")
@@ -1218,10 +1219,10 @@ func _ready()->void:
 	temp.cooldown = 39   # 36
 	temp = load("res://weapons/melee/spear/3/spear_3_stats.tres")
 	temp.max_range = 375 # 400
-	temp.cooldown = 30   # 27
+	temp.cooldown = 31   # 27
 	temp = load("res://weapons/melee/spear/4/spear_4_stats.tres")
 	temp.max_range = 450 # 500
-	temp.cooldown = 21   # 18
+	temp.cooldown = 22   # 18
 	
 	# Stick
 	temp = load("res://weapons/melee/stick/1/stick_stats.tres")
@@ -1629,7 +1630,7 @@ func _ready()->void:
 	
 	# Bull
 	temp = load("res://items/characters/bull/bull_effect_2.tres")
-	temp.value = 12  # 15 (HP Regen)
+	temp.value = 10  # 15 (HP Regen)
 	
 	# Crazy
 	temp = load("res://items/characters/crazy/crazy_data.tres")
@@ -1782,6 +1783,8 @@ func _ready()->void:
 	temp = load("res://items/characters/renegade/renegade_data.tres")
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/renegade_increasing_shop_prices.tres")
 	temp.effects.push_back(temp_2) # +2% Shop Price Per Wave
+	temp = load("res://items/characters/renegade/renegade_effect_0a.tres")
+	temp.text_key = "NEW_SHORT_EFFECT_PIERCING"
 	
 	# Soldier
 	temp = load("res://items/characters/soldier/soldier_effect_3.tres")
