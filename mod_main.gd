@@ -6,7 +6,12 @@ const BALMOD_DIR_E = "res://mods-unpacked/DarkTwinge-BalanceMod/extensions/"
 func _init(modLoader = ModLoader):
 	# Adds version number to title screen
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/pages/main_menu.gd")
-
+	
+	# Adjusts King's tooltip to show unique tier-4s rather than total
+	#!# Currently causes crash on live??
+	### {Currently loading a dummy function only, still doesn't work}
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
+	
 	# Adds Fairy icon to common and legendary shop items
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop_item.gd")
 	
@@ -76,11 +81,7 @@ func _init(modLoader = ModLoader):
 	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
-	
-	# Adjusts King's tooltip to show unique tier-4s rather than total
-	#!# Currently causes crash on live??
-##	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
-	
+
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
 	
