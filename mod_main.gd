@@ -7,11 +7,6 @@ func _init(modLoader = ModLoader):
 	# Adds version number to title screen
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/pages/main_menu.gd")
 	
-	# Adjusts King's tooltip to show unique tier-4s rather than total
-	#!# Currently causes crash on live??
-	### {Currently loading a dummy function only, still doesn't work}
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "items/global/effect.gd")
-	
 	# Adds Fairy icon to common and legendary shop items
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop_item.gd")
 	
@@ -41,18 +36,19 @@ func _init(modLoader = ModLoader):
 	# Slightly reduce the strength of armor
 	# Makes Glutton, Spicy Sauce, and Rip and Tear all use the crit stat
 	# Gives Gun Mage an extra Sausage
-	# Changes King's ability to work on unique tier-4 weapons
 	# Guarantees Horde Waves for Loud
 	# (Adds new effects to RunData)
 	# (Adds new init effects)
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/run_data.gd")
 	
 	# Gives Streamer +2 Armor for Pocket Factory
+	# King's new ability tooltip
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/linked_stats.gd")
 	
 	# Updates Streamer's tooltip for Pocket Factory
 	# Make tooltip for Speed Generator work properly
 	# Add new Padding effect
+	# Changes King's ability to work on unique tier-4 weapons
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/gain_stat_for_every_stat_effect.gd")
 	
 	# Increases Luck's effect on higher-tier equipment/level-ups
@@ -90,6 +86,8 @@ func _init(modLoader = ModLoader):
 	#!# Not used; left to remind how to get it working if needed later
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/neutral/neutral.gd")
 	
+	#!# Note: Cannot make changes to items/global/effect.gd
+	
 	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
 	# Shows an extra digit for weapon cooldown when lower than 0.2
 	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
@@ -103,7 +101,7 @@ func _init(modLoader = ModLoader):
 	#!# Doesn't work on live
 	# Fixes weapon randomization so the cooldown effect isn't so extreme, especially on Multi-tasker
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon.gd")
-		
+
 
 
 func _ready()->void:
@@ -119,7 +117,7 @@ func _ready()->void:
 	# Changed effects/text
 	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
 	Text.keys_needing_operator.new_effect_damage_against_bosses = [0]
-	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 2]
+	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 4]
 	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
@@ -1228,17 +1226,19 @@ func _ready()->void:
 	
 	# Stick
 	temp = load("res://weapons/melee/stick/1/stick_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ] ]   # 1.0
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.75 ] ]   # 1.0
 	temp = load("res://weapons/melee/stick/1/stick_effect_1.tres")
 	temp.value = 3       # 4 (Damage Per Stick)
 	temp = load("res://weapons/melee/stick/2/stick_2_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.88 ] ]  # 1.0
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ] ]  # 1.0
 	temp = load("res://weapons/melee/stick/2/stick_2_effect_1.tres")
 	temp.value = 5       # 6 (Damage Per Stick)
 	temp = load("res://weapons/melee/stick/3/stick_3_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.95 ] ]  # 1.0
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.85 ] ]  # 1.0
 	temp = load("res://weapons/melee/stick/3/stick_3_effect_1.tres")
 	temp.value = 7       # 8 (Damage Per Stick)
+	temp = load("res://weapons/melee/stick/4/stick_4_stats.tres")
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.9 ] ]   # 1.0
 	temp = load("res://weapons/melee/stick/4/stick_4_effect_1.tres")
 	temp.value = 9       # 10 (Damage Per Stick)
 	
@@ -1712,12 +1712,15 @@ func _ready()->void:
 	temp.value = 40 # 50 (+Damage from enemies)
 	
 	# King
-	temp = load("res://items/characters/king/king_effect_1.tres")
-	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
-	temp.value = 20 # 25
-	temp = load("res://items/characters/king/king_effect_1b.tres")
-	temp.text_key = "NEW_EFFECT_UNIQUE_TIER_IV_WEAPON_BONUS"
-	temp.value = 20 # 25
+	temp = load("res://items/characters/king/king_data.tres")
+	temp_2 = load("res://items/characters/king/king_effect_1.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://items/characters/king/king_effect_1b.tres")
+	temp.effects.erase(temp_2)
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/king_tier4_damage.tres")
+	temp.effects.insert(1, temp_2)
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/king_tier4_atkspd.tres")
+	temp.effects.insert(2, temp_2)
 	
 	# Knight
 	temp = load("res://items/characters/knight/knight_effect_1.tres")

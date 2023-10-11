@@ -70,12 +70,12 @@ number_projectiles = 28
 projectile_spread = 0.0
 spawn_projectiles_on_target = false
 ;; Was 1000
-projectile_spawn_spread = 940
+projectile_spawn_spread = 930
 projectile_spawn_only_on_borders = true
 constant_spread = true
 atleast_one_projectile_on_target = false
 :: Was 120
-initial_cooldown = 75
+initial_cooldown = 60
 shoot_in_unit_direction = false
 rotate_projectile = false
 delete_projectile_on_death = false

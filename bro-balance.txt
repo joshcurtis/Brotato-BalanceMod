@@ -74,10 +74,10 @@ Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easi
 
 ~~ ELITES ~~
 * Mother Elite: Phase 1 Initial Cooldown 2s->1.67s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, current behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (current behavior)
-* Smiley Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->490; Phase 2 Cooldown 0.75s -> 0.85s
-* Hivemind Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.2s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
+* Smiley/Croc Elite: Contact Damage Per Wave 1.5 -> 1.3 [~2-5 less damage]; Phase 2 Circle Size 450->480; Phase 2 Cooldown 0.75s -> 0.85s
+* Hivemind/Colossus Elite: Phase 1 Projectile Count 50 -> 47; Phase 2 Cooldown 0.9s -> 1.15s [Aiming to give melee slightly more wiggle room in Phase 1, and everyone a bit more breathing room during the onslaught of Phase 2.]
 * Monk Elite: Now has same HP scaling as every other Elite (700->750)
-* Gargoyle Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1.25s; Phase 1 Circle Size 1000->940; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->24 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]; Phase 3 Movement Speed 60% -> 58% (About the same as vanilla given the higher base speed)
+* Gargoyle/Bat Elite: Base Speed 350 -> 365; Phase 1 Initial Cooldown 2s->1s; Phase 1 Circle Size 1000->930; Phase 1 to 2 Switch Timing 30s elapsed -> 25s or 60% HP -> 65% HP [meaning they switch phases sooner]; Phase 2 Movement Speed 75% -> 85%; Phase 2 Projectiles 12->24 & Projectile Spread 600->710; Phase 3 Projectiles-per-burst 3->4 & Projectile Speed 200->235; Phase 3 Distance-from-Player 225->270 [So it's not such a convenient distance to just sit and smack with melee weapons]; Phase 3 Movement Speed 60% -> 58% (About the same as vanilla given the higher base speed)
 * Rhino Elite: Base Speed 250 -> 275; Phase 1 Charge Speed 900->1150 (& Charge Duration 1.0->0.95); Phase 2 Charge Speed 1000->1050
 * Chef/Butcher Elite: Phase 2 Max Range 1200 -> 3500; Phase 3 Max Range 2000 -> 3500 [These changes make it so you can't get out of range of the slashes, most relevant for Explorer]; Phase 3 Slice Attack Damage Per Wave 0.75 -> 0.85 [~1-3 more damage; still less damage than any other Elite attack]
 * Mantis Elite: Initial Cooldown 0.75s -> 0.25s; Phase 2 Cooldown 1.33s -> 1.25s; Phase 2 Charge Duration 0.7s -> 0.85s; Phase 2 Charge Speed 800 -> 740 (Total Distance 560 -> 629)
@@ -253,7 +253,7 @@ Rock: Price 10/22/45/91 -> 10/20/41/83; Knockback 5/5/5/5 -> 4/6/8/10 [A weak we
 Scissors: Crit Damage x2/x2/x2/x2 -> x2/x2.15/x2.3/x2.5; Crit Chance 10%/12%/15%/20% -> 8%/11%/15%/20%; Lifesteal 40%/45%/50%/60% -> 35%/42%/50%/60% [Now fits in more sensibly with Precise builds, and is now a bit more worth upgrading to tier-3/4.]
 Screwdriver: Range 125 -> 135; Cooldown 1.05/1.0/0.97/0.87 -> 0.91/0.86/0.80/0.73
 Spear: Range 350/375/400/500 -> 325/350/375/450; Cooldown 1.52/1.40/1.28/1.24 -> 1.53/1.41/1.32/1.25 (Accounting for the new lower starting Range)
-Stick: Damage Scaling 100%(All) -> 80%/88%/95%/100%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
+Stick: Damage Scaling 100%(All) -> 75%/80%/85%/90%; Flat Damager Per Stick 4/6/8/10 -> 3/5/7/9
 Torch: Now has 1 Spread at tier 2/3/4 (like Snake, and additive with more Snakes); Larger hitbox [Now will actually hit enemies right on top of you like most weapons can]; Melee Damage Scaling 50%(All) -> 75%(All); Base Damage 1(All) -> 1/2/2/4; Burn 3x3/5x4/8x5/12x8 -> 4x4/5x5/10x7/17x9; Knockback 20->25 [Long burn duration alongside built-in spread gives additional utility and combos somewhat with other burn sources.]
 
 ~~ WEAPONS: RANGED ~~
@@ -379,12 +379,9 @@ These changes are coded but not active because they can't work via mods :(
 ~~ OTHER PONDERINGS ~~
 Horde wave income 65% -> 60%? {Get numbers for 14/15 Hordes; mat gains shouldn't be too significantly more than Elite waves tho also remember not everything will die, maybe assume 75% or something}
 
-coupon can show negative saved?? (was entrepreneur) [is it from the lowered value of recycled thing?]
-
 fairy should show total tier-1 items if possible
 
 check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible (even if that's just an extended description - might be good anyway, should clarify it stacks both ways)
-
 
 
 Jack maybe 100% on Elites; thematically they want to actually be good at it, tho they are guaranteed Elites
@@ -396,22 +393,18 @@ Should crit chance tooltip mention explosions can crit?
 
 
 
-
 Elemental Damage: Double negative from -%Dmg and Negative Elemental Damage results in a positive damage scaling.
 
 Cyborg: Unique SFX when switching modes (rather than an already used sound)
 
-Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should probably be consistent (tho there's the awkwardness of the long version being more accurate and the short version being better for the tiny text box)
-
-
-Multitasker Weapons slot UI 2x3 -> 3x4??
-	Make it switch whenever you have more than 6 weapons to also work for Robot Arm
 
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
 Sifd's could give partial {some stat} based on Pickup Range
 	Could damage enemies the materials pass thru on their way to you {check if mat is moving and then just check hitboxes??}
-	
+
+Farmer/Streamer and Explorer/Fisher/Cryptid descriptions for fewer mats should probably be consistent (tho there's the awkwardness of the long version being more accurate and the short version being better for the tiny text box)
+
 Could flatten Pruner's dmg level-ups, e.g. 50/70/85 for scaling or 60/70/85, and 1.4/1.6/1.8 for crit dmg
 Pruners could have a more Xbow-like Crit-scaling
 	Pruners already pretty good tho, so might need small base/scaling nerfs or something alongside
@@ -424,6 +417,9 @@ should potato be tagged for all its stuff rather than an arbitrary subset? (Was 
 
 Explorer _could_ be tagged for Speed (but would make Bags a touch harder to find.)
 
+Multitasker Weapons slot UI 2x3 -> 3x4??
+	Make it switch whenever you have more than 6 weapons to also work for Robot Arm
+	
 Rework Riposte
 
 jousting lance progression looks sus, esp. purple; try it with some more chars
@@ -587,6 +583,9 @@ Negative speed can be positive with Shackles?
 ** Does WanderBot delay enemy scripts? (Maybe count how many script attacks an Elite does with several Bots and without)
 ** ""Why melee weapons try to explode twice? One in collision handling in _on_Hurtbox_area_entered of unit.gd and second in _on_Hitbox_hit_something of weapon.gd afterhitbox.hit_something(self, dmg_taken[1]) called and then hitbox emits "hit_something" signal (This obviously doesn't happen for ranged weapons because hitbox belongs to a projectile and not a weapon). And if this is intended why _on_Hitbox_hit_something do not connect explosion to on_weapon_hit_something and lose tracking of damage?""
 Test if Fisher/etc. with -mats end up GAINING more from there being piles on the ground (reverse of Jack bug)
+coupon can show negative saved?? (was entrepreneur) [is it from the lowered value of recycled thing?]
+
+
 
 Tyler
 6.2

@@ -2,7 +2,8 @@ extends "res://effects/items/gain_stat_for_every_stat_effect.gd"
 
 # Replace, Tooltip cleanup
 # Add Pocket Factory to Streamer's structure bonus
-# 
+# King's changed ability
+#
 func get_args()->Array:
 	var actual_nb_scaled = 0
 	var key_arg = key
@@ -26,10 +27,20 @@ func get_args()->Array:
 		actual_nb_scaled = RunData.get_nb_item(stat_scaled, false)
 	elif stat_scaled == "living_tree":
 		actual_nb_scaled = RunData.current_living_trees
-	### Stat for materials leftover at end of wave
+	### Stat for materials leftover at end of wave (New Padding)
 	elif stat_scaled == "bm_leftover_materials":
 		actual_nb_scaled = RunData.effects["bm_leftover_materials"]
-	###
+	##
+	### New King ability counts uniques rather than total tier-4 weapons
+	elif stat_scaled == "bm_unique_legendary_weapon":
+		var unique_tier4_weapon_ids = []
+		for weapon in RunData.weapons:
+			if weapon.tier >= Tier.LEGENDARY: 
+				print("wep  ", weapon.weapon_id)
+				if not unique_tier4_weapon_ids.has(weapon.weapon_id):
+					unique_tier4_weapon_ids.push_back(weapon.weapon_id)
+		actual_nb_scaled = unique_tier4_weapon_ids.size()
+	##
 	elif perm_only:
 		actual_nb_scaled = RunData.get_stat(stat_scaled)
 	else :
