@@ -615,7 +615,7 @@ func _ready()->void:
 	temp.value = 90  # 85
 	temp = load("res://items/all/fairy/fairy_effect_1.tres")
 	temp.value = 2   # 1 (HP Regen Gained)
-	temp.nb_stat_scaled = 3 # (Items Required)
+	temp.nb_stat_scaled = 3 # 1 (Items Required)
 	temp.text_key = "NEW_EFFECT_GAIN_STAT_FOR_EVERY_DIFFERENT_STAT"
 	temp = load("res://items/all/fairy/fairy_effect_2.tres")
 	temp.key = "stat_speed"
@@ -656,7 +656,7 @@ func _ready()->void:
 	temp.effects.erase(temp_2) # Remove -Damage%
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/power_generator_2_max_hp_malus.tres")
 	temp.effects.push_back(temp_2) # -1 HP per 5% Speed
-	temp = load("res://items/all/power_generator/power_generator_effect_1.tres")
+##temp = load("res://items/all/power_generator/power_generator_effect_1.tres")
 ##temp.text_key = "EFFECT_GAIN_STAT_FOR_EVERY_STAT" # Change to all Speed instead of Perm only
 
 	temp = load("items/all/rip_and_tear/rip_and_tear_stats.tres")
@@ -706,7 +706,7 @@ func _ready()->void:
 	
 	# Tyler
 	temp = load("res://entities/structures/turret/tyler/tyler_stats.tres")
-	temp.scaling_stats = [ [ "stat_engineering", 0.8 ], [ "stat_elemental_damage", 0.4 ] ] # Engineering 1.0, No Ele
+	temp.scaling_stats = [ [ "stat_engineering", 0.8 ], [ "stat_elemental_damage", 0.8 ] ] # Engineering 1.0, No Ele
 	temp = load("res://items/all/tyler/tyler_data.tres")
 	temp.tags.push_back("stat_elemental_damage") # Added Elemental
 	
@@ -937,7 +937,7 @@ func _ready()->void:
 	
 	# Robot Arm - Reworked
 	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
-	temp.value = 85
+	temp.value = 87
 	temp.tags = [ ]
 	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_0.tres")
 	temp.effects.erase(temp_2)
@@ -951,7 +951,8 @@ func _ready()->void:
 	temp.effects.push_back(temp_2)  # Extra Weapon Slot
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_regen_malus.tres")
 	temp.effects.push_back(temp_2)  # -3 HP Regen
-
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_lifesteal_malus.tres")
+	temp.effects.push_back(temp_2)  # -2 Lifesteal
 	
 	# Sifd's Relic
 	temp = load("res://items/all/sifds_relic/sifds_relic_data.tres")
@@ -1669,14 +1670,14 @@ func _ready()->void:
 	
 	# Engineer
 	temp = load("res://items/characters/engineer/engineer_effect_1.tres")
-	temp.value = 8  # 10 (Base Engineering)
+	temp.value = 5  # 10 (Base Engineering)
 	temp = load("res://items/characters/engineer/engineer_data.tres")
 	temp_2 = load("res://items/characters/engineer/engineer_effect_2.tres")
 	temp.effects.erase(temp_2) # Remove starting Wrench
 	temp_2 = load("res://items/characters/engineer/engineer_effect_4.tres")
 	temp.effects.erase(temp_2) # Remove original All-Damage Malus
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/engineer_elemental_damage_malus.tres")
-	temp.effects.push_back(temp_2) # Add lower -25% Elemental Damage malus
+	temp.effects.push_back(temp_2) # Add lower -20% Elemental Damage malus
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/engineer_non-elemental_damage_malus.tres")
 	temp.effects.push_back(temp_2) # Re-add other Damage types still at -50%
 	

@@ -202,7 +202,7 @@ Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from bei
 Toolbox: Price 55->53; 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
 Triangle of Power: Removed 'Armor' Tag
-Tyler: 1.0 Engineering Scaling -> 0.8; 0 Elemental Damage Scaling -> 0.4; Added to Elemental Damage Tag Pool. [Another item to help enable the mixed Engineering+Elemental build.]
+Tyler: 1.0 Engineering Scaling -> 0.8; No Elemental Damage Scaling -> 0.8; Added to Elemental Damage Tag Pool. [Another item to help enable the mixed Engineering+Elemental build.]
 Vigilante Ring: Price 92->83
 Wheat: Harvesting 10->13
 Wings: Range 30 -> 40
@@ -231,7 +231,7 @@ Potato: Price 95->100
 Regeneration Potion: HP Regeneration 3 -> 4
 Retromation's Hoodie: +2% Attack Speed for every 1% Dodge -> +3% Attack Speed for every 2% Dodge; -80 Range -> -100 Range
 Ricochet: Damage -25% -> -20%; All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower). [In vanilla, it's a red-tier item that only works on ranged weapons to begin with, but then still ends up worthless on weapons like Shotgun and Shredder making it overly niche.]
-Robot Arm: [Reworked] Price 85; Adds an additional weapon slot; -3 HP Renegeration  [Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]
+Robot Arm: [Reworked] Price 87; Adds an additional weapon slot; -3 HP Renegeration; -2 Lifesteal  [Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]
 Sifd's Relic: Price 100->55
 Spider: 6% Attack Speed Per Different Weapon -> 8% [Thematic!]
 Wolf Helmet: Price 90->95; Additional Downside of -5 Harvesting
@@ -285,7 +285,7 @@ Cryptid: Bonus XP/Gold Per Living Tree 12 -> 11
 Cyborg: No longer favored to find Engineering Items - now favored to find Structure Items specifically.
 Demon: Materials to 1 HP Ratio 13 -> 14
 Doctor: Harvesting 5 -> 0; Starting HP Regeneration 5 -> 2; HP Regeneration is Doubled -> HP Regeneration modifications are increased by 100% [This is mostly the same (technically a very minor nerf), but makes it much more clear what your HP Regen is actually at.]
-Engineer: No longer starts with a Wrench; Starting Engineering 10 -> 8; Elemental Damage Penalty -50% -> -25% [Allows Engineer to lean into a mixed Engineering+Elemental build if desired, and makes more sense for Plank as a starting weapon.]
+Engineer: No longer starts with a Wrench; Starting Engineering 10 -> 5; Elemental Damage Penalty -50% -> -20% [Allows Engineer to lean into a mixed Engineering+Elemental build if desired, and makes more sense for Plank as a starting weapon.]
 Explorer: No longer favored to find 'Pickup' Items (Metal Detector, Baby Elephant, Cute Monkey, Pickup Range, Material Attract).
 Farmer: Now starts with a Garden; Now also favored to find Gardens in the shop [An overall buff to a weak character (that is also more impacted by nerfs to tier-1 Harvesting and Fertilizer than others), and one that is most impactful for their weaker, non-Pruner-based builds.]
 Glutton: Now also favored to find Gardens in the shop; Explosion crit chance now properly affected by Crit Chance (base chance is still 3%)
@@ -372,12 +372,12 @@ You are free to use concepts and code contained within elsewhere, ideally with a
 ~~ UNIMPLEMENTED ~~
 These changes are coded but not active because they can't work via mods :(
 - Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
-- Contextual extra decimal place for low cooldowns.
 - Bugfixed cooldown randomization so it isn't so extreme (especially on Multi-tasker).
+- Contextual extra decimal place for low cooldowns.
 
 
 ~~ OTHER PONDERINGS ~~
-
+Horde wave income 65% -> 60%? {Get numbers for 14/15 Hordes; mat gains shouldn't be too significantly more than Elite waves tho also remember not everything will die, maybe assume 75% or something}
 
 coupon can show negative saved?? (was entrepreneur) [is it from the lowered value of recycled thing?]
 
@@ -387,12 +387,7 @@ check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if 
 
 
 
-PowerGen & Speedy don't know how to read Fairy's LinkedStats -Speed
-Likewise Chonky doesn't see Stone Skin HP
-		For now prob change text back to 'permanent'
--Stone Skin could account for armor from Streamer's bonus since it *is* basically permanent armor (it can change via weapon changes, but not once the wave starts?)
-
-Jack maybe 100% on Elites; thematically they want to actually be good at it
+Jack maybe 100% on Elites; thematically they want to actually be good at it, tho they are guaranteed Elites
 
 
 Pumpkin should probably affect bounce (retest Pump)
@@ -400,9 +395,6 @@ Pumpkin should probably affect bounce (retest Pump)
 Should crit chance tooltip mention explosions can crit?
 
 
-Could flatten Pruner's dmg level-ups, e.g. 50/70/85 for scaling or 60/70/85, and 1.4/1.6/1.8 for crit dmg
-Pruners could have a more Xbow-like Crit-scaling
-	Pruners already pretty good tho, so might need small base/scaling nerfs or something alongside
 
 
 Elemental Damage: Double negative from -%Dmg and Negative Elemental Damage results in a positive damage scaling.
@@ -417,6 +409,17 @@ Multitasker Weapons slot UI 2x3 -> 3x4??
 
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
+Sifd's could give partial {some stat} based on Pickup Range
+	Could damage enemies the materials pass thru on their way to you {check if mat is moving and then just check hitboxes??}
+	
+Could flatten Pruner's dmg level-ups, e.g. 50/70/85 for scaling or 60/70/85, and 1.4/1.6/1.8 for crit dmg
+Pruners could have a more Xbow-like Crit-scaling
+	Pruners already pretty good tho, so might need small base/scaling nerfs or something alongside
+	
+PowerGen & Speedy don't know how to read Fairy's LinkedStats -Speed
+Likewise Chonky doesn't see Stone Skin HP
+-Stone Skin could account for armor from Streamer's bonus since it *is* basically permanent armor (it can change via weapon changes, but not once the wave starts?)
+
 should potato be tagged for all its stuff rather than an arbitrary subset? (Was there a reason like, as far as having at least 1 red item for each of those tags or?)
 
 Explorer _could_ be tagged for Speed (but would make Bags a touch harder to find.)
@@ -424,8 +427,6 @@ Explorer _could_ be tagged for Speed (but would make Bags a touch harder to find
 Rework Riposte
 
 jousting lance progression looks sus, esp. purple; try it with some more chars
-
-Sifd's Relic wants an additional effect
 
 farmer xbow?
 Speedy: -Screwdriver starts maybe?
