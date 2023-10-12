@@ -258,24 +258,28 @@ func _ready()->void:
 	temp.groups_data.push_back(temp_2)
 		
 	# Wave 14 & 15 Horde
+	# Basics 26x4 & Chasers 26x4 -> 0 & 0 for Wave 14/15
 	temp = load("res://zones/zone_1/000_hordes/group_3b.tres")
 	temp.max_wave = 13    # Groups of 4 Chasers + 4 Basics in 2nd half removed for 14+15 to make more room for others
 	temp = load("res://zones/zone_1/000_hordes/group_4.tres")
-	temp.repeating_interval = 3
+	# Helmets 33x8.5 -> 31x5.5
+	temp.repeating_interval = 3 
 	temp.spawn_edge_of_map = true
 	temp = load("res://zones/zone_1/000_hordes/unit_3.tres") # Helmet
 	temp.min_number = 5   # 8
-	temp.max_number = 5   # 9
+	temp.max_number = 6   # 9
 	temp = load("res://zones/zone_1/000_hordes/group_5.tres")
-	temp.min_wave = 13
+	temp.min_wave = 13		# 15
 	temp.spawn_edge_of_map = true
+	# Basic 28x4 & Chaser 28x4 -> 0
 	temp_2 = load("res://zones/zone_1/000_hordes/unit_1.tres") # Basic
 	temp.wave_units_data.erase(temp_2) 
 	temp_2 = load("res://zones/zone_1/000_hordes/unit_2.tres") # Chaser
 	temp.wave_units_data.erase(temp_2)
 	temp = load("res://zones/zone_1/000_hordes/unit_4.tres") # Fin
+	# Fins 28x6.5 -> 28x5.5
 	temp.min_number = 5   # 6
-	temp.max_number = 5   # 7
+	temp.max_number = 6   # 7
 	
 	
 	## TIER-1 ITEMS ##
@@ -609,9 +613,12 @@ func _ready()->void:
 	temp = load("res://items/all/community_support/community_support_data.tres")
 	temp.value = 72  # 75
 	temp.tags.push_back("stat_attack_speed")
-
+	
+	# Fairy
 	temp = load("res://items/all/fairy/fairy_data.tres")
 	temp.value = 90  # 85
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/fairy_count_tier1s.tres")
+	temp.effects.insert(1, temp_2)
 	temp = load("res://items/all/fairy/fairy_effect_1.tres")
 	temp.value = 2   # 1 (HP Regen Gained)
 	temp.nb_stat_scaled = 3 # 1 (Items Required)

@@ -11,6 +11,7 @@ Easier to start with tier-2+ only weapons: you'll now be offered a weapon from t
 Base equipment rarity offered in shops slightly lower; Luck impacts shop rarity more; Tier 2-4 Luck Level-ups better.
 Bugfixed Wave 3 shops so they can now sell more than 1 weapon.
 Small tweaks to other level-ups, notably making tier-1 Harvesting weaker and several weaker tier-4 level-ups more worthwhile.
+Horde Waves give ~8% fewer materials.
 All explosions can now crit.
 Several tooltips cleaned up to be more clear & character descriptions take up less room. Additional Quality of Life features such as icons for relevant Fairy & King items. Various vanilla-game bugfixes.
 
@@ -56,6 +57,7 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 * Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools + Gardens are more precise. Knight's tooltip color-coded properly. Fixed Lightning Shiv's bounce count. Fixed Incendiary Turret tooltip's incorrect damage rounding.
 * Stats now update properly on shop reroll (for Padding & Saver).
 * The reroll button for level-ups is now colored for levels that have a guaranteed rarity. (Level 5, 10, 15, etc.)
+* Horde Wave Materials: 65% -> 60%
 Note: Altered and new descriptions will currently not display for non-English languages.
 
 
@@ -87,8 +89,8 @@ Wave 12: Mummy Spawns 10 -> 16 [For comparison, Wave 11 averages 32.5 Mummies.]
 Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP - this is slightly more total HP); One extra group of 6 early Basics spawns at the edges (Makes the first ~15s a bit less empty); Single Magician Spawns 1-2 x6 -> 1-1 x6 [Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
 Wave 16: Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
-Wave 20: Added a handful of additional Basic Alien and Fin spawns primarily to help out effects which are based on enemy/material counts.
-Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with; Made the Horde additions identical for 14/15. [Aiming to make these Horde waves feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts.]
+Wave 20: Added additional Basics (5 every 5s = 80 total) and Fins (5 every 6s = 65 total), primarily to help out effects which are based on enemy/material counts (but also potentially makes things a bit harder, especially for Ranged builds).
+Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with; Made the Horde additions identical for 14/15. [Aiming to make these Horde waves feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts like they are in vanilla.]
 
 
 ~~ LEVEL-UPS ~~
@@ -184,7 +186,7 @@ Bowler Hat: Price 75->72; 15 Luck -> 16
 Candle: Price 65->50; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->58; %Damage -4% -> -3%
 Community Support: Price 75->72; Added 'Attack Speed' Tag
-Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items; -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in both the shop and item boxes to indicate items affecting Fairy you don't have yet (like Renegade).
+Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items (Tooltip also shows a counter for how many items you need until the next stat increase); -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in both the shop and item boxes to indicate items affecting Fairy you don't have yet (like Renegade).
 Fin: 10% Speed -> 9%; Luck -8 -> -9 
 Glass Canon: Price 75->67
 Improved Tools: Added the 'Attack Speed' Tag
@@ -263,7 +265,7 @@ Double-barrel Shotgun: Knockback 8 -> 5
 Flamethrower: Price: 56/103/207 -> 58/103/187; Range 300/350/400 -> 250/275/300; Burn 3x5/4x6/5x8 -> 2x4/3x5/5x6; Cooldown 0.12/0.12/0.09 -> 0.22/0.16/0.09 [This allows the weapon to still be powerful in most Elemental builds, but no longer overshadows other Elemental weapons so drastically.]
 Medical Gun: Cooldown 0.95/0.87/0.78/0.62 -> 0.92/0.85/0.75/0.60; Range 400 -> 375; Tier-3 Damage 20 -> 22
 Nuclear Launcher: Cooldown 2.12 -> 2.20; Base Damage 60/120 -> 50/100; Range 800 -> 650; Ranged Scaling 100%/100% -> 125%/125%; Elemental Scaling 100%/100% -> 150%/150% [Similar strength on Elemental builds, a bit weaker otherwise.]
-Pistol: Price 10/22/45/91 -> 10/20/41/83; Knockback 15 -> 10 [Leaning into its strength of being cheap; the low-price + decent base damage gives it some utility as a temporary weapon, or as a good option in situations where you're primarily gaining Damage% rather than Ranged Damage. Notably, also less damaging to your shop odds to mix into a build as well because of the multi-weapon changes.]
+Pistol: Price 10/22/45/91 -> 10/20/41/83; Knockback 15 -> 10 [Leaning into its strength of being cheap; the low price + decent base damage gives it some utility as a temporary weapon, or as a good option in situations where you're primarily gaining Damage% rather than Ranged Damage. Also worth noting that it's now also less damaging to your shop odds to mix into a build as well because of the multi-weapon changes.]
 Potato Thrower: Added to the Blunt Weapon Set [Experimental]; Price 36/69/139 -> 33/65/118; Base Damage 1(All) -> 2/3/4
 Revolver: Tier-1 Price 20 -> 18; Range 450 -> 425
 Rocket Launcher: Range 500/550/600 -> 500(All)
@@ -377,9 +379,6 @@ These changes are coded but not active because they can't work via mods :(
 
 
 ~~ OTHER PONDERINGS ~~
-Horde wave income 65% -> 60%? {Get numbers for 14/15 Hordes; mat gains shouldn't be too significantly more than Elite waves tho also remember not everything will die, maybe assume 75% or something}
-
-fairy should show total tier-1 items if possible
 
 check sauce/rip and tear tooltip for multiples to see if it lies on dmg; fix if possible (even if that's just an extended description - might be good anyway, should clarify it stacks both ways)
 
@@ -400,6 +399,8 @@ Cyborg: Unique SFX when switching modes (rather than an already used sound)
 
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
+King's changed abilities show the total in green instead of white at +0
+
 Sifd's could give partial {some stat} based on Pickup Range
 	Could damage enemies the materials pass thru on their way to you {check if mat is moving and then just check hitboxes??}
 

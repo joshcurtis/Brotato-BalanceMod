@@ -1,5 +1,41 @@
 extends "res://main.gd"
 
+# Replace to reduce Horde Wave profits
+func spawn_loot(unit:Unit, entity_type:int)->void :
+	
+	if not unit.can_drop_loot:
+		return 
+	
+	if unit.stats.can_drop_consumables:
+		spawn_consumables(unit)
+	
+	var gold_drops = (RunData.effects["gold_drops"] / 100.0)
+	
+	if entity_type == EntityType.ENEMY:
+		gold_drops += RunData.effects["enemy_gold_drops"] / 100.0
+	
+	var wave_factor = RunData.current_wave * 0.015
+	var diff_factor = (RunData.effects["diff_gold_drops"] / 100.0)
+	var spawn_chance = (1.0 + diff_factor) * gold_drops if (RunData.current_wave < 5) else max(0.5 * gold_drops, (1.0 - wave_factor + diff_factor) * gold_drops)
+	
+	if _is_horde_wave:
+		### 0.65 -> 0.6
+		spawn_chance *= 0.6
+		##
+	
+	if unit.stats.always_drop_consumables:
+		spawn_chance = 1.0
+	
+	if entity_type == EntityType.ENEMY and randf() > spawn_chance:
+		return 
+	
+	if _golds.size() > MAX_GOLDS:
+		var gold_boosted = Utils.get_rand_element(_golds)
+		gold_boosted.value += unit.stats.value
+		gold_boosted.scale += Vector2(unit.stats.value * 0.05, unit.stats.value * 0.05)
+	else :
+		spawn_gold(unit, entity_type)
+
 # Replace, Splits Lucky & Baby Elephant
 func on_gold_picked_up(gold:Node)->void :
 	_golds.erase(gold)
