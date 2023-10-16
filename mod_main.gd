@@ -16,6 +16,7 @@ func _init(modLoader = ModLoader):
 	
 	# Bugfix: Update stats on reroll for Saver/Padding
 	# Refreshes Weapons when buying Robot Arm
+	# Refreshes shop items when combining weapons (for King)
 	#! This does cause an exception with the Utils _init Thing, but still runs fine
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop.gd")
 	
@@ -228,10 +229,12 @@ func _ready()->void:
 	temp = load("res://zones/zone_1/014/unit_2.tres")  # Helmets
 	temp.min_number = 5     # 6 
 	temp.max_number = 5     # 6
-	# Adds one extra early group of edge Basics (same after)
+	# Adds one extra early group of edge Basics (120 total Basics -> 130)
 	temp = load("res://zones/zone_1/014/group_3.tres") # Basics
-	temp.spawn_timing = 9   # 15
-	temp.repeating_interval = 6 # 5
+	temp.spawn_timing = 6   # 15
+	temp.repeating_interval = 7 # 5
+	temp = load("res://zones/zone_1/014/unit_3.tres")
+	temp.max_number = 7     # 6.0 -> 6.5
 	
 	# Wave 15
 	temp = load("res://zones/zone_1/015/unit_2.tres")  # Helmets
@@ -276,10 +279,7 @@ func _ready()->void:
 	temp.wave_units_data.erase(temp_2) 
 	temp_2 = load("res://zones/zone_1/000_hordes/unit_2.tres") # Chaser
 	temp.wave_units_data.erase(temp_2)
-	temp = load("res://zones/zone_1/000_hordes/unit_4.tres") # Fin
-	# Fins 28x6.5 -> 28x5.5
-	temp.min_number = 5   # 6
-	temp.max_number = 6   # 7
+	# (Leaving only 28x6.5 Fins)
 	
 	
 	## TIER-1 ITEMS ##
@@ -294,6 +294,9 @@ func _ready()->void:
 	temp = load("res://items/all/baby_gecko/baby_gecko_effect_2.tres")
 	temp.value = 16   # 10 (Range)
 	
+	temp = load("res://items/all/bag/bag_data.tres")
+	temp.value = 16   # 15
+	
 	temp = load("res://items/all/beanie/beanie_effect_2.tres")
 	temp.value = -8  # -6 (Range)
 	
@@ -307,7 +310,7 @@ func _ready()->void:
 	temp.value = 9   # 10 (Attack Speed)
 
 	temp = load("res://items/all/coupon/coupon_data.tres")
-	temp.value = 18   # 15
+	temp.value = 19   # 15
 	
 	temp = load("res://items/all/cute_monkey/cute_monkey_data.tres")
 	temp.value = 35  # 25
@@ -1018,7 +1021,6 @@ func _ready()->void:
 		"weapon_torch_4":"res://mods-unpacked/DarkTwinge-BalanceMod/weapons/torch.tscn"
 	}
 	for weapon in ItemService.weapons:
-	#	print(weapon.my_id)
 		if weapon.my_id in weapon_scenes.keys():
 			weapon.scene = load(weapon_scenes[weapon.my_id])	
 	
@@ -1151,15 +1153,15 @@ func _ready()->void:
 	temp = load("res://weapons/melee/plank/1/plank_exploding_effect.tres")
 	temp.scale = 0.8 		 # 0.75
 	temp = load("res://weapons/melee/plank/2/plank_2_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.6 ], [ "stat_elemental_damage", 0.6 ], [ "stat_engineering", 0.6 ] ]		
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.6 ], [ "stat_elemental_damage", 0.6 ], [ "stat_engineering", 0.6 ] ]
 	temp = load("res://weapons/melee/plank/2/plank_2_exploding_effect.tres")
 	temp.scale = 0.9  	 # 0.75
 	temp = load("res://weapons/melee/plank/3/plank_3_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.7 ], [ "stat_elemental_damage", 0.7 ], [ "stat_engineering", 0.7 ] ]	
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.7 ], [ "stat_elemental_damage", 0.7 ], [ "stat_engineering", 0.7 ] ]
 	temp = load("res://weapons/melee/plank/3/plank_3_exploding_effect.tres")
 	temp.scale = 1.0 		 # 0.75
 	temp = load("res://weapons/melee/plank/4/plank_4_stats.tres")
-	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ], [ "stat_elemental_damage", 0.8 ], [ "stat_engineering", 0.8 ] ]	
+	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ], [ "stat_elemental_damage", 0.8 ], [ "stat_engineering", 0.8 ] ]
 	temp = load("res://weapons/melee/plank/4/plank_4_exploding_effect.tres")
 	temp.scale = 1.1		 # 0.75
 	
@@ -1674,7 +1676,7 @@ func _ready()->void:
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/doctor_hp_regen.tres")
 	temp.effects.insert(temp_find, temp_2) # ...and replace with Double HP Regen Stat
 	temp = load("res://items/characters/doctor/doctor_effect_2.tres")
-	temp.value = 2  # 5 (HP Regen)
+	temp.value = 3  # 5 (HP Regen)
 	
 	# Engineer
 	temp = load("res://items/characters/engineer/engineer_effect_1.tres")
@@ -1913,18 +1915,25 @@ func _ready()->void:
 	# Apprentice
 	temp = load("res://items/characters/apprentice/apprentice_data.tres")
 	temp_2 = load("res://weapons/ranged/medical_gun/1/medical_gun_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(13, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
 	temp.starting_weapons.erase(temp_2)		
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
 	temp.starting_weapons.erase(temp_2)
 	
+	# Brawler
+	temp = load("res://items/characters/brawler/brawler_data.tres")
+	# Move to end
+	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
+	temp.starting_weapons.erase(temp_2)
+	temp.starting_weapons.push_back(temp_2)	
+	
 	# Chonky
 	temp = load("res://items/characters/chunky/chunky_data.tres")
-	temp_2 = load("res://weapons/ranged/taser/1/taser_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/revolver/1/revolver_data.tres")
+	temp.starting_weapons.insert(11, temp_2)
+	temp_2 = load("res://weapons/ranged/taser/1/taser_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
@@ -1956,18 +1965,18 @@ func _ready()->void:
 	
 	# Entrepreneur
 	temp = load("res://items/characters/entrepreneur/entrepreneur_data.tres")
-	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/hatchet/1/hatchet_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/claw/1/claw_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/plank/1/plank_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/hatchet/1/hatchet_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/claw/1/claw_data.tres")
+	temp.starting_weapons.insert(1, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/ranged/wand/1/wand_data.tres")
 	temp.starting_weapons.erase(temp_2)	
@@ -1975,41 +1984,45 @@ func _ready()->void:
 	# Explorer
 	temp = load("res://items/characters/explorer/explorer_data.tres")
 	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(7, temp_2)
 	temp_2 = load("res://weapons/melee/ghost_axe/1/ghost_axe_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(6, temp_2)
 	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(6, temp_2)
 	
 	# Farmer
 	temp = load("res://items/characters/farmer/farmer_data.tres")
-	temp_2 = load("res://weapons/melee/dagger/1/dagger_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/slingshot/1/slingshot_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(10, temp_2)
+	temp_2 = load("res://weapons/melee/fighting_stick/1/fighting_stick_data.tres")
+	temp.starting_weapons.insert(3, temp_2)
+	temp_2 = load("res://weapons/melee/dagger/1/dagger_data.tres")
+	temp.starting_weapons.insert(3, temp_2)
 
 	# Fisher
 	temp = load("res://items/characters/fisherman/fisherman_data.tres")
-	temp_2 = load("res://weapons/melee/plank/1/plank_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(7, temp_2)
 	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(7, temp_2)
+	temp_2 = load("res://weapons/melee/plank/1/plank_data.tres")
+	temp.starting_weapons.insert(7, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/screwdriver/1/screwdriver_data.tres")
 	temp.starting_weapons.erase(temp_2)
 
 	# Generalist
 	temp = load("res://items/characters/generalist/generalist_data.tres")
-	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
+	temp_2 = load("res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/shredder/1/shredder_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(11, temp_2)
+	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
+	temp.starting_weapons.insert(3, temp_2)
+	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
+	temp.starting_weapons.insert(2, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2031,9 +2044,9 @@ func _ready()->void:
 	
 	# Golem
 	temp = load("res://items/characters/golem/golem_data.tres")
-	temp_2 = load("res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
 	# Hunter
@@ -2044,7 +2057,7 @@ func _ready()->void:
 	# Jack
 	temp = load("res://items/characters/jack/jack_data.tres")
 	temp_2 = load("res://weapons/melee/spiky_shield/1/spiky_shield_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(2, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2056,7 +2069,7 @@ func _ready()->void:
 	# King
 	temp = load("res://items/characters/king/king_data.tres")
 	temp_2 = load("res://weapons/melee/jousting_lance/2/jousting_lance_2_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(12, temp_2)
 	temp_2 = load("res://weapons/ranged/rocket_launcher/2/rocket_launcher_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
@@ -2064,17 +2077,17 @@ func _ready()->void:
 	temp = load("res://items/characters/knight/knight_data.tres")
 	temp_2 = load("res://weapons/melee/fighting_stick/2/fighting_stick_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/pruner/2/pruner_2_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/plank/2/plank_2_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/rock/2/rock_2_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/fist/2/fist_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/knife/2/knife_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/plank/2/plank_2_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/fist/2/fist_2_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/scissors/2/scissors_2_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	temp_2 = load("res://weapons/melee/pruner/2/pruner_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/cactus_mace/2/cactus_mace_2_data.tres")
 	temp.starting_weapons.push_back(temp_2)
@@ -2085,12 +2098,12 @@ func _ready()->void:
 	# Lich
 	temp = load("res://items/characters/lich/lich_data.tres")
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(0, temp_2)
 	
 	# Loud
 	temp = load("res://items/characters/loud/loud_data.tres")
 	temp_2 = load("res://weapons/melee/screwdriver/1/screwdriver_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(12, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2104,11 +2117,11 @@ func _ready()->void:
 	# Lucky
 	temp = load("res://items/characters/lucky/lucky_data.tres")
 	temp_2 = load("res://weapons/melee/jousting_lance/1/jousting_lance_data.tres")
-	temp.starting_weapons.push_back(temp_2)	
-	temp_2 = load("res://weapons/melee/torch/1/torch_data.tres")
-	temp.starting_weapons.push_back(temp_2)	
+	temp.starting_weapons.insert(5, temp_2)	
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
-	temp.starting_weapons.push_back(temp_2)	
+	temp.starting_weapons.insert(5, temp_2)	
+	temp_2 = load("res://weapons/melee/torch/1/torch_data.tres")
+	temp.starting_weapons.insert(5, temp_2)	
 	
 	# Mage
 	temp = load("res://items/characters/mage/mage_data.tres")
@@ -2117,6 +2130,8 @@ func _ready()->void:
 
 	# Masochist
 	temp = load("res://items/characters/masochist/masochist_data.tres")
+	temp_2 = load("res://weapons/melee/torch/1/torch_data.tres")
+	temp.starting_weapons.insert(3, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/ranged/ghost_scepter/1/ghost_scepter_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2124,19 +2139,19 @@ func _ready()->void:
 	# Multi-tasker
 	temp = load("res://items/characters/multitasker/multitasker_data.tres")
 	temp_2 = load("res://weapons/melee/rock/1/rock_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(17, temp_2)
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(11, temp_2)
 	
 	# Mutant
 	temp = load("res://items/characters/mutant/mutant_data.tres")
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(6, temp_2)
 	
 	# Old
 	temp = load("res://items/characters/old/old_data.tres")
 	temp_2 = load("res://weapons/ranged/revolver/1/revolver_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(8, temp_2)
 	
 	# One-armed
 	temp = load("res://items/characters/one_arm/one_arm_data.tres")
@@ -2151,8 +2166,8 @@ func _ready()->void:
 	temp.starting_weapons.erase(temp_2)	
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
 	temp.starting_weapons.erase(temp_2)	
-	#temp_2 = load("res://weapons/melee/chopper/1/chopper_data.tres")
-	#temp.starting_weapons.erase(temp_2)	
+	temp_2 = load("res://weapons/melee/chopper/1/chopper_data.tres")
+	temp.starting_weapons.erase(temp_2)	
 	temp_2 = load("res://weapons/ranged/pistol/1/pistol_data.tres")
 	temp.starting_weapons.erase(temp_2)	
 	temp_2 = load("res://weapons/ranged/crossbow/1/crossbow_data.tres")
@@ -2168,9 +2183,13 @@ func _ready()->void:
 	
 	# Pacifist
 	temp = load("res://items/characters/pacifist/pacifist_data.tres")
+	temp_2 = load("res://weapons/melee/rock/1/rock_data.tres")
+	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/rock/1/rock_data.tres")
+	# Move to end
+	temp_2 = load("res://weapons/melee/spiky_shield/1/spiky_shield_data.tres")
+	temp.starting_weapons.erase(temp_2)
 	temp.starting_weapons.push_back(temp_2)
 	
 	# Ranger
@@ -2180,32 +2199,32 @@ func _ready()->void:
 	
 	# Renegade
 	temp = load("res://items/characters/renegade/renegade_data.tres")
-	temp_2 = load("res://weapons/ranged/shuriken/1/shuriken_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/slingshot/1/slingshot_data.tres")
 	temp.starting_weapons.push_back(temp_2)
-
+	temp_2 = load("res://weapons/ranged/shuriken/1/shuriken_data.tres")
+	temp.starting_weapons.push_back(temp_2)
+	
 	# Saver
 	temp = load("res://items/characters/saver/saver_data.tres")
-	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/stick/1/stick_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/chopper/1/chopper_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/chopper/1/chopper_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/stick/1/stick_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
+	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
+	temp.starting_weapons.insert(5, temp_2)
 
 	# Sick
 	temp = load("res://items/characters/sick/sick_data.tres")
-	temp_2 = load("res://weapons/melee/cactus_mace/1/cactus_mace_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/hatchet/1/hatchet_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/melee/hatchet/1/hatchet_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/melee/cactus_mace/1/cactus_mace_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/hand/1/hand_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2213,14 +2232,14 @@ func _ready()->void:
 	# Soldier
 	temp = load("res://items/characters/soldier/soldier_data.tres")
 	temp_2 = load("res://weapons/melee/lightning_shiv/1/lightning_shiv_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(1, temp_2)
 	
 	# Speedy
 	temp = load("res://items/characters/speedy/speedy_data.tres")
 	temp_2 = load("res://weapons/melee/ghost_flint/1/ghost_flint_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(9, temp_2)
 	temp_2 = load("res://weapons/melee/pruner/1/pruner_data.tres")
-	temp.starting_weapons.push_back(temp_2)
+	temp.starting_weapons.insert(9, temp_2)
 	# Remove
 	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
 	temp.starting_weapons.erase(temp_2)
@@ -2245,9 +2264,10 @@ func _ready()->void:
 	
 	# Well-Rounded
 	temp = load("res://items/characters/well_rounded/well_rounded_data.tres")
-	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
-	temp.starting_weapons.push_back(temp_2)
-	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
-	temp.starting_weapons.push_back(temp_2)
 	temp_2 = load("res://weapons/ranged/slingshot/1/slingshot_data.tres")
-	temp.starting_weapons.push_back(temp_2)	
+	temp.starting_weapons.insert(7, temp_2)	
+	temp_2 = load("res://weapons/melee/wrench/1/wrench_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/melee/fist/1/fist_data.tres")
+	temp.starting_weapons.insert(1, temp_2)
+

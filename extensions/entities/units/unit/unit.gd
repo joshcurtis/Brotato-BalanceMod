@@ -25,10 +25,7 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 		### Makes knockback an average of existing game behavior and the vector from player to enemy
 		if player_ref != null:
 			var out_from_player = global_position.direction_to(player_ref.global_position)
-			#print("Orig: ", knockback_direction)
-			#print("Out_from_player: ", out_from_player)
 			knockback_direction = _lerp(out_from_player, knockback_direction, 0.5)
-			#print("New: ", knockback_direction)
 		###
 		knockback_amount = hitbox.knockback_amount
 		effect_scale = hitbox.effect_scale
@@ -77,30 +74,6 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 	
 	dmg_dealt = clamp(full_dmg_value, 0, current_stats.health)
 	current_stats.health = max(0.0, current_stats.health - full_dmg_value) as int
-	
-	### Old Knockback changes
-	#if hitbox != null and player_ref != null:
-	#	var knock_x = player_ref.global_position.x - hitbox.global_position.x
-	#	var knock_y = player_ref.global_position.y - hitbox.global_position.y
-	#	var knock_hyp = sqrt(pow(knock_x,2) + pow(knock_y,2))
-
-	#	print("Dir-x: ", knock_x / knock_hyp)
-	#	print("Dir-y: ", knock_y / knock_hyp)
-	#	print("Original Dir: ", knockback_direction)
-	#	print("combined x: ", cos((acos(knock_x / knock_hyp) + acos(knockback_direction.x)) / 2))
-	#	print("combined y: ", sin((asin(knock_y / knock_hyp) + asin(knockback_direction.y)) / 2))
-
-		#knockback_direction.x = cos((acos(knock_x / knock_hyp) + acos(knockback_direction.x)) / 2)
-		#knockback_direction.y = sin((asin(knock_y / knock_hyp) + asin(knockback_direction.y)) / 2)
-
-	#	print("Player: ", player_ref.global_position)
-	#	print("Hitbox: ", hitbox.global_position)
-	#	print("Self: ", self.global_position)
-	#	print("Raw Avg X: ", (knockback_direction.x + (knock_x / knock_hyp)) / 2)
-	#	print("Raw Avg Y: ", (knockback_direction.y + (knock_y / knock_hyp)) / 2)
-	#	knockback_direction = (player_ref.global_position - hitbox.global_position).normalized()
-	#	print(knockback_direction)
-	###
 	
 	_knockback_vector = knockback_direction * knockback_amount
 	

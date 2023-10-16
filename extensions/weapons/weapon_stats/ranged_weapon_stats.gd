@@ -4,7 +4,6 @@ extends "res://weapons/weapon_stats/ranged_weapon_stats.gd"
 
 # Replace to add a context-appropriate extra decimal to cooldown and to bugfix the Big Reload cooldown tooltip
 func get_cooldown_text(base_stats:Resource, multiplier:float = 1.0)->String:
-	print("this part does not get run?")
 	var cd = get_cooldown_value(base_stats)
 	var base_cd = get_base_cooldown_value(base_stats)
 	var a = get_col_a( - cd, - base_cd)

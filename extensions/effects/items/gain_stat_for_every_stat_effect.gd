@@ -36,7 +36,6 @@ func get_args()->Array:
 		var unique_tier4_weapon_ids = []
 		for weapon in RunData.weapons:
 			if weapon.tier >= Tier.LEGENDARY: 
-				print("wep  ", weapon.weapon_id)
 				if not unique_tier4_weapon_ids.has(weapon.weapon_id):
 					unique_tier4_weapon_ids.push_back(weapon.weapon_id)
 		actual_nb_scaled = unique_tier4_weapon_ids.size()

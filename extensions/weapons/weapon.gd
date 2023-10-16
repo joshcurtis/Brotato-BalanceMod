@@ -21,10 +21,8 @@ func shoot()->void :
 		### Cap counted weapons at 6 to remove Multi-tasker silliness, halved impact of each weapon
 		var weapon_count = min(_parent.get_nb_weapons(), 6)
 		var max_rand = min(weapon_count * current_stats.cooldown / 10.0, weapon_count * 2.5)
-		print("max ", max_rand)
 		###
 		_current_cooldown = rand_range(max(1, current_stats.cooldown - max_rand), current_stats.cooldown + max_rand)
-		print("new ", _current_cooldown)
 	
 	if ((current_stats.additional_cooldown_every_x_shots != - 1 and is_big_reload) or current_stats.additional_cooldown_every_x_shots == - 1) and stats.custom_on_cooldown_sprite != null:
 		sprite.texture = stats.custom_on_cooldown_sprite
