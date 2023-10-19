@@ -377,7 +377,7 @@ func _ready()->void:
 	temp.value = 25  # 28
 
 	temp = load("res://items/all/scar/scar_data.tres")
-	temp.value = 28  # 30
+	temp.value = 26  # 30
 	temp = load("res://items/all/scar/scar_effect_2.tres")
 	temp.value = -11 # -8 (Range)
 	
@@ -411,11 +411,14 @@ func _ready()->void:
 	temp.value = -3  # -4
 	
 	temp = load("res://items/all/alien_eyes/alien_eyes_data.tres")
-	temp.value = 55  # 50
+	temp.value = 57  # 50
 	
 	# Banner
 	temp = load("res://items/all/banner/banner_effect_1.tres")
 	temp.value = 26  # 20 (Range)
+	
+	temp = load("res://items/all/black_belt/black_belt_data.tres")
+	temp.value = 47  # 50
 	
 	temp = load("res://items/all/blindfold/blindfold_effect_3.tres")
 	temp.value = -20  # -15 (Range)
@@ -545,8 +548,10 @@ func _ready()->void:
 	temp.value = -6    # -5 (Enemy Speed)
 
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_data.tres")
-	temp.value = 43  # 40
+	temp.value = 42  # 40
 	temp.max_nb = 3  # 4 (Limit)
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/rip_sauce_clarify_effect.tres")
+	temp.effects.append(temp_2)	
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_effect_1.tres")
 	temp.scale = 1.40   # 1.25 (Explosion Size)
 	temp.chance = 0.35  # 0.25 (Proc Chance)
@@ -558,9 +563,11 @@ func _ready()->void:
 	temp.value = 47  # 40
 	temp = load("res://entities/structures/turret/flame/flame_turret_stats.tres")
 	temp.scaling_stats = [ [ "stat_engineering", 0.35 ] ]  # 0.33
+	temp = load("res://items/all/turret_flame/turret_flame_burning_data.tres")
+	temp.duration = 7 # 8
 
 	temp = load("res://items/all/wheelbarrow/wheelbarrow_data.tres")
-	temp.value = 38  # 40	
+	temp.value = 36  # 40	
 	
 	temp = load("res://items/all/white_flag/white_flag_effect_1.tres")
 	temp.value = 6   # 5 (Harvesting)
@@ -592,13 +599,16 @@ func _ready()->void:
 	temp = load("res://items/all/barricade/barricade_data.tres")
 	temp.value = 72  # 75
 	
+	temp = load("res://items/all/bean_teacher/bean_teacher_data.tres")
+	temp.value = 64  # 70
+	
 	temp = load("res://items/all/blood_donation/blood_donation_data.tres")
-	temp.value = 45  # 50
+	temp.value = 43  # 50
 	
 	temp = load("res://items/all/bowler_hat/bowler_hat_data.tres")
 	temp.value = 72  # 75
 	temp = load("res://items/all/bowler_hat/bowler_hat_effect_1.tres")
-	temp.value = 16  # 15 (Luck)
+	temp.value = 17  # 15 (Luck)
 	
 	temp = load("res://items/all/candle/candle_data.tres")
 	temp.value = 50  # 65
@@ -667,10 +677,14 @@ func _ready()->void:
 	temp.effects.push_back(temp_2) # -1 HP per 5% Speed
 ##temp = load("res://items/all/power_generator/power_generator_effect_1.tres")
 ##temp.text_key = "EFFECT_GAIN_STAT_FOR_EVERY_STAT" # Change to all Speed instead of Perm only
-
+	
+	temp = load("items/all/rip_and_tear/rip_and_tear_data.tres")
+	temp.value = 57  # 65
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/rip_sauce_clarify_effect.tres")
+	temp.effects.append(temp_2)
 	temp = load("items/all/rip_and_tear/rip_and_tear_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
-	
+		
 	temp = load("res://items/all/shackles/shackles_data.tres")
 	temp.value = 85  # 80
 	temp = load("res://items/all/shackles/shackles_effect_3.tres")
@@ -720,7 +734,10 @@ func _ready()->void:
 	temp.tags.push_back("stat_elemental_damage") # Added Elemental
 	
 	temp = load("res://items/all/vigilante_ring/vigilante_ring_data.tres")
-	temp.value = 83  # 92
+	temp.value = 82  # 92
+	
+	temp = load("res://items/all/wandering_bot/wandering_bot_data.tres")
+	temp.value = 57  # 60
 	
 	temp = load("res://items/all/wheat/wheat_effect_3.tres")
 	temp.value = 13  # 10 (Harvesting)
@@ -965,7 +982,7 @@ func _ready()->void:
 	
 	# Sifd's Relic
 	temp = load("res://items/all/sifds_relic/sifds_relic_data.tres")
-	temp.value = 55  # 100
+	temp.value = 50  # 100
 
 	# Spider
 	temp = load("res://items/all/spider/spider_effect_2.tres")
@@ -1716,7 +1733,7 @@ func _ready()->void:
 	
 	# Jack
 	temp = load("res://items/characters/jack/jack_effect_0.tres")
-	temp.value = 80 # 75 (+Damage to Bosses)
+	temp.value = 100 # 75 (+Damage to Bosses)
 	temp = load("res://items/characters/jack/jack_effect_4.tres")
 	temp.value = 40 # 50 (+Damage from enemies)
 	
@@ -2052,6 +2069,8 @@ func _ready()->void:
 	# Hunter
 	temp = load("res://items/characters/hunter/hunter_data.tres")
 	temp_2 = load("res://weapons/melee/scissors/1/scissors_data.tres")
+	temp.starting_weapons.insert(4, temp_2)
+	temp_2 = load("res://weapons/ranged/double_barrel_shotgun/1/double_barrel_shotgun_data.tres")
 	temp.starting_weapons.push_back(temp_2)
 	
 	# Jack

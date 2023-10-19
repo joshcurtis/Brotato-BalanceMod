@@ -29,3 +29,4 @@ BM_EFFECT_FOR_NEGATIVE_SPEED,"If your Speed is negative, gain {0} {1}"
 NEW_WEAPON_SNIPER_GUN,Sniper Rifle
 NEW_SHORT_EFFECT_PIERCING,Projectiles pierce\n{0} additional target
 BM_EFFECT_FAIRY_COUNTER,(Items for next increase: {0})
+BM_EFFECT_RIPSAUCE_CLARIFY,(Additional copies will increase both the damage and activation chance.)
