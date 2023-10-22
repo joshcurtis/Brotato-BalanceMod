@@ -30,3 +30,12 @@ NEW_WEAPON_SNIPER_GUN,Sniper Rifle
 NEW_SHORT_EFFECT_PIERCING,Projectiles pierce\n{0} additional target
 BM_EFFECT_FAIRY_COUNTER,(Items for next increase: {0})
 BM_EFFECT_RIPSAUCE_CLARIFY,(Additional copies will increase both the damage and activation chance.)
+NEW_EFFECT_ITEM_BOX_GOLD,{0} materials when you pick up a crate (including at the end of a wave)
+NEW_EFFECT_EXPLODE_MELEE,{0} chance to explode on hit (Explosion Size: {1})
+NEW_EFFECT_EXPLODE,Projectiles explode on hit (Explosion Size: {1})
+NEW_EFFECT_EXPLODE_CUSTOM,Projectiles have {0} chance to explode on hit (Explosion Size: {1})
+NEW_EFFECT_EXPLODE_ON_CONSUMABLE,Consumables have a {0} chance to explode for {1} ({2}) damage when picked up (Explosion Size: {3})
+NEW_EFFECT_EXPLODE_ON_HIT,You explode for {1} ({2}) damage when you take damage (Explosion Size: {3})
+NEW_EFFECT_EXPLODE_ON_DEATH,Enemies have a {0} chance to explode for {1} ({2}) damage when they die (Explosion Size: {3})
+BM_EFFECT_LANDMINE_SIZE,(Explosion Size: [color=#00ff00]175[/color])
+BM_EFFECT_EXPLOSIVE_TURRET_SIZE,(Explosion Size: [color=#00ff00]100[/color])

@@ -8,11 +8,11 @@ Range gained from level-ups & items is ~33% larger (both the increases and decre
 Armor is slightly less effective.
 Easier to have mixed-weapon builds: Shop weapon-set favoring now accounts for all of your weapons (rather than weighing all your sets equally), and the chances of being offered one of the exact weapons you already have is higher the more weapon types you have.
 Easier to start with tier-2+ only weapons: you'll now be offered a weapon from the same set if the game can't offer any exact-weapon matches because of rarity.
-Base equipment rarity offered in shops slightly lower; Luck impacts shop rarity more; Tier 2-4 Luck Level-ups better.
+Base item/weapon rarity offered in shops slightly lower; Luck impacts shop rarity more; Tier 2-4 Luck Level-ups better.
 Bugfixed Wave 3 shops so they can now sell more than 1 weapon.
 Small tweaks to other level-ups, notably making tier-1 Harvesting weaker and several weaker tier-4 level-ups more worthwhile.
 Horde Waves give ~8% fewer materials.
-All explosions can now crit.
+All explosions can now crit and now display their explosion size.
 Several tooltips cleaned up to be more clear, hidden mechanics are detailed, & character descriptions take up less room. Additional Quality of Life features such as icons for relevant Fairy & King items. Various vanilla-game bugfixes.
 
 ~Weapons~
@@ -24,7 +24,7 @@ Bugfix: Revolvers no longer instantly reload when used by effects that check if 
 
 ~Items~
 Tons of items receive small buffs or nerfs: overall more items are worth buying more often and the strongest give less power for their cost. Note that the goal is not to make everything equally strong; there is still plenty of variance and build-specific decision-making. 
-Notable highlights: Esty's Couch, Robot Arm, and Padding have been reworked. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Snail now also slows enemy charges. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Heavy Bullets now stronger overall but lowers Accuracy. Fairy gives less HP Regen and gives negative speed for tier-4s. Candle is cheaper, and thus more viable for non-Elemental builds that want fewer enemies. Sifd's Relic massively cheaper. Alien Tongue & Mutation significantly buffed. Medikit significantly nerfed.
+Notable highlights: Esty's Couch, Robot Arm, and Padding have been reworked. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Snail now also slows enemy charges. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Heavy Bullets now stronger overall but lowers Accuracy. Fairy gives less HP Regen and gives negative speed for tier-4s. Candle is cheaper, and thus more viable for non-Elemental builds that want fewer enemies. Sifd's Relic massively cheaper. Alien Tongue & Mutation significantly buffed. Medikit nerfed.
 Fixed several missing item tags (which make certain characters more likely to find appropriate items).
 
 ~Characters~
@@ -53,7 +53,7 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 * Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment reduced: 6%/2%/0.23% -> 5%/1.85%/0.23%. Base Max Chance for higher-tier equipment -/60%/25%/8% -> -/56.5%/24%/8.5%; this max is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck (Negative Luck does not reduce the cap). Luck's impact on Tier-4 equipment is now 20% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). [Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]
 * When a shop tries to offer you an exact weapon you have but can't, it will now offer you a same-set weapon (previously it just reverted to a random weapon). This makes it a little easier to match-up a starting tier-2+ only weapon with something relevant.
 * Wave 3 shops now work like Wave 4-5, where there is 1 guaranteed weapon and the other 3 slots are rolled normally. (In vanilla, the game is bugged so Wave 3 only has exactly 1 weapon.)
-* For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected).
+* For consistency, all explosions can now crit (Rip & Tear, Spicy Sauce, and Glutton's crit chance affected). All explosion tooltips now also list their explosion size (weapons, items, and characters).
 * Clarified various tooltips to be more clear. Shortened several character effect descriptions to fit in the box better. Tooltips for Armor and Improved Tools + Gardens are more precise. Knight's tooltip color-coded properly. Fixed Lightning Shiv's bounce count. Fixed Incendiary Turret tooltip's incorrect damage rounding.
 * Stats now update properly on shop reroll (for Padding & Saver).
 * The reroll button for level-ups is now colored for levels that have a guaranteed rarity. (Level 5, 10, 15, etc.)
@@ -141,7 +141,7 @@ Weird Food: Now Tier-2; Price 20->25; -2% Dodge -> -2 HP [Makes it easier to fin
 
 ~~ ITEMS: TIER-2 ~~
 Acid: Price 65->64; -4% Dodge -> 3%
-Alien Eyes: Price 50->57
+Alien Eyes: Price 50->57; No Downside -> -10 Range
 Banner: Range 20 -> 26
 Black Belt: Price 50->47
 Blindfold: -15 Range -> -20
@@ -164,14 +164,14 @@ Metal Plate: Price 40->42
 Missile: Price 45->41; 10% Damage -> 11%
 Padding: [Reworked] Price: 45->43; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag [Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]
 Pocket Factory: 2 Engineering -> 3 [Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-possible scenarios.]
-Pumpkin: -2% Damage -> No Penalty; No Limit -> Limit 8 [Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
+Pumpkin: -2% Damage -> No Penalty; Now also gives +15% Bounce damage (only relevant for Ricochet); No Limit -> Limit 8 [Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]
 Recycling Machine: No downside -> -2% Attack Speed
 Riposte: Price 40->35
 Ritual: Price 60->57
 Scope: Price 55->52; 25 Range -> 45; -7% Attack Speed -> -6%
 Shady Potion: 20 Luck -> 19
 Snail: Price 40->36; -5% Enemy Speed -> -6%; Now also gives -6% Enemy Charge Speed; -3% Speed -> -2%
-Spicy Sauce: Price 40->42; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 140%; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of multiple items
+Spicy Sauce: Price 40->42; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 145%; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of having multiple copies
 Tentacle: Price 32->35
 Wheelbarrow: Price 40->36
 Whetstone: Price 40->42
@@ -197,20 +197,20 @@ Lucky Charm: Price 75->70
 Plastic Explosive: Price 60->53
 Poisonous Tonic: Price 80->79; 15 Range -> 27
 Power Generator: Price 65->72; -5% Damage -> -1 Max HP Per 5% Speed; Added '%Damage' Tag
-Rip and Tear: Price: 65->57; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of multiple items
+Rip and Tear: Price: 65->57; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of having multiple copies
 Shackles: Price 80->85; Range 80 -> 88
 Shmoop: Price 60->65; 2 HP Regen -> 3
 Silver Bullet: Added '%Damage' Tag
 Statue: Price 60->55
 Stone Skin: Price 80->88; -2 Armor -> -4% Speed
-Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand, Blood Donation, or Sick); Added to Dodge Item Tag Pool.
+Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand, Blood Donation, or Sick); Added to Dodge Item Tag Pool
 Toolbox: Price 55->53; 6 Engineering -> 7; -8% Attack Speed -> -5%
 Tractor: 40 Harvesting -> 38
 Triangle of Power: Removed 'Armor' Tag
 Tyler: 1.0 Engineering Scaling -> 0.8; No Elemental Damage Scaling -> 0.8; Added to Elemental Damage Tag Pool. [Another item to help enable the mixed Engineering+Elemental build.]
 Vigilante Ring: Price 92->82
 Wandering Bot: Price 60->57
-Wheat: Harvesting 10->13
+Wheat: Price 85->83; Harvesting 10->13
 Wings: Range 30 -> 40
 Wisdom: Damage -20% -> -16%; Price 85->80
 Hunting Trophy: Price 55->52; Proc Chance 33% -> 25%; Limit 3->4
@@ -359,9 +359,12 @@ Fully unlocked Brotato save file (with blank character completion so you can sti
 
 ~Recommended Quality of Life Mods:~
 Bait & Egg Reminder: https://steamcommunity.com/sharedfiles/filedetails/?id=3029249900
-Tooltip Tracking Fix (for Turret Damage info): https://steamcommunity.com/sharedfiles/filedetails/?id=3003583829
-Piggy Bank Reminder: https://steamcommunity.com/sharedfiles/filedetails/?id=3005196583
 Elites in Pause Menu: https://steamcommunity.com/sharedfiles/filedetails/?id=3032359714
+Piggy Bank Reminder: https://steamcommunity.com/sharedfiles/filedetails/?id=3005196583
+Tooltip Tracking Fix: https://steamcommunity.com/sharedfiles/filedetails/?id=3003583829
+Advanced Statistics: https://steamcommunity.com/sharedfiles/filedetails/?id=3025488976
+
+You might also enjoy my FTL Balance Mod: https://www.darktwinge.com/ftl-balance/index.php
 
 
 ~~ THANKS TO ~~
@@ -385,19 +388,15 @@ These changes are coded but not active because they can't work via mods :(
 
 ~~ CURRENT PONDERINGS ~~
 
-Can Bag's description be changed to make it clearer crates at the end also count?
-
-Pumpkin should probably affect bounce (retest Pump)
-
-Should crit chance tooltip mention explosions can crit?
-
-
-
-Cyborg: Unique SFX when switching modes (rather than an already used sound)
-
 
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
+
+Cyborg: Unique SFX when switching modes (rather than an already used sound)
+	Vanilla appears to only make a sound incidentally as part of the stat_added signal?
+	
+Should crit chance tooltip mention explosions can crit?
+
 Double negative from -%Dmg and Negative Elemental Damage results in a positive damage scaling for burn.
 
 King's changed abilities show the total in green instead of white at +0

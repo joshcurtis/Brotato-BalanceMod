@@ -78,7 +78,11 @@ func _init(modLoader = ModLoader):
 	
 	# Adds a new enemy-group to Horde waves to spawn Magicians for Wave 14/15
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "zones/wave_manager.gd")
-
+	
+	# Adds another arg to explosions so they can also show the size
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/weapons/exploding_effect.gd")
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/item_exploding_effect.gd")
+	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
 	
@@ -119,9 +123,17 @@ func _ready()->void:
 	Text.keys_needing_operator.new_effect_gain_stat_for_every_different_stat = [0, 4]
 	Text.keys_needing_operator.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 4]
+	Text.keys_needing_operator.effect_bounce_damage = [0]
+	Text.keys_needing_operator.new_effect_item_box_gold = [0]
 	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
+	Text.keys_needing_percent.effect_bounce_damage = [0]
+	Text.keys_needing_percent.new_effect_explode_melee = [0]
+	Text.keys_needing_percent.new_effect_explode_custom = [0]
+	Text.keys_needing_percent.new_effect_explode_on_consumable = [0]
+	Text.keys_needing_percent.new_effect_explode_on_death = [0]
+	
 	# New effects
 	Text.keys_needing_percent.bm_enemy_charge_speed = [0]
 	Text.keys_needing_percent.bm_non_elemental_reduce_stat_gains = [1]
@@ -296,6 +308,8 @@ func _ready()->void:
 	
 	temp = load("res://items/all/bag/bag_data.tres")
 	temp.value = 16   # 15
+	temp = load("res://items/all/bag/bag_effect_1.tres")
+	temp.text_key = "new_effect_item_box_gold"
 	
 	temp = load("res://items/all/beanie/beanie_effect_2.tres")
 	temp.value = -8  # -6 (Range)
@@ -354,7 +368,10 @@ func _ready()->void:
 	temp.value = -10 # -2 Speed -> -10 Range
 	
 	temp = load("res://items/all/landmines/landmines_data.tres")
-	temp.value = 14  # 15	
+	temp.value = 14  # 15
+	## THIS TOOLTIP IS HARDCODED
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/landmine_size_text.tres")
+	temp.effects.push_back(temp_2) # Add explosion size text
 	
 	temp = load("res://items/all/lens/lens_effect_2.tres")
 	temp.value = -12  # -5 (Range)
@@ -412,6 +429,8 @@ func _ready()->void:
 	
 	temp = load("res://items/all/alien_eyes/alien_eyes_data.tres")
 	temp.value = 57  # 50
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/alien_eyes_range_malus.tres")
+	temp.effects.push_back(temp_2) # -10 Range
 	
 	# Banner
 	temp = load("res://items/all/banner/banner_effect_1.tres")
@@ -521,6 +540,8 @@ func _ready()->void:
 	temp.max_nb = 8  # -1
 	temp_2 = load("res://items/all/pumpkin/pumpkin_effect_2.tres")
 	temp.effects.erase(temp_2)     # Remove -2% Damage penalty
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/pumpkin_bounce.tres")
+	temp.effects.push_back(temp_2) # Add +15% Bounce Damage
 	
 	temp = load("res://items/all/recycling_machine/recycling_machine_data.tres")
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/recycling_machine_attack_speed_malus.tres")
@@ -553,8 +574,9 @@ func _ready()->void:
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/rip_sauce_clarify_effect.tres")
 	temp.effects.append(temp_2)	
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_effect_1.tres")
-	temp.scale = 1.40   # 1.25 (Explosion Size)
+	temp.scale = 1.45   # 1.25 (Explosion Size)
 	temp.chance = 0.35  # 0.25 (Proc Chance)
+	temp.text_key = "new_effect_explode_on_consumable"
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
 	
@@ -684,6 +706,8 @@ func _ready()->void:
 	temp.effects.append(temp_2)
 	temp = load("items/all/rip_and_tear/rip_and_tear_stats.tres")
 	temp.crit_chance = 0.01  # 0 (Crit Chance)
+	temp = load("items/all/rip_and_tear/rip_and_tear_effect_1.tres")
+	temp.text_key = "new_effect_explode_on_death"
 		
 	temp = load("res://items/all/shackles/shackles_data.tres")
 	temp.value = 85  # 80
@@ -739,6 +763,8 @@ func _ready()->void:
 	temp = load("res://items/all/wandering_bot/wandering_bot_data.tres")
 	temp.value = 57  # 60
 	
+	temp = load("res://items/all/wheat/wheat_data.tres")
+	temp.value = 83  # 85
 	temp = load("res://items/all/wheat/wheat_effect_3.tres")
 	temp.value = 13  # 10 (Harvesting)
 	
@@ -799,7 +825,7 @@ func _ready()->void:
 	temp = load("res://items/all/exoskeleton/exoskeleton_data.tres")
 	temp.value = 105  # 90
 	temp = load("res://items/all/exoskeleton/exoskeleton_effect_1.tres")
-	temp.value = 4    # 5 (Armor)	
+	temp.value = 4    # 5 (Armor)
 	
 	# Explosive Shells
 	temp = load("res://items/all/explosive_shells/explosive_shells_effect_1.tres")
@@ -807,7 +833,13 @@ func _ready()->void:
 	temp = load("res://items/all/explosive_shells/explosive_shells_effect_1b.tres")
 	temp.value = 20   # 15 (Explosion Size)	
 	temp = load("res://items/all/explosive_shells/explosive_shells_effect_2.tres")
-	temp.value = -7   # -15 (Damage%)	
+	temp.value = -7   # -15 (Damage%)
+	
+	# Explosive Turret
+	temp = load("res://items/all/turret_rocket/turret_rocket_data.tres")
+	## THIS TOOLTIP IS HARDCODED
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/explosive_turret_size_text.tres")
+	temp.effects.push_back(temp_2) # Add explosion size text
 	
 	# Extra Stomach
 	temp = load("res://items/all/extra_stomach/extra_stomach_data.tres")
@@ -1169,18 +1201,22 @@ func _ready()->void:
 	# Plank
 	temp = load("res://weapons/melee/plank/1/plank_exploding_effect.tres")
 	temp.scale = 0.8 		 # 0.75
+	temp.key = "new_effect_explode_melee"
 	temp = load("res://weapons/melee/plank/2/plank_2_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.6 ], [ "stat_elemental_damage", 0.6 ], [ "stat_engineering", 0.6 ] ]
 	temp = load("res://weapons/melee/plank/2/plank_2_exploding_effect.tres")
 	temp.scale = 0.9  	 # 0.75
+	temp.key = "new_effect_explode_melee"
 	temp = load("res://weapons/melee/plank/3/plank_3_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.7 ], [ "stat_elemental_damage", 0.7 ], [ "stat_engineering", 0.7 ] ]
 	temp = load("res://weapons/melee/plank/3/plank_3_exploding_effect.tres")
 	temp.scale = 1.0 		 # 0.75
+	temp.key = "new_effect_explode_melee"
 	temp = load("res://weapons/melee/plank/4/plank_4_stats.tres")
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.8 ], [ "stat_elemental_damage", 0.8 ], [ "stat_engineering", 0.8 ] ]
 	temp = load("res://weapons/melee/plank/4/plank_4_exploding_effect.tres")
 	temp.scale = 1.1		 # 0.75
+	temp.key = "new_effect_explode_melee"
 	
 	# Plasma Sledge (Plasma Sledgehammer)
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_data.tres")
@@ -1188,10 +1224,18 @@ func _ready()->void:
 	temp = load("res://weapons/melee/plasma_sledgehammer/3/plasma_sledgehammer_3_effect.tres")
 	temp.scale = 1.1     # 1.0
 	temp.chance = 0.33   # 0.25
+	temp.key = "new_effect_explode_melee"
 	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_data.tres")
 	temp.name = "NEW_WEAPON_PLASMA_SLEDGEHAMMER"
 	temp = load("res://weapons/melee/plasma_sledgehammer/4/plasma_sledgehammer_4_effect.tres")
 	temp.scale = 1.3     # 1.25
+	temp.key = "new_effect_explode_melee"
+	
+	# Power Fist
+	temp = load("res://weapons/melee/power_fist/3/power_fist_3_exploding_effect.tres")
+	temp.key = "new_effect_explode_melee"
+	temp = load("res://weapons/melee/power_fist/4/power_fist_4_exploding_effect.tres")
+	temp.key = "new_effect_explode_melee"
 	
 	# Rock
 	temp = load("res://weapons/melee/rock/1/rock_stats.tres")
@@ -1432,6 +1476,12 @@ func _ready()->void:
 	temp.cooldown = 115  # 110
 	temp.damage = 100    # 120
 	temp.max_range = 650 # 800
+	temp = load("res://weapons/ranged/nuclear_launcher/3/nuclear_launcher_3_effect.tres")
+	temp.key = "new_effect_explode"
+	temp.effect_sign = 0
+	temp = load("res://weapons/ranged/nuclear_launcher/4/nuclear_launcher_4_effect.tres")
+	temp.key = "new_effect_explode"
+	temp.effect_sign = 0
 	
 	# Pistol
 	temp = load("res://weapons/ranged/pistol/1/pistol_stats.tres")
@@ -1495,6 +1545,19 @@ func _ready()->void:
 	temp = load("res://weapons/ranged/rocket_launcher/4/rocket_launcher_4_stats.tres")
 	temp.max_range = 500 # 600
 	temp.accuracy = 0.9  # 1.0
+	temp = load("res://weapons/ranged/rocket_launcher/rocket_launcher_effect.tres")
+	temp.key = "new_effect_explode"	
+	temp.effect_sign = 0
+	
+	# Shredder
+	temp = load("res://weapons/ranged/shredder/1/shredder_effect.tres")
+	temp.key = "new_effect_explode_custom"	
+	temp = load("res://weapons/ranged/shredder/2/shredder_2_effect.tres")
+	temp.key = "new_effect_explode_custom"	
+	temp = load("res://weapons/ranged/shredder/3/shredder_3_effect.tres")
+	temp.key = "new_effect_explode_custom"	
+	temp = load("res://weapons/ranged/shredder/4/shredder_4_effect.tres")
+	temp.key = "new_effect_explode"	
 	
 	# SMG
 	temp = load("res://weapons/ranged/smg/1/smg_stats.tres")
@@ -1659,6 +1722,8 @@ func _ready()->void:
 	# Bull
 	temp = load("res://items/characters/bull/bull_effect_2.tres")
 	temp.value = 10  # 15 (HP Regen)
+	temp = load("res://items/characters/bull/bull_effect_4.tres")
+	temp.text_key = "new_effect_explode_on_hit"
 	
 	# Crazy
 	temp = load("res://items/characters/crazy/crazy_data.tres")
@@ -1726,6 +1791,8 @@ func _ready()->void:
 	# Glutton
 	temp = load("res://items/characters/glutton/glutton_data.tres")
 	temp.wanted_tags = [ "garden" ] # Add new Garden Tag
+	temp = load("res://items/characters/glutton/glutton_effect_2.tres")
+	temp.text_key = "new_effect_explode_on_consumable"
 	
 	# Golem
 	temp = load("res://items/characters/golem/golem_effect_5.tres")
