@@ -387,3 +387,9 @@ _[Initial weapon removals (Crazy, Ranger, Wildling, Engineer) make those charact
 * **Speedy:** Added Ghost Flint, Pruner; Removed Wrench
 * **Streamer:** Added Ghost Scepter; Removed Bokken, Rock, Jousting Lance, Knife, Lightning Shiv, Claw
 * **Well-rounded:** Added Fist, Wrench, Slingshot
+
+# Unimplemented
+These changes are coded but not active because they can't work via mods :(
+- Bugfixed inaccurated long cooldown tooltip for Revolver & Chain-gun.
+- Bugfixed cooldown randomization so it isn't so extreme (especially on Multi-tasker).
+- Contextual extra decimal place for low cooldowns.
