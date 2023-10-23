@@ -1,7 +1,7 @@
 # Overview
 Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters and starting weapons should feel frustrating or unfun. More items are worth using, and fewer choices are overpowered or 'always-picks'. Knockback is less frustrating, the Range stat is better, Luck is more valuable, mixed-weapon builds are easier to manage, and several bugs are fixed.
 
-The full, detailed list of all changes is here. Below is a shorter summary of the major changes you should know about.
+[The full, detailed list of all changes is here](https://github.com/DarkTwinge/Brotato-BalanceMod/tree/master#full-changelog). Below is a shorter summary of the major changes you should know about.
 # Change Summary
 ### Mechanics
 * Knockback now never pushes enemies towards you.
