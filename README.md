@@ -104,13 +104,13 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Helmet Enemy:** Base HP 8->4; HP/wave 3->4.5  _[Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where, when buffed (red outline), they go from 185hp in vanilla to 250hp in Balance Mod.]_
 * **Tentacles:** Fruit Drop Chance 1% -> 2%; Convert-to-Item-Crate Chance 1% -> 4%
 
-* **Small Charger:** Knockback Resistance 100% -> 80%
-* **Small Viking Charger:** Knockback Resistance 100% -> 80%
-* **Tall Bruiser:** Knockback Resistance 100% -> 90%
-* **Tall Armored Bruiser:** Knockback Resistance 100% -> 90%
-* **Hatched Slasher:** Knockback Resistance 100% -> 90%
-* **Lamprey Fish:** Knockback Resistance 100% -> 90%
-* **Spawned Magician:** Knockback Resistance 0% -> 40% _[Makes them a little easier to kill with high-knockback weaponry.]_
++ **Small Charger:** Knockback Resistance 100% -> 80%
++ **Small Viking Charger:** Knockback Resistance 100% -> 80%
++ **Tall Bruiser:** Knockback Resistance 100% -> 90%
++ **Tall Armored Bruiser:** Knockback Resistance 100% -> 90%
++ **Hatched Slasher:** Knockback Resistance 100% -> 90%
++ **Lamprey Fish:** Knockback Resistance 100% -> 90%
++ **Spawned Magician:** Knockback Resistance 0% -> 40% _[Makes them a little easier to kill with high-knockback weaponry.]_
 
 ## Elites
 * **Mother Elite:** Phase 1 Initial Cooldown 2s->1.67s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, vanilla behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (vanilla behavior)
