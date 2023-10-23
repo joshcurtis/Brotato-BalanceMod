@@ -304,7 +304,7 @@ func _ready()->void:
 	temp.value = 17   # 18
 	temp.tags.push_back("stat_range")
 	temp = load("res://items/all/baby_gecko/baby_gecko_effect_2.tres")
-	temp.value = 16   # 10 (Range)
+	temp.value = 15   # 10 (Range)
 	
 	temp = load("res://items/all/bag/bag_data.tres")
 	temp.value = 16   # 15
@@ -487,7 +487,7 @@ func _ready()->void:
 	temp.value = 51  # 45
 
 	temp = load("res://items/all/little_frog/little_frog_data.tres")
-	temp.value = 43  # 50
+	temp.value = 42  # 50
 	temp = load("res://items/all/little_frog/little_frog_effect_1.tres")
 	temp.value = 35  # 20 (Pickup Range)
 	temp = load("res://items/all/little_frog/little_frog_effect_3.tres")
@@ -649,6 +649,9 @@ func _ready()->void:
 	temp.value = 72  # 75
 	temp.tags.push_back("stat_attack_speed")
 	
+	temp = load("res://items/all/crown/crown_data.tres")
+	temp.value = 68  # 70
+	
 	# Fairy
 	temp = load("res://items/all/fairy/fairy_data.tres")
 	temp.value = 90  # 85
@@ -745,9 +748,6 @@ func _ready()->void:
 	temp = load("res://items/all/toolbox/toolbox_effect_2.tres")
 	temp.value = -5  # -8 (Attack Speed)
 	
-	temp = load("res://items/all/tractor/tractor_effect_1.tres")
-	temp.value = 38  # 40 (Harvesting)
-	
 	temp = load("res://items/all/triangle_of_power/triangle_of_power_data.tres")
 	temp.tags = [ "stat_percent_damage" ]
 	
@@ -801,7 +801,7 @@ func _ready()->void:
 	
 	# Esty's Couch [Reworked]
 	temp = load("res://items/all/estys_couch/estys_couch_data.tres")
-	temp.value = 95
+	temp.value = 97
 	temp.max_nb = -1
 	temp.tags = [ "stat_range", "stat_attack_speed", "stat_percent_damage" ]
 	# Remove original effects

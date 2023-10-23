@@ -1,5 +1,5 @@
 ~~ OVERVIEW ~~
-More options (items, weapons, level-ups, etc.) are worth using more often, and fewer choices are overpowered or 'always-picks'. Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters and starting weapons should feel frustrating or unfun. Knockback is less frustrating, the Range stat is better, Luck is more valuable, and mixed-weapon builds are easier to manage.
+Elites are closer in overall difficulty to each other, more weapons feel fun and are worth using, and fewer characters and starting weapons should feel frustrating or unfun. More items are worth using, and fewer choices are overpowered or 'always-picks'. Knockback is less frustrating, the Range stat is better, Luck is more valuable, and mixed-weapon builds are easier to manage.
 
 ~~ CHANGE SUMMARY ~~
 ~Mechanics~
@@ -24,7 +24,7 @@ Bugfix: Revolvers no longer instantly reload when used by effects that check if 
 
 ~Items~
 Tons of items receive small buffs or nerfs: overall more items are worth buying more often and the strongest give less power for their cost. Note that the goal is not to make everything equally strong; there is still plenty of variance and build-specific decision-making. 
-Notable highlights: Esty's Couch, Robot Arm, and Padding have been reworked. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Snail now also slows enemy charges. Power Generator now reduces your HP as your power it up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Heavy Bullets now stronger overall but lowers Accuracy. Fairy gives less HP Regen and gives negative speed for tier-4s. Candle is cheaper, and thus more viable for non-Elemental builds that want fewer enemies. Sifd's Relic massively cheaper. Alien Tongue & Mutation significantly buffed. Medikit nerfed.
+Highlights: Esty's Couch, Robot Arm, and Padding have been reworked. Spicy Sauce has a bigger explosion and proc chance. Eyes Surgery also adds +1 burn duration. Weird Food is now Tier-2 (easier to find if you have high Luck). Snail now also slows enemy charges. Power Generator now reduces your HP as it powers up. Tardigrade is no longer wasted by Bloody Hand/Donation. Ricochet is now friendlier with already-piercing weapons. Heavy Bullets now stronger overall but lowers Accuracy. Fairy gives less HP Regen and gives negative speed for tier-4s. Candle is cheaper, and thus more viable for non-Elemental builds that want fewer enemies. Sifd's Relic much cheaper. Alien Tongue & Mutation significantly buffed. Medikit & Bloody Hand nerfed.
 Fixed several missing item tags (which make certain characters more likely to find appropriate items).
 
 ~Characters~
@@ -46,8 +46,8 @@ Wave 20 has additional small enemies to allow for more synergy for effects that 
 
 !~--~FULL CHANGELOG~--~!
 ~~ GENERAL CHANGES ~~
-* Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it should now never move the enemy towards the player and will generally move them more directly away from the player. (Most enemies that were immune to knockback are now slightly vulnerable to it, see below.)
-* Armor is about 7% less effective (you now hit 50% reduction at 16 instead of 15). [This probably still leaves it as the strongest general stat, but now closer to its peers.]
+* Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it now never moves the enemy towards the player and will generally move them more directly away from the player. (Most enemies that were immune to knockback are also now slightly vulnerable to it, see below.)
+* Armor is about 7% less effective (you now hit 50% reduction at 16 Armor instead of 15). [This probably still leaves it as the strongest general stat, but now closer to its peers.]
 * Mixed Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. [This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with.]
 * Additionally, having multiple different weapon types will make the shop more likely to offer you an exact-match if a weapon you already have. In vanilla, this is always a 20% chance; now it's 19%/20%/22%/24%/25%/26% for having 1/2/3/4/5/6+ different weapon types.
 * Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment reduced: 6%/2%/0.23% -> 5%/1.85%/0.23%. Base Max Chance for higher-tier equipment -/60%/25%/8% -> -/56.5%/24%/8.5%; this max is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck (Negative Luck does not reduce the cap). Luck's impact on Tier-4 equipment is now 20% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). [Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]
@@ -62,7 +62,7 @@ Note: Altered and new descriptions will currently not display for non-English la
 
 
 ~~ ENEMIES ~~
-* Loot Goblin: Base HP  50->2; HP/wave 25->30 [Makes the early Loot Goblins far more reasonable to kill and late-game ones slightly harder to kill.]
+* Loot Goblin: Base HP  50->2; HP/wave 25->30 [Makes early Loot Goblins far more reasonable to kill and late-game ones slightly harder to kill.]
 * Helmet Enemy: Base HP 8->4; HP/wave 3->4.5  [Aim is to make them feel like a more meaningful presence on the field, especially for Wave 16 where, when buffed (red outline), they go from 185hp in vanilla to 250hp in Balance Mod.]
 * Tentacles: Fruit Drop Chance 1% -> 2%; Convert-to-Item-Crate Chance 1% -> 4%
 
@@ -72,7 +72,7 @@ Tall Bruiser: Knockback Resistance 100% -> 90%
 Tall Armored Bruiser: Knockback Resistance 100% -> 90%
 Hatched Slasher: Knockback Resistance 100% -> 90%
 Lamprey Fish: Knockback Resistance 100% -> 90%
-Spawned Magician: Knockback Resistance 0% -> 40% [Should make them a little easier to kill with higher-knockback melee weaponry.]
+Spawned Magician: Knockback Resistance 0% -> 40% [Makes them a little easier to kill with high-knockback weaponry.]
 
 ~~ ELITES ~~
 * Mother Elite: Phase 1 Initial Cooldown 2s->1.67s; Phase 2 now switches between a) summoning rapidly (9 Fins per second, current behavior) but slicing half the time, and b) summoning slowly (3 Fins per second) and slicing constantly (current behavior)
@@ -90,7 +90,7 @@ Wave 14: Helmet Spawns 108 -> 85 (Helmets have more HP - this is slightly more t
 Wave 15: Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
 Wave 16: Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
 Wave 20: Added additional Basics (5 every 5s = 80 total) and Fins (5 every 6s = 65 total), primarily to help out effects which are based on enemy/material counts (but also potentially makes things a bit harder, especially for Ranged builds).
-Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with; Made the Horde additions identical for 14/15. [Aiming to make these Horde waves feel threatening, rather than possibly easier and simply more profitable than their non-Horde counterparts like they are in vanilla.]
+Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with; Made the Horde additions identical for 14/15. [Aiming to make these Horde waves feel threatening, rather than often easier and simply more profitable than their non-Horde counterparts like they are in vanilla.]
 
 
 ~~ LEVEL-UPS ~~
@@ -105,12 +105,12 @@ Wave 14 & 15 Horde: Added 6 single Magician spawns alongside 6 single Wizard Hat
 ~~ WEAPON SET BONUSES ~~
 Blunt Weapon Group: -2/-4/-6/-8/-10 Speed -> -1/-2/-3/-4/-5 Speed
 Primitive: 3HP Per -> 2HP Per
-Guns: 10/20/30/40/50 Range -> 2/4/6/8/10 Attack Speed [Guns having a big pile of free Range is part of why they don't care about the stat much at all. Additionally, they're a strong and flexible archetype, so they don't need as many free stats from a Set as other weapons do.]
+Guns: 10/20/30/40/50 Range -> 2/4/6/8/10 Attack Speed [Guns having a bunch of free Range is part of why they don't care about the stat much at all. Additionally, they're a strong and flexible archetype, so they don't need as many free stats from a Set as other weapons do.]
 
 
 ~~ ITEMS: TIER-1 ~~
 Alien Tongue: +30% Pickup Range -> +50%; Price 25->18
-Baby Gecko: Price 18->17; Range 10->16; Added 'Range' Tag
+Baby Gecko: Price 18->17; Range 10->15; Added 'Range' Tag
 Bag: Price 15->16
 Beanie: -6 Range -> -8
 Broken Mouth: Price 25->26
@@ -155,7 +155,7 @@ Gambling Token: Price 60->52; 8% Dodge -> 10%
 Garden: Price 50->47
 Incendiary Turret: Price 40->47; Burn Duration 8->7; 33% Engineering Scaling -> 35% [Makes the rounding less abysmal.]
 Leather Vest: Price 45->51
-Little Frog: Price 50->43; +20% Pickup Range -> +35%; -5% Dodge -> -3%
+Little Frog: Price 50->42; +20% Pickup Range -> +35%; -5% Dodge -> -3%
 Little Muscley Dude: Range -15 -> -20
 Lure: Price 34->39; HP Regeneration 3 -> 2
 Medal: Price 55->60; -4% Crit Chance -> -3%
@@ -184,11 +184,12 @@ Alloy: 3 Melee Damage -> 5 ; Dodge -6% -> -5%; Added 'Elemental Damage' Tag
 Baby With a Beard: Price 100->110; Range -50 -> -90
 Barricade: Price 75->72
 Bean Teacher: Price 70->64
-Blood Donation: Price 50->43 [The important part of the price is the damage, so the material cost should be a bit lower.]
+Blood Donation: Price 50->43 [The biggest 'cost' is the damage, so the material cost should be a bit lower.]
 Bowler Hat: Price 75->72; 15 Luck -> 17
 Candle: Price 65->50; Elemental Damage 4 -> 3; -5% Damage -> -4% Attack Speed
 Chameleon: Price 70->58; %Damage -4% -> -3%
 Community Support: Price 75->72; Added 'Attack Speed' Tag
+Crown: Price 70->68
 Fairy: Price 85->90; 1 HP Regeneration Per 1 Unique Tier-1 Item -> 2 HP Regeneration Per 3 Unique Tier-1 Items (Tooltip also shows a counter for how many items you need until the next stat increase); -2 HP Regeneration Per 1 Unique Tier-4 Item -> -3% Speed Per 1 Unique Tier-4 Item; Now shows an icon in both the shop and item boxes to indicate items affecting Fairy you don't have yet (like Renegade).
 Fin: 10% Speed -> 9%; Luck -8 -> -9 
 Glass Canon: Price 75->67
@@ -205,7 +206,6 @@ Statue: Price 60->55
 Stone Skin: Price 80->88; -2 Armor -> -4% Speed
 Tardigrade: Price 50->45; Now requires 2+ damage to proc (preventing it from being wasted by Bloody Hand, Blood Donation, or Sick); Added to Dodge Item Tag Pool
 Toolbox: Price 55->53; 6 Engineering -> 7; -8% Attack Speed -> -5%
-Tractor: 40 Harvesting -> 38
 Triangle of Power: Removed 'Armor' Tag
 Tyler: 1.0 Engineering Scaling -> 0.8; No Elemental Damage Scaling -> 0.8; Added to Elemental Damage Tag Pool. [Another item to help enable the mixed Engineering+Elemental build.]
 Vigilante Ring: Price 92->82
@@ -220,7 +220,7 @@ Anvil: Price 120->125
 Big Arms: Price 105->100; 12 Melee Damage -> 13
 Bloody Hand: Price 100->110; 12% Lifesteal -> 9%
 Diploma: Price 80->85; Engineering 10 -> 12; 20% XP Gain -> 25%
-Esty's Couch: [Reworked] Price: 95; +20% Attack Speed; +20% Damage; +70 Range if Speed is negative; -8% Speed; Non-Unique; Tags: Damage%, Attack Speed, Range [This was previously an overly-niche item and was also a 3rd Red-tier item focused on HP Regen which was excessive. I keep a bonus for negative speed while making it far more generally useful. It also adjusts dynamically, thematically working with Streamer as they get negative Speed mid-wave.]
+Esty's Couch: [Reworked] Price: 97; +20% Attack Speed; +20% Damage; +70 Range if Speed is negative; -8% Speed; Non-Unique; Tags: Damage%, Attack Speed, Range [This was previously an overly-niche item and was also a 3rd Red-tier item focused on HP Regen which was excessive. I keep a bonus for negative speed while making it far more generally useful. It also adjusts dynamically, thematically working with Streamer as they may get negative Speed mid-wave.]
 Exoskeleton: Price 90->105; Armor 5 -> 4
 Explosive Shells: Explosion Damage +60% -> +50%; Explosion Size +15% -> +20%; -15% Damage -> -7% Damage [So it fits in more reasonably with mixed builds, and with a little more emphasis on the more-unique size rather than just damage.]
 Extra Stomach: Price 100->105; No Downside -> -1 Consumable Healing
@@ -271,7 +271,7 @@ Flamethrower: Price: 56/103/207 -> 58/103/187; Range 300/350/400 -> 250/275/300;
 Medical Gun: Cooldown 0.95/0.87/0.78/0.62 -> 0.92/0.85/0.75/0.60; Range 400 -> 375; Tier-3 Damage 20 -> 22
 Nuclear Launcher: Cooldown 2.12 -> 2.20; Base Damage 60/120 -> 50/100; Range 800 -> 650; Ranged Scaling 100%/100% -> 125%/125%; Elemental Scaling 100%/100% -> 150%/150% [Similar strength on Elemental builds, a bit weaker otherwise.]
 Pistol: Price 10/22/45/91 -> 10/20/41/83; Knockback 15 -> 10 [Leaning into its strength of being cheap; the low price + decent base damage gives it some utility as a temporary weapon, or as a good option in situations where you're primarily gaining Damage% rather than Ranged Damage. Also worth noting that it's now also less damaging to your shop odds to mix into a build as well because of the multi-weapon changes.]
-Potato Thrower: Added to the Blunt Weapon Set [Experimental]; Price 36/69/139 -> 33/65/118; Base Damage 1(All) -> 2/3/4
+Potato Thrower: Added to the Blunt Weapon Set; Price 36/69/139 -> 33/65/118; Base Damage 1(All) -> 2/3/4
 Revolver: Tier-1 Price 20 -> 18; Range 450 -> 425
 Rocket Launcher: Range 500/550/600 -> 500(All)
 SMG: Range 400 -> 325; Cooldown ~10% worse (All Tiers)
@@ -354,8 +354,16 @@ Streamer: Added Ghost Scepter; Removed Bokken, Rock, Jousting Lance, Knife, Ligh
 Well-rounded: Added Fist, Wrench, Slingshot
 
 
+~~ SUPPORT ~~
+I play a wide variety of indie games on my Twitch stream: https://www.twitch.tv/darktwinge
+
+If you'd like to financially support my ability to make and maintain mods like this, you can do so on Patreon: http://www.patreon.com/DarkTwinge or directly: https://paypal.me/DarkTwinge
+
+
 ~~ OTHER RESOURCES ~~
 Fully unlocked Brotato save file (with blank character completion so you can still track your progress): https://www.darktwinge.com/skip-metaprogression-unlocks/brotato-save-file/
+
+You might also enjoy my FTL Balance Mod: https://www.darktwinge.com/ftl-balance/index.php
 
 ~Recommended Quality of Life Mods:~
 Bait & Egg Reminder: https://steamcommunity.com/sharedfiles/filedetails/?id=3029249900
@@ -363,20 +371,19 @@ Elites in Pause Menu: https://steamcommunity.com/sharedfiles/filedetails/?id=303
 Piggy Bank Reminder: https://steamcommunity.com/sharedfiles/filedetails/?id=3005196583
 Tooltip Tracking Fix: https://steamcommunity.com/sharedfiles/filedetails/?id=3003583829
 Advanced Statistics: https://steamcommunity.com/sharedfiles/filedetails/?id=3025488976
-
-You might also enjoy my FTL Balance Mod: https://www.darktwinge.com/ftl-balance/index.php
+Revamped Icons: https://steamcommunity.com/sharedfiles/filedetails/?id=3003721761
 
 
 ~~ THANKS TO ~~
 Inschato, ArosRising, Hyphen-ated, Pasha, and everyone else that's assisted with feedback, suggestions, or coding help!
 
 
-~~ MOD INCOMPATABILITIES ~~
-"[Rework] Tardigrade interaction": Redundant, as this feature is already present in Balance Mod.
-
-
 ~~ LICENSE ~~
 You are free to use concepts and code contained within elsewhere, ideally with attribution. E.g. if you want to make a spin-off mod for, say, only the Elite changes, you are welcome and encouraged to do so but I'd appreciate a link back to the Balance Mod and/or to my stream.
+
+
+~~ MOD INCOMPATABILITIES ~~
+"[Rework] Tardigrade interaction": Redundant, as this feature is already present in Balance Mod.
 
 
 ~~ UNIMPLEMENTED ~~

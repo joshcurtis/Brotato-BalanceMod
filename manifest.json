@@ -1,9 +1,9 @@
 {
 	"name": "BalanceMod",
 	"namespace": "DarkTwinge",
-	"version_number": "0.11.13",
-	"description": "A full balance overhaul offering a more varied experience that still feels like the vanilla game.",
-	"website_url": "",
+	"version_number": "1.0.0",
+	"description": "A full overhaul offering a more balanced & varied experience while still feeling like the vanilla game.",
+	"website_url": "https://www.twitch.tv/darktwinge",
 	"dependencies": [
 	],
 	"extra": {
