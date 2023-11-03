@@ -87,7 +87,7 @@ You are free to use concepts and code contained within elsewhere, ideally with a
 * Knockback: The direction enemies are knocked back now depends half on the original knockback calculation and half on the position of the player relative to the enemy, meaning it now never moves the enemy towards the player and will generally move them more directly away from the player. (Most enemies that were immune to knockback are also now slightly vulnerable to it, see below.)
 * Armor is about 7% less effective (you now hit 50% reduction at 16 Armor instead of 15). _[This probably still leaves it as the strongest general stat, but now closer to its peers.]_
 * Mixed Weapon Sets don't hurt your shop odds as much: The calculation that weighs shop weapons to more often match weapon sets you currently have (15% of the time, more often in the first 5 waves) now factors in how many copies of the set you have rather than weighing them all equally. For example, if you have 5 Thief Daggers (Precise set) and 1 Scissors (Precise & Medical sets): when the shop is picking a tier-1 weapon based on sets, in vanilla this would give you a 1 in 7 chance to be offered a Medical Gun -- now the odds of it picking Medical Gun are only 1 in 32. _[This also means multi-set weapons will inherently be favored slightly more, which helps offset the fact they are pulling in a lot of weapons into the pool from being a part of multiple sets to begin with.]_
-* Additionally, having multiple different weapon types will make the shop more likely to offer you an exact-match if a weapon you already have. In vanilla, this is always a 20% chance; now it's 19%/20%/22%/24%/25%/26% for having 1/2/3/4/5/6+ different weapon types.
+* Additionally, having multiple different weapon types will make the shop more likely to offer you an exact-match of a weapon you already have. In vanilla, this is always a 20% chance; now it's 19%/20%/22%/24%/25%/26% for having 1/2/3/4/5/6+ different weapon types.
 * Base shop (and level-up) odds for higher tiers is slightly worse, and Luck's potential impact on these odds is now higher. Base Increase-Per-Wave for higher-tier equipment reduced: 6%/2%/0.23% -> 5%/1.85%/0.23%. Base Max Chance for higher-tier equipment -/60%/25%/8% -> -/56.5%/24%/8.5%; this max is now only a softcap, with Luck being able to go to a new potential hardcap of -/65%/27%/- at -/172/224/- Luck (Negative Luck does not reduce the cap).
 * Luck's impact on Tier-4 equipment is now 20% higher than vanilla (both positive and negative Luck; caps at +285 Luck by Wave 15 or +157 by Wave 19). _[Luck affects shop odds significantly less than most players expect and overall has less of an impact than most stats, so this helps align expectations and bring the stat closer to the others.]_
 * When a shop tries to offer you an exact weapon you have but can't, it will now offer you a same-set weapon (previously it just reverted to a random weapon). This makes it a little easier to match-up a starting tier-2+ only weapon (e.g. Potato Thrower or Sword) with something relevant.
@@ -97,7 +97,7 @@ You are free to use concepts and code contained within elsewhere, ideally with a
 * Stats now update properly on shop reroll (for Saver).
 * The reroll button for level-ups is now appropriately colored for levels that have a guaranteed rarity. (Level 5, 10, 15, etc.)
 * Horde Wave Materials: 65% -> 60% _[This still leaves them as generally more profitable and easier than Elite waves, but now more closely aligned.]_
-_Note: Altered and new descriptions will currently not display for non-English languages._
+_Note: Altered and new descriptions will currently not display for non-English languages._ (If anyone wants to help me make a translation set for another language, let me know! There's about 50 text keys that are mostly tweaks of vanilla text which already has extant translations to reference.)
 
 
 ## Standard Enemies
@@ -127,7 +127,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Wave 12:** Mummy Spawns 10 -> 16 _[For comparison, Wave 11 averages 32.5 Mummies.]_
 * **Wave 14:** Helmet Spawns 108 -> 85 (Helmets have more HP - this is slightly more total HP); Basics spawns earlier (Makes the first ~15s a bit less empty, total 120->130 Basics); Single Magician Spawns 1-2 x6 -> 1-1 x6 _[Removes the variance which removes the chance for an especially unlucky wave, and makes it so _most_ of the fireball hurlers come from the Wizard Hats which you have more control over.]_
 * **Wave 15:** Helmet Spawns 114 -> 95 (Helmets have more HP; this is moderately more total HP)
-* **Wave 16:** Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
+* **Wave 16:** Helmets have more HP but just as many spawn; 2 Flies added to each group of Helmets + Buffers (28 total); Helmet Groups a bit more spread out (500->650) [Aiming to make them less trivially smashed by melee quickly]; 2 additional groups of 1 Bruiser + 1 Armored Bruiser spawn, and they show up 10 seconds earlier (18 -> 22)
 * **Wave 20:** Added additional Basics (5 every 5s = 80 total) and Fins (5 every 6s = 65 total), primarily to help out effects which are based on enemy/material counts (but also potentially makes things a bit harder, especially for Ranged builds).
 * **Wave 14 & 15 Hordes:** Added 6 single Magician spawns alongside 6 single Wizard Hats (Spawners) spread out over the last 2/3rds of the wave; Reduced some of easier enemy spawns so they're less likely to despawn the more-threatening enemies; Made the added Helmets and Fins in the 2nd half spawn on the edges of the map to make them harder to deal with; Made the Horde additions identical for 14/15. _[Aiming to make these Horde waves feel threatening, rather than often easier and simply more profitable than their non-Horde counterparts like they are in vanilla.]_
 
@@ -146,7 +146,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 
 ## Items
 ### Tier-1
-* **Alien Tongue**: +30% Pickup Range -> +50%; Price 25->18
+* **Alien Tongue**: +30% Pickup Range -> +45%; Price 25->18
 * **Baby Gecko**: Price 18->17; Range 10->15; Added 'Range' Tag
 * **Bag**: Price 15->16
 * **Beanie**: -6 Range -> -8
@@ -200,6 +200,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Metal Plate**: Price 40->42
 * **Missile**: Price 45->41; 10% Damage -> 11%
 * **Padding**: {Reworked} Price: 45->43; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag _[Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]_
+* **Piggy Bank**: Price 40->42
 * **Pocket Factory**: 2 Engineering -> 3 _[Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-case scenarios.]_
 * **Pumpkin**: -2% Damage -> No Penalty; Now also gives +15% Bounce damage (only relevant for Ricochet); No Limit -> Limit 8 _[Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]_
 * **Recycling Machine**: No downside -> -2% Attack Speed
@@ -276,7 +277,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Ricochet:** Damage -25% -> -20%; All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower). _[In vanilla, it's a red-tier item that only works on ranged weapons to begin with, but then still ends up worthless on weapons like Shotgun and Shredder making it overly niche.]_
 * **Robot Arm:** {Reworked} Price 87; Adds an additional weapon slot; -3 HP Renegeration; -2 Lifesteal  _[Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]_
 * **Sifd's Relic:** Price 100->50
-* **Spider:** 6% Attack Speed Per Different Weapon -> 8% _[Thematic!]_
+* **Spider:** Price 120->112; 6% Attack Speed Per Different Weapon -> 8%; 12% Damage -> 8% _[Thematic!]_
 * **Wolf Helmet:** Price 90->95; Additional Downside of -5 Harvesting
 
 ## Weapons

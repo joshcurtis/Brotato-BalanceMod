@@ -120,22 +120,18 @@ func handle_explosion(key:String, pos:Vector2)->void :
 
 # Gives an extra starting Sausage for Gun Mage
 func add_starting_items_and_weapons()->void :
+	.add_starting_items_and_weapons()
+	
+	# Same as vanilla loop to add starting items, but doesn't add the normal items
 	if effects["starting_item"].size() > 0:
 		for item_id in effects["starting_item"]:
 			for i in item_id[1]:
 				var item = ItemService.get_element(ItemService.items, item_id[0])
-				add_item(item)
 				### If adding a starting Sausage, add a 2nd if the starting weapon is an SMG or Shotgun
 				if item_id[0] == "item_scared_sausage":
 					if RunData.weapons[0].my_id == "weapon_double_barrel_shotgun_1" or RunData.weapons[0].my_id == "weapon_smg_1":
 						add_item(item)
-				###
-	
-	if effects["starting_weapon"].size() > 0:
-		for weapon_id in effects["starting_weapon"]:
-			for i in weapon_id[1]:
-				var weapon = ItemService.get_element(ItemService.weapons, weapon_id[0])
-				var _weapon = add_weapon(weapon)
+				##
 
 
 # Add new effects to RunData dictionary

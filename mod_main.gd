@@ -125,6 +125,7 @@ func _ready()->void:
 	Text.keys_needing_operator.new_effect_unique_tier_iv_weapon_bonus = [0, 4]
 	Text.keys_needing_operator.effect_bounce_damage = [0]
 	Text.keys_needing_operator.new_effect_item_box_gold = [0]
+	Text.keys_needing_operator.new_effect_on_hit = [0]
 	Text.keys_needing_percent.new_effect_damage_against_bosses = [0]
 	Text.keys_needing_percent.new_effect_burning_cooldown_reduction = [0]
 	Text.keys_needing_percent.new_effect_burn_chance = [0]
@@ -256,6 +257,7 @@ func _ready()->void:
 	# Wave 16
 	# Add 2 Fly alongside the Helmets + Buffers
 	temp = load("res://zones/zone_1/016/group_1.tres") # Helmets + Buffers
+	temp.area = 650 # 500
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/waves/wave16_fly.tres")
 	temp.wave_units_data.push_back(temp_2)
 	# Adds 2 more groups of Bruisers starting earlier in the wave
@@ -298,7 +300,7 @@ func _ready()->void:
 	temp = load("res://items/all/alien_tongue/alien_tongue_data.tres")
 	temp.value = 18  # 25
 	temp = load("res://items/all/alien_tongue/alien_tongue_effect_1.tres")
-	temp.value = 50  # 30 (Pickup Range)
+	temp.value = 45  # 30 (Pickup Range)
 
 	temp = load("res://items/all/baby_gecko/baby_gecko_data.tres")
 	temp.value = 17   # 18
@@ -533,6 +535,9 @@ func _ready()->void:
 	temp = load("res://items/all/ritual/ritual_data.tres")
 	temp.value = 57  # 60
 	
+	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
+	temp.value = 42  # 40
+	
 	temp = load("res://items/all/pocket_factory/pocket_factory_effect_0.tres")
 	temp.value = 3   # 2 (Engineering)
 	
@@ -750,6 +755,8 @@ func _ready()->void:
 	
 	temp = load("res://items/all/triangle_of_power/triangle_of_power_data.tres")
 	temp.tags = [ "stat_percent_damage" ]
+	temp = load("res://items/all/triangle_of_power/triangle_of_power_effect_3.tres")
+	temp.text_key = "new_effect_on_hit"
 	
 	# Tyler
 	temp = load("res://entities/structures/turret/tyler/tyler_stats.tres")
@@ -1017,6 +1024,10 @@ func _ready()->void:
 	temp.value = 50  # 100
 
 	# Spider
+	temp = load("res://items/all/spider/spider_data.tres")
+	temp.value = 112 # 120	
+	temp = load("res://items/all/spider/spider_effect_1.tres")
+	temp.value = 8   # 12
 	temp = load("res://items/all/spider/spider_effect_2.tres")
 	temp.value = 8   # 6 (Atk Speed for Diff Weapons)	
 
@@ -1279,6 +1290,10 @@ func _ready()->void:
 	temp = load("res://weapons/melee/screwdriver/4/screwdriver_4_stats.tres")
 	temp.max_range = 135 # 125
 	temp.cooldown = 11   # 20
+	
+	# Scythe
+	temp = load("res://weapons/melee/scythe/4/scythe_effect_2.tres")
+	temp.text_key = "new_effect_on_hit"
 	
 	# Spear
 	temp = load("res://weapons/melee/spear/1/spear_stats.tres")
@@ -1859,6 +1874,8 @@ func _ready()->void:
 	temp.value = 15 # 20 (HP Regen)
 	temp = load("res://items/characters/masochist/masochist_effect_4.tres")
 	temp.value = 5 # 8 (Armor)
+	temp = load("res://items/characters/masochist/masochist_effect_1.tres")
+	temp.text_key = "new_effect_on_hit"
 	
 	# Mutant
 	temp = load("res://items/characters/mutant/mutant_data.tres")
