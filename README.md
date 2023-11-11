@@ -187,7 +187,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Cyclops Worm**: -12 Range -> -18
 * **Dangerous Bunny**: No Downside -> -2% Dodge; Limit 3 -> 4
 * **Energy Bracelet**: Price: 55->52; 4% Crit Chance -> 5%
-* **Eyes Surgery**: Price 60->50; New Additional Effect: Also adds +1 duration to all burn effects; -10 Range -> No Downside
+* **Eyes Surgery**: Price 60->47; New Additional Effect: Also adds +1 duration to all burn effects; -10 Range -> No Downside
 * **Gambling Token**: Price 60->52; 8% Dodge -> 10%
 * **Garden**: Price 50->47
 * **Incendiary Turret**: Price 40->47; Burn Duration 8->7; 33% Engineering Scaling -> 35% _[Makes the rounding less abysmal.]_
@@ -199,17 +199,17 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Metal Detector**: -5% Damage -> -4%
 * **Metal Plate**: Price 40->42
 * **Missile**: Price 45->41; 10% Damage -> 11%
-* **Padding**: {Reworked} Price: 45->43; -5% Speed -> -2%; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 20 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag _[Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]_
+* **Padding**: {Reworked} Price: 45->41; -5% Speed -> -2%; Base HP 3 -> 2; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 15 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag _[Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]_
 * **Piggy Bank**: Price 40->42
 * **Pocket Factory**: 2 Engineering -> 3 _[Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-case scenarios.]_
 * **Pumpkin**: -2% Damage -> No Penalty; Now also gives +15% Bounce damage (only relevant for Ricochet); No Limit -> Limit 8 _[Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]_
 * **Recycling Machine**: No downside -> -2% Attack Speed
-* **Riposte**: Price 40->35
+* **Riposte**: Price 40->33
 * **Ritual**: Price 60->57
 * **Scope**: Price 55->52; 25 Range -> 45; -7% Attack Speed -> -6%
 * **Shady Potion**: 20 Luck -> 19
 * **Snail**: Price 40->36; -5% Enemy Speed -> -6%; Now also gives -6% Enemy Charge Speed; -3% Speed -> -2%
-* **Spicy Sauce**: Price 40->42; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 145%; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of having multiple copies
+* **Spicy Sauce**: Price 40->42; 25% Proc Chance -> 35%; Limit 4 -> 3; Explosion Size 125% -> 150%; Can now crit for 1.5x damage (base Crit Chance 1%); Clarified effect of having multiple copies
 * **Tentacle**: Price 32->35
 * **Wheelbarrow**: Price 40->36
 * **Whetstone**: Price 40->42
@@ -274,7 +274,7 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Potato:** Price 95->100
 * **Regeneration Potion:** HP Regeneration 3 -> 4
 * **Retromation's Hoodie:** +2% Attack Speed for every 1% Dodge -> +3% Attack Speed for every 2% Dodge; -80 Range -> -100 Range
-* **Ricochet:** Damage -25% -> -20%; All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower). _[In vanilla, it's a red-tier item that only works on ranged weapons to begin with, but then still ends up worthless on weapons like Shotgun and Shredder making it overly niche.]_
+* **Ricochet:** Damage -25% -> -20%; All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower, Laser Turret). _[In vanilla, it's a red-tier item that only works on ranged weapons to begin with, but then still ends up worthless on weapons like Shotgun and Shredder making it overly niche.]_
 * **Robot Arm:** {Reworked} Price 87; Adds an additional weapon slot; -3 HP Renegeration; -2 Lifesteal  _[Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]_
 * **Sifd's Relic:** Price 100->50
 * **Spider:** Price 120->112; 6% Attack Speed Per Different Weapon -> 8%; 12% Damage -> 8% _[Thematic!]_
@@ -285,10 +285,11 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Cacti Club:** Melee Base Damage 10/20/30/50 -> 10/20/30/45; Melee Scaling 80%(All) -> 80%/88%/95%/100%; Projectile Base Damage 1(All) -> 1/1/2/2; Projectile Damage Scaling: 50%(All) -> 50%/55%/58%/60%; Projectile Count 3/4/5/6 -> 3/4/5/7
 * **Chopper:** Range 125/135/150/180 -> 135/150/165/180; HP Scaling 20%(All) -> 20%/20%/25%/25%; Base Damage 6/12/18/30 -> 6/12/16/28 _[Similar damage at medium HP, more damage at high HP.]_
 * **Fighting Stick** renamed **Bokken**. _[It should not have "Stick" in the name, and a training sword fits thematically with the weapon's sword-like attack pattern as well as the experience-based scaling.]_
+* **Fist:** Price 10/22/45/91 -> 12/26/52/105
 * **Flaming Brass Knuckles:** Burn 8x5/12x6/15x7 -> 8x3/12x4/15x5 _[More in-line with other Elemental weapons, so it doesn't overshadow them as much while still having its high direct damage and good Melee scaling.]_
 * **Ghost Flint:** Tier-1 Damage 6->7; Tier-1 Cooldown 1.23 -> 1.24 _[Helps tier-1 not be so hopelessly behind it can never kill enough enemies to proc on characters that don't have extra damage to start.]_
 * **Hammer:** Price 51/95/190 -> 42/80/156
-* **Hand:** Price 10/22/45/91 -> 9/19/36/69; Harvesting 3/6/9/18 -> 2/5/10/20 _[This progression makes it worth upgrading past Blue-tier, which is broadly a mistake in vanilla.]_
+* **Hand:** Price 10/22/45/91 -> 9/19/35/67; Harvesting 3/6/9/18 -> 2/5/10/20 _[This progression makes it worth upgrading past Blue-tier, which is broadly a mistake in vanilla.]_
 * **Hatchet:** Range 125->135
 * **Lightning Shiv:** Range 150->135; Melee Base Damage 3/6/9/15 -> 3/5/7/10; Projectile Base Damage 5/8/12/15 -> 4/6/9/13; Cooldown increased by 1 (Same cooldown but now at less Range) _[Requires a bit more investment to get to the bananas damage this weapon often achieves.]_; Melee Crit Chance 5%/10%/15%/15% -> 4%/6%/7%/8%; Projectile Crit Chance 3%(All) -> 4%/6%/7%/8% _[Makes crit for projectiles and melee the same now, averaging slightly more crit than vanilla.]_
 * **Plank:** Explosion Size 75%(All) -> 80%/90%/100%/110%; Scaling: 50%/55%/60%/65% -> 50%/60%/70%/80%

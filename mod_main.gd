@@ -468,7 +468,7 @@ func _ready()->void:
 	temp.value = 5   # 4 (Crit Chance)
 
 	temp = load("res://items/all/eyes_surgery/eye_surgery_data.tres")
-	temp.value = 50  # 60
+	temp.value = 47  # 60
 	temp_2 = load("res://items/all/eyes_surgery/eye_surgery_effect_2.tres")
 	temp.effects.erase(temp_2)     # Remove Range Penalty
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/eyes_surgery_increased_burn.tres")
@@ -520,20 +520,16 @@ func _ready()->void:
 	temp.value = 11  # 10 (Damage%)
 	
 	temp = load("res://items/all/padding/padding_data.tres")
-	temp.value = 43  # 45
+	temp.value = 41  # 45
 	temp.tags.push_back("stat_max_hp")
 	temp_2 = load("res://items/all/padding/padding_effect_1.tres")
 	temp.effects.erase(temp_2)
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/padding_hp_for_leftover_materials.tres")
 	temp.effects.insert(1, temp_2)
+	temp = load("res://items/all/padding/padding_effect_0.tres")
+	temp.value = 2   # 3 (HP)
 	temp = load("res://items/all/padding/padding_effect_2.tres")
 	temp.value = -2  # -5 (Speed)
-	
-	temp = load("res://items/all/riposte/riposte_data.tres")
-	temp.value = 35  # 40
-	
-	temp = load("res://items/all/ritual/ritual_data.tres")
-	temp.value = 57  # 60
 	
 	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
 	temp.value = 42  # 40
@@ -547,10 +543,16 @@ func _ready()->void:
 	temp.effects.erase(temp_2)     # Remove -2% Damage penalty
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/pumpkin_bounce.tres")
 	temp.effects.push_back(temp_2) # Add +15% Bounce Damage
-	
+
 	temp = load("res://items/all/recycling_machine/recycling_machine_data.tres")
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/recycling_machine_attack_speed_malus.tres")
 	temp.effects.push_back(temp_2) # -2 Attack Speed
+	
+	temp = load("res://items/all/riposte/riposte_data.tres")
+	temp.value = 33  # 40
+	
+	temp = load("res://items/all/ritual/ritual_data.tres")
+	temp.value = 57  # 60
 	
 	temp = load("res://items/all/scope/scope_data.tres")
 	temp.value = 52  # 55
@@ -579,7 +581,7 @@ func _ready()->void:
 	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/rip_sauce_clarify_effect.tres")
 	temp.effects.append(temp_2)	
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_effect_1.tres")
-	temp.scale = 1.45   # 1.25 (Explosion Size)
+	temp.scale = 1.50   # 1.25 (Explosion Size)
 	temp.chance = 0.35  # 0.25 (Proc Chance)
 	temp.text_key = "new_effect_explode_on_consumable"
 	temp = load("res://items/all/spicy_sauce/spicy_sauce_stats.tres")
@@ -999,6 +1001,8 @@ func _ready()->void:
 	temp.bounce_dmg_reduction = 0.3 # 0.5	
 	temp = load("res://weapons/ranged/shredder/4/shredder_4_stats.tres")
 	temp.bounce_dmg_reduction = 0.3 # 0.5	
+	temp = load("res://entities/structures/turret/laser/laser_turret_stats.tres")
+	temp.bounce_dmg_reduction = 0.3 # 0.5
 	
 	# Robot Arm - Reworked
 	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
@@ -1118,6 +1122,16 @@ func _ready()->void:
 	temp.damage = 28     # 30
 	temp.scaling_stats = [ [ "stat_melee_damage", 0.5 ], [ "stat_max_hp", 0.25 ] ]
 	
+	# Fist
+	temp = load("res://weapons/melee/fist/1/fist_data.tres")
+	temp.value = 12      # 10
+	temp = load("res://weapons/melee/fist/2/fist_2_data.tres")
+	temp.value = 26      # 22
+	temp = load("res://weapons/melee/fist/3/fist_3_data.tres")
+	temp.value = 52      # 45
+	temp = load("res://weapons/melee/fist/4/fist_4_data.tres")
+	temp.value = 105     # 91
+	
 	# Hammer
 	temp = load("res://weapons/melee/hammer/2/hammer_2_data.tres")
 	temp.value = 42      # 51
@@ -1136,11 +1150,11 @@ func _ready()->void:
 	temp = load("res://weapons/melee/hand/2/hand_2_effect_1.tres")
 	temp.value = 5			 # 6
 	temp = load("res://weapons/melee/hand/3/hand_3_data.tres")
-	temp.value = 36      # 45
+	temp.value = 35      # 45
 	temp = load("res://weapons/melee/hand/3/hand_3_effect_1.tres")
 	temp.value = 10			 # 9
 	temp = load("res://weapons/melee/hand/4/hand_4_data.tres")
-	temp.value = 69      # 91
+	temp.value = 67      # 91
 	temp = load("res://weapons/melee/hand/4/hand_4_effect_1.tres")
 	temp.value = 20			 # 18
 	

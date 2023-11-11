@@ -1,15 +1,16 @@
+WORKSHOP ID: 3058512152
+
 ~~ CURRENT PONDERINGS ~~
-Demon + Padding lets Demon spend that HP too freely and is maybe strong?  (test)
+Multi-tasker could have 40% weapon chance instead of 35%
 
-Tongue maybe down to 40% and another ~ -2 on price?  (probably wants to remain +10 of Frog, so either 35/45 or 30/40)
+should Saver start with Slingshot
 
-
-Crash bug - probably alongside some other mod, happening when going from wave to shop
-Incompatability: "Catato character from Patamods has nullified damage, which doesn't work together with this mod. I found one other instance, but I forget from where.
-Random bonus effects like Eden from the Binding of Isaac mod, and Retromation's Infinite Character doesn't work with this mod either."
+Fist may want slightly worse cooldown or -1/-2/-3/-4 damage, which would also ripple to Knuckles (which may want a small price decrease then?), also check Power Fist
 
 
-Works With
+Try with all at once: Extatonion, Patamods, and Mashtato
+
+Works With Individually
 Patamods
 Extatonion
 
