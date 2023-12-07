@@ -10,110 +10,49 @@ func reset_tiers_data()->void :
 	]
 
 
-# Replace to fix Wave 3 shop weapons
-func get_shop_items(wave:int, number:int = NB_SHOP_ITEMS, shop_items:Array = [], locked_items:Array = [])->Array:
-	
-	var new_items = []
-	var nb_weapons_guaranteed = 0
-	var nb_weapons_added = 0
-	var guaranteed_items:Array = RunData.effects["guaranteed_shop_items"].duplicate()
-	
-	var nb_locked_weapons = 0
-	var _nb_locked_items = 0
-	
-	for locked_item in locked_items:
-		if locked_item[0] is ItemData:
-			_nb_locked_items += 1
-		elif locked_item[0] is WeaponData:
-			nb_locked_weapons += 1
-	
-	if RunData.current_wave < MAX_WAVE_TWO_WEAPONS_GUARANTEED:
-		nb_weapons_guaranteed = 2
-	elif RunData.current_wave < MAX_WAVE_ONE_WEAPON_GUARANTEED:
-		nb_weapons_guaranteed = 1
-	
-	if RunData.effects["minimum_weapons_in_shop"] > nb_weapons_guaranteed:
-		nb_weapons_guaranteed = RunData.effects["minimum_weapons_in_shop"]
-	
-	for i in number:
-		
-		var type
-		
-		### "<" instead of "<=" to bugfix Wave 3's shop weapons
-		if RunData.current_wave < MAX_WAVE_TWO_WEAPONS_GUARANTEED:
-		###
-			type = TierData.WEAPONS if (nb_weapons_added + nb_locked_weapons < nb_weapons_guaranteed) else TierData.ITEMS
-		elif guaranteed_items.size() > 0:
-			type = TierData.ITEMS
-		else :
-			type = TierData.WEAPONS if (randf() < CHANCE_WEAPON or nb_weapons_added + nb_locked_weapons < nb_weapons_guaranteed) else TierData.ITEMS
-		
-		if type == TierData.WEAPONS:
-			nb_weapons_added += 1
-		
-		if RunData.effects["weapon_slot"] <= 0:
-			type = TierData.ITEMS
-		
-		var new_item
-		
-		if type == TierData.ITEMS and guaranteed_items.size() > 0:
-			new_item = get_element(items, guaranteed_items[0][0])
-			guaranteed_items.pop_front()
-		else :
-			new_item = get_rand_item_from_wave(wave, type, new_items, shop_items)
-		
-		new_items.push_back([new_item, wave])
-	
-	return new_items
-
-
 # Replace original weapon-set-favoring pool with a weighted pool based on how many of the weapon you have
 # Adjusts shop weapon pick odds based on number of weapon types held
-func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_shop_items:Array = [], fixed_tier:int = - 1)->ItemParentData:
-	var excluded_items = []
-	excluded_items.append_array(shop_items)
-	excluded_items.append_array(prev_shop_items)
-	
+func get_rand_item_for_wave(wave:int, type:int, excluded_items:Array = [], owned_items:Array = [], fixed_tier:int = - 1)->ItemParentData:
 	var rand_wanted = randf()
 	var item_tier = get_tier_from_wave(wave)
-	
+
 	if fixed_tier != - 1:
 		item_tier = fixed_tier
-	
+
 	if type == TierData.WEAPONS:
 		item_tier = clamp(item_tier, RunData.effects["min_weapon_tier"], RunData.effects["max_weapon_tier"])
-	
+
 	var pool = get_pool(item_tier, type)
 	var backup_pool = get_pool(item_tier, type)
 	var items_to_remove = []
 	###
 	var all_sets_from_weapons = []
-	###
+	##
 
-	
+
 	for shop_item in excluded_items:
+
 		pool.erase(shop_item[0])
 		backup_pool.erase(shop_item[0])
-	
+
 	if type == TierData.WEAPONS:
-		
+
 		var bonus_chance_same_weapon_set = max(0, (MAX_WAVE_ONE_WEAPON_GUARANTEED + 1 - RunData.current_wave) * (BONUS_CHANCE_SAME_WEAPON_SET / MAX_WAVE_ONE_WEAPON_GUARANTEED))
 		var chance_same_weapon_set = CHANCE_SAME_WEAPON_SET + bonus_chance_same_weapon_set
 
-		
+
 		if RunData.effects["no_melee_weapons"] > 0:
 			for item in pool:
 				if item.type == WeaponType.MELEE:
 					backup_pool.erase(item)
 					items_to_remove.push_back(item)
-		
+
 		if RunData.effects["no_ranged_weapons"] > 0:
 			for item in pool:
 				if item.type == WeaponType.RANGED:
 					backup_pool.erase(item)
 					items_to_remove.push_back(item)
 
-		
 		if RunData.weapons.size() > 0:
 			### Adjusts shop weapon pick odds based on number of weapon types held
 			#Counts number of different weapons you have
@@ -146,17 +85,17 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 				chance_same_weapon_set += 0.06
 			
 			if rand_wanted < new_chance_same_weapon:
-			###
+			##
 
 				var player_weapon_ids = []
 				var nb_potential_same_weapons = 0
-				
+
 				for weapon in RunData.weapons:
 					for item in pool:
 						if item.weapon_id == weapon.weapon_id:
 							nb_potential_same_weapons += 1
 					player_weapon_ids.push_back(weapon.weapon_id)
-				
+
 				if nb_potential_same_weapons > 0:
 
 					for item in pool:
@@ -169,20 +108,20 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 			
 			#elif rand_wanted < chance_same_weapon_set:
 			if rand_wanted >= new_chance_same_weapon and rand_wanted < chance_same_weapon_set:
-			###
+			##
 				var player_sets = []
 				var nb_potential_same_classes = 0
-				
+
 				for weapon in RunData.weapons:
 					for set in weapon.sets:
-						### Collect ALL sets from every wepaon for later use
+						### Collect ALL sets from every weapon for later use
 						all_sets_from_weapons.push_back(set)
-						###
+						##
 						if not player_sets.has(set.my_id):
 							player_sets.push_back(set.my_id)
-				
+
 				var weapons_to_potentially_remove = []
-				
+
 				for item in pool:
 					var item_has_atleast_one_class = false
 					for player_set_id in player_sets:
@@ -192,7 +131,7 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 								nb_potential_same_classes += 1
 								item_has_atleast_one_class = true
 								break
-					
+
 					if not item_has_atleast_one_class:
 						weapons_to_potentially_remove.push_back(item)
 
@@ -200,25 +139,25 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 
 					for item in weapons_to_potentially_remove:
 						items_to_remove.push_back(item)
-	
-	elif type == TierData.ITEMS and randf() < CHANCE_WANTED_ITEM_TAG and RunData.current_character.wanted_tags.size() > 0:
+
+	elif type == TierData.ITEMS and Utils.get_chance_success(CHANCE_WANTED_ITEM_TAG) and RunData.current_character.wanted_tags.size() > 0:
 
 		for item in pool:
 			var has_wanted_tag = false
-			
+
 			for tag in item.tags:
 				if RunData.current_character.wanted_tags.has(tag):
 					has_wanted_tag = true
 					break
-			
+
 			if not has_wanted_tag:
 				items_to_remove.push_back(item)
-		
 
-	
+
+
 	var limited_items = {}
-	
-	for item in RunData.items:
+
+	for item in owned_items:
 		if item.max_nb == 1:
 			backup_pool.erase(item)
 			items_to_remove.push_back(item)
@@ -227,15 +166,15 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 				limited_items[item.my_id][1] += 1
 			else :
 				limited_items[item.my_id] = [item, 1]
-	
+
 	for key in limited_items:
 		if limited_items[key][1] >= limited_items[key][0].max_nb:
 			backup_pool.erase(limited_items[key][0])
 			items_to_remove.push_back(limited_items[key][0])
-	
+
 	for item in items_to_remove:
 		pool.erase(item)
-	
+
 	### Replace original pool with new weighted pool
 	if all_sets_from_weapons != []:
 		var newpool = []
@@ -245,11 +184,10 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 					newpool.push_back(weapon)
 
 		pool = newpool
-	###
+	##
 
-	
 	var elt
-	
+
 	if pool.size() == 0:
 		if backup_pool.size() > 0:
 
@@ -259,7 +197,7 @@ func get_rand_item_from_wave(wave:int, type:int, shop_items:Array = [], prev_sho
 			elt = Utils.get_rand_element(_tiers_data[item_tier][type])
 	else :
 		elt = Utils.get_rand_element(pool)
-	
+
 	return elt
 
 

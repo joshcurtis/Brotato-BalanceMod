@@ -55,7 +55,7 @@ func take_damage(value:int, hitbox:Hitbox = null, dodgeable:bool = true, armor_a
 	
 	if full_dmg_value == 0:
 		sound = Utils.get_rand_element(dodge_sounds)
-	elif not is_miss and randf() < crit_chance:
+	elif not is_miss and Utils.get_chance_success(crit_chance):
 		
 		full_dmg_value = get_dmg_value(round(value * crit_damage) as int, true, true)
 		

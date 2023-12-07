@@ -4,7 +4,7 @@ extends "res://effects/items/gain_stat_for_every_stat_effect.gd"
 # Add Pocket Factory to Streamer's structure bonus
 # King's changed ability
 #
-func get_args()->Array:
+func get_args() -> Array:
 	var actual_nb_scaled = 0
 	var key_arg = key
 	var perm_only = text_key.to_upper() == "EFFECT_GAIN_STAT_FOR_EVERY_PERM_STAT"
@@ -42,7 +42,7 @@ func get_args()->Array:
 	##
 	elif perm_only:
 		actual_nb_scaled = RunData.get_stat(stat_scaled)
-	else :
+	else:
 		### [Currently off because the actual stat change wasn't working] Adding LinkedStats as well, e.g. Fairy, Chunky Passive, etc.
 		actual_nb_scaled = RunData.get_stat(stat_scaled) + TempStats.get_stat(stat_scaled)
 		##actual_nb_scaled = RunData.get_stat(stat_scaled) + TempStats.get_stat(stat_scaled) + LinkedStats.get_stat(stat_scaled)

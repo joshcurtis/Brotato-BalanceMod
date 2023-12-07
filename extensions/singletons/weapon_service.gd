@@ -118,22 +118,22 @@ func init_burning_data(base_burning_data:BurningData = BurningData.new(), is_glo
 	var base_weapon_has_no_burning = base_burning_data.chance == 0
 	
 	if not is_global:
-		if base_burning_data.chance == 0:
+		if base_weapon_has_no_burning:
 			new_burning_data.chance = global_burning.chance
 			new_burning_data.damage = global_burning.damage
 			new_burning_data.duration = global_burning.duration
 		elif base_burning_data.chance > 0:
+			
 			new_burning_data.damage += global_burning.damage
-	
+
 	new_burning_data.spread += RunData.effects["burning_spread"]
-	
+
 	if not is_structure or (is_structure and base_weapon_has_no_burning):
-		
 		new_burning_data.damage += Utils.get_stat("stat_elemental_damage")
-		
+
 		var percent_dmg_bonus = (1 + (Utils.get_stat("stat_percent_damage") / 100.0))
 		new_burning_data.damage = max(1, round(new_burning_data.damage * percent_dmg_bonus)) as int
-	
+
 	### +1 Duration per Eyes Surgery
 	new_burning_data.duration += RunData.effects["bm_increased_burn_duration"]
 	###

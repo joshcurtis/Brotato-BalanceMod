@@ -14,10 +14,8 @@ func _init(modLoader = ModLoader):
 	# Adds a decimal to armor tooltip for more accuracy
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/stat_popup.gd")
 	
-	# Bugfix: Update stats on reroll for Saver/Padding
 	# Refreshes Weapons when buying Robot Arm
 	# Refreshes shop items when combining weapons (for King)
-	#! This does cause an exception with the Utils _init Thing, but still runs fine
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "ui/menus/shop/shop.gd")
 	
 	# Add Fairy and Renegade icons to item boxes too instead of only shop items
@@ -63,9 +61,6 @@ func _init(modLoader = ModLoader):
 	# Ignores Tardigrade for 1-damage hits
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/unit/unit.gd")
 	
-	# Fixes instant-reload bug for Big_Reloads (e.g. Revolver)
-	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/player/player.gd")
-	
 	# New Snail effect: now slows enemy charges as well
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/enemies/attack_behaviors/charging_attack_behavior.gd")
 
@@ -82,6 +77,11 @@ func _init(modLoader = ModLoader):
 	# Adds another arg to explosions so they can also show the size
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/weapons/exploding_effect.gd")
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/item_exploding_effect.gd")
+
+	# Shows an extra digit for weapon cooldown when lower than 0.2
+	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
+	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
+
 	
 	# Load up new and fixed descriptions
 	ModLoaderMod.add_translation("res://mods-unpacked/DarkTwinge-BalanceMod/translations/BalanceMod.en.translation")
@@ -91,20 +91,10 @@ func _init(modLoader = ModLoader):
 	#!# Not used; left to remind how to get it working if needed later
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "entities/units/neutral/neutral.gd")
 	
-	#!# Note: Cannot make changes to items/global/effect.gd
+	#!# Note: Cannot make changes to items/global/effect.gd [May not be true anymore?]
 	
-	#!# Doesn't work due to dumb Utils ordering stuff; haven't found a workaround
-	# Shows an extra digit for weapon cooldown when lower than 0.2
-	# Bugfixes the long cooldown tooltip for Revolver & Chain-gun
-	#- Direct changes in the normal place; probably will never work
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/weapon_stats.gd")
-	#- Routing thru this child may work somehow, but didn't seem to for me - perhaps some other conflict
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon_stats/ranged_weapon_stats.gd")
-	#- Hijacking this as a middleground to activate scripts at the right time is a neat idea; may be necessary even when using range_weapon_stats
-	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "singletons/menu_data.gd")
-
-	#!# Doesn't work on live
-	# Fixes weapon randomization so the cooldown effect isn't so extreme, especially on Multi-tasker
+	#!# Didn't work on live, and now half-fixed in vanilla (Multi-tasker addressed)
+	# Fixes weapon randomization so the cooldown effect isn't so extreme
 	##ModLoaderMod.install_script_extension(BALMOD_DIR_E + "weapons/weapon.gd")
 
 
@@ -396,7 +386,7 @@ func _ready()->void:
 	temp.value = 25  # 28
 
 	temp = load("res://items/all/scar/scar_data.tres")
-	temp.value = 26  # 30
+	temp.value = 25  # 30
 	temp = load("res://items/all/scar/scar_effect_2.tres")
 	temp.value = -11 # -8 (Range)
 	
@@ -610,7 +600,7 @@ func _ready()->void:
 	
 	## TIER-3 ITEMS ##
 	temp = load("res://items/all/adrenaline/adrenaline_data.tres")
-	temp.value = 57  # 60
+	temp.value = 55  # 60
 
 	temp = load("res://items/all/alien_magic/alien_magic_data.tres")
 	temp.value = 82  # 85
@@ -736,7 +726,10 @@ func _ready()->void:
 	
 	temp = load("res://items/all/statue/statue_data.tres")
 	temp.value = 55  # 60
-
+		
+	temp = load("res://items/all/strange_book/strange_book_data.tres")
+	temp.value = 64  # 70
+	
 	temp = load("res://items/all/stone_skin/stone_skin_data.tres")
 	temp.value = 88  # 80
 	temp = load("res://items/all/stone_skin/stone_skin_effect_2.tres")
@@ -810,7 +803,7 @@ func _ready()->void:
 	
 	# Esty's Couch [Reworked]
 	temp = load("res://items/all/estys_couch/estys_couch_data.tres")
-	temp.value = 97
+	temp.value = 100
 	temp.max_nb = -1
 	temp.tags = [ "stat_range", "stat_attack_speed", "stat_percent_damage" ]
 	# Remove original effects
@@ -1125,12 +1118,20 @@ func _ready()->void:
 	# Fist
 	temp = load("res://weapons/melee/fist/1/fist_data.tres")
 	temp.value = 12      # 10
+	temp = load("res://weapons/melee/fist/1/fist_stats.tres")
+	temp.cooldown = 14   # 13
 	temp = load("res://weapons/melee/fist/2/fist_2_data.tres")
 	temp.value = 26      # 22
+	temp = load("res://weapons/melee/fist/2/fist_2_stats.tres")
+	temp.cooldown = 11   # 10
 	temp = load("res://weapons/melee/fist/3/fist_3_data.tres")
 	temp.value = 52      # 45
+	temp = load("res://weapons/melee/fist/3/fist_3_stats.tres")
+	temp.cooldown = 9    # 8
 	temp = load("res://weapons/melee/fist/4/fist_4_data.tres")
 	temp.value = 105     # 91
+	temp = load("res://weapons/melee/fist/4/fist_4_stats.tres")
+	temp.cooldown = 3    # 2
 	
 	# Hammer
 	temp = load("res://weapons/melee/hammer/2/hammer_2_data.tres")
@@ -1150,21 +1151,27 @@ func _ready()->void:
 	temp = load("res://weapons/melee/hand/2/hand_2_effect_1.tres")
 	temp.value = 5			 # 6
 	temp = load("res://weapons/melee/hand/3/hand_3_data.tres")
-	temp.value = 35      # 45
+	temp.value = 33      # 45
 	temp = load("res://weapons/melee/hand/3/hand_3_effect_1.tres")
 	temp.value = 10			 # 9
 	temp = load("res://weapons/melee/hand/4/hand_4_data.tres")
-	temp.value = 67      # 91
+	temp.value = 63      # 91
 	temp = load("res://weapons/melee/hand/4/hand_4_effect_1.tres")
 	temp.value = 20			 # 18
 	
 	# Flaming Brass Knuckles
 	temp = load("res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_burning_data.tres")
 	temp.duration = 3    # 5
+	temp = load("res://weapons/melee/flaming_knuckles/2/flaming_knuckles_2_stats.tres")
+	temp.cooldown = 11   # 10
 	temp = load("res://weapons/melee/flaming_knuckles/3/flaming_knuckles_3_burning_data.tres")
 	temp.duration = 4    # 6
+	temp = load("res://weapons/melee/flaming_knuckles/3/flaming_knuckles_3_stats.tres")
+	temp.cooldown = 9    # 8
 	temp = load("res://weapons/melee/flaming_knuckles/4/flaming_knuckles_4_burning_data.tres")
 	temp.duration = 5    # 7
+	temp = load("res://weapons/melee/flaming_knuckles/4/flaming_knuckles_4_stats.tres")
+	temp.cooldown = 3    # 2
 	
 	# Ghost Flint
 	temp = load("res://weapons/melee/ghost_flint/1/ghost_flint_stats.tres")
@@ -1817,6 +1824,10 @@ func _ready()->void:
 	##temp = load("res://items/characters/farmer/farmer_effect_1.tres")
 	##temp.value = 20 # 20 (Harvesting)
 	
+	# Gladiator
+	temp = load("res://items/characters/gladiator/gladiator_effect_5.tres")
+	temp.value = -40  # -30
+	
 	# Glutton
 	temp = load("res://items/characters/glutton/glutton_data.tres")
 	temp.wanted_tags = [ "garden" ] # Add new Garden Tag
@@ -1828,6 +1839,9 @@ func _ready()->void:
 	temp.text_key = "new_effect_no_heal"
 	
 	# Jack
+	temp = load("res://items/characters/jack/jack_data.tres")
+	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/jack_mats_clarify_effect.tres")
+	temp.effects.insert(2, temp_2)
 	temp = load("res://items/characters/jack/jack_effect_0.tres")
 	temp.value = 100 # 75 (+Damage to Bosses)
 	temp = load("res://items/characters/jack/jack_effect_4.tres")

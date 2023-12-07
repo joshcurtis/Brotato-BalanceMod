@@ -1,18 +1,27 @@
 WORKSHOP ID: 3058512152
 
 ~~ CURRENT PONDERINGS ~~
+Ugly Tooth -- maybe not -Speed because snail overlap
+smg +25 range (or lower range of other guns more?)
+
+Make Wave 19 a little scarier?
+
 Multi-tasker could have 40% weapon chance instead of 35%
 
 should Saver start with Slingshot
 
-Fist may want slightly worse cooldown or -1/-2/-3/-4 damage, which would also ripple to Knuckles (which may want a small price decrease then?), also check Power Fist
+try making Robot Arm give Generalist a random +1 to their cap
 
+"different" other tooltips also color-coded for emphasis?  (Like done for King)
 
-Try with all at once: Extatonion, Patamods, and Mashtato
+** Violence Aesthetics mod
+-- Try out Isaac Mod
+-- "i've been playing with removing and reinstalling the mods removing Exetatonian, VA, Elemento, Flotato, Lazuli, Diversified, Patamods Eientei, the new Elites and it still didn't let me select a dificulty. It only started to work when i disabled the signalAPI mod, but then when i tried to reinstall the other mods, it went back to not running."
 
-Works With Individually
-Patamods
-Extatonion
+Could Pruner-spawned Gardens get a color highlight around them?
+
+Renegade -Damage% wrong, or the stat box is wrong, shows -79% to start?
+
 
 ~~~ LOW PRIORITY (All things I'd like to add/look at but are less essential) ~~~
 Bull + Robot Arm -- may incorrectly report Bull damage on the weapon?
@@ -77,8 +86,6 @@ Could there be a change to make it easier to find matching tier-2 weapons when y
 Burn currently doesn't apply to trees dying in 8 hits, but should -- possible solution would be having a separate check for burn to kill the tree after 5-6 ticks; alternatively could apply all duration ticks to the hit-count immediately when it gets hit (or half+1 or whatever seems sensible)
 
 Make Jack's EnemyDamage and EnemyHP multiplicative, so it works more correctly for lower Danger Levels & Accessibility Settings.  E.g. 'change it to +175% HP, and +35% Damage' [Difficult since DangerLevel is the same value as Jack's bonus so is inherently additive; works for Accessibility but that'd be only a half fix...]
-
-Structures When Reloading a Save: "When you resume the game after having quit, structures lose their ties to items or weapons. So if you have 2 Wrench, you can reload the game, and the structure is disconnected from the structure. So now you can combine those 2 wrenches, and 2 tier one turrets and one blue turret will spawn. Same goes with all other items and weapons that spawn structures."
 
 Soldier: "Melee Weapons sometimes don’t benefit from the +50% damage, which shouldn’t be the case, since you shouldn’t be able to attack if you’re moving. I think the issue stems from attack animation, if the check deciding if you’re allowed to attack happens before the damage of the attack is calculated, then there is a timing window where you could begin to move."
 
