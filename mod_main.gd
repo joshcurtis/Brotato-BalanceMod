@@ -46,7 +46,6 @@ func _init(modLoader = ModLoader):
 	
 	# Updates Streamer's tooltip for Pocket Factory
 	# Make tooltip for Speed Generator work properly
-	# Add new Padding effect
 	# Changes King's ability to work on unique tier-4 weapons
 	ModLoaderMod.install_script_extension(BALMOD_DIR_E + "effects/items/gain_stat_for_every_stat_effect.gd")
 	
@@ -508,19 +507,7 @@ func _ready()->void:
 	temp.value = 41  # 45
 	temp = load("res://items/all/missile/missile_effect_1.tres")
 	temp.value = 11  # 10 (Damage%)
-	
-	temp = load("res://items/all/padding/padding_data.tres")
-	temp.value = 41  # 45
-	temp.tags.push_back("stat_max_hp")
-	temp_2 = load("res://items/all/padding/padding_effect_1.tres")
-	temp.effects.erase(temp_2)
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/padding_hp_for_leftover_materials.tres")
-	temp.effects.insert(1, temp_2)
-	temp = load("res://items/all/padding/padding_effect_0.tres")
-	temp.value = 2   # 3 (HP)
-	temp = load("res://items/all/padding/padding_effect_2.tres")
-	temp.value = -2  # -5 (Speed)
-	
+
 	temp = load("res://items/all/piggy_bank/piggy_bank_data.tres")
 	temp.value = 42  # 40
 	

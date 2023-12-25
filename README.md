@@ -23,7 +23,7 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 
 ### Items
 Tons of items receive small buffs or nerfs: overall more items are worth buying more often and the strongest give less power for their cost. Note that the goal is not to make everything equally strong; there is still plenty of variance and build-specific decision-making. Some highlights:
-* Esty's Couch and Padding have been reworked.
+* Esty's Couch has been reworked.
 * Spicy Sauce has a bigger explosion and proc chance.
 * Eyes Surgery also adds +1 burn duration.
 * Weird Food is now Tier-2 (easier to find if you have high Luck).
@@ -195,7 +195,6 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Metal Detector**: -5% Damage -> -4%
 * **Metal Plate**: Price 40->42
 * **Missile**: Price 45->41; 10% Damage -> 11%
-* **Padding**: {Reworked} Price: 45->41; -5% Speed -> -2%; Base HP 3 -> 2; New Effect: Instead of scaling with your total materials, Padding now gives you 1 HP for every 15 materials leftover that you didn't collect during the previous wave; Added 'Max HP' Tag _[Now a more dynamic item that actually has value beyond the very limited niche situations it was good in before.]_
 * **Piggy Bank**: Price 40->42
 * **Pocket Factory**: 2 Engineering -> 3 _[Many people like this item a lot, but if you look at its actual damage output in practice it tends to be very lackluster for its cost outside of its best-case scenarios.]_
 * **Pumpkin**: -2% Damage -> No Penalty; Now also gives +15% Bounce damage (only relevant for Ricochet); No Limit -> Limit 8 _[Limit is mostly irrelevant, but will stop it from showing up in deep endless if you've already maxed the possible value.]_

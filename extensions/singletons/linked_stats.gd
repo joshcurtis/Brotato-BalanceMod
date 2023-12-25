@@ -1,7 +1,6 @@
 extends "res://singletons/linked_stats.gd"
 
 # Streamer now gets +2 Armor from Pocket Factory
-# New Padding effect
 # Esty's Couch Negative Speed effect
 # King's changed ability
 func reset()->void :
@@ -42,9 +41,6 @@ func reset()->void :
 		##
 		elif linked_stat[2].begins_with("item_"):
 			stat_scaled = RunData.get_nb_item(linked_stat[2], false)
-		### New Padding effect
-		elif linked_stat[2] == "bm_leftover_materials":
-			stat_scaled = RunData.effects["bm_leftover_materials"]
 		##
 		else :
 			if RunData.effects.has(linked_stat[2]):
