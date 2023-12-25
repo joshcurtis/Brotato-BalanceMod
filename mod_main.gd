@@ -997,25 +997,6 @@ func _ready()->void:
 	temp = load("res://entities/structures/turret/laser/laser_turret_stats.tres")
 	temp.bounce_dmg_reduction = 0.3 # 0.5
 	
-	# Robot Arm - Reworked
-	temp = load("res://items/all/robot_arm/robot_arm_data.tres")
-	temp.value = 87
-	temp.tags = [ ]
-	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_0.tres")
-	temp.effects.erase(temp_2)
-	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_1.tres")
-	temp.effects.erase(temp_2)
-	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_2.tres")
-	temp.effects.erase(temp_2)
-	temp_2 = load("res://items/all/robot_arm/robot_arm_effect_3.tres")
-	temp.effects.erase(temp_2)
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_extra_slot.tres")
-	temp.effects.push_back(temp_2)  # Extra Weapon Slot
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_regen_malus.tres")
-	temp.effects.push_back(temp_2)  # -3 HP Regen
-	temp_2 = load("res://mods-unpacked/DarkTwinge-BalanceMod/effects/robot_arm_lifesteal_malus.tres")
-	temp.effects.push_back(temp_2)  # -2 Lifesteal
-	
 	# Sifd's Relic
 	temp = load("res://items/all/sifds_relic/sifds_relic_data.tres")
 	temp.value = 50  # 100

@@ -23,7 +23,7 @@ Elites are closer in overall difficulty to each other, more weapons feel fun and
 
 ### Items
 Tons of items receive small buffs or nerfs: overall more items are worth buying more often and the strongest give less power for their cost. Note that the goal is not to make everything equally strong; there is still plenty of variance and build-specific decision-making. Some highlights:
-* Esty's Couch, Robot Arm, and Padding have been reworked.
+* Esty's Couch and Padding have been reworked.
 * Spicy Sauce has a bigger explosion and proc chance.
 * Eyes Surgery also adds +1 burn duration.
 * Weird Food is now Tier-2 (easier to find if you have high Luck).
@@ -272,7 +272,6 @@ _Note: Altered and new descriptions will currently not display for non-English l
 * **Regeneration Potion:** HP Regeneration 3 -> 4
 * **Retromation's Hoodie:** +2% Attack Speed for every 1% Dodge -> +3% Attack Speed for every 2% Dodge; -80 Range -> -100 Range
 * **Ricochet:** Damage -25% -> -20%; All weapons that naturally pierce now have a default bounce damage of 70% instead of 50% (Crossbow, Shotgun, Laser Gun, Pistol, Shredder, Minigun, Obliterator, Chain-gun, Gatling Laser, Flamethrower, Laser Turret). _[In vanilla, it's a red-tier item that only works on ranged weapons to begin with, but then still ends up worthless on weapons like Shotgun and Shredder making it overly niche.]_
-* **Robot Arm:** {Reworked} Price 87; Adds an additional weapon slot; -3 HP Renegeration; -2 Lifesteal  _[Previously this item was way too similar to Exoskeleton - now it's a fun new effect.]_
 * **Sifd's Relic:** Price 100->50
 * **Spider:** Price 120->112; 6% Attack Speed Per Different Weapon -> 8%; 12% Damage -> 8% _[Thematic!]_
 * **Wolf Helmet:** Price 90->95; Additional Downside of -5 Harvesting
